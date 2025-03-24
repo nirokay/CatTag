@@ -36,31 +36,29 @@ newRawText(rawXmlText, XmlElement)
 # Elements: -------------------------------------------------------------------
 
 template newElement(PROC_NAME: untyped, RAW_TEXT_PROC: untyped, OBJECT_TYPE: typedesc): untyped =
-    #[
-    # ! Clashes with `proc PROC_NAME*(tag: string, children: varargs[OBJECT_TYPE]): OBJECT_TYPE`
     proc PROC_NAME*(tag: string, attributes: seq[Attribute]): OBJECT_TYPE =
         ## Constructs new element
         result = OBJECT_TYPE(elementType: typeElement, tag: tag, attributes: attributes)
-    ]#
-    proc PROC_NAME*(tag: string, attributes: seq[Attribute], children: seq[OBJECT_TYPE]): OBJECT_TYPE =
+
+    proc PROC_NAME*(tag: string, attributes: seq[Attribute], child: OBJECT_TYPE, children: seq[OBJECT_TYPE]): OBJECT_TYPE =
         ## Constructs new element
-        result = OBJECT_TYPE(elementType: typeElement, tag: tag, attributes: attributes, children: children)
-    proc PROC_NAME*(tag: string, attributes: seq[Attribute], children: varargs[OBJECT_TYPE]): OBJECT_TYPE =
+        result = OBJECT_TYPE(elementType: typeElement, tag: tag, attributes: attributes, children: @[child] & children)
+    proc PROC_NAME*(tag: string, attributes: seq[Attribute], child: OBJECT_TYPE, children: varargs[OBJECT_TYPE]): OBJECT_TYPE =
         ## Constructs new element
-        result = PROC_NAME(tag, attributes, children.toSeq())
+        result = PROC_NAME(tag, attributes, child, children.toSeq())
     proc PROC_NAME*(tag: string, children: seq[OBJECT_TYPE]): OBJECT_TYPE =
         ## Constructs new element
         result = OBJECT_TYPE(elementType: typeElement, tag: tag, children: children)
-    proc PROC_NAME*(tag: string, children: varargs[OBJECT_TYPE]): OBJECT_TYPE =
+    proc PROC_NAME*(tag: string, child: OBJECT_TYPE, children: varargs[OBJECT_TYPE]): OBJECT_TYPE =
         ## Constructs new element
-        result = OBJECT_TYPE(elementType: typeElement, tag: tag, children: children.toSeq())
+        result = OBJECT_TYPE(elementType: typeElement, tag: tag, children: @[child] & children.toSeq())
 
     proc PROC_NAME*(tag: string, content: seq[string]): OBJECT_TYPE =
         ## Constructs new element
         result = OBJECT_TYPE(elementType: typeElement, tag: tag, children: @[RAW_TEXT_PROC(content)])
-    proc PROC_NAME*(tag: string, content: varargs[string]): OBJECT_TYPE =
+    proc PROC_NAME*(tag: string, content: string, moreContent: varargs[string]): OBJECT_TYPE =
         ## Constructs new element
-        result = OBJECT_TYPE(elementType: typeElement, tag: tag, children: @[RAW_TEXT_PROC(content.toSeq())])
+        result = OBJECT_TYPE(elementType: typeElement, tag: tag, children: @[RAW_TEXT_PROC(@[content] & moreContent.toSeq())])
 
 newElement(newHtmlElement, rawHtmlText, HtmlElement)
 newElement(newXmlElement, rawXmlText, XmlElement)
@@ -74,13 +72,13 @@ template addChildren(PROC_NAME, OBJECT_TYPE: untyped): untyped =
         ## Appends children to element
         result = element
         result.children &= children
-    proc PROC_NAME*(element: var OBJECT_TYPE, children: varargs[OBJECT_TYPE]) =
+    proc PROC_NAME*(element: var OBJECT_TYPE, child: OBJECT_TYPE, children: varargs[OBJECT_TYPE]) =
         ## Appends children to element
-        element.children &= children.toSeq()
-    proc PROC_NAME*(element: OBJECT_TYPE, children: varargs[OBJECT_TYPE]): OBJECT_TYPE =
+        element.children &= @[child] & children.toSeq()
+    proc PROC_NAME*(element: OBJECT_TYPE, child: OBJECT_TYPE, children: varargs[OBJECT_TYPE]): OBJECT_TYPE =
         ## Appends children to element
         result = element
-        result.children &= children.toSeq()
+        result.children &= @[child] & children.toSeq()
 
 addChildren(add, HtmlElement)
 addChildren(add, XmlElement)
@@ -94,13 +92,13 @@ template addAttribute(PROC_NAME: untyped, OBJECT_TYPE: typedesc): untyped =
         ## Adds attributes to element
         result = element
         result.attributes &= attributes
-    proc PROC_NAME*(element: var OBJECT_TYPE, attributes: varargs[Attribute]) =
+    proc PROC_NAME*(element: var OBJECT_TYPE, attribute: Attribute, attributes: varargs[Attribute]) =
         ## Adds attributes to element
-        element.attributes &= attributes.toSeq()
-    proc PROC_NAME*(element: OBJECT_TYPE, attributes: varargs[Attribute]): OBJECT_TYPE =
+        element.attributes &= @[attribute] & attributes.toSeq()
+    proc PROC_NAME*(element: OBJECT_TYPE, attribute: Attribute, attributes: varargs[Attribute]): OBJECT_TYPE =
         ## Adds attributes to element
         result = element
-        result.attributes &= attributes.toSeq()
+        result.attributes &= @[attribute] & attributes.toSeq()
 
 addAttribute(add, HtmlElement)
 addAttribute(add, XmlElement)
@@ -142,14 +140,14 @@ writeDocument(XmlDocument)
 template addToDocument(PROC_NAME, LOCATION: untyped, OBJECT_TYPE, CHILD_TYPE: typedesc): untyped =
     proc PROC_NAME*(document: var OBJECT_TYPE, children: seq[CHILD_TYPE]) =
         document.LOCATION &= children
-    proc PROC_NAME*(document: OBJECT_TYPE, children: seq[CHILD_TYPE]): OBJECT_TYPE =
+    proc PROC_NAME*(document: OBJECT_TYPE, child: CHILD_TYPE, children: seq[CHILD_TYPE]): OBJECT_TYPE =
         result = document
-        result.LOCATION &= children
-    proc PROC_NAME*(document: var OBJECT_TYPE, children: varargs[CHILD_TYPE]) =
+        result.LOCATION &= @[child] & children
+    proc PROC_NAME*(document: var OBJECT_TYPE, child: CHILD_TYPE, children: varargs[CHILD_TYPE]) =
         document.LOCATION &= children.toSeq()
-    proc PROC_NAME*(document: OBJECT_TYPE, children: varargs[CHILD_TYPE]): OBJECT_TYPE =
+    proc PROC_NAME*(document: OBJECT_TYPE, child: CHILD_TYPE, children: varargs[CHILD_TYPE]): OBJECT_TYPE =
         result = document
-        result.LOCATION.add children.toSeq()
+        result.LOCATION.add @[child] & children.toSeq()
 addToDocument(addToHead, head, HtmlDocument, HtmlElement)
 addToDocument(addToBody, body, HtmlDocument, HtmlElement)
 addToDocument(add, body, HtmlDocument, HtmlElement)
