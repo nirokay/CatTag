@@ -8,7 +8,9 @@ test "Attributes":
 
 test "Elements":
     check $newHtmlElement("tag") == "<tag></tag>"
+    # Raw text:
     check $newHtmlElement("tag", rawHtmlText("hello world")) == "<tag>hello world</tag>"
+    check $newHtmlElement("tag", "hello world") == "<tag>hello world</tag>"
     check $newHtmlElement("img", rawHtmlText("hello world")) == "<img />"
 
 test "Elements with attributes (with sorting)":
@@ -20,4 +22,5 @@ test "Elements with children":
         newHtmlElement("div",
             newHtmlElement("p", "some text")
         )
-    )
+    ) == "<div><div><p>some text</p></div></div>"
+    check $newHtmlElement("img", newHtmlElement("a", @[attr("href", "urmom.com")])) == "<img />"

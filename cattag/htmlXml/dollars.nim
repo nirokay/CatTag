@@ -68,7 +68,7 @@ proc dollarHtmlElement(element: HtmlElement): string =
     var isVoid: bool = false
     if element.tag in voidElementTags:
         isVoid = true
-        if unlikely element.children.len() != 0: logWarning(&"Element with tag {element.tag} is void element, but has children. Children will not be generated.")
+        if unlikely element.children.len() != 0: logWarning(&"Element with tag '{element.tag}' is void element, but has children. Children will not be generated.")
     result = element.unifiedElementStringification(isVoid)
 proc dollarXmlElement(element: XmlElement): string =
     ## Stringifies `XmlElement`

@@ -36,6 +36,9 @@ newRawText(rawXmlText, XmlElement)
 # Elements: -------------------------------------------------------------------
 
 template newElement(PROC_NAME: untyped, RAW_TEXT_PROC: untyped, OBJECT_TYPE: typedesc): untyped =
+    proc PROC_NAME*(tag: string): OBJECT_TYPE =
+        ## Constructs new element
+        result = OBJECT_TYPE(elementType: typeElement, tag: tag)
     proc PROC_NAME*(tag: string, attributes: seq[Attribute]): OBJECT_TYPE =
         ## Constructs new element
         result = OBJECT_TYPE(elementType: typeElement, tag: tag, attributes: attributes)

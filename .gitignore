@@ -1,0 +1,9 @@
+# Binaries:
+*
+!*/
+!*.*
+*.exe
+*.out
+
+# Log files:
+*.log
