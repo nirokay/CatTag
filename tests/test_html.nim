@@ -1,4 +1,4 @@
-import std/[unittest]
+import std/[unittest, strutils]
 import cattag
 
 test "Attributes":
