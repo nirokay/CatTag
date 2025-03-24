@@ -31,4 +31,4 @@ proc `$`*(element: CssElement, joinByNewLineAndIndent: bool = true): string =
     for p in element.properties:
         let property: string = $p
         result.add property & sep
-    result.add "}"
+    result.add "}" & (if joinByNewLineAndIndent: "\n" else: "")

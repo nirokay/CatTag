@@ -7,31 +7,30 @@ type
         values*: seq[string]
 
     # Document elements:
-    HtmlDocumentElement* = object of RootObj
-    XmlDocumentElement* = object of RootObj
+    DocumentElementType* = enum
+        typeElement, typeComment, typeRawText
 
-    # - Raw text:
-    HtmlRawText* = object of HtmlDocumentElement
-        content*: string
-    XmlRawText* = object of XmlDocumentElement
-        content*: string
-
-    # - Normal elements:
-    HtmlElement* = object of HtmlDocumentElement
-        tag*: string
-        attributes*: seq[Attribute]
-        children*: seq[HtmlElement]
-        style*: seq[CssElementProperty] ## TODO: similar "API" like the TS DOM
-    XmlElement* = object of XmlDocumentElement
-        tag*: string
-        attributes*: seq[Attribute]
-        children*: seq[XmlElement]
-
-    # - Comments:
-    HtmlComment* = object of HtmlDocumentElement
-        lines*: seq[string]
-    XmlComment* = object of XmlDocumentElement
-        lines*: seq[string]
+    HtmlElement* = object
+        case elementType*: DocumentElementType:
+        of typeElement:
+            tag*: string
+            attributes*: seq[Attribute]
+            children*: seq[HtmlElement]
+            style*: seq[CssElementProperty] ## TODO: similar "API" like the TS DOM
+        of typeComment:
+            comment*: seq[string]
+        of typeRawText:
+            content*: seq[string]
+    XmlElement* = object
+        case elementType*: DocumentElementType:
+        of typeElement:
+            tag*: string
+            attributes*: seq[Attribute]
+            children*: seq[XmlElement]
+        of typeComment:
+            comment*: seq[string]
+        of typeRawText:
+            content*: seq[string]
 
     # - XML prolog:
     XmlProlog* = seq[Attribute]
@@ -40,11 +39,8 @@ type
     Document = object of RootObj
         file*: string
     HtmlDocument* = object of Document
-        head*, body*: seq[HtmlDocumentElement]
+        head*, body*: seq[HtmlElement]
+        doctypeAttributes*, htmlAttributes*, headAttributes*, bodyAttributes*: seq[Attribute]
     XmlDocument* = object of Document
         prolog*: XmlProlog
-        body*: seq[XmlDocumentElement]
-
-echo HtmlElement(tag: "a")
-var a = new XmlElement
-echo a.tag
+        body*: seq[XmlElement]
