@@ -1,6 +1,6 @@
-import html/all as htmlAll
+import htmlXml/all as htmlXmlAll
 import css/all as cssAll
 
 export
-    htmlAll,
+    htmlXmlAll,
     cssAll
