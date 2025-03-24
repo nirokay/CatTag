@@ -1,10 +1,10 @@
 import
     types,
-    procs,
     dollars,
+    procs,
     sugar
 export
     types,
-    procs,
     dollars,
+    procs,
     sugar

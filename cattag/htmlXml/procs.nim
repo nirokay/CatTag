@@ -1,5 +1,5 @@
 import std/[sequtils]
-import types
+import types, dollars
 
 
 # Elements: -------------------------------------------------------------------
@@ -69,11 +69,33 @@ addAttribute(add, XmlElement)
 
 template newDocument(PROC_NAME: untyped, OBJECT_TYPE: typedesc): untyped =
     proc PROC_NAME*(filename: string): OBJECT_TYPE =
-        ## Creates new `OBJECT_TYPE` document with file nme
+        ## Creates new `OBJECT_TYPE` document with file name
         result = OBJECT_TYPE(file: filename)
+    proc PROC_NAME*(): OBJECT_TYPE =
+        ## Creates new `OBJECT_TYPE` document with without file name
+        ##
+        ## Will raise `IOError` when writing file to disk and no name was provided
+        result = OBJECT_TYPE()
 
 newDocument(newHtmlDocument, HtmlDocument)
 newDocument(newXmlDocument, XmlDocument)
+
+
+template writeDocument(OBJECT_TYPE: typedesc): untyped =
+    proc writeFile*(document: OBJECT_TYPE, filename: string) =
+        ## Writes `OBJECT_TYPE` to disk
+        ##
+        ## Raises `IOError` when not able to write to disk
+        filename.writeFile($document)
+    proc writeFile*(document: OBJECT_TYPE) =
+        ## Writes `OBJECT_TYPE` to disk
+        ##
+        ## Raises `IOError` when `file` field is empty or could not write to disk
+        if unlikely document.file == "": raise IOError.newException("Document 'file' field is empty.")
+        document.file.writeFile($document)
+
+writeDocument(HtmlDocument)
+writeDocument(XmlDocument)
 
 
 template addToDocument(PROC_NAME, LOCATION: untyped, OBJECT_TYPE, CHILD_TYPE: typedesc): untyped =
