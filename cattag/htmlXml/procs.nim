@@ -1,5 +1,5 @@
 import std/[sequtils]
-import types, dollars
+import types
 
 
 # Attributes: -----------------------------------------------------------------
@@ -43,12 +43,13 @@ template newElement(PROC_NAME: untyped, RAW_TEXT_PROC: untyped, OBJECT_TYPE: typ
         ## Constructs new element
         result = OBJECT_TYPE(elementType: typeElement, tag: tag, attributes: attributes)
 
-    proc PROC_NAME*(tag: string, attributes: seq[Attribute], child: OBJECT_TYPE, children: seq[OBJECT_TYPE]): OBJECT_TYPE =
+    proc PROC_NAME*(tag: string, attributes: seq[Attribute], children: seq[OBJECT_TYPE]): OBJECT_TYPE =
         ## Constructs new element
-        result = OBJECT_TYPE(elementType: typeElement, tag: tag, attributes: attributes, children: @[child] & children)
+        result = OBJECT_TYPE(elementType: typeElement, tag: tag, attributes: attributes, children: children)
+
     proc PROC_NAME*(tag: string, attributes: seq[Attribute], child: OBJECT_TYPE, children: varargs[OBJECT_TYPE]): OBJECT_TYPE =
         ## Constructs new element
-        result = PROC_NAME(tag, attributes, child, children.toSeq())
+        result = OBJECT_TYPE(elementType: typeElement, tag: tag, attributes: attributes, children: @[child] & children.toSeq())
     proc PROC_NAME*(tag: string, children: seq[OBJECT_TYPE]): OBJECT_TYPE =
         ## Constructs new element
         result = OBJECT_TYPE(elementType: typeElement, tag: tag, children: children)
@@ -159,7 +160,7 @@ template addToDocument(PROC_NAME, LOCATION: untyped, OBJECT_TYPE, CHILD_TYPE: ty
         result = document
         result.LOCATION &= @[child] & children
     proc PROC_NAME*(document: var OBJECT_TYPE, child: CHILD_TYPE, children: varargs[CHILD_TYPE]) =
-        document.LOCATION &= children.toSeq()
+        document.LOCATION &= @[child] & children.toSeq()
     proc PROC_NAME*(document: OBJECT_TYPE, child: CHILD_TYPE, children: varargs[CHILD_TYPE]): OBJECT_TYPE =
         result = document
         result.LOCATION.add @[child] & children.toSeq()

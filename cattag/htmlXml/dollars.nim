@@ -1,5 +1,5 @@
 import std/[strutils, strformat, algorithm]
-import ../logger, types, rules
+import ../logger, types, rules, procs
 
 const
     cattagHtmlXmlAttributeQuote* {.strdefine.} = "'" ## Quote used for attribute values (`"` or `'`")
@@ -43,7 +43,9 @@ proc dollarImpl(elements: seq[HtmlElement]): string
 proc dollarImpl(elements: seq[XmlElement]): string
 
 
-proc stringifyRawText(element: HtmlElement|XmlElement): string =
+proc stringifyRawText(element: HtmlElement): string =
+    element.content.join("\n" & newHtmlElement("br").dollarImpl() & "\n")
+proc stringifyRawText(element: XmlElement): string =
     element.content.join("\n")
 proc stringifyComment(element: HtmlElement|XmlElement): string =
     result = @[
@@ -53,7 +55,7 @@ proc stringifyComment(element: HtmlElement|XmlElement): string =
     ]. join("\n")
 
 proc stringifyElement[T: HtmlElement|XmlElement](element: T, isVoid: bool): string =
-    if unlikely(isVoid and element.children.len() != 0): logWarning(&"Element with tag {element.tag} has children but is void. Children will not be generated!")
+    if unlikely(isVoid and element.children.len() != 0): logWarning(&"Element with tag '{element.tag}' has children but is void. Children will not be generated!")
     let
         trailingSlash: string = block:
             if element is HtmlElement: htmlVoidElementSlash
@@ -72,7 +74,8 @@ proc stringifyElement[T: HtmlElement|XmlElement](element: T, isVoid: bool): stri
 
 proc stringifyHtmlElement(element: HtmlElement): string =
     let isVoid: bool = element.tag in voidElementTags
-    result = element.stringifyElement(isVoid)
+    var modifiedElement: HtmlElement = element # TODO: implement `style` field converting to attribute
+    result = modifiedElement.stringifyElement(isVoid)
 
 proc stringifyXmlElement(element: XmlElement): string =
     let isVoid: bool = element.children.len() == 0 and cattagXmlSelfCloseOnEmptyChildren
@@ -90,11 +93,15 @@ proc dollarImpl(element: XmlElement): string =
     of typeRawText: element.stringifyRawText()
 
 proc dollarImpl(elements: seq[HtmlElement]): string =
+    var strings: seq[string]
     for element in elements:
-        result &= element.dollarImpl()
+        strings.add element.dollarImpl()
+    result = strings.join(htmlXmlIndentNewLine)
 proc dollarImpl(elements: seq[XmlElement]): string =
+    var strings: seq[string]
     for element in elements:
-        result &= element.dollarImpl()
+        strings.add element.dollarImpl()
+    result = strings.join(htmlXmlIndentNewLine)
 
 
 proc `$`*(element: HtmlElement): string =
@@ -110,3 +117,30 @@ proc `$`*(elements: seq[HtmlElement]): string =
 proc `$`*(elements: seq[XmlElement]): string =
     ## Stringifies `XmlElement`s
     result = elements.dollarImpl()
+
+
+proc `$`*(document: HtmlDocument): string =
+    ## Stringifies `HtmlDocument`
+    let
+        doctype: string = "<!DOCTYPE html" & $document.doctypeAttributes & ">"
+        elements: seq[HtmlElement] = @[
+            rawHtmlText(doctype),
+            newHtmlElement("html", document.htmlAttributes,
+                newHtmlElement("head", document.headAttributes,
+                    document.head
+                ),
+                newHtmlElement("body", document.bodyAttributes,
+                    document.body
+                )
+            )
+        ]
+    result = $elements
+proc `$`*(document: XmlDocument): string =
+    ## Stringifies `XmlDocument`
+    let
+        prologAttributes: XmlProlog = block:
+            if document.prolog.len() != 0: document.prolog
+            else: @[attr("version", "1.0"), attr("encoding", "utf-8")]
+        prolog: string = "<?xml" & $prologAttributes & "?>"
+        elements: seq[XmlElement] = @[rawXmlText(prolog)] & document.body
+    result = $elements
