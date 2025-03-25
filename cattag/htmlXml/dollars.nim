@@ -36,101 +36,74 @@ proc `$`*(attributes: seq[Attribute]): string =
         result.add $attribute
 
 
-template indent(): string =
-    if htmlXmlIndentNewLine != "": htmlXmlIndentNewLine & repeat(" ", indentLevel)
-    else: ""
-template nextIndent(): int =
-    indentLevel + cattagHtmlXmlIndent
+proc dollarImpl(element: HtmlElement): string
+proc dollarImpl(element: XmlElement): string
 
-proc dollarAll(element: HtmlElement|XmlElement, indentLevel: int): string ## Stringifies `HtmlElement`
-proc dollarAll(element: seq[HtmlElement|XmlElement], indentLevel: int): string ## Stringifies `HtmlElement`
-proc dollarComment(element: HtmlElement|XmlElement, indentLevel: int): string ## Stringifies `HtmlElement`
-proc dollarHtmlRawText(element: HtmlElement, indentLevel: int): string ## Stringifies `HtmlElement`
-proc dollarXmlRawText(element: XmlElement, indentLevel: int): string ## Stringifies `XmlElement`
-proc dollarElement(element: HtmlElement, indentLevel: int): string ## Stringifies `HtmlElement`
-proc dollarElement(elements: seq[HtmlElement]|seq[XmlElement], indentLevel: int): string
-proc dollarElement(element: XmlElement, indentLevel: int): string ## Stringifies `XmlElement`
-
-proc dollarHtmlRawText(element: HtmlElement, indentLevel: int): string =
-    ## Stringifies `HtmlRawText` (raw text child)
-    result = element.content.join(dollarElement(HtmlElement(elementType: typeElement, tag: "br"), indentLevel))
-proc dollarXmlRawText(element: XmlElement, indentLevel: int): string =
-    ## Stringifies `XmlRawText` (raw text child)
-    result = element.content.join("\n").indent(indentLevel)
+proc dollarImpl(elements: seq[HtmlElement]): string
+proc dollarImpl(elements: seq[XmlElement]): string
 
 
-proc dollarComment(element: HtmlElement|XmlElement, indentLevel: int): string =
-    # TODO: implementation
-    ""
+proc stringifyRawText(element: HtmlElement|XmlElement): string =
+    element.content.join("\n")
+proc stringifyComment(element: HtmlElement|XmlElement): string =
+    result = @[
+        "<!--",
+        element.comment.join("\n").indent(cattagHtmlXmlIndent),
+        "--->"
+    ]. join("\n").indent(cattagHtmlXmlIndent)
 
-
-proc getTrailingSlash(element: HtmlElement, isVoid: bool): string = (if isVoid: result = htmlVoidElementSlash)
-proc getTrailingSlash(element: XmlElement, isVoid: bool): string = (if isVoid: result = xmlVoidElementSlash)
-
-proc unifiedElementStringification[T: HtmlElement|XmlElement](element: T, isVoid: bool, indentLevel: int): string =
+proc stringifyElement[T: HtmlElement|XmlElement](element: T, isVoid: bool): string =
+    if unlikely(isVoid and element.children.len() != 0): logWarning(&"Element with tag {element.tag} has children but is void. Children will not be generated!")
     let
-        trailingSlash: string = element.getTrailingSlash(isVoid)
-        elem: T = element.getElementWithSortedAttributes()
-    result = (
-        if isVoid: &"<{elem.tag}{$elem.attributes}{trailingSlash}>"
-        else:
-            let children: string = dollarAll(elem.children, indentLevel + cattagHtmlXmlIndent)
-            &"<{elem.tag}{$elem.attributes}>" & (if children.len() != 0: "\n" else: "") & indent() & children & &"</{elem.tag}>"
-    )
+        trailingSlash: string = block:
+            if element is HtmlElement: htmlVoidElementSlash
+            elif element is XmlElement: xmlVoidElementSlash
+            else:
+                logFatal("Unsupported type.")
+                ""
+        attributes: seq[Attribute] = element.getElementWithSortedAttributes().attributes
+    if isVoid:
+        result = &"<{element.tag}{attributes}{trailingSlash}>"
+    else:
+        result = &"<{element.tag}{attributes}>{htmlXmlIndentNewLine}" & dollarImpl(element.children).indent(cattagHtmlXmlIndent) & &"{htmlXmlIndentNewLine}</{element.tag}>"
 
-proc dollarElement(element: HtmlElement, indentLevel: int): string =
-    ## Stringifies `HtmlElement`
-    # TODO: `style` field conversion to attributes
-    var isVoid: bool = false
-    if element.tag in voidElementTags:
-        isVoid = true
-        if unlikely element.children.len() != 0: logWarning(&"Element with tag '{element.tag}' is void element, but has children. Children will not be generated.")
-    result = element.unifiedElementStringification(isVoid, indentLevel)
-proc dollarElement(element: XmlElement, indentLevel: int): string =
-    ## Stringifies `XmlElement`
-    var isVoid: bool = false
-    if cattagXmlSelfCloseOnEmptyChildren:
-        if element.children.len() == 0: isVoid = true
-    result = element.unifiedElementStringification(isVoid, indentLevel)
-proc dollarElement(elements: seq[HtmlElement]|seq[XmlElement], indentLevel: int): string =
-    for element in elements:
-        result &= element.dollarElement(indentLevel)
+proc stringifyHtmlElement(element: HtmlElement): string =
+    let isVoid: bool = element.tag in voidElementTags
+    result = element.stringifyElement(isVoid)
 
-proc dollarAll(element: HtmlElement): string =
-    ## Stringifies `HtmlElement`
+proc stringifyXmlElement(element: XmlElement): string =
+    let isVoid: bool = element.children.len() == 0 and cattagXmlSelfCloseOnEmptyChildren
+    result = element.stringifyElement(isVoid)
+
+proc dollarImpl(element: HtmlElement): string =
     case element.elementType:
-    of typeElement: element.dollarElement(0)
-    of typeComment: element.dollarComment(0)
-    of typeRawText: element.dollarHtmlRawText(0)
-proc dollarAll(element: XmlElement): string =
-    ## Stringifies `XmlElement`
+    of typeComment: element.stringifyComment()
+    of typeElement: element.stringifyHtmlElement()
+    of typeRawText: element.stringifyRawText()
+proc dollarImpl(element: XmlElement): string =
     case element.elementType:
-    of typeElement: element.dollarElement(0)
-    of typeComment: element.dollarComment(0)
-    of typeRawText: element.dollarXmlRawText(0)
+    of typeComment: element.stringifyComment()
+    of typeElement: element.stringifyXmlElement()
+    of typeRawText: element.stringifyRawText()
 
-proc dollarAll(elements: seq[HtmlElement]): string =
-    ## Stringifies `HtmlElement`s
-    if elements.len() == 0: return ""
+proc dollarImpl(elements: seq[HtmlElement]): string =
     for element in elements:
-        result &= $element
-proc dollarAll(elements: seq[XmlElement]): string =
-    ## Stringifies `XmlElement`s
-    if elements.len() == 0: return ""
+        result &= element.dollarImpl()
+proc dollarImpl(elements: seq[XmlElement]): string =
     for element in elements:
-        result &= $element
+        result &= element.dollarImpl()
 
 
 proc `$`*(element: HtmlElement): string =
     ## Stringifies `HtmlElement`
-    result = element.dollarAll()
+    result = element.dollarImpl()
 proc `$`*(element: XmlElement): string =
     ## Stringifies `XmlElement`
-    result = element.dollarAll()
+    result = element.dollarImpl()
 
 proc `$`*(elements: seq[HtmlElement]): string =
     ## Stringifies `HtmlElement`s
-    result = elements.dollarAll()
+    result = elements.dollarImpl()
 proc `$`*(elements: seq[XmlElement]): string =
     ## Stringifies `XmlElement`s
-    result = elements.dollarAll()
+    result = elements.dollarImpl()

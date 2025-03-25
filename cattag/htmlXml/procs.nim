@@ -67,6 +67,15 @@ newElement(newHtmlElement, rawHtmlText, HtmlElement)
 newElement(newXmlElement, rawXmlText, XmlElement)
 
 
+template newComment(PROC_NAME: untyped, OBJECT_TYPE: typedesc): untyped =
+    proc PROC_NAME*(comment: string): OBJECT_TYPE =
+        ## Constructs new comment
+        result = OBJECT_TYPE(elementType: typeComment, comment: @[comment])
+    # TODO: more overrides for types
+
+newComment(newHtmlComment, HtmlElement)
+newComment(newXmlComment, XmlElement)
+
 template addChildren(PROC_NAME, OBJECT_TYPE: untyped): untyped =
     proc PROC_NAME*(element: var OBJECT_TYPE, children: seq[OBJECT_TYPE]) =
         ## Appends children to element
