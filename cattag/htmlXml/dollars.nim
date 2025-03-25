@@ -50,7 +50,7 @@ proc stringifyComment(element: HtmlElement|XmlElement): string =
         "<!--",
         element.comment.join("\n").indent(cattagHtmlXmlIndent),
         "--->"
-    ]. join("\n").indent(cattagHtmlXmlIndent)
+    ]. join("\n")
 
 proc stringifyElement[T: HtmlElement|XmlElement](element: T, isVoid: bool): string =
     if unlikely(isVoid and element.children.len() != 0): logWarning(&"Element with tag {element.tag} has children but is void. Children will not be generated!")
@@ -65,7 +65,10 @@ proc stringifyElement[T: HtmlElement|XmlElement](element: T, isVoid: bool): stri
     if isVoid:
         result = &"<{element.tag}{attributes}{trailingSlash}>"
     else:
-        result = &"<{element.tag}{attributes}>{htmlXmlIndentNewLine}" & dollarImpl(element.children).indent(cattagHtmlXmlIndent) & &"{htmlXmlIndentNewLine}</{element.tag}>"
+        if element.children.len() == 0:
+            result = &"<{element.tag}{attributes}></{element.tag}>"
+        else:
+            result = &"<{element.tag}{attributes}>{htmlXmlIndentNewLine}" & dollarImpl(element.children).indent(cattagHtmlXmlIndent) & &"{htmlXmlIndentNewLine}</{element.tag}>"
 
 proc stringifyHtmlElement(element: HtmlElement): string =
     let isVoid: bool = element.tag in voidElementTags

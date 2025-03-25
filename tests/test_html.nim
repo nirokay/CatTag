@@ -16,15 +16,31 @@ const longHtmlComment: string = """<!--
     hello world
     how are you?
 --->"""
+const longerHtmlComment: string = """<!--
+    even
+    longer
+    now
+--->"""
+const longestHtmlComment: string = """<!--
+    WOAH
+    SO
+    LONG
+    COMMENT
+--->"""
 test "Comments":
     check $newHtmlComment("hello world") == htmlComment
     check $newHtmlComment("hello world", "how are you?") == longHtmlComment
+    check $newHtmlComment("even", "longer", "now") == longerHtmlComment
+    check $newHtmlComment("WOAH", "SO", "LONG", "COMMENT") == longestHtmlComment
 
+const elementWithContent: string = """<tag>
+    hello world
+</tag>"""
 test "Elements":
     check $newHtmlElement("tag") == "<tag></tag>"
     # Raw text:
-    check $newHtmlElement("tag", rawHtmlText("hello world")) == "<tag>hello world</tag>"
-    check $newHtmlElement("tag", "hello world") == "<tag>hello world</tag>"
+    check $newHtmlElement("tag", rawHtmlText("hello world")) == elementWithContent
+    check $newHtmlElement("tag", "hello world") == elementWithContent
     check $newHtmlElement("img", rawHtmlText("hello world")) == "<img />"
 
 test "Elements with attributes (with sorting)":

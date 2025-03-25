@@ -68,13 +68,16 @@ newElement(newXmlElement, rawXmlText, XmlElement)
 
 
 template newComment(PROC_NAME: untyped, OBJECT_TYPE: typedesc): untyped =
-    proc PROC_NAME*(comment: string): OBJECT_TYPE =
+    proc PROC_NAME*(comment: seq[string]): OBJECT_TYPE =
         ## Constructs new comment
-        result = OBJECT_TYPE(elementType: typeComment, comment: @[comment])
-    # TODO: more overrides for types
+        result = OBJECT_TYPE(elementType: typeComment, comment: comment)
+    proc PROC_NAME*(comment: varargs[string]): OBJECT_TYPE =
+        ## Constructs new comment
+        result = OBJECT_TYPE(elementType: typeComment, comment: comment.toSeq())
 
 newComment(newHtmlComment, HtmlElement)
 newComment(newXmlComment, XmlElement)
+
 
 template addChildren(PROC_NAME, OBJECT_TYPE: untyped): untyped =
     proc PROC_NAME*(element: var OBJECT_TYPE, children: seq[OBJECT_TYPE]) =
