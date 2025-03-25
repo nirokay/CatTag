@@ -1,6 +1,6 @@
 type
-    CssStylesheetElement* = object of RootObj
-
+    CssElementType* = enum
+        typeCssElement, typeCssComment
     CssSelectorType* = enum
         selectorElement, selectorId, selectorAll, selectorClass
 
@@ -8,14 +8,15 @@ type
         property*: string
         values*: seq[string]
 
-    CssElement* = object of CssStylesheetElement
-        selector*: string
-        selectorType*: CssSelectorType = selectorElement
-        properties*: seq[CssElementProperty]
-
-    CssComment* = object of CssStylesheetElement
-        lines*: seq[string]
+    CssElement* = object
+        case elementType*: CssElementType:
+        of typeCssElement:
+            selector*: string
+            selectorType*: CssSelectorType = selectorElement
+            properties*: seq[CssElementProperty]
+        of typeCssComment:
+            comment*: seq[string]
 
     CssStylesheet* = object
         file*: string = "styles.css"
-        children*: seq[CssStylesheetElement]
+        children*: seq[CssElement]
