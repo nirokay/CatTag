@@ -57,6 +57,13 @@ template newElement(PROC_NAME: untyped, RAW_TEXT_PROC: untyped, OBJECT_TYPE: typ
         ## Constructs new element
         result = OBJECT_TYPE(elementType: typeElement, tag: tag, children: @[child] & children.toSeq())
 
+    proc PROC_NAME*(tag: string, attributes: seq[Attribute], content: seq[string]): OBJECT_TYPE =
+        ## Constructs new element
+        result = OBJECT_TYPE(elementType: typeElement, tag: tag, attributes: attributes, children: @[RAW_TEXT_PROC(content)])
+    proc PROC_NAME*(tag: string, attributes: seq[Attribute], content: string, moreContent: varargs[string]): OBJECT_TYPE =
+        ## Constructs new element
+        result = OBJECT_TYPE(elementType: typeElement, tag: tag, attributes: attributes, children: @[RAW_TEXT_PROC(@[content] & moreContent.toSeq())])
+
     proc PROC_NAME*(tag: string, content: seq[string]): OBJECT_TYPE =
         ## Constructs new element
         result = OBJECT_TYPE(elementType: typeElement, tag: tag, children: @[RAW_TEXT_PROC(content)])

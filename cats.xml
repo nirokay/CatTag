@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<cats>
+    <cat>
+        <name>Lucy</name>
+        <fur length='short'>Brown, Black, Beige</fur>
+        <favourite-patting-spots>
+            <pat-spot favourite='true'>Head</pat-spot>
+            <pat-spot>Back</pat-spot>
+        </favourite-patting-spots>
+    </cat>
+    <cat>
+        <name>Findus</name>
+        <fur length='short'>White, Brown</fur>
+        <favourite-patting-spots />
+    </cat>
+</cats>

@@ -1,5 +1,5 @@
 import std/[sequtils]
-import types, dollars
+import types
 
 
 template newCssThing(PROC_NAME: untyped, SELECTOR_TYPE: untyped): untyped =
