@@ -1,5 +1,5 @@
 const
-    voidElementTags*: seq[string] = @[
+    htmlVoidElementTags*: seq[string] = @[
         "area",
         "base",
         "br",

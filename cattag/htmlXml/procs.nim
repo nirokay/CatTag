@@ -104,8 +104,9 @@ template addChildren(PROC_NAME, OBJECT_TYPE: untyped): untyped =
         result.children &= @[child] & children.toSeq()
 
 addChildren(add, HtmlElement)
+addChildren(`&=`, HtmlElement)
 addChildren(add, XmlElement)
-
+addChildren(`&=`, XmlElement)
 
 template addAttribute(PROC_NAME: untyped, OBJECT_TYPE: typedesc): untyped =
     proc PROC_NAME*(element: var OBJECT_TYPE, attributes: seq[Attribute]) =
@@ -124,40 +125,25 @@ template addAttribute(PROC_NAME: untyped, OBJECT_TYPE: typedesc): untyped =
         result.attributes &= @[attribute] & attributes.toSeq()
 
 addAttribute(add, HtmlElement)
+addAttribute(`&=`, HtmlElement)
 addAttribute(add, XmlElement)
+addAttribute(`&=`, XmlElement)
 
 
 # Documents: ------------------------------------------------------------------
 
 template newDocument(PROC_NAME: untyped, OBJECT_TYPE: typedesc): untyped =
     proc PROC_NAME*(filename: string): OBJECT_TYPE =
-        ## Creates new document with file name
+        ## Creates new document with a file name
         result = OBJECT_TYPE(file: filename)
     proc PROC_NAME*(): OBJECT_TYPE =
-        ## Creates new document with without file name
+        ## Creates new document with without a file name
         ##
-        ## Will raise `IOError` when writing file to disk and no name was provided
+        ## Will raise `IOError` when writing file to disk and no name was provided.
         result = OBJECT_TYPE()
 
 newDocument(newHtmlDocument, HtmlDocument)
 newDocument(newXmlDocument, XmlDocument)
-
-
-template writeDocument(OBJECT_TYPE: typedesc): untyped =
-    proc writeFile*(document: OBJECT_TYPE, filename: string) =
-        ## Writes document to disk
-        ##
-        ## Raises `IOError` when not able to write to disk
-        filename.writeFile($document)
-    proc writeFile*(document: OBJECT_TYPE) =
-        ## Writes document to disk
-        ##
-        ## Raises `IOError` when `file` field is empty or could not write to disk
-        if unlikely document.file == "": raise IOError.newException("Document 'file' field is empty.")
-        document.file.writeFile($document)
-
-writeDocument(HtmlDocument)
-writeDocument(XmlDocument)
 
 
 template addToDocument(PROC_NAME, LOCATION: untyped, OBJECT_TYPE, CHILD_TYPE: typedesc): untyped =
@@ -171,9 +157,12 @@ template addToDocument(PROC_NAME, LOCATION: untyped, OBJECT_TYPE, CHILD_TYPE: ty
     proc PROC_NAME*(document: OBJECT_TYPE, child: CHILD_TYPE, children: varargs[CHILD_TYPE]): OBJECT_TYPE =
         result = document
         result.LOCATION.add @[child] & children.toSeq()
+
 addToDocument(addToHead, head, HtmlDocument, HtmlElement)
 addToDocument(addToBody, body, HtmlDocument, HtmlElement)
 addToDocument(add, body, HtmlDocument, HtmlElement)
+addToDocument(`&=`, body, HtmlDocument, HtmlElement)
 
 addToDocument(addToBody, body, XmlDocument, XmlElement)
 addToDocument(add, body, XmlDocument, XmlElement)
+addToDocument(`&=`, body, XmlDocument, XmlElement)

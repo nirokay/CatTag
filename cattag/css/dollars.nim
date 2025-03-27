@@ -5,19 +5,20 @@ const
     cattagCssIndent* {.intdefine.}: int = 4
 
 
-proc `$`*(property: CssElementProperty): string =
+proc `$`*(property: CssElementProperty, condensed: bool = false): string =
     ## Stringifies `CssElementProperty`
     if unlikely property.property == "":
         logWarning("Property has no name, will generate invalid CSS.")
     if unlikely property.values.len() == 0:
         logWarning(&"Property '{property.property}' has no values. Will generate invalid CSS.")
-    result = property.property & ": " & property.values.join(" ") & ";"
+    let sep: string = if condensed: ":" else: ": "
+    result = property.property & sep & property.values.join(" ") & ";"
 
 proc `$`*(properties: seq[CssElementProperty], condensed: bool = false): string =
     ## Stringifies `CssElementProperty`s
     var resultList: seq[string]
     for property in properties:
-        resultList &= $property
+        resultList &= property $ condensed
     result = resultList.join(if condensed: "" else: "\n")
 
 
@@ -43,11 +44,11 @@ proc dollarImpl(element: CssElement, condensed: bool): string =
 
 proc dollarCommentImpl(element: CssElement, condensed: bool): string =
     if element.comment.len() > 1 and not condensed:
-        result = "/**" &
+        result = "/**\n" &
             element.comment.join("\n").indent(1, " * ") &
-        "/*"
+        "\n*/"
     else:
-        result = "/*" & element.comment.join(" ") & "*/"
+        result = "/* " & element.comment.join(" ") & " */"
 
 
 proc `$`*(element: CssElement, condensed: bool = false): string =
@@ -63,4 +64,19 @@ proc `$`*(elements: seq[CssElement], condensed: bool = false): string =
         resultList &= element $ condensed
     result = resultList.join(if condensed: "" else: "\n\n")
 
+proc `$`*(stylesheet: CssStylesheet): string =
+    ## Stringifies `CssStylesheet`
+    result = $stylesheet.children
 
+
+proc writeFile*(stylesheet: CssStylesheet, filename: string) =
+    ## Writes stylesheet to disk
+    ##
+    ## Raises `IOError` when not able to write to disk.
+    filename.writeFile($stylesheet)
+proc writeFile*(stylesheet: CssStylesheet) =
+    ## Writes stylesheet to disk
+    ##
+    ## Raises `IOError` when `file` field is empty or could not write to disk.
+    if unlikely stylesheet.file == "": raise IOError.newException("Stylesheet 'file' field is empty.")
+    stylesheet.file.writeFile($stylesheet)

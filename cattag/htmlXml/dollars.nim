@@ -1,8 +1,8 @@
-import std/[strutils, strformat, algorithm]
+import std/[sequtils, strutils, strformat, tables, algorithm]
 import ../logger, types, rules, procs
 
 const
-    cattagHtmlXmlAttributeQuote* {.strdefine.} = "'" ## Quote used for attribute values (`"` or `'`")
+    cattagHtmlXmlAttributeQuote* {.strdefine.} = "'" ## Quote used for attribute values (`"` or `'`)
     cattagHtmlXmlSortAttributes* {.booldefine.} = true ## Toggles alphabetical sorting of attributes
     cattagHtmlXmlIndent* {.intdefine.} = 4 ## Sets indent for children (if set to zero, output will be inline)
     cattagHtmlTrailingSlash* {.booldefine.} = true ## Toggles if `br` should generate `<br />` instead of `<br>`
@@ -18,10 +18,19 @@ proc sortedAttributes(attributes: seq[Attribute]): seq[Attribute] =
     if not cattagHtmlXmlSortAttributes: return attributes
     result = attributes
     result.sort(cmpAttributes)
-proc getElementWithSortedAttributes[T: HtmlElement|XmlElement](element: T): T =
-    var attributes: seq[Attribute] = element.attributes.sortedAttributes()
+proc getElementWithMergedSortedAttributes[T: HtmlElement|XmlElement](element: T): T =
+    var tableAttributes: Table[string, seq[string]]
+    for attribute in element.attributes:
+        if not tableAttributes.hasKey(attribute.attribute):
+            tableAttributes[attribute.attribute] = @[]
+        tableAttributes[attribute.attribute] &= attribute.values
+
+    var attributes: seq[Attribute]
+    for attribute, values in tableAttributes:
+        attributes.add newAttribute(attribute, values.deduplicate())
+
     result = element
-    result.attributes = attributes
+    result.attributes = attributes.sortedAttributes()
 
 
 proc `$`*(attribute: Attribute): string =
@@ -52,7 +61,7 @@ proc stringifyComment(element: HtmlElement|XmlElement): string =
         "<!--",
         element.comment.join("\n").indent(cattagHtmlXmlIndent),
         "--->"
-    ]. join("\n")
+    ].join(if htmlXmlIndentNewLine != "": htmlXmlIndentNewLine else: " ")
 
 proc stringifyElement[T: HtmlElement|XmlElement](element: T, isVoid: bool): string =
     if unlikely(isVoid and element.children.len() != 0): logWarning(&"Element with tag '{element.tag}' has children but is void. Children will not be generated!")
@@ -63,7 +72,7 @@ proc stringifyElement[T: HtmlElement|XmlElement](element: T, isVoid: bool): stri
             else:
                 logFatal("Unsupported type.")
                 ""
-        attributes: seq[Attribute] = element.getElementWithSortedAttributes().attributes
+        attributes: seq[Attribute] = element.getElementWithMergedSortedAttributes().attributes
     if isVoid:
         result = &"<{element.tag}{attributes}{trailingSlash}>"
     else:
@@ -73,7 +82,7 @@ proc stringifyElement[T: HtmlElement|XmlElement](element: T, isVoid: bool): stri
             result = &"<{element.tag}{attributes}>{htmlXmlIndentNewLine}" & dollarImpl(element.children).indent(cattagHtmlXmlIndent) & &"{htmlXmlIndentNewLine}</{element.tag}>"
 
 proc stringifyHtmlElement(element: HtmlElement): string =
-    let isVoid: bool = element.tag in voidElementTags
+    let isVoid: bool = element.tag in htmlVoidElementTags
     var modifiedElement: HtmlElement = element # TODO: implement `style` field converting to attribute
     result = modifiedElement.stringifyElement(isVoid)
 
@@ -144,3 +153,20 @@ proc `$`*(document: XmlDocument): string =
         prolog: string = "<?xml" & $prologAttributes & "?>"
         elements: seq[XmlElement] = @[rawXmlText(prolog)] & document.body
     result = $elements
+
+
+template writeDocument(OBJECT_TYPE: typedesc): untyped =
+    proc writeFile*(document: OBJECT_TYPE, filename: string) =
+        ## Writes document to disk
+        ##
+        ## Raises `IOError` when not able to write to disk.
+        filename.writeFile($document)
+    proc writeFile*(document: OBJECT_TYPE) =
+        ## Writes document to disk
+        ##
+        ## Raises `IOError` when `file` field is empty or could not write to disk.
+        if unlikely document.file == "": raise IOError.newException("Document 'file' field is empty.")
+        document.file.writeFile($document)
+
+writeDocument(HtmlDocument)
+writeDocument(XmlDocument)

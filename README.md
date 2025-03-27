@@ -15,7 +15,7 @@ rewritten (more like reimplemented with major changes, so like, idk how you woul
 ### Planned features
 
 [x] HTML/XML Generation
-[ ] CSS Generation
+[x] CSS Generation
 [ ] Sugar syntax
 [ ] HTML QoL procs (`p("text")` for `newHtmlElement("p", "text")`)
 [ ] CSS QoL procs
