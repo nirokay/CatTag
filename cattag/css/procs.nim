@@ -1,9 +1,18 @@
-import std/[sequtils]
+import std/[strutils, sequtils]
 import types
+
+proc getSelectorType*(selector: string): CssSelectorType =
+    ## Gets the `CssSelectorType` corresponding to the selector provided
+    let selector: string = selector.strip()
+    result = block:
+        if selector.startsWith("*"): selectorAll
+        elif selector.startsWith("."): selectorClass
+        elif selector.startsWith("#"): selectorId
+        else: selectorElement
 
 
 proc newCssAll*(properties: seq[CssElementProperty]): CssElement =
-    ## Constructs new `CssElement`
+    ## Constructs new `CssElement` with `*` selector
     result = CssElement(
         elementType: typeCssElement,
         selector: "*",
@@ -11,7 +20,7 @@ proc newCssAll*(properties: seq[CssElementProperty]): CssElement =
         properties: properties
     )
 proc newCssAll*(properties: varargs[CssElementProperty]): CssElement =
-    ## Constructs new `CssElement`
+    ## Constructs new `CssElement` with `*` selector
     result = newCssAll(properties.toSeq())
 
 template newCssThing(PROC_NAME: untyped, SELECTOR_TYPE: untyped): untyped =
@@ -19,7 +28,7 @@ template newCssThing(PROC_NAME: untyped, SELECTOR_TYPE: untyped): untyped =
         ## Constructs new `CssElement`
         result = CssElement(
             elementType: typeCssElement,
-            selector: selector,
+            selector: selector.strip(),
             selectorType: SELECTOR_TYPE,
             properties: properties
         )

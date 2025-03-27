@@ -1,0 +1,35 @@
+# List stolen from https://developer.mozilla.org/en-US/docs/Web/HTML/Element (with love <3) :)
+accesskey
+anchor Experimental Non-standard
+autocapitalize
+autocorrect
+autofocus
+class
+contenteditable
+data-*
+dir
+draggable
+enterkeyhint
+exportparts
+hidden
+id
+inert
+inputmode
+is
+itemid
+itemprop
+itemref
+itemscope
+itemtype
+lang
+nonce
+part
+popover
+slot
+spellcheck
+style
+tabindex
+title
+translate
+virtualkeyboardpolicy Experimental
+writingsuggestions

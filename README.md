@@ -16,7 +16,8 @@ rewritten (more like reimplemented with major changes, so like, idk how you woul
 
 [x] HTML/XML Generation
 [x] CSS Generation
-[ ] Sugar syntax
+[ ] HTML/XML sugar syntax
+[x] CSS sugar syntax
 [ ] HTML QoL procs (`p("text")` for `newHtmlElement("p", "text")`)
 [ ] CSS QoL procs
 [ ] DOM procs
