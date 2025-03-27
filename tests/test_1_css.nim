@@ -105,3 +105,5 @@ test "Documents":
         newCssProperty("margin", "auto")
     )
 
+    check stylesheet == $css
+
