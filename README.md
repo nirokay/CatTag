@@ -14,16 +14,16 @@ rewritten (more like reimplemented with major changes, so like, idk how you woul
 
 ### Planned features
 
-[x] HTML/XML Generation
-[x] CSS Generation
-[ ] HTML/XML sugar syntax
-[x] CSS sugar syntax
-[ ] HTML QoL procs (`p("text")` for `newHtmlElement("p", "text")`)
-[ ] CSS QoL procs
-[ ] DOM procs
-[ ] `HtmlElement.style` field stuff (usage similar to typescript element style manipulation)
+* [x] HTML/XML Generation
+* [x] CSS Generation
+* [ ] HTML/XML sugar syntax
+* [x] CSS sugar syntax
+* [ ] HTML QoL procs (`p("text")` for `newHtmlElement("p", "text")`)
+* [ ] CSS QoL procs
+* [ ] DOM procs
+* [ ] `HtmlElement.style` field stuff (usage similar to typescript element style manipulation)
 
 ### Distant future ideas
 
-[ ] HTML/XML Parsing
-[ ] CSS Parsing
+* [ ] HTML/XML Parsing
+* [ ] CSS Parsing
