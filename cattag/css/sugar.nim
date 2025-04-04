@@ -2,12 +2,12 @@ import std/[strutils, sequtils]
 import types, procs
 
 
-proc `:=`*(attribute: string, values: seq[string]): CssElementProperty =
+proc `:=`*(property: string, values: seq[string]): CssElementProperty =
     ## Sugar constructor for `CssElementProperty`
-    result = newCssProperty(attribute, values)
-proc `:=`*(attribute: string, values: varargs[string]): CssElementProperty =
+    result = newCssProperty(property, values)
+proc `:=`*(property: string, values: varargs[string]): CssElementProperty =
     ## Sugar constructor for `CssElementProperty`
-    result = attribute := values.toSeq()
+    result = property := values.toSeq()
 
 
 proc `{}`*(selector: string, properties: seq[CssElementProperty]): CssElement =
