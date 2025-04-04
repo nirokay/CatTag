@@ -16,8 +16,10 @@ rewritten (more like reimplemented with major changes, so like, idk how you woul
 
 * [x] HTML/XML Generation
 * [x] CSS Generation
-* [ ] HTML/XML sugar syntax
+* [x] HTML/XML sugar syntax
 * [x] CSS sugar syntax
+* [x] HTML QoL tag constants (`p`, `input`, `br`, ...)
+* [ ] CSS QoL property and property value constants (`text-align`, `color`, ... ; `center`, `Red`, ...)
 * [ ] HTML QoL procs (`p("text")` for `newHtmlElement("p", "text")`)
 * [ ] CSS QoL procs
 * [ ] DOM procs
