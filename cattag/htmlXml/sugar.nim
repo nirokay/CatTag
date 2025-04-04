@@ -1,4 +1,4 @@
-import std/[strutils, sequtils]
+import std/[sequtils]
 import types, procs
 
 
