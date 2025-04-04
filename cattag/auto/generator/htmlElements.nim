@@ -28,12 +28,12 @@ for fileLine in parseFileLines("html-elements.txt"):
 
         additionalInformation: string = block:
             if components.len() == 0: ""
-            else: "Notices: [" & components.join(", ") & "] "
+            else: "Notes: [" & components.join(", ") & "] "
 
         deprecationNotice: string = block:
             if "Deprecated" notin components: ""
             else:
-                "{.deprecated: \"Deprecated in newer HTML versions\".}"
+                " {.deprecated: \"Deprecated in newer HTML versions\".}"
         documentation: string = &"HtmlTag `{tag}` {additionalInformation}Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/{tag}"
         quote: string = if tag notin needQuoting: "" else: "`"
 

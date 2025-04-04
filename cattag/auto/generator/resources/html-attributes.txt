@@ -1,3 +1,4 @@
+# List stolen from https://developer.mozilla.org/en-US/docs/Web/HTML/Element (with love <3) :)
 accept
 autocomplete
 capture
