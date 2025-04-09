@@ -9,219 +9,2025 @@ import ../htmlXml/[types, procs]
 type HtmlTag* = string
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# General procs for a:
+proc a*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a
+    result = HtmlElement(elementType: typeElement, tag: "a")
+proc a*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a
+    result = HtmlElement(elementType: typeElement, tag: "a", attributes: attributes)
+
+# General children procs for a:
+proc a*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a
+    result = HtmlElement(elementType: typeElement, tag: "a", attributes: attributes, children: children)
+proc a*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a
+    result = HtmlElement(elementType: typeElement, tag: "a", attributes: attributes, children: @[child] & children.toSeq())
+
+proc a*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a
+    result = HtmlElement(elementType: typeElement, tag: "a", children: children)
+proc a*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a
+    result = HtmlElement(elementType: typeElement, tag: "a", children: @[child] & children.toSeq())
+
+proc a*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a
+    result = HtmlElement(elementType: typeElement, tag: "a", attributes: attributes, children: @[rawHtmlText(content)])
+proc a*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a
+    result = HtmlElement(elementType: typeElement, tag: "a", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+# Custom attribute procs for void a:
+proc a*(href: string): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a
+    result = a(@[attr("href", href)])
+
+# Custom attribute procs with children for a:
+proc a*(href: string, children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a
+    result = a(@[attr("href", href)], children)
+proc a*(href: string, child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a
+    result = a(@[attr("href", href)], @[child] & children.toSeq())
+
+# Custom attribute procs with content for a:
+proc a*(href: string, content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a
+    result = a(@[attr("href", href)], rawHtmlText(content))
+proc a*(href: string, content: string, contents: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a
+    result = a(@[attr("href", href)], rawHtmlText(@[content] & contents.toSeq()))
+
+
+
+# General procs for abbr:
+proc abbr*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/abbr
+    result = HtmlElement(elementType: typeElement, tag: "abbr")
+proc abbr*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/abbr
+    result = HtmlElement(elementType: typeElement, tag: "abbr", attributes: attributes)
+
+# General children procs for abbr:
+proc abbr*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/abbr
+    result = HtmlElement(elementType: typeElement, tag: "abbr", attributes: attributes, children: children)
+proc abbr*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/abbr
+    result = HtmlElement(elementType: typeElement, tag: "abbr", attributes: attributes, children: @[child] & children.toSeq())
+
+proc abbr*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/abbr
+    result = HtmlElement(elementType: typeElement, tag: "abbr", children: children)
+proc abbr*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/abbr
+    result = HtmlElement(elementType: typeElement, tag: "abbr", children: @[child] & children.toSeq())
+
+proc abbr*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/abbr
+    result = HtmlElement(elementType: typeElement, tag: "abbr", attributes: attributes, children: @[rawHtmlText(content)])
+proc abbr*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/abbr
+    result = HtmlElement(elementType: typeElement, tag: "abbr", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for acronym:
+proc acronym*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/acronym
+    result = HtmlElement(elementType: typeElement, tag: "acronym")
+proc acronym*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/acronym
+    result = HtmlElement(elementType: typeElement, tag: "acronym", attributes: attributes)
+
+# General children procs for acronym:
+proc acronym*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/acronym
+    result = HtmlElement(elementType: typeElement, tag: "acronym", attributes: attributes, children: children)
+proc acronym*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/acronym
+    result = HtmlElement(elementType: typeElement, tag: "acronym", attributes: attributes, children: @[child] & children.toSeq())
+
+proc acronym*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/acronym
+    result = HtmlElement(elementType: typeElement, tag: "acronym", children: children)
+proc acronym*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/acronym
+    result = HtmlElement(elementType: typeElement, tag: "acronym", children: @[child] & children.toSeq())
+
+proc acronym*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/acronym
+    result = HtmlElement(elementType: typeElement, tag: "acronym", attributes: attributes, children: @[rawHtmlText(content)])
+proc acronym*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/acronym
+    result = HtmlElement(elementType: typeElement, tag: "acronym", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for address:
+proc address*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/address
+    result = HtmlElement(elementType: typeElement, tag: "address")
+proc address*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/address
+    result = HtmlElement(elementType: typeElement, tag: "address", attributes: attributes)
+
+# General children procs for address:
+proc address*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/address
+    result = HtmlElement(elementType: typeElement, tag: "address", attributes: attributes, children: children)
+proc address*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/address
+    result = HtmlElement(elementType: typeElement, tag: "address", attributes: attributes, children: @[child] & children.toSeq())
+
+proc address*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/address
+    result = HtmlElement(elementType: typeElement, tag: "address", children: children)
+proc address*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/address
+    result = HtmlElement(elementType: typeElement, tag: "address", children: @[child] & children.toSeq())
+
+proc address*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/address
+    result = HtmlElement(elementType: typeElement, tag: "address", attributes: attributes, children: @[rawHtmlText(content)])
+proc address*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/address
+    result = HtmlElement(elementType: typeElement, tag: "address", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for area:
+proc area*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area
+    result = HtmlElement(elementType: typeElement, tag: "area")
+proc area*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area
+    result = HtmlElement(elementType: typeElement, tag: "area", attributes: attributes)
+
+
+
+# General procs for article:
+proc article*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/article
+    result = HtmlElement(elementType: typeElement, tag: "article")
+proc article*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/article
+    result = HtmlElement(elementType: typeElement, tag: "article", attributes: attributes)
+
+# General children procs for article:
+proc article*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/article
+    result = HtmlElement(elementType: typeElement, tag: "article", attributes: attributes, children: children)
+proc article*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/article
+    result = HtmlElement(elementType: typeElement, tag: "article", attributes: attributes, children: @[child] & children.toSeq())
+
+proc article*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/article
+    result = HtmlElement(elementType: typeElement, tag: "article", children: children)
+proc article*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/article
+    result = HtmlElement(elementType: typeElement, tag: "article", children: @[child] & children.toSeq())
+
+proc article*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/article
+    result = HtmlElement(elementType: typeElement, tag: "article", attributes: attributes, children: @[rawHtmlText(content)])
+proc article*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/article
+    result = HtmlElement(elementType: typeElement, tag: "article", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for aside:
+proc aside*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/aside
+    result = HtmlElement(elementType: typeElement, tag: "aside")
+proc aside*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/aside
+    result = HtmlElement(elementType: typeElement, tag: "aside", attributes: attributes)
+
+# General children procs for aside:
+proc aside*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/aside
+    result = HtmlElement(elementType: typeElement, tag: "aside", attributes: attributes, children: children)
+proc aside*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/aside
+    result = HtmlElement(elementType: typeElement, tag: "aside", attributes: attributes, children: @[child] & children.toSeq())
+
+proc aside*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/aside
+    result = HtmlElement(elementType: typeElement, tag: "aside", children: children)
+proc aside*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/aside
+    result = HtmlElement(elementType: typeElement, tag: "aside", children: @[child] & children.toSeq())
+
+proc aside*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/aside
+    result = HtmlElement(elementType: typeElement, tag: "aside", attributes: attributes, children: @[rawHtmlText(content)])
+proc aside*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/aside
+    result = HtmlElement(elementType: typeElement, tag: "aside", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for audio:
+proc audio*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio
+    result = HtmlElement(elementType: typeElement, tag: "audio")
+proc audio*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio
+    result = HtmlElement(elementType: typeElement, tag: "audio", attributes: attributes)
+
+# General children procs for audio:
+proc audio*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio
+    result = HtmlElement(elementType: typeElement, tag: "audio", attributes: attributes, children: children)
+proc audio*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio
+    result = HtmlElement(elementType: typeElement, tag: "audio", attributes: attributes, children: @[child] & children.toSeq())
+
+proc audio*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio
+    result = HtmlElement(elementType: typeElement, tag: "audio", children: children)
+proc audio*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio
+    result = HtmlElement(elementType: typeElement, tag: "audio", children: @[child] & children.toSeq())
+
+proc audio*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio
+    result = HtmlElement(elementType: typeElement, tag: "audio", attributes: attributes, children: @[rawHtmlText(content)])
+proc audio*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio
+    result = HtmlElement(elementType: typeElement, tag: "audio", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for b:
+proc b*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/b
+    result = HtmlElement(elementType: typeElement, tag: "b")
+proc b*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/b
+    result = HtmlElement(elementType: typeElement, tag: "b", attributes: attributes)
+
+# General children procs for b:
+proc b*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/b
+    result = HtmlElement(elementType: typeElement, tag: "b", attributes: attributes, children: children)
+proc b*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/b
+    result = HtmlElement(elementType: typeElement, tag: "b", attributes: attributes, children: @[child] & children.toSeq())
+
+proc b*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/b
+    result = HtmlElement(elementType: typeElement, tag: "b", children: children)
+proc b*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/b
+    result = HtmlElement(elementType: typeElement, tag: "b", children: @[child] & children.toSeq())
+
+proc b*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/b
+    result = HtmlElement(elementType: typeElement, tag: "b", attributes: attributes, children: @[rawHtmlText(content)])
+proc b*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/b
+    result = HtmlElement(elementType: typeElement, tag: "b", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for base:
+proc base*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+    result = HtmlElement(elementType: typeElement, tag: "base")
+proc base*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+    result = HtmlElement(elementType: typeElement, tag: "base", attributes: attributes)
+
+
+
+# General procs for bdi:
+proc bdi*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/bdi
+    result = HtmlElement(elementType: typeElement, tag: "bdi")
+proc bdi*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/bdi
+    result = HtmlElement(elementType: typeElement, tag: "bdi", attributes: attributes)
+
+# General children procs for bdi:
+proc bdi*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/bdi
+    result = HtmlElement(elementType: typeElement, tag: "bdi", attributes: attributes, children: children)
+proc bdi*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/bdi
+    result = HtmlElement(elementType: typeElement, tag: "bdi", attributes: attributes, children: @[child] & children.toSeq())
+
+proc bdi*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/bdi
+    result = HtmlElement(elementType: typeElement, tag: "bdi", children: children)
+proc bdi*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/bdi
+    result = HtmlElement(elementType: typeElement, tag: "bdi", children: @[child] & children.toSeq())
+
+proc bdi*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/bdi
+    result = HtmlElement(elementType: typeElement, tag: "bdi", attributes: attributes, children: @[rawHtmlText(content)])
+proc bdi*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/bdi
+    result = HtmlElement(elementType: typeElement, tag: "bdi", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for bdo:
+proc bdo*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/bdo
+    result = HtmlElement(elementType: typeElement, tag: "bdo")
+proc bdo*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/bdo
+    result = HtmlElement(elementType: typeElement, tag: "bdo", attributes: attributes)
+
+# General children procs for bdo:
+proc bdo*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/bdo
+    result = HtmlElement(elementType: typeElement, tag: "bdo", attributes: attributes, children: children)
+proc bdo*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/bdo
+    result = HtmlElement(elementType: typeElement, tag: "bdo", attributes: attributes, children: @[child] & children.toSeq())
+
+proc bdo*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/bdo
+    result = HtmlElement(elementType: typeElement, tag: "bdo", children: children)
+proc bdo*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/bdo
+    result = HtmlElement(elementType: typeElement, tag: "bdo", children: @[child] & children.toSeq())
+
+proc bdo*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/bdo
+    result = HtmlElement(elementType: typeElement, tag: "bdo", attributes: attributes, children: @[rawHtmlText(content)])
+proc bdo*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/bdo
+    result = HtmlElement(elementType: typeElement, tag: "bdo", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for big:
+proc big*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/big
+    result = HtmlElement(elementType: typeElement, tag: "big")
+proc big*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/big
+    result = HtmlElement(elementType: typeElement, tag: "big", attributes: attributes)
+
+# General children procs for big:
+proc big*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/big
+    result = HtmlElement(elementType: typeElement, tag: "big", attributes: attributes, children: children)
+proc big*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/big
+    result = HtmlElement(elementType: typeElement, tag: "big", attributes: attributes, children: @[child] & children.toSeq())
+
+proc big*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/big
+    result = HtmlElement(elementType: typeElement, tag: "big", children: children)
+proc big*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/big
+    result = HtmlElement(elementType: typeElement, tag: "big", children: @[child] & children.toSeq())
+
+proc big*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/big
+    result = HtmlElement(elementType: typeElement, tag: "big", attributes: attributes, children: @[rawHtmlText(content)])
+proc big*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/big
+    result = HtmlElement(elementType: typeElement, tag: "big", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for blockquote:
+proc blockquote*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote
+    result = HtmlElement(elementType: typeElement, tag: "blockquote")
+proc blockquote*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote
+    result = HtmlElement(elementType: typeElement, tag: "blockquote", attributes: attributes)
+
+# General children procs for blockquote:
+proc blockquote*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote
+    result = HtmlElement(elementType: typeElement, tag: "blockquote", attributes: attributes, children: children)
+proc blockquote*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote
+    result = HtmlElement(elementType: typeElement, tag: "blockquote", attributes: attributes, children: @[child] & children.toSeq())
+
+proc blockquote*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote
+    result = HtmlElement(elementType: typeElement, tag: "blockquote", children: children)
+proc blockquote*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote
+    result = HtmlElement(elementType: typeElement, tag: "blockquote", children: @[child] & children.toSeq())
+
+proc blockquote*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote
+    result = HtmlElement(elementType: typeElement, tag: "blockquote", attributes: attributes, children: @[rawHtmlText(content)])
+proc blockquote*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote
+    result = HtmlElement(elementType: typeElement, tag: "blockquote", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for body:
+proc body*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/body
+    result = HtmlElement(elementType: typeElement, tag: "body")
+proc body*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/body
+    result = HtmlElement(elementType: typeElement, tag: "body", attributes: attributes)
+
+# General children procs for body:
+proc body*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/body
+    result = HtmlElement(elementType: typeElement, tag: "body", attributes: attributes, children: children)
+proc body*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/body
+    result = HtmlElement(elementType: typeElement, tag: "body", attributes: attributes, children: @[child] & children.toSeq())
+
+proc body*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/body
+    result = HtmlElement(elementType: typeElement, tag: "body", children: children)
+proc body*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/body
+    result = HtmlElement(elementType: typeElement, tag: "body", children: @[child] & children.toSeq())
+
+proc body*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/body
+    result = HtmlElement(elementType: typeElement, tag: "body", attributes: attributes, children: @[rawHtmlText(content)])
+proc body*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/body
+    result = HtmlElement(elementType: typeElement, tag: "body", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for br:
+proc br*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/br
+    result = HtmlElement(elementType: typeElement, tag: "br")
+proc br*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/br
+    result = HtmlElement(elementType: typeElement, tag: "br", attributes: attributes)
+
+
+
+# General procs for button:
+proc button*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button
+    result = HtmlElement(elementType: typeElement, tag: "button")
+proc button*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button
+    result = HtmlElement(elementType: typeElement, tag: "button", attributes: attributes)
+
+# General children procs for button:
+proc button*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button
+    result = HtmlElement(elementType: typeElement, tag: "button", attributes: attributes, children: children)
+proc button*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button
+    result = HtmlElement(elementType: typeElement, tag: "button", attributes: attributes, children: @[child] & children.toSeq())
+
+proc button*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button
+    result = HtmlElement(elementType: typeElement, tag: "button", children: children)
+proc button*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button
+    result = HtmlElement(elementType: typeElement, tag: "button", children: @[child] & children.toSeq())
+
+proc button*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button
+    result = HtmlElement(elementType: typeElement, tag: "button", attributes: attributes, children: @[rawHtmlText(content)])
+proc button*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button
+    result = HtmlElement(elementType: typeElement, tag: "button", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for canvas:
+proc canvas*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas
+    result = HtmlElement(elementType: typeElement, tag: "canvas")
+proc canvas*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas
+    result = HtmlElement(elementType: typeElement, tag: "canvas", attributes: attributes)
+
+# General children procs for canvas:
+proc canvas*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas
+    result = HtmlElement(elementType: typeElement, tag: "canvas", attributes: attributes, children: children)
+proc canvas*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas
+    result = HtmlElement(elementType: typeElement, tag: "canvas", attributes: attributes, children: @[child] & children.toSeq())
+
+proc canvas*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas
+    result = HtmlElement(elementType: typeElement, tag: "canvas", children: children)
+proc canvas*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas
+    result = HtmlElement(elementType: typeElement, tag: "canvas", children: @[child] & children.toSeq())
+
+proc canvas*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas
+    result = HtmlElement(elementType: typeElement, tag: "canvas", attributes: attributes, children: @[rawHtmlText(content)])
+proc canvas*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas
+    result = HtmlElement(elementType: typeElement, tag: "canvas", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for caption:
+proc caption*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/caption
+    result = HtmlElement(elementType: typeElement, tag: "caption")
+proc caption*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/caption
+    result = HtmlElement(elementType: typeElement, tag: "caption", attributes: attributes)
+
+# General children procs for caption:
+proc caption*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/caption
+    result = HtmlElement(elementType: typeElement, tag: "caption", attributes: attributes, children: children)
+proc caption*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/caption
+    result = HtmlElement(elementType: typeElement, tag: "caption", attributes: attributes, children: @[child] & children.toSeq())
+
+proc caption*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/caption
+    result = HtmlElement(elementType: typeElement, tag: "caption", children: children)
+proc caption*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/caption
+    result = HtmlElement(elementType: typeElement, tag: "caption", children: @[child] & children.toSeq())
+
+proc caption*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/caption
+    result = HtmlElement(elementType: typeElement, tag: "caption", attributes: attributes, children: @[rawHtmlText(content)])
+proc caption*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/caption
+    result = HtmlElement(elementType: typeElement, tag: "caption", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for center:
+proc center*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/center
+    result = HtmlElement(elementType: typeElement, tag: "center")
+proc center*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/center
+    result = HtmlElement(elementType: typeElement, tag: "center", attributes: attributes)
+
+# General children procs for center:
+proc center*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/center
+    result = HtmlElement(elementType: typeElement, tag: "center", attributes: attributes, children: children)
+proc center*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/center
+    result = HtmlElement(elementType: typeElement, tag: "center", attributes: attributes, children: @[child] & children.toSeq())
+
+proc center*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/center
+    result = HtmlElement(elementType: typeElement, tag: "center", children: children)
+proc center*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/center
+    result = HtmlElement(elementType: typeElement, tag: "center", children: @[child] & children.toSeq())
+
+proc center*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/center
+    result = HtmlElement(elementType: typeElement, tag: "center", attributes: attributes, children: @[rawHtmlText(content)])
+proc center*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/center
+    result = HtmlElement(elementType: typeElement, tag: "center", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for cite:
+proc cite*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/cite
+    result = HtmlElement(elementType: typeElement, tag: "cite")
+proc cite*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/cite
+    result = HtmlElement(elementType: typeElement, tag: "cite", attributes: attributes)
+
+# General children procs for cite:
+proc cite*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/cite
+    result = HtmlElement(elementType: typeElement, tag: "cite", attributes: attributes, children: children)
+proc cite*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/cite
+    result = HtmlElement(elementType: typeElement, tag: "cite", attributes: attributes, children: @[child] & children.toSeq())
+
+proc cite*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/cite
+    result = HtmlElement(elementType: typeElement, tag: "cite", children: children)
+proc cite*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/cite
+    result = HtmlElement(elementType: typeElement, tag: "cite", children: @[child] & children.toSeq())
+
+proc cite*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/cite
+    result = HtmlElement(elementType: typeElement, tag: "cite", attributes: attributes, children: @[rawHtmlText(content)])
+proc cite*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/cite
+    result = HtmlElement(elementType: typeElement, tag: "cite", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for code:
+proc code*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/code
+    result = HtmlElement(elementType: typeElement, tag: "code")
+proc code*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/code
+    result = HtmlElement(elementType: typeElement, tag: "code", attributes: attributes)
+
+# General children procs for code:
+proc code*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/code
+    result = HtmlElement(elementType: typeElement, tag: "code", attributes: attributes, children: children)
+proc code*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/code
+    result = HtmlElement(elementType: typeElement, tag: "code", attributes: attributes, children: @[child] & children.toSeq())
+
+proc code*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/code
+    result = HtmlElement(elementType: typeElement, tag: "code", children: children)
+proc code*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/code
+    result = HtmlElement(elementType: typeElement, tag: "code", children: @[child] & children.toSeq())
+
+proc code*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/code
+    result = HtmlElement(elementType: typeElement, tag: "code", attributes: attributes, children: @[rawHtmlText(content)])
+proc code*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/code
+    result = HtmlElement(elementType: typeElement, tag: "code", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for col:
+proc col*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/col
+    result = HtmlElement(elementType: typeElement, tag: "col")
+proc col*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/col
+    result = HtmlElement(elementType: typeElement, tag: "col", attributes: attributes)
+
+
+
+# General procs for colgroup:
+proc colgroup*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/colgroup
+    result = HtmlElement(elementType: typeElement, tag: "colgroup")
+proc colgroup*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/colgroup
+    result = HtmlElement(elementType: typeElement, tag: "colgroup", attributes: attributes)
+
+# General children procs for colgroup:
+proc colgroup*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/colgroup
+    result = HtmlElement(elementType: typeElement, tag: "colgroup", attributes: attributes, children: children)
+proc colgroup*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/colgroup
+    result = HtmlElement(elementType: typeElement, tag: "colgroup", attributes: attributes, children: @[child] & children.toSeq())
+
+proc colgroup*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/colgroup
+    result = HtmlElement(elementType: typeElement, tag: "colgroup", children: children)
+proc colgroup*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/colgroup
+    result = HtmlElement(elementType: typeElement, tag: "colgroup", children: @[child] & children.toSeq())
+
+proc colgroup*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/colgroup
+    result = HtmlElement(elementType: typeElement, tag: "colgroup", attributes: attributes, children: @[rawHtmlText(content)])
+proc colgroup*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/colgroup
+    result = HtmlElement(elementType: typeElement, tag: "colgroup", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for data:
+proc data*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/data
+    result = HtmlElement(elementType: typeElement, tag: "data")
+proc data*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/data
+    result = HtmlElement(elementType: typeElement, tag: "data", attributes: attributes)
+
+# General children procs for data:
+proc data*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/data
+    result = HtmlElement(elementType: typeElement, tag: "data", attributes: attributes, children: children)
+proc data*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/data
+    result = HtmlElement(elementType: typeElement, tag: "data", attributes: attributes, children: @[child] & children.toSeq())
+
+proc data*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/data
+    result = HtmlElement(elementType: typeElement, tag: "data", children: children)
+proc data*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/data
+    result = HtmlElement(elementType: typeElement, tag: "data", children: @[child] & children.toSeq())
+
+proc data*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/data
+    result = HtmlElement(elementType: typeElement, tag: "data", attributes: attributes, children: @[rawHtmlText(content)])
+proc data*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/data
+    result = HtmlElement(elementType: typeElement, tag: "data", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for datalist:
+proc datalist*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/datalist
+    result = HtmlElement(elementType: typeElement, tag: "datalist")
+proc datalist*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/datalist
+    result = HtmlElement(elementType: typeElement, tag: "datalist", attributes: attributes)
+
+# General children procs for datalist:
+proc datalist*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/datalist
+    result = HtmlElement(elementType: typeElement, tag: "datalist", attributes: attributes, children: children)
+proc datalist*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/datalist
+    result = HtmlElement(elementType: typeElement, tag: "datalist", attributes: attributes, children: @[child] & children.toSeq())
+
+proc datalist*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/datalist
+    result = HtmlElement(elementType: typeElement, tag: "datalist", children: children)
+proc datalist*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/datalist
+    result = HtmlElement(elementType: typeElement, tag: "datalist", children: @[child] & children.toSeq())
+
+proc datalist*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/datalist
+    result = HtmlElement(elementType: typeElement, tag: "datalist", attributes: attributes, children: @[rawHtmlText(content)])
+proc datalist*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/datalist
+    result = HtmlElement(elementType: typeElement, tag: "datalist", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for dd:
+proc dd*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dd
+    result = HtmlElement(elementType: typeElement, tag: "dd")
+proc dd*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dd
+    result = HtmlElement(elementType: typeElement, tag: "dd", attributes: attributes)
+
+# General children procs for dd:
+proc dd*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dd
+    result = HtmlElement(elementType: typeElement, tag: "dd", attributes: attributes, children: children)
+proc dd*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dd
+    result = HtmlElement(elementType: typeElement, tag: "dd", attributes: attributes, children: @[child] & children.toSeq())
+
+proc dd*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dd
+    result = HtmlElement(elementType: typeElement, tag: "dd", children: children)
+proc dd*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dd
+    result = HtmlElement(elementType: typeElement, tag: "dd", children: @[child] & children.toSeq())
+
+proc dd*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dd
+    result = HtmlElement(elementType: typeElement, tag: "dd", attributes: attributes, children: @[rawHtmlText(content)])
+proc dd*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dd
+    result = HtmlElement(elementType: typeElement, tag: "dd", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for del:
+proc del*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/del
+    result = HtmlElement(elementType: typeElement, tag: "del")
+proc del*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/del
+    result = HtmlElement(elementType: typeElement, tag: "del", attributes: attributes)
+
+# General children procs for del:
+proc del*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/del
+    result = HtmlElement(elementType: typeElement, tag: "del", attributes: attributes, children: children)
+proc del*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/del
+    result = HtmlElement(elementType: typeElement, tag: "del", attributes: attributes, children: @[child] & children.toSeq())
+
+proc del*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/del
+    result = HtmlElement(elementType: typeElement, tag: "del", children: children)
+proc del*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/del
+    result = HtmlElement(elementType: typeElement, tag: "del", children: @[child] & children.toSeq())
+
+proc del*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/del
+    result = HtmlElement(elementType: typeElement, tag: "del", attributes: attributes, children: @[rawHtmlText(content)])
+proc del*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/del
+    result = HtmlElement(elementType: typeElement, tag: "del", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for details:
+proc details*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details
+    result = HtmlElement(elementType: typeElement, tag: "details")
+proc details*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details
+    result = HtmlElement(elementType: typeElement, tag: "details", attributes: attributes)
+
+# General children procs for details:
+proc details*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details
+    result = HtmlElement(elementType: typeElement, tag: "details", attributes: attributes, children: children)
+proc details*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details
+    result = HtmlElement(elementType: typeElement, tag: "details", attributes: attributes, children: @[child] & children.toSeq())
+
+proc details*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details
+    result = HtmlElement(elementType: typeElement, tag: "details", children: children)
+proc details*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details
+    result = HtmlElement(elementType: typeElement, tag: "details", children: @[child] & children.toSeq())
+
+proc details*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details
+    result = HtmlElement(elementType: typeElement, tag: "details", attributes: attributes, children: @[rawHtmlText(content)])
+proc details*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details
+    result = HtmlElement(elementType: typeElement, tag: "details", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for dfn:
+proc dfn*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dfn
+    result = HtmlElement(elementType: typeElement, tag: "dfn")
+proc dfn*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dfn
+    result = HtmlElement(elementType: typeElement, tag: "dfn", attributes: attributes)
+
+# General children procs for dfn:
+proc dfn*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dfn
+    result = HtmlElement(elementType: typeElement, tag: "dfn", attributes: attributes, children: children)
+proc dfn*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dfn
+    result = HtmlElement(elementType: typeElement, tag: "dfn", attributes: attributes, children: @[child] & children.toSeq())
+
+proc dfn*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dfn
+    result = HtmlElement(elementType: typeElement, tag: "dfn", children: children)
+proc dfn*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dfn
+    result = HtmlElement(elementType: typeElement, tag: "dfn", children: @[child] & children.toSeq())
+
+proc dfn*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dfn
+    result = HtmlElement(elementType: typeElement, tag: "dfn", attributes: attributes, children: @[rawHtmlText(content)])
+proc dfn*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dfn
+    result = HtmlElement(elementType: typeElement, tag: "dfn", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for dialog:
+proc dialog*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog
+    result = HtmlElement(elementType: typeElement, tag: "dialog")
+proc dialog*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog
+    result = HtmlElement(elementType: typeElement, tag: "dialog", attributes: attributes)
+
+# General children procs for dialog:
+proc dialog*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog
+    result = HtmlElement(elementType: typeElement, tag: "dialog", attributes: attributes, children: children)
+proc dialog*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog
+    result = HtmlElement(elementType: typeElement, tag: "dialog", attributes: attributes, children: @[child] & children.toSeq())
+
+proc dialog*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog
+    result = HtmlElement(elementType: typeElement, tag: "dialog", children: children)
+proc dialog*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog
+    result = HtmlElement(elementType: typeElement, tag: "dialog", children: @[child] & children.toSeq())
+
+proc dialog*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog
+    result = HtmlElement(elementType: typeElement, tag: "dialog", attributes: attributes, children: @[rawHtmlText(content)])
+proc dialog*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog
+    result = HtmlElement(elementType: typeElement, tag: "dialog", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for dir:
+proc dir*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dir
+    result = HtmlElement(elementType: typeElement, tag: "dir")
+proc dir*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dir
+    result = HtmlElement(elementType: typeElement, tag: "dir", attributes: attributes)
+
+# General children procs for dir:
+proc dir*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dir
+    result = HtmlElement(elementType: typeElement, tag: "dir", attributes: attributes, children: children)
+proc dir*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dir
+    result = HtmlElement(elementType: typeElement, tag: "dir", attributes: attributes, children: @[child] & children.toSeq())
+
+proc dir*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dir
+    result = HtmlElement(elementType: typeElement, tag: "dir", children: children)
+proc dir*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dir
+    result = HtmlElement(elementType: typeElement, tag: "dir", children: @[child] & children.toSeq())
+
+proc dir*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dir
+    result = HtmlElement(elementType: typeElement, tag: "dir", attributes: attributes, children: @[rawHtmlText(content)])
+proc dir*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dir
+    result = HtmlElement(elementType: typeElement, tag: "dir", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for `div`:
+proc `div`*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div
+    result = HtmlElement(elementType: typeElement, tag: "`div`")
+proc `div`*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div
+    result = HtmlElement(elementType: typeElement, tag: "`div`", attributes: attributes)
+
+# General children procs for `div`:
+proc `div`*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div
+    result = HtmlElement(elementType: typeElement, tag: "`div`", attributes: attributes, children: children)
+proc `div`*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div
+    result = HtmlElement(elementType: typeElement, tag: "`div`", attributes: attributes, children: @[child] & children.toSeq())
+
+proc `div`*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div
+    result = HtmlElement(elementType: typeElement, tag: "`div`", children: children)
+proc `div`*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div
+    result = HtmlElement(elementType: typeElement, tag: "`div`", children: @[child] & children.toSeq())
+
+proc `div`*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div
+    result = HtmlElement(elementType: typeElement, tag: "`div`", attributes: attributes, children: @[rawHtmlText(content)])
+proc `div`*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div
+    result = HtmlElement(elementType: typeElement, tag: "`div`", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for dl:
+proc dl*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dl
+    result = HtmlElement(elementType: typeElement, tag: "dl")
+proc dl*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dl
+    result = HtmlElement(elementType: typeElement, tag: "dl", attributes: attributes)
+
+# General children procs for dl:
+proc dl*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dl
+    result = HtmlElement(elementType: typeElement, tag: "dl", attributes: attributes, children: children)
+proc dl*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dl
+    result = HtmlElement(elementType: typeElement, tag: "dl", attributes: attributes, children: @[child] & children.toSeq())
+
+proc dl*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dl
+    result = HtmlElement(elementType: typeElement, tag: "dl", children: children)
+proc dl*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dl
+    result = HtmlElement(elementType: typeElement, tag: "dl", children: @[child] & children.toSeq())
+
+proc dl*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dl
+    result = HtmlElement(elementType: typeElement, tag: "dl", attributes: attributes, children: @[rawHtmlText(content)])
+proc dl*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dl
+    result = HtmlElement(elementType: typeElement, tag: "dl", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for dt:
+proc dt*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dt
+    result = HtmlElement(elementType: typeElement, tag: "dt")
+proc dt*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dt
+    result = HtmlElement(elementType: typeElement, tag: "dt", attributes: attributes)
+
+# General children procs for dt:
+proc dt*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dt
+    result = HtmlElement(elementType: typeElement, tag: "dt", attributes: attributes, children: children)
+proc dt*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dt
+    result = HtmlElement(elementType: typeElement, tag: "dt", attributes: attributes, children: @[child] & children.toSeq())
+
+proc dt*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dt
+    result = HtmlElement(elementType: typeElement, tag: "dt", children: children)
+proc dt*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dt
+    result = HtmlElement(elementType: typeElement, tag: "dt", children: @[child] & children.toSeq())
+
+proc dt*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dt
+    result = HtmlElement(elementType: typeElement, tag: "dt", attributes: attributes, children: @[rawHtmlText(content)])
+proc dt*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dt
+    result = HtmlElement(elementType: typeElement, tag: "dt", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for em:
+proc em*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/em
+    result = HtmlElement(elementType: typeElement, tag: "em")
+proc em*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/em
+    result = HtmlElement(elementType: typeElement, tag: "em", attributes: attributes)
+
+# General children procs for em:
+proc em*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/em
+    result = HtmlElement(elementType: typeElement, tag: "em", attributes: attributes, children: children)
+proc em*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/em
+    result = HtmlElement(elementType: typeElement, tag: "em", attributes: attributes, children: @[child] & children.toSeq())
+
+proc em*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/em
+    result = HtmlElement(elementType: typeElement, tag: "em", children: children)
+proc em*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/em
+    result = HtmlElement(elementType: typeElement, tag: "em", children: @[child] & children.toSeq())
+
+proc em*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/em
+    result = HtmlElement(elementType: typeElement, tag: "em", attributes: attributes, children: @[rawHtmlText(content)])
+proc em*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/em
+    result = HtmlElement(elementType: typeElement, tag: "em", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for embed:
+proc embed*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/embed
+    result = HtmlElement(elementType: typeElement, tag: "embed")
+proc embed*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/embed
+    result = HtmlElement(elementType: typeElement, tag: "embed", attributes: attributes)
+
+
+
+# General procs for fencedframe:
+proc fencedframe*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fencedframe
+    result = HtmlElement(elementType: typeElement, tag: "fencedframe")
+proc fencedframe*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fencedframe
+    result = HtmlElement(elementType: typeElement, tag: "fencedframe", attributes: attributes)
+
+# General children procs for fencedframe:
+proc fencedframe*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fencedframe
+    result = HtmlElement(elementType: typeElement, tag: "fencedframe", attributes: attributes, children: children)
+proc fencedframe*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fencedframe
+    result = HtmlElement(elementType: typeElement, tag: "fencedframe", attributes: attributes, children: @[child] & children.toSeq())
+
+proc fencedframe*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fencedframe
+    result = HtmlElement(elementType: typeElement, tag: "fencedframe", children: children)
+proc fencedframe*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fencedframe
+    result = HtmlElement(elementType: typeElement, tag: "fencedframe", children: @[child] & children.toSeq())
+
+proc fencedframe*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fencedframe
+    result = HtmlElement(elementType: typeElement, tag: "fencedframe", attributes: attributes, children: @[rawHtmlText(content)])
+proc fencedframe*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fencedframe
+    result = HtmlElement(elementType: typeElement, tag: "fencedframe", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for fieldset:
+proc fieldset*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset
+    result = HtmlElement(elementType: typeElement, tag: "fieldset")
+proc fieldset*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset
+    result = HtmlElement(elementType: typeElement, tag: "fieldset", attributes: attributes)
+
+# General children procs for fieldset:
+proc fieldset*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset
+    result = HtmlElement(elementType: typeElement, tag: "fieldset", attributes: attributes, children: children)
+proc fieldset*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset
+    result = HtmlElement(elementType: typeElement, tag: "fieldset", attributes: attributes, children: @[child] & children.toSeq())
+
+proc fieldset*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset
+    result = HtmlElement(elementType: typeElement, tag: "fieldset", children: children)
+proc fieldset*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset
+    result = HtmlElement(elementType: typeElement, tag: "fieldset", children: @[child] & children.toSeq())
+
+proc fieldset*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset
+    result = HtmlElement(elementType: typeElement, tag: "fieldset", attributes: attributes, children: @[rawHtmlText(content)])
+proc fieldset*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset
+    result = HtmlElement(elementType: typeElement, tag: "fieldset", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for figcaption:
+proc figcaption*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/figcaption
+    result = HtmlElement(elementType: typeElement, tag: "figcaption")
+proc figcaption*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/figcaption
+    result = HtmlElement(elementType: typeElement, tag: "figcaption", attributes: attributes)
+
+# General children procs for figcaption:
+proc figcaption*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/figcaption
+    result = HtmlElement(elementType: typeElement, tag: "figcaption", attributes: attributes, children: children)
+proc figcaption*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/figcaption
+    result = HtmlElement(elementType: typeElement, tag: "figcaption", attributes: attributes, children: @[child] & children.toSeq())
+
+proc figcaption*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/figcaption
+    result = HtmlElement(elementType: typeElement, tag: "figcaption", children: children)
+proc figcaption*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/figcaption
+    result = HtmlElement(elementType: typeElement, tag: "figcaption", children: @[child] & children.toSeq())
+
+proc figcaption*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/figcaption
+    result = HtmlElement(elementType: typeElement, tag: "figcaption", attributes: attributes, children: @[rawHtmlText(content)])
+proc figcaption*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/figcaption
+    result = HtmlElement(elementType: typeElement, tag: "figcaption", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for figure:
+proc figure*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/figure
+    result = HtmlElement(elementType: typeElement, tag: "figure")
+proc figure*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/figure
+    result = HtmlElement(elementType: typeElement, tag: "figure", attributes: attributes)
+
+# General children procs for figure:
+proc figure*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/figure
+    result = HtmlElement(elementType: typeElement, tag: "figure", attributes: attributes, children: children)
+proc figure*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/figure
+    result = HtmlElement(elementType: typeElement, tag: "figure", attributes: attributes, children: @[child] & children.toSeq())
+
+proc figure*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/figure
+    result = HtmlElement(elementType: typeElement, tag: "figure", children: children)
+proc figure*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/figure
+    result = HtmlElement(elementType: typeElement, tag: "figure", children: @[child] & children.toSeq())
+
+proc figure*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/figure
+    result = HtmlElement(elementType: typeElement, tag: "figure", attributes: attributes, children: @[rawHtmlText(content)])
+proc figure*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/figure
+    result = HtmlElement(elementType: typeElement, tag: "figure", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for font:
+proc font*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/font
+    result = HtmlElement(elementType: typeElement, tag: "font")
+proc font*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/font
+    result = HtmlElement(elementType: typeElement, tag: "font", attributes: attributes)
+
+# General children procs for font:
+proc font*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/font
+    result = HtmlElement(elementType: typeElement, tag: "font", attributes: attributes, children: children)
+proc font*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/font
+    result = HtmlElement(elementType: typeElement, tag: "font", attributes: attributes, children: @[child] & children.toSeq())
+
+proc font*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/font
+    result = HtmlElement(elementType: typeElement, tag: "font", children: children)
+proc font*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/font
+    result = HtmlElement(elementType: typeElement, tag: "font", children: @[child] & children.toSeq())
+
+proc font*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/font
+    result = HtmlElement(elementType: typeElement, tag: "font", attributes: attributes, children: @[rawHtmlText(content)])
+proc font*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/font
+    result = HtmlElement(elementType: typeElement, tag: "font", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for footer:
+proc footer*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/footer
+    result = HtmlElement(elementType: typeElement, tag: "footer")
+proc footer*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/footer
+    result = HtmlElement(elementType: typeElement, tag: "footer", attributes: attributes)
+
+# General children procs for footer:
+proc footer*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/footer
+    result = HtmlElement(elementType: typeElement, tag: "footer", attributes: attributes, children: children)
+proc footer*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/footer
+    result = HtmlElement(elementType: typeElement, tag: "footer", attributes: attributes, children: @[child] & children.toSeq())
+
+proc footer*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/footer
+    result = HtmlElement(elementType: typeElement, tag: "footer", children: children)
+proc footer*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/footer
+    result = HtmlElement(elementType: typeElement, tag: "footer", children: @[child] & children.toSeq())
+
+proc footer*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/footer
+    result = HtmlElement(elementType: typeElement, tag: "footer", attributes: attributes, children: @[rawHtmlText(content)])
+proc footer*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/footer
+    result = HtmlElement(elementType: typeElement, tag: "footer", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for form:
+proc form*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form
+    result = HtmlElement(elementType: typeElement, tag: "form")
+proc form*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form
+    result = HtmlElement(elementType: typeElement, tag: "form", attributes: attributes)
+
+# General children procs for form:
+proc form*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form
+    result = HtmlElement(elementType: typeElement, tag: "form", attributes: attributes, children: children)
+proc form*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form
+    result = HtmlElement(elementType: typeElement, tag: "form", attributes: attributes, children: @[child] & children.toSeq())
+
+proc form*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form
+    result = HtmlElement(elementType: typeElement, tag: "form", children: children)
+proc form*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form
+    result = HtmlElement(elementType: typeElement, tag: "form", children: @[child] & children.toSeq())
+
+proc form*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form
+    result = HtmlElement(elementType: typeElement, tag: "form", attributes: attributes, children: @[rawHtmlText(content)])
+proc form*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form
+    result = HtmlElement(elementType: typeElement, tag: "form", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+# Custom attribute procs for void form:
+proc form*(action: string): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form
+    result = form(@[attr("action", action)])
+
+# Custom attribute procs with children for form:
+proc form*(action: string, children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form
+    result = form(@[attr("action", action)], children)
+proc form*(action: string, child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form
+    result = form(@[attr("action", action)], @[child] & children.toSeq())
+
+# Custom attribute procs for void form:
+proc form*(action: string, `method`: string): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form
+    result = form(@[attr("action", action), attr("method", `method`)])
+
+# Custom attribute procs with children for form:
+proc form*(action: string, `method`: string, children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form
+    result = form(@[attr("action", action), attr("method", `method`)], children)
+proc form*(action: string, `method`: string, child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form
+    result = form(@[attr("action", action), attr("method", `method`)], @[child] & children.toSeq())
+
+
+
+# General procs for frame:
+proc frame*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/frame
+    result = HtmlElement(elementType: typeElement, tag: "frame")
+proc frame*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/frame
+    result = HtmlElement(elementType: typeElement, tag: "frame", attributes: attributes)
+
+
+
+# General procs for frameset:
+proc frameset*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/frameset
+    result = HtmlElement(elementType: typeElement, tag: "frameset")
+proc frameset*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/frameset
+    result = HtmlElement(elementType: typeElement, tag: "frameset", attributes: attributes)
+
+# General children procs for frameset:
+proc frameset*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/frameset
+    result = HtmlElement(elementType: typeElement, tag: "frameset", attributes: attributes, children: children)
+proc frameset*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/frameset
+    result = HtmlElement(elementType: typeElement, tag: "frameset", attributes: attributes, children: @[child] & children.toSeq())
+
+proc frameset*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/frameset
+    result = HtmlElement(elementType: typeElement, tag: "frameset", children: children)
+proc frameset*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/frameset
+    result = HtmlElement(elementType: typeElement, tag: "frameset", children: @[child] & children.toSeq())
+
+proc frameset*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/frameset
+    result = HtmlElement(elementType: typeElement, tag: "frameset", attributes: attributes, children: @[rawHtmlText(content)])
+proc frameset*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/frameset
+    result = HtmlElement(elementType: typeElement, tag: "frameset", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for h1:
+proc h1*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/h1
+    result = HtmlElement(elementType: typeElement, tag: "h1")
+proc h1*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/h1
+    result = HtmlElement(elementType: typeElement, tag: "h1", attributes: attributes)
+
+# General children procs for h1:
+proc h1*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/h1
+    result = HtmlElement(elementType: typeElement, tag: "h1", attributes: attributes, children: children)
+proc h1*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/h1
+    result = HtmlElement(elementType: typeElement, tag: "h1", attributes: attributes, children: @[child] & children.toSeq())
+
+proc h1*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/h1
+    result = HtmlElement(elementType: typeElement, tag: "h1", children: children)
+proc h1*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/h1
+    result = HtmlElement(elementType: typeElement, tag: "h1", children: @[child] & children.toSeq())
+
+proc h1*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/h1
+    result = HtmlElement(elementType: typeElement, tag: "h1", attributes: attributes, children: @[rawHtmlText(content)])
+proc h1*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/h1
+    result = HtmlElement(elementType: typeElement, tag: "h1", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for head:
+proc head*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/head
+    result = HtmlElement(elementType: typeElement, tag: "head")
+proc head*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/head
+    result = HtmlElement(elementType: typeElement, tag: "head", attributes: attributes)
+
+# General children procs for head:
+proc head*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/head
+    result = HtmlElement(elementType: typeElement, tag: "head", attributes: attributes, children: children)
+proc head*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/head
+    result = HtmlElement(elementType: typeElement, tag: "head", attributes: attributes, children: @[child] & children.toSeq())
+
+proc head*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/head
+    result = HtmlElement(elementType: typeElement, tag: "head", children: children)
+proc head*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/head
+    result = HtmlElement(elementType: typeElement, tag: "head", children: @[child] & children.toSeq())
+
+proc head*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/head
+    result = HtmlElement(elementType: typeElement, tag: "head", attributes: attributes, children: @[rawHtmlText(content)])
+proc head*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/head
+    result = HtmlElement(elementType: typeElement, tag: "head", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for header:
+proc header*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/header
+    result = HtmlElement(elementType: typeElement, tag: "header")
+proc header*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/header
+    result = HtmlElement(elementType: typeElement, tag: "header", attributes: attributes)
+
+# General children procs for header:
+proc header*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/header
+    result = HtmlElement(elementType: typeElement, tag: "header", attributes: attributes, children: children)
+proc header*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/header
+    result = HtmlElement(elementType: typeElement, tag: "header", attributes: attributes, children: @[child] & children.toSeq())
+
+proc header*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/header
+    result = HtmlElement(elementType: typeElement, tag: "header", children: children)
+proc header*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/header
+    result = HtmlElement(elementType: typeElement, tag: "header", children: @[child] & children.toSeq())
+
+proc header*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/header
+    result = HtmlElement(elementType: typeElement, tag: "header", attributes: attributes, children: @[rawHtmlText(content)])
+proc header*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/header
+    result = HtmlElement(elementType: typeElement, tag: "header", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for hgroup:
+proc hgroup*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/hgroup
+    result = HtmlElement(elementType: typeElement, tag: "hgroup")
+proc hgroup*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/hgroup
+    result = HtmlElement(elementType: typeElement, tag: "hgroup", attributes: attributes)
+
+# General children procs for hgroup:
+proc hgroup*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/hgroup
+    result = HtmlElement(elementType: typeElement, tag: "hgroup", attributes: attributes, children: children)
+proc hgroup*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/hgroup
+    result = HtmlElement(elementType: typeElement, tag: "hgroup", attributes: attributes, children: @[child] & children.toSeq())
+
+proc hgroup*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/hgroup
+    result = HtmlElement(elementType: typeElement, tag: "hgroup", children: children)
+proc hgroup*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/hgroup
+    result = HtmlElement(elementType: typeElement, tag: "hgroup", children: @[child] & children.toSeq())
+
+proc hgroup*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/hgroup
+    result = HtmlElement(elementType: typeElement, tag: "hgroup", attributes: attributes, children: @[rawHtmlText(content)])
+proc hgroup*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/hgroup
+    result = HtmlElement(elementType: typeElement, tag: "hgroup", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for hr:
+proc hr*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/hr
+    result = HtmlElement(elementType: typeElement, tag: "hr")
+proc hr*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/hr
+    result = HtmlElement(elementType: typeElement, tag: "hr", attributes: attributes)
+
+
+
+# General procs for html:
+proc html*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/html
+    result = HtmlElement(elementType: typeElement, tag: "html")
+proc html*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/html
+    result = HtmlElement(elementType: typeElement, tag: "html", attributes: attributes)
+
+# General children procs for html:
+proc html*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/html
+    result = HtmlElement(elementType: typeElement, tag: "html", attributes: attributes, children: children)
+proc html*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/html
+    result = HtmlElement(elementType: typeElement, tag: "html", attributes: attributes, children: @[child] & children.toSeq())
+
+proc html*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/html
+    result = HtmlElement(elementType: typeElement, tag: "html", children: children)
+proc html*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/html
+    result = HtmlElement(elementType: typeElement, tag: "html", children: @[child] & children.toSeq())
+
+proc html*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/html
+    result = HtmlElement(elementType: typeElement, tag: "html", attributes: attributes, children: @[rawHtmlText(content)])
+proc html*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/html
+    result = HtmlElement(elementType: typeElement, tag: "html", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for i:
+proc i*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/i
+    result = HtmlElement(elementType: typeElement, tag: "i")
+proc i*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/i
+    result = HtmlElement(elementType: typeElement, tag: "i", attributes: attributes)
+
+# General children procs for i:
+proc i*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/i
+    result = HtmlElement(elementType: typeElement, tag: "i", attributes: attributes, children: children)
+proc i*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/i
+    result = HtmlElement(elementType: typeElement, tag: "i", attributes: attributes, children: @[child] & children.toSeq())
+
+proc i*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/i
+    result = HtmlElement(elementType: typeElement, tag: "i", children: children)
+proc i*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/i
+    result = HtmlElement(elementType: typeElement, tag: "i", children: @[child] & children.toSeq())
+
+proc i*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/i
+    result = HtmlElement(elementType: typeElement, tag: "i", attributes: attributes, children: @[rawHtmlText(content)])
+proc i*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/i
+    result = HtmlElement(elementType: typeElement, tag: "i", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for iframe:
+proc iframe*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe
+    result = HtmlElement(elementType: typeElement, tag: "iframe")
+proc iframe*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe
+    result = HtmlElement(elementType: typeElement, tag: "iframe", attributes: attributes)
+
+# General children procs for iframe:
+proc iframe*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe
+    result = HtmlElement(elementType: typeElement, tag: "iframe", attributes: attributes, children: children)
+proc iframe*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe
+    result = HtmlElement(elementType: typeElement, tag: "iframe", attributes: attributes, children: @[child] & children.toSeq())
+
+proc iframe*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe
+    result = HtmlElement(elementType: typeElement, tag: "iframe", children: children)
+proc iframe*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe
+    result = HtmlElement(elementType: typeElement, tag: "iframe", children: @[child] & children.toSeq())
+
+proc iframe*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe
+    result = HtmlElement(elementType: typeElement, tag: "iframe", attributes: attributes, children: @[rawHtmlText(content)])
+proc iframe*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe
+    result = HtmlElement(elementType: typeElement, tag: "iframe", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
 
 
 
@@ -235,294 +2041,2660 @@ proc img*(attributes: seq[Attribute]): HtmlElement =
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img
     result = HtmlElement(elementType: typeElement, tag: "img", attributes: attributes)
 
+# Custom attribute procs for void img:
 proc img*(src: string, alt: string): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img
-    result = img()ATTR_ADDERS
+    result = img(@[attr("src", src), attr("alt", alt)])
+
+
+
+# General procs for input:
+proc input*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input
+    result = HtmlElement(elementType: typeElement, tag: "input")
+proc input*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input
+    result = HtmlElement(elementType: typeElement, tag: "input", attributes: attributes)
+
+# Custom attribute procs for void input:
+proc input*(`type`: string): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input
+    result = input(@[attr("type", `type`)])
+
+
+
+# General procs for ins:
+proc ins*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ins
+    result = HtmlElement(elementType: typeElement, tag: "ins")
+proc ins*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ins
+    result = HtmlElement(elementType: typeElement, tag: "ins", attributes: attributes)
+
+# General children procs for ins:
+proc ins*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ins
+    result = HtmlElement(elementType: typeElement, tag: "ins", attributes: attributes, children: children)
+proc ins*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ins
+    result = HtmlElement(elementType: typeElement, tag: "ins", attributes: attributes, children: @[child] & children.toSeq())
+
+proc ins*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ins
+    result = HtmlElement(elementType: typeElement, tag: "ins", children: children)
+proc ins*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ins
+    result = HtmlElement(elementType: typeElement, tag: "ins", children: @[child] & children.toSeq())
+
+proc ins*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ins
+    result = HtmlElement(elementType: typeElement, tag: "ins", attributes: attributes, children: @[rawHtmlText(content)])
+proc ins*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ins
+    result = HtmlElement(elementType: typeElement, tag: "ins", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for kbd:
+proc kbd*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/kbd
+    result = HtmlElement(elementType: typeElement, tag: "kbd")
+proc kbd*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/kbd
+    result = HtmlElement(elementType: typeElement, tag: "kbd", attributes: attributes)
+
+# General children procs for kbd:
+proc kbd*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/kbd
+    result = HtmlElement(elementType: typeElement, tag: "kbd", attributes: attributes, children: children)
+proc kbd*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/kbd
+    result = HtmlElement(elementType: typeElement, tag: "kbd", attributes: attributes, children: @[child] & children.toSeq())
+
+proc kbd*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/kbd
+    result = HtmlElement(elementType: typeElement, tag: "kbd", children: children)
+proc kbd*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/kbd
+    result = HtmlElement(elementType: typeElement, tag: "kbd", children: @[child] & children.toSeq())
+
+proc kbd*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/kbd
+    result = HtmlElement(elementType: typeElement, tag: "kbd", attributes: attributes, children: @[rawHtmlText(content)])
+proc kbd*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/kbd
+    result = HtmlElement(elementType: typeElement, tag: "kbd", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# General procs for label:
+proc label*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label
+    result = HtmlElement(elementType: typeElement, tag: "label")
+proc label*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label
+    result = HtmlElement(elementType: typeElement, tag: "label", attributes: attributes)
+
+# General children procs for label:
+proc label*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label
+    result = HtmlElement(elementType: typeElement, tag: "label", attributes: attributes, children: children)
+proc label*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label
+    result = HtmlElement(elementType: typeElement, tag: "label", attributes: attributes, children: @[child] & children.toSeq())
+
+proc label*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label
+    result = HtmlElement(elementType: typeElement, tag: "label", children: children)
+proc label*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label
+    result = HtmlElement(elementType: typeElement, tag: "label", children: @[child] & children.toSeq())
+
+proc label*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label
+    result = HtmlElement(elementType: typeElement, tag: "label", attributes: attributes, children: @[rawHtmlText(content)])
+proc label*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label
+    result = HtmlElement(elementType: typeElement, tag: "label", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for legend:
+proc legend*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/legend
+    result = HtmlElement(elementType: typeElement, tag: "legend")
+proc legend*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/legend
+    result = HtmlElement(elementType: typeElement, tag: "legend", attributes: attributes)
+
+# General children procs for legend:
+proc legend*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/legend
+    result = HtmlElement(elementType: typeElement, tag: "legend", attributes: attributes, children: children)
+proc legend*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/legend
+    result = HtmlElement(elementType: typeElement, tag: "legend", attributes: attributes, children: @[child] & children.toSeq())
+
+proc legend*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/legend
+    result = HtmlElement(elementType: typeElement, tag: "legend", children: children)
+proc legend*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/legend
+    result = HtmlElement(elementType: typeElement, tag: "legend", children: @[child] & children.toSeq())
+
+proc legend*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/legend
+    result = HtmlElement(elementType: typeElement, tag: "legend", attributes: attributes, children: @[rawHtmlText(content)])
+proc legend*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/legend
+    result = HtmlElement(elementType: typeElement, tag: "legend", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for li:
+proc li*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/li
+    result = HtmlElement(elementType: typeElement, tag: "li")
+proc li*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/li
+    result = HtmlElement(elementType: typeElement, tag: "li", attributes: attributes)
+
+# General children procs for li:
+proc li*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/li
+    result = HtmlElement(elementType: typeElement, tag: "li", attributes: attributes, children: children)
+proc li*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/li
+    result = HtmlElement(elementType: typeElement, tag: "li", attributes: attributes, children: @[child] & children.toSeq())
+
+proc li*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/li
+    result = HtmlElement(elementType: typeElement, tag: "li", children: children)
+proc li*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/li
+    result = HtmlElement(elementType: typeElement, tag: "li", children: @[child] & children.toSeq())
+
+proc li*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/li
+    result = HtmlElement(elementType: typeElement, tag: "li", attributes: attributes, children: @[rawHtmlText(content)])
+proc li*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/li
+    result = HtmlElement(elementType: typeElement, tag: "li", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for link:
+proc link*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link
+    result = HtmlElement(elementType: typeElement, tag: "link")
+proc link*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link
+    result = HtmlElement(elementType: typeElement, tag: "link", attributes: attributes)
+
+
+
+# General procs for main:
+proc main*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/main
+    result = HtmlElement(elementType: typeElement, tag: "main")
+proc main*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/main
+    result = HtmlElement(elementType: typeElement, tag: "main", attributes: attributes)
+
+# General children procs for main:
+proc main*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/main
+    result = HtmlElement(elementType: typeElement, tag: "main", attributes: attributes, children: children)
+proc main*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/main
+    result = HtmlElement(elementType: typeElement, tag: "main", attributes: attributes, children: @[child] & children.toSeq())
+
+proc main*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/main
+    result = HtmlElement(elementType: typeElement, tag: "main", children: children)
+proc main*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/main
+    result = HtmlElement(elementType: typeElement, tag: "main", children: @[child] & children.toSeq())
+
+proc main*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/main
+    result = HtmlElement(elementType: typeElement, tag: "main", attributes: attributes, children: @[rawHtmlText(content)])
+proc main*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/main
+    result = HtmlElement(elementType: typeElement, tag: "main", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for map:
+proc map*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/map
+    result = HtmlElement(elementType: typeElement, tag: "map")
+proc map*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/map
+    result = HtmlElement(elementType: typeElement, tag: "map", attributes: attributes)
+
+# General children procs for map:
+proc map*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/map
+    result = HtmlElement(elementType: typeElement, tag: "map", attributes: attributes, children: children)
+proc map*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/map
+    result = HtmlElement(elementType: typeElement, tag: "map", attributes: attributes, children: @[child] & children.toSeq())
+
+proc map*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/map
+    result = HtmlElement(elementType: typeElement, tag: "map", children: children)
+proc map*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/map
+    result = HtmlElement(elementType: typeElement, tag: "map", children: @[child] & children.toSeq())
+
+proc map*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/map
+    result = HtmlElement(elementType: typeElement, tag: "map", attributes: attributes, children: @[rawHtmlText(content)])
+proc map*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/map
+    result = HtmlElement(elementType: typeElement, tag: "map", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for mark:
+proc mark*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/mark
+    result = HtmlElement(elementType: typeElement, tag: "mark")
+proc mark*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/mark
+    result = HtmlElement(elementType: typeElement, tag: "mark", attributes: attributes)
+
+# General children procs for mark:
+proc mark*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/mark
+    result = HtmlElement(elementType: typeElement, tag: "mark", attributes: attributes, children: children)
+proc mark*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/mark
+    result = HtmlElement(elementType: typeElement, tag: "mark", attributes: attributes, children: @[child] & children.toSeq())
+
+proc mark*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/mark
+    result = HtmlElement(elementType: typeElement, tag: "mark", children: children)
+proc mark*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/mark
+    result = HtmlElement(elementType: typeElement, tag: "mark", children: @[child] & children.toSeq())
+
+proc mark*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/mark
+    result = HtmlElement(elementType: typeElement, tag: "mark", attributes: attributes, children: @[rawHtmlText(content)])
+proc mark*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/mark
+    result = HtmlElement(elementType: typeElement, tag: "mark", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for marquee:
+proc marquee*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/marquee
+    result = HtmlElement(elementType: typeElement, tag: "marquee")
+proc marquee*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/marquee
+    result = HtmlElement(elementType: typeElement, tag: "marquee", attributes: attributes)
+
+# General children procs for marquee:
+proc marquee*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/marquee
+    result = HtmlElement(elementType: typeElement, tag: "marquee", attributes: attributes, children: children)
+proc marquee*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/marquee
+    result = HtmlElement(elementType: typeElement, tag: "marquee", attributes: attributes, children: @[child] & children.toSeq())
+
+proc marquee*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/marquee
+    result = HtmlElement(elementType: typeElement, tag: "marquee", children: children)
+proc marquee*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/marquee
+    result = HtmlElement(elementType: typeElement, tag: "marquee", children: @[child] & children.toSeq())
+
+proc marquee*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/marquee
+    result = HtmlElement(elementType: typeElement, tag: "marquee", attributes: attributes, children: @[rawHtmlText(content)])
+proc marquee*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/marquee
+    result = HtmlElement(elementType: typeElement, tag: "marquee", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for menu:
+proc menu*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/menu
+    result = HtmlElement(elementType: typeElement, tag: "menu")
+proc menu*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/menu
+    result = HtmlElement(elementType: typeElement, tag: "menu", attributes: attributes)
+
+# General children procs for menu:
+proc menu*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/menu
+    result = HtmlElement(elementType: typeElement, tag: "menu", attributes: attributes, children: children)
+proc menu*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/menu
+    result = HtmlElement(elementType: typeElement, tag: "menu", attributes: attributes, children: @[child] & children.toSeq())
+
+proc menu*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/menu
+    result = HtmlElement(elementType: typeElement, tag: "menu", children: children)
+proc menu*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/menu
+    result = HtmlElement(elementType: typeElement, tag: "menu", children: @[child] & children.toSeq())
+
+proc menu*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/menu
+    result = HtmlElement(elementType: typeElement, tag: "menu", attributes: attributes, children: @[rawHtmlText(content)])
+proc menu*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/menu
+    result = HtmlElement(elementType: typeElement, tag: "menu", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for meta:
+proc meta*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta
+    result = HtmlElement(elementType: typeElement, tag: "meta")
+proc meta*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta
+    result = HtmlElement(elementType: typeElement, tag: "meta", attributes: attributes)
+
+
+
+# General procs for meter:
+proc meter*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meter
+    result = HtmlElement(elementType: typeElement, tag: "meter")
+proc meter*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meter
+    result = HtmlElement(elementType: typeElement, tag: "meter", attributes: attributes)
+
+# General children procs for meter:
+proc meter*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meter
+    result = HtmlElement(elementType: typeElement, tag: "meter", attributes: attributes, children: children)
+proc meter*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meter
+    result = HtmlElement(elementType: typeElement, tag: "meter", attributes: attributes, children: @[child] & children.toSeq())
+
+proc meter*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meter
+    result = HtmlElement(elementType: typeElement, tag: "meter", children: children)
+proc meter*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meter
+    result = HtmlElement(elementType: typeElement, tag: "meter", children: @[child] & children.toSeq())
+
+proc meter*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meter
+    result = HtmlElement(elementType: typeElement, tag: "meter", attributes: attributes, children: @[rawHtmlText(content)])
+proc meter*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meter
+    result = HtmlElement(elementType: typeElement, tag: "meter", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for nav:
+proc nav*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav
+    result = HtmlElement(elementType: typeElement, tag: "nav")
+proc nav*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav
+    result = HtmlElement(elementType: typeElement, tag: "nav", attributes: attributes)
+
+# General children procs for nav:
+proc nav*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav
+    result = HtmlElement(elementType: typeElement, tag: "nav", attributes: attributes, children: children)
+proc nav*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav
+    result = HtmlElement(elementType: typeElement, tag: "nav", attributes: attributes, children: @[child] & children.toSeq())
+
+proc nav*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav
+    result = HtmlElement(elementType: typeElement, tag: "nav", children: children)
+proc nav*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav
+    result = HtmlElement(elementType: typeElement, tag: "nav", children: @[child] & children.toSeq())
+
+proc nav*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav
+    result = HtmlElement(elementType: typeElement, tag: "nav", attributes: attributes, children: @[rawHtmlText(content)])
+proc nav*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav
+    result = HtmlElement(elementType: typeElement, tag: "nav", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for nobr:
+proc nobr*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nobr
+    result = HtmlElement(elementType: typeElement, tag: "nobr")
+proc nobr*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nobr
+    result = HtmlElement(elementType: typeElement, tag: "nobr", attributes: attributes)
+
+# General children procs for nobr:
+proc nobr*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nobr
+    result = HtmlElement(elementType: typeElement, tag: "nobr", attributes: attributes, children: children)
+proc nobr*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nobr
+    result = HtmlElement(elementType: typeElement, tag: "nobr", attributes: attributes, children: @[child] & children.toSeq())
+
+proc nobr*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nobr
+    result = HtmlElement(elementType: typeElement, tag: "nobr", children: children)
+proc nobr*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nobr
+    result = HtmlElement(elementType: typeElement, tag: "nobr", children: @[child] & children.toSeq())
+
+proc nobr*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nobr
+    result = HtmlElement(elementType: typeElement, tag: "nobr", attributes: attributes, children: @[rawHtmlText(content)])
+proc nobr*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nobr
+    result = HtmlElement(elementType: typeElement, tag: "nobr", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for noembed:
+proc noembed*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/noembed
+    result = HtmlElement(elementType: typeElement, tag: "noembed")
+proc noembed*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/noembed
+    result = HtmlElement(elementType: typeElement, tag: "noembed", attributes: attributes)
+
+# General children procs for noembed:
+proc noembed*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/noembed
+    result = HtmlElement(elementType: typeElement, tag: "noembed", attributes: attributes, children: children)
+proc noembed*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/noembed
+    result = HtmlElement(elementType: typeElement, tag: "noembed", attributes: attributes, children: @[child] & children.toSeq())
+
+proc noembed*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/noembed
+    result = HtmlElement(elementType: typeElement, tag: "noembed", children: children)
+proc noembed*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/noembed
+    result = HtmlElement(elementType: typeElement, tag: "noembed", children: @[child] & children.toSeq())
+
+proc noembed*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/noembed
+    result = HtmlElement(elementType: typeElement, tag: "noembed", attributes: attributes, children: @[rawHtmlText(content)])
+proc noembed*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/noembed
+    result = HtmlElement(elementType: typeElement, tag: "noembed", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for noframes:
+proc noframes*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/noframes
+    result = HtmlElement(elementType: typeElement, tag: "noframes")
+proc noframes*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/noframes
+    result = HtmlElement(elementType: typeElement, tag: "noframes", attributes: attributes)
+
+# General children procs for noframes:
+proc noframes*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/noframes
+    result = HtmlElement(elementType: typeElement, tag: "noframes", attributes: attributes, children: children)
+proc noframes*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/noframes
+    result = HtmlElement(elementType: typeElement, tag: "noframes", attributes: attributes, children: @[child] & children.toSeq())
+
+proc noframes*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/noframes
+    result = HtmlElement(elementType: typeElement, tag: "noframes", children: children)
+proc noframes*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/noframes
+    result = HtmlElement(elementType: typeElement, tag: "noframes", children: @[child] & children.toSeq())
+
+proc noframes*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/noframes
+    result = HtmlElement(elementType: typeElement, tag: "noframes", attributes: attributes, children: @[rawHtmlText(content)])
+proc noframes*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/noframes
+    result = HtmlElement(elementType: typeElement, tag: "noframes", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for noscript:
+proc noscript*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/noscript
+    result = HtmlElement(elementType: typeElement, tag: "noscript")
+proc noscript*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/noscript
+    result = HtmlElement(elementType: typeElement, tag: "noscript", attributes: attributes)
+
+# General children procs for noscript:
+proc noscript*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/noscript
+    result = HtmlElement(elementType: typeElement, tag: "noscript", attributes: attributes, children: children)
+proc noscript*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/noscript
+    result = HtmlElement(elementType: typeElement, tag: "noscript", attributes: attributes, children: @[child] & children.toSeq())
+
+proc noscript*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/noscript
+    result = HtmlElement(elementType: typeElement, tag: "noscript", children: children)
+proc noscript*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/noscript
+    result = HtmlElement(elementType: typeElement, tag: "noscript", children: @[child] & children.toSeq())
+
+proc noscript*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/noscript
+    result = HtmlElement(elementType: typeElement, tag: "noscript", attributes: attributes, children: @[rawHtmlText(content)])
+proc noscript*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/noscript
+    result = HtmlElement(elementType: typeElement, tag: "noscript", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for `object`:
+proc `object`*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object
+    result = HtmlElement(elementType: typeElement, tag: "`object`")
+proc `object`*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object
+    result = HtmlElement(elementType: typeElement, tag: "`object`", attributes: attributes)
+
+# General children procs for `object`:
+proc `object`*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object
+    result = HtmlElement(elementType: typeElement, tag: "`object`", attributes: attributes, children: children)
+proc `object`*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object
+    result = HtmlElement(elementType: typeElement, tag: "`object`", attributes: attributes, children: @[child] & children.toSeq())
+
+proc `object`*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object
+    result = HtmlElement(elementType: typeElement, tag: "`object`", children: children)
+proc `object`*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object
+    result = HtmlElement(elementType: typeElement, tag: "`object`", children: @[child] & children.toSeq())
+
+proc `object`*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object
+    result = HtmlElement(elementType: typeElement, tag: "`object`", attributes: attributes, children: @[rawHtmlText(content)])
+proc `object`*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object
+    result = HtmlElement(elementType: typeElement, tag: "`object`", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for ol:
+proc ol*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ol
+    result = HtmlElement(elementType: typeElement, tag: "ol")
+proc ol*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ol
+    result = HtmlElement(elementType: typeElement, tag: "ol", attributes: attributes)
+
+# General children procs for ol:
+proc ol*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ol
+    result = HtmlElement(elementType: typeElement, tag: "ol", attributes: attributes, children: children)
+proc ol*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ol
+    result = HtmlElement(elementType: typeElement, tag: "ol", attributes: attributes, children: @[child] & children.toSeq())
+
+proc ol*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ol
+    result = HtmlElement(elementType: typeElement, tag: "ol", children: children)
+proc ol*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ol
+    result = HtmlElement(elementType: typeElement, tag: "ol", children: @[child] & children.toSeq())
+
+proc ol*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ol
+    result = HtmlElement(elementType: typeElement, tag: "ol", attributes: attributes, children: @[rawHtmlText(content)])
+proc ol*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ol
+    result = HtmlElement(elementType: typeElement, tag: "ol", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for optgroup:
+proc optgroup*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/optgroup
+    result = HtmlElement(elementType: typeElement, tag: "optgroup")
+proc optgroup*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/optgroup
+    result = HtmlElement(elementType: typeElement, tag: "optgroup", attributes: attributes)
+
+# General children procs for optgroup:
+proc optgroup*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/optgroup
+    result = HtmlElement(elementType: typeElement, tag: "optgroup", attributes: attributes, children: children)
+proc optgroup*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/optgroup
+    result = HtmlElement(elementType: typeElement, tag: "optgroup", attributes: attributes, children: @[child] & children.toSeq())
+
+proc optgroup*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/optgroup
+    result = HtmlElement(elementType: typeElement, tag: "optgroup", children: children)
+proc optgroup*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/optgroup
+    result = HtmlElement(elementType: typeElement, tag: "optgroup", children: @[child] & children.toSeq())
+
+proc optgroup*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/optgroup
+    result = HtmlElement(elementType: typeElement, tag: "optgroup", attributes: attributes, children: @[rawHtmlText(content)])
+proc optgroup*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/optgroup
+    result = HtmlElement(elementType: typeElement, tag: "optgroup", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for option:
+proc option*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option
+    result = HtmlElement(elementType: typeElement, tag: "option")
+proc option*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option
+    result = HtmlElement(elementType: typeElement, tag: "option", attributes: attributes)
+
+# General children procs for option:
+proc option*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option
+    result = HtmlElement(elementType: typeElement, tag: "option", attributes: attributes, children: children)
+proc option*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option
+    result = HtmlElement(elementType: typeElement, tag: "option", attributes: attributes, children: @[child] & children.toSeq())
+
+proc option*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option
+    result = HtmlElement(elementType: typeElement, tag: "option", children: children)
+proc option*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option
+    result = HtmlElement(elementType: typeElement, tag: "option", children: @[child] & children.toSeq())
+
+proc option*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option
+    result = HtmlElement(elementType: typeElement, tag: "option", attributes: attributes, children: @[rawHtmlText(content)])
+proc option*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option
+    result = HtmlElement(elementType: typeElement, tag: "option", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for output:
+proc output*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/output
+    result = HtmlElement(elementType: typeElement, tag: "output")
+proc output*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/output
+    result = HtmlElement(elementType: typeElement, tag: "output", attributes: attributes)
+
+# General children procs for output:
+proc output*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/output
+    result = HtmlElement(elementType: typeElement, tag: "output", attributes: attributes, children: children)
+proc output*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/output
+    result = HtmlElement(elementType: typeElement, tag: "output", attributes: attributes, children: @[child] & children.toSeq())
+
+proc output*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/output
+    result = HtmlElement(elementType: typeElement, tag: "output", children: children)
+proc output*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/output
+    result = HtmlElement(elementType: typeElement, tag: "output", children: @[child] & children.toSeq())
+
+proc output*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/output
+    result = HtmlElement(elementType: typeElement, tag: "output", attributes: attributes, children: @[rawHtmlText(content)])
+proc output*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/output
+    result = HtmlElement(elementType: typeElement, tag: "output", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for p:
+proc p*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/p
+    result = HtmlElement(elementType: typeElement, tag: "p")
+proc p*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/p
+    result = HtmlElement(elementType: typeElement, tag: "p", attributes: attributes)
+
+# General children procs for p:
+proc p*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/p
+    result = HtmlElement(elementType: typeElement, tag: "p", attributes: attributes, children: children)
+proc p*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/p
+    result = HtmlElement(elementType: typeElement, tag: "p", attributes: attributes, children: @[child] & children.toSeq())
+
+proc p*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/p
+    result = HtmlElement(elementType: typeElement, tag: "p", children: children)
+proc p*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/p
+    result = HtmlElement(elementType: typeElement, tag: "p", children: @[child] & children.toSeq())
+
+proc p*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/p
+    result = HtmlElement(elementType: typeElement, tag: "p", attributes: attributes, children: @[rawHtmlText(content)])
+proc p*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/p
+    result = HtmlElement(elementType: typeElement, tag: "p", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for param:
+proc param*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/param
+    result = HtmlElement(elementType: typeElement, tag: "param")
+proc param*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/param
+    result = HtmlElement(elementType: typeElement, tag: "param", attributes: attributes)
+
+
+
+# General procs for picture:
+proc picture*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture
+    result = HtmlElement(elementType: typeElement, tag: "picture")
+proc picture*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture
+    result = HtmlElement(elementType: typeElement, tag: "picture", attributes: attributes)
+
+# General children procs for picture:
+proc picture*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture
+    result = HtmlElement(elementType: typeElement, tag: "picture", attributes: attributes, children: children)
+proc picture*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture
+    result = HtmlElement(elementType: typeElement, tag: "picture", attributes: attributes, children: @[child] & children.toSeq())
+
+proc picture*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture
+    result = HtmlElement(elementType: typeElement, tag: "picture", children: children)
+proc picture*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture
+    result = HtmlElement(elementType: typeElement, tag: "picture", children: @[child] & children.toSeq())
+
+proc picture*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture
+    result = HtmlElement(elementType: typeElement, tag: "picture", attributes: attributes, children: @[rawHtmlText(content)])
+proc picture*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture
+    result = HtmlElement(elementType: typeElement, tag: "picture", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for plaintext:
+proc plaintext*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/plaintext
+    result = HtmlElement(elementType: typeElement, tag: "plaintext")
+proc plaintext*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/plaintext
+    result = HtmlElement(elementType: typeElement, tag: "plaintext", attributes: attributes)
+
+# General children procs for plaintext:
+proc plaintext*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/plaintext
+    result = HtmlElement(elementType: typeElement, tag: "plaintext", attributes: attributes, children: children)
+proc plaintext*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/plaintext
+    result = HtmlElement(elementType: typeElement, tag: "plaintext", attributes: attributes, children: @[child] & children.toSeq())
+
+proc plaintext*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/plaintext
+    result = HtmlElement(elementType: typeElement, tag: "plaintext", children: children)
+proc plaintext*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/plaintext
+    result = HtmlElement(elementType: typeElement, tag: "plaintext", children: @[child] & children.toSeq())
+
+proc plaintext*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/plaintext
+    result = HtmlElement(elementType: typeElement, tag: "plaintext", attributes: attributes, children: @[rawHtmlText(content)])
+proc plaintext*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/plaintext
+    result = HtmlElement(elementType: typeElement, tag: "plaintext", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for pre:
+proc pre*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/pre
+    result = HtmlElement(elementType: typeElement, tag: "pre")
+proc pre*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/pre
+    result = HtmlElement(elementType: typeElement, tag: "pre", attributes: attributes)
+
+# General children procs for pre:
+proc pre*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/pre
+    result = HtmlElement(elementType: typeElement, tag: "pre", attributes: attributes, children: children)
+proc pre*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/pre
+    result = HtmlElement(elementType: typeElement, tag: "pre", attributes: attributes, children: @[child] & children.toSeq())
+
+proc pre*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/pre
+    result = HtmlElement(elementType: typeElement, tag: "pre", children: children)
+proc pre*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/pre
+    result = HtmlElement(elementType: typeElement, tag: "pre", children: @[child] & children.toSeq())
+
+proc pre*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/pre
+    result = HtmlElement(elementType: typeElement, tag: "pre", attributes: attributes, children: @[rawHtmlText(content)])
+proc pre*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/pre
+    result = HtmlElement(elementType: typeElement, tag: "pre", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for progress:
+proc progress*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress
+    result = HtmlElement(elementType: typeElement, tag: "progress")
+proc progress*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress
+    result = HtmlElement(elementType: typeElement, tag: "progress", attributes: attributes)
+
+# General children procs for progress:
+proc progress*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress
+    result = HtmlElement(elementType: typeElement, tag: "progress", attributes: attributes, children: children)
+proc progress*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress
+    result = HtmlElement(elementType: typeElement, tag: "progress", attributes: attributes, children: @[child] & children.toSeq())
+
+proc progress*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress
+    result = HtmlElement(elementType: typeElement, tag: "progress", children: children)
+proc progress*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress
+    result = HtmlElement(elementType: typeElement, tag: "progress", children: @[child] & children.toSeq())
+
+proc progress*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress
+    result = HtmlElement(elementType: typeElement, tag: "progress", attributes: attributes, children: @[rawHtmlText(content)])
+proc progress*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress
+    result = HtmlElement(elementType: typeElement, tag: "progress", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for q:
+proc q*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q
+    result = HtmlElement(elementType: typeElement, tag: "q")
+proc q*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q
+    result = HtmlElement(elementType: typeElement, tag: "q", attributes: attributes)
+
+# General children procs for q:
+proc q*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q
+    result = HtmlElement(elementType: typeElement, tag: "q", attributes: attributes, children: children)
+proc q*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q
+    result = HtmlElement(elementType: typeElement, tag: "q", attributes: attributes, children: @[child] & children.toSeq())
+
+proc q*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q
+    result = HtmlElement(elementType: typeElement, tag: "q", children: children)
+proc q*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q
+    result = HtmlElement(elementType: typeElement, tag: "q", children: @[child] & children.toSeq())
+
+proc q*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q
+    result = HtmlElement(elementType: typeElement, tag: "q", attributes: attributes, children: @[rawHtmlText(content)])
+proc q*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q
+    result = HtmlElement(elementType: typeElement, tag: "q", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for rb:
+proc rb*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/rb
+    result = HtmlElement(elementType: typeElement, tag: "rb")
+proc rb*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/rb
+    result = HtmlElement(elementType: typeElement, tag: "rb", attributes: attributes)
+
+# General children procs for rb:
+proc rb*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/rb
+    result = HtmlElement(elementType: typeElement, tag: "rb", attributes: attributes, children: children)
+proc rb*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/rb
+    result = HtmlElement(elementType: typeElement, tag: "rb", attributes: attributes, children: @[child] & children.toSeq())
+
+proc rb*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/rb
+    result = HtmlElement(elementType: typeElement, tag: "rb", children: children)
+proc rb*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/rb
+    result = HtmlElement(elementType: typeElement, tag: "rb", children: @[child] & children.toSeq())
+
+proc rb*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/rb
+    result = HtmlElement(elementType: typeElement, tag: "rb", attributes: attributes, children: @[rawHtmlText(content)])
+proc rb*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/rb
+    result = HtmlElement(elementType: typeElement, tag: "rb", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for rp:
+proc rp*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/rp
+    result = HtmlElement(elementType: typeElement, tag: "rp")
+proc rp*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/rp
+    result = HtmlElement(elementType: typeElement, tag: "rp", attributes: attributes)
+
+# General children procs for rp:
+proc rp*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/rp
+    result = HtmlElement(elementType: typeElement, tag: "rp", attributes: attributes, children: children)
+proc rp*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/rp
+    result = HtmlElement(elementType: typeElement, tag: "rp", attributes: attributes, children: @[child] & children.toSeq())
+
+proc rp*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/rp
+    result = HtmlElement(elementType: typeElement, tag: "rp", children: children)
+proc rp*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/rp
+    result = HtmlElement(elementType: typeElement, tag: "rp", children: @[child] & children.toSeq())
+
+proc rp*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/rp
+    result = HtmlElement(elementType: typeElement, tag: "rp", attributes: attributes, children: @[rawHtmlText(content)])
+proc rp*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/rp
+    result = HtmlElement(elementType: typeElement, tag: "rp", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for rt:
+proc rt*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/rt
+    result = HtmlElement(elementType: typeElement, tag: "rt")
+proc rt*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/rt
+    result = HtmlElement(elementType: typeElement, tag: "rt", attributes: attributes)
+
+# General children procs for rt:
+proc rt*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/rt
+    result = HtmlElement(elementType: typeElement, tag: "rt", attributes: attributes, children: children)
+proc rt*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/rt
+    result = HtmlElement(elementType: typeElement, tag: "rt", attributes: attributes, children: @[child] & children.toSeq())
+
+proc rt*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/rt
+    result = HtmlElement(elementType: typeElement, tag: "rt", children: children)
+proc rt*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/rt
+    result = HtmlElement(elementType: typeElement, tag: "rt", children: @[child] & children.toSeq())
+
+proc rt*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/rt
+    result = HtmlElement(elementType: typeElement, tag: "rt", attributes: attributes, children: @[rawHtmlText(content)])
+proc rt*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/rt
+    result = HtmlElement(elementType: typeElement, tag: "rt", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for rtc:
+proc rtc*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/rtc
+    result = HtmlElement(elementType: typeElement, tag: "rtc")
+proc rtc*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/rtc
+    result = HtmlElement(elementType: typeElement, tag: "rtc", attributes: attributes)
+
+# General children procs for rtc:
+proc rtc*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/rtc
+    result = HtmlElement(elementType: typeElement, tag: "rtc", attributes: attributes, children: children)
+proc rtc*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/rtc
+    result = HtmlElement(elementType: typeElement, tag: "rtc", attributes: attributes, children: @[child] & children.toSeq())
+
+proc rtc*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/rtc
+    result = HtmlElement(elementType: typeElement, tag: "rtc", children: children)
+proc rtc*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/rtc
+    result = HtmlElement(elementType: typeElement, tag: "rtc", children: @[child] & children.toSeq())
+
+proc rtc*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/rtc
+    result = HtmlElement(elementType: typeElement, tag: "rtc", attributes: attributes, children: @[rawHtmlText(content)])
+proc rtc*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/rtc
+    result = HtmlElement(elementType: typeElement, tag: "rtc", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for ruby:
+proc ruby*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ruby
+    result = HtmlElement(elementType: typeElement, tag: "ruby")
+proc ruby*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ruby
+    result = HtmlElement(elementType: typeElement, tag: "ruby", attributes: attributes)
+
+# General children procs for ruby:
+proc ruby*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ruby
+    result = HtmlElement(elementType: typeElement, tag: "ruby", attributes: attributes, children: children)
+proc ruby*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ruby
+    result = HtmlElement(elementType: typeElement, tag: "ruby", attributes: attributes, children: @[child] & children.toSeq())
+
+proc ruby*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ruby
+    result = HtmlElement(elementType: typeElement, tag: "ruby", children: children)
+proc ruby*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ruby
+    result = HtmlElement(elementType: typeElement, tag: "ruby", children: @[child] & children.toSeq())
+
+proc ruby*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ruby
+    result = HtmlElement(elementType: typeElement, tag: "ruby", attributes: attributes, children: @[rawHtmlText(content)])
+proc ruby*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ruby
+    result = HtmlElement(elementType: typeElement, tag: "ruby", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for s:
+proc s*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/s
+    result = HtmlElement(elementType: typeElement, tag: "s")
+proc s*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/s
+    result = HtmlElement(elementType: typeElement, tag: "s", attributes: attributes)
+
+# General children procs for s:
+proc s*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/s
+    result = HtmlElement(elementType: typeElement, tag: "s", attributes: attributes, children: children)
+proc s*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/s
+    result = HtmlElement(elementType: typeElement, tag: "s", attributes: attributes, children: @[child] & children.toSeq())
+
+proc s*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/s
+    result = HtmlElement(elementType: typeElement, tag: "s", children: children)
+proc s*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/s
+    result = HtmlElement(elementType: typeElement, tag: "s", children: @[child] & children.toSeq())
+
+proc s*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/s
+    result = HtmlElement(elementType: typeElement, tag: "s", attributes: attributes, children: @[rawHtmlText(content)])
+proc s*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/s
+    result = HtmlElement(elementType: typeElement, tag: "s", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for samp:
+proc samp*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/samp
+    result = HtmlElement(elementType: typeElement, tag: "samp")
+proc samp*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/samp
+    result = HtmlElement(elementType: typeElement, tag: "samp", attributes: attributes)
+
+# General children procs for samp:
+proc samp*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/samp
+    result = HtmlElement(elementType: typeElement, tag: "samp", attributes: attributes, children: children)
+proc samp*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/samp
+    result = HtmlElement(elementType: typeElement, tag: "samp", attributes: attributes, children: @[child] & children.toSeq())
+
+proc samp*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/samp
+    result = HtmlElement(elementType: typeElement, tag: "samp", children: children)
+proc samp*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/samp
+    result = HtmlElement(elementType: typeElement, tag: "samp", children: @[child] & children.toSeq())
+
+proc samp*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/samp
+    result = HtmlElement(elementType: typeElement, tag: "samp", attributes: attributes, children: @[rawHtmlText(content)])
+proc samp*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/samp
+    result = HtmlElement(elementType: typeElement, tag: "samp", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for script:
+proc script*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script
+    result = HtmlElement(elementType: typeElement, tag: "script")
+proc script*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script
+    result = HtmlElement(elementType: typeElement, tag: "script", attributes: attributes)
+
+# General children procs for script:
+proc script*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script
+    result = HtmlElement(elementType: typeElement, tag: "script", attributes: attributes, children: children)
+proc script*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script
+    result = HtmlElement(elementType: typeElement, tag: "script", attributes: attributes, children: @[child] & children.toSeq())
+
+proc script*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script
+    result = HtmlElement(elementType: typeElement, tag: "script", children: children)
+proc script*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script
+    result = HtmlElement(elementType: typeElement, tag: "script", children: @[child] & children.toSeq())
+
+proc script*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script
+    result = HtmlElement(elementType: typeElement, tag: "script", attributes: attributes, children: @[rawHtmlText(content)])
+proc script*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script
+    result = HtmlElement(elementType: typeElement, tag: "script", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for search:
+proc search*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/search
+    result = HtmlElement(elementType: typeElement, tag: "search")
+proc search*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/search
+    result = HtmlElement(elementType: typeElement, tag: "search", attributes: attributes)
+
+# General children procs for search:
+proc search*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/search
+    result = HtmlElement(elementType: typeElement, tag: "search", attributes: attributes, children: children)
+proc search*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/search
+    result = HtmlElement(elementType: typeElement, tag: "search", attributes: attributes, children: @[child] & children.toSeq())
+
+proc search*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/search
+    result = HtmlElement(elementType: typeElement, tag: "search", children: children)
+proc search*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/search
+    result = HtmlElement(elementType: typeElement, tag: "search", children: @[child] & children.toSeq())
+
+proc search*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/search
+    result = HtmlElement(elementType: typeElement, tag: "search", attributes: attributes, children: @[rawHtmlText(content)])
+proc search*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/search
+    result = HtmlElement(elementType: typeElement, tag: "search", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for section:
+proc section*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/section
+    result = HtmlElement(elementType: typeElement, tag: "section")
+proc section*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/section
+    result = HtmlElement(elementType: typeElement, tag: "section", attributes: attributes)
+
+# General children procs for section:
+proc section*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/section
+    result = HtmlElement(elementType: typeElement, tag: "section", attributes: attributes, children: children)
+proc section*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/section
+    result = HtmlElement(elementType: typeElement, tag: "section", attributes: attributes, children: @[child] & children.toSeq())
+
+proc section*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/section
+    result = HtmlElement(elementType: typeElement, tag: "section", children: children)
+proc section*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/section
+    result = HtmlElement(elementType: typeElement, tag: "section", children: @[child] & children.toSeq())
+
+proc section*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/section
+    result = HtmlElement(elementType: typeElement, tag: "section", attributes: attributes, children: @[rawHtmlText(content)])
+proc section*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/section
+    result = HtmlElement(elementType: typeElement, tag: "section", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for select:
+proc select*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select
+    result = HtmlElement(elementType: typeElement, tag: "select")
+proc select*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select
+    result = HtmlElement(elementType: typeElement, tag: "select", attributes: attributes)
+
+# General children procs for select:
+proc select*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select
+    result = HtmlElement(elementType: typeElement, tag: "select", attributes: attributes, children: children)
+proc select*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select
+    result = HtmlElement(elementType: typeElement, tag: "select", attributes: attributes, children: @[child] & children.toSeq())
+
+proc select*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select
+    result = HtmlElement(elementType: typeElement, tag: "select", children: children)
+proc select*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select
+    result = HtmlElement(elementType: typeElement, tag: "select", children: @[child] & children.toSeq())
+
+proc select*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select
+    result = HtmlElement(elementType: typeElement, tag: "select", attributes: attributes, children: @[rawHtmlText(content)])
+proc select*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select
+    result = HtmlElement(elementType: typeElement, tag: "select", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for slot:
+proc slot*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot
+    result = HtmlElement(elementType: typeElement, tag: "slot")
+proc slot*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot
+    result = HtmlElement(elementType: typeElement, tag: "slot", attributes: attributes)
+
+# General children procs for slot:
+proc slot*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot
+    result = HtmlElement(elementType: typeElement, tag: "slot", attributes: attributes, children: children)
+proc slot*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot
+    result = HtmlElement(elementType: typeElement, tag: "slot", attributes: attributes, children: @[child] & children.toSeq())
+
+proc slot*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot
+    result = HtmlElement(elementType: typeElement, tag: "slot", children: children)
+proc slot*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot
+    result = HtmlElement(elementType: typeElement, tag: "slot", children: @[child] & children.toSeq())
+
+proc slot*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot
+    result = HtmlElement(elementType: typeElement, tag: "slot", attributes: attributes, children: @[rawHtmlText(content)])
+proc slot*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot
+    result = HtmlElement(elementType: typeElement, tag: "slot", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for small:
+proc small*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/small
+    result = HtmlElement(elementType: typeElement, tag: "small")
+proc small*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/small
+    result = HtmlElement(elementType: typeElement, tag: "small", attributes: attributes)
+
+# General children procs for small:
+proc small*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/small
+    result = HtmlElement(elementType: typeElement, tag: "small", attributes: attributes, children: children)
+proc small*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/small
+    result = HtmlElement(elementType: typeElement, tag: "small", attributes: attributes, children: @[child] & children.toSeq())
+
+proc small*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/small
+    result = HtmlElement(elementType: typeElement, tag: "small", children: children)
+proc small*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/small
+    result = HtmlElement(elementType: typeElement, tag: "small", children: @[child] & children.toSeq())
+
+proc small*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/small
+    result = HtmlElement(elementType: typeElement, tag: "small", attributes: attributes, children: @[rawHtmlText(content)])
+proc small*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/small
+    result = HtmlElement(elementType: typeElement, tag: "small", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for source:
+proc source*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source
+    result = HtmlElement(elementType: typeElement, tag: "source")
+proc source*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source
+    result = HtmlElement(elementType: typeElement, tag: "source", attributes: attributes)
+
+
+
+# General procs for span:
+proc span*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span
+    result = HtmlElement(elementType: typeElement, tag: "span")
+proc span*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span
+    result = HtmlElement(elementType: typeElement, tag: "span", attributes: attributes)
+
+# General children procs for span:
+proc span*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span
+    result = HtmlElement(elementType: typeElement, tag: "span", attributes: attributes, children: children)
+proc span*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span
+    result = HtmlElement(elementType: typeElement, tag: "span", attributes: attributes, children: @[child] & children.toSeq())
+
+proc span*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span
+    result = HtmlElement(elementType: typeElement, tag: "span", children: children)
+proc span*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span
+    result = HtmlElement(elementType: typeElement, tag: "span", children: @[child] & children.toSeq())
+
+proc span*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span
+    result = HtmlElement(elementType: typeElement, tag: "span", attributes: attributes, children: @[rawHtmlText(content)])
+proc span*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span
+    result = HtmlElement(elementType: typeElement, tag: "span", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for strike:
+proc strike*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/strike
+    result = HtmlElement(elementType: typeElement, tag: "strike")
+proc strike*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/strike
+    result = HtmlElement(elementType: typeElement, tag: "strike", attributes: attributes)
+
+# General children procs for strike:
+proc strike*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/strike
+    result = HtmlElement(elementType: typeElement, tag: "strike", attributes: attributes, children: children)
+proc strike*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/strike
+    result = HtmlElement(elementType: typeElement, tag: "strike", attributes: attributes, children: @[child] & children.toSeq())
+
+proc strike*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/strike
+    result = HtmlElement(elementType: typeElement, tag: "strike", children: children)
+proc strike*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/strike
+    result = HtmlElement(elementType: typeElement, tag: "strike", children: @[child] & children.toSeq())
+
+proc strike*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/strike
+    result = HtmlElement(elementType: typeElement, tag: "strike", attributes: attributes, children: @[rawHtmlText(content)])
+proc strike*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/strike
+    result = HtmlElement(elementType: typeElement, tag: "strike", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for strong:
+proc strong*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/strong
+    result = HtmlElement(elementType: typeElement, tag: "strong")
+proc strong*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/strong
+    result = HtmlElement(elementType: typeElement, tag: "strong", attributes: attributes)
+
+# General children procs for strong:
+proc strong*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/strong
+    result = HtmlElement(elementType: typeElement, tag: "strong", attributes: attributes, children: children)
+proc strong*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/strong
+    result = HtmlElement(elementType: typeElement, tag: "strong", attributes: attributes, children: @[child] & children.toSeq())
+
+proc strong*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/strong
+    result = HtmlElement(elementType: typeElement, tag: "strong", children: children)
+proc strong*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/strong
+    result = HtmlElement(elementType: typeElement, tag: "strong", children: @[child] & children.toSeq())
+
+proc strong*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/strong
+    result = HtmlElement(elementType: typeElement, tag: "strong", attributes: attributes, children: @[rawHtmlText(content)])
+proc strong*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/strong
+    result = HtmlElement(elementType: typeElement, tag: "strong", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for style:
+proc style*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style
+    result = HtmlElement(elementType: typeElement, tag: "style")
+proc style*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style
+    result = HtmlElement(elementType: typeElement, tag: "style", attributes: attributes)
+
+# General children procs for style:
+proc style*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style
+    result = HtmlElement(elementType: typeElement, tag: "style", attributes: attributes, children: children)
+proc style*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style
+    result = HtmlElement(elementType: typeElement, tag: "style", attributes: attributes, children: @[child] & children.toSeq())
+
+proc style*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style
+    result = HtmlElement(elementType: typeElement, tag: "style", children: children)
+proc style*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style
+    result = HtmlElement(elementType: typeElement, tag: "style", children: @[child] & children.toSeq())
+
+proc style*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style
+    result = HtmlElement(elementType: typeElement, tag: "style", attributes: attributes, children: @[rawHtmlText(content)])
+proc style*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style
+    result = HtmlElement(elementType: typeElement, tag: "style", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for sub:
+proc sub*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/sub
+    result = HtmlElement(elementType: typeElement, tag: "sub")
+proc sub*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/sub
+    result = HtmlElement(elementType: typeElement, tag: "sub", attributes: attributes)
+
+# General children procs for sub:
+proc sub*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/sub
+    result = HtmlElement(elementType: typeElement, tag: "sub", attributes: attributes, children: children)
+proc sub*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/sub
+    result = HtmlElement(elementType: typeElement, tag: "sub", attributes: attributes, children: @[child] & children.toSeq())
+
+proc sub*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/sub
+    result = HtmlElement(elementType: typeElement, tag: "sub", children: children)
+proc sub*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/sub
+    result = HtmlElement(elementType: typeElement, tag: "sub", children: @[child] & children.toSeq())
+
+proc sub*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/sub
+    result = HtmlElement(elementType: typeElement, tag: "sub", attributes: attributes, children: @[rawHtmlText(content)])
+proc sub*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/sub
+    result = HtmlElement(elementType: typeElement, tag: "sub", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for summary:
+proc summary*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/summary
+    result = HtmlElement(elementType: typeElement, tag: "summary")
+proc summary*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/summary
+    result = HtmlElement(elementType: typeElement, tag: "summary", attributes: attributes)
+
+# General children procs for summary:
+proc summary*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/summary
+    result = HtmlElement(elementType: typeElement, tag: "summary", attributes: attributes, children: children)
+proc summary*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/summary
+    result = HtmlElement(elementType: typeElement, tag: "summary", attributes: attributes, children: @[child] & children.toSeq())
+
+proc summary*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/summary
+    result = HtmlElement(elementType: typeElement, tag: "summary", children: children)
+proc summary*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/summary
+    result = HtmlElement(elementType: typeElement, tag: "summary", children: @[child] & children.toSeq())
+
+proc summary*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/summary
+    result = HtmlElement(elementType: typeElement, tag: "summary", attributes: attributes, children: @[rawHtmlText(content)])
+proc summary*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/summary
+    result = HtmlElement(elementType: typeElement, tag: "summary", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for sup:
+proc sup*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/sup
+    result = HtmlElement(elementType: typeElement, tag: "sup")
+proc sup*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/sup
+    result = HtmlElement(elementType: typeElement, tag: "sup", attributes: attributes)
+
+# General children procs for sup:
+proc sup*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/sup
+    result = HtmlElement(elementType: typeElement, tag: "sup", attributes: attributes, children: children)
+proc sup*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/sup
+    result = HtmlElement(elementType: typeElement, tag: "sup", attributes: attributes, children: @[child] & children.toSeq())
+
+proc sup*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/sup
+    result = HtmlElement(elementType: typeElement, tag: "sup", children: children)
+proc sup*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/sup
+    result = HtmlElement(elementType: typeElement, tag: "sup", children: @[child] & children.toSeq())
+
+proc sup*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/sup
+    result = HtmlElement(elementType: typeElement, tag: "sup", attributes: attributes, children: @[rawHtmlText(content)])
+proc sup*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/sup
+    result = HtmlElement(elementType: typeElement, tag: "sup", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for table:
+proc table*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table
+    result = HtmlElement(elementType: typeElement, tag: "table")
+proc table*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table
+    result = HtmlElement(elementType: typeElement, tag: "table", attributes: attributes)
+
+# General children procs for table:
+proc table*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table
+    result = HtmlElement(elementType: typeElement, tag: "table", attributes: attributes, children: children)
+proc table*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table
+    result = HtmlElement(elementType: typeElement, tag: "table", attributes: attributes, children: @[child] & children.toSeq())
+
+proc table*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table
+    result = HtmlElement(elementType: typeElement, tag: "table", children: children)
+proc table*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table
+    result = HtmlElement(elementType: typeElement, tag: "table", children: @[child] & children.toSeq())
+
+proc table*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table
+    result = HtmlElement(elementType: typeElement, tag: "table", attributes: attributes, children: @[rawHtmlText(content)])
+proc table*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table
+    result = HtmlElement(elementType: typeElement, tag: "table", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for tbody:
+proc tbody*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tbody
+    result = HtmlElement(elementType: typeElement, tag: "tbody")
+proc tbody*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tbody
+    result = HtmlElement(elementType: typeElement, tag: "tbody", attributes: attributes)
+
+# General children procs for tbody:
+proc tbody*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tbody
+    result = HtmlElement(elementType: typeElement, tag: "tbody", attributes: attributes, children: children)
+proc tbody*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tbody
+    result = HtmlElement(elementType: typeElement, tag: "tbody", attributes: attributes, children: @[child] & children.toSeq())
+
+proc tbody*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tbody
+    result = HtmlElement(elementType: typeElement, tag: "tbody", children: children)
+proc tbody*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tbody
+    result = HtmlElement(elementType: typeElement, tag: "tbody", children: @[child] & children.toSeq())
+
+proc tbody*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tbody
+    result = HtmlElement(elementType: typeElement, tag: "tbody", attributes: attributes, children: @[rawHtmlText(content)])
+proc tbody*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tbody
+    result = HtmlElement(elementType: typeElement, tag: "tbody", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for td:
+proc td*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/td
+    result = HtmlElement(elementType: typeElement, tag: "td")
+proc td*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/td
+    result = HtmlElement(elementType: typeElement, tag: "td", attributes: attributes)
+
+# General children procs for td:
+proc td*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/td
+    result = HtmlElement(elementType: typeElement, tag: "td", attributes: attributes, children: children)
+proc td*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/td
+    result = HtmlElement(elementType: typeElement, tag: "td", attributes: attributes, children: @[child] & children.toSeq())
+
+proc td*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/td
+    result = HtmlElement(elementType: typeElement, tag: "td", children: children)
+proc td*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/td
+    result = HtmlElement(elementType: typeElement, tag: "td", children: @[child] & children.toSeq())
+
+proc td*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/td
+    result = HtmlElement(elementType: typeElement, tag: "td", attributes: attributes, children: @[rawHtmlText(content)])
+proc td*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/td
+    result = HtmlElement(elementType: typeElement, tag: "td", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for `template`:
+proc `template`*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template
+    result = HtmlElement(elementType: typeElement, tag: "`template`")
+proc `template`*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template
+    result = HtmlElement(elementType: typeElement, tag: "`template`", attributes: attributes)
+
+# General children procs for `template`:
+proc `template`*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template
+    result = HtmlElement(elementType: typeElement, tag: "`template`", attributes: attributes, children: children)
+proc `template`*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template
+    result = HtmlElement(elementType: typeElement, tag: "`template`", attributes: attributes, children: @[child] & children.toSeq())
+
+proc `template`*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template
+    result = HtmlElement(elementType: typeElement, tag: "`template`", children: children)
+proc `template`*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template
+    result = HtmlElement(elementType: typeElement, tag: "`template`", children: @[child] & children.toSeq())
+
+proc `template`*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template
+    result = HtmlElement(elementType: typeElement, tag: "`template`", attributes: attributes, children: @[rawHtmlText(content)])
+proc `template`*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template
+    result = HtmlElement(elementType: typeElement, tag: "`template`", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for textarea:
+proc textarea*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea
+    result = HtmlElement(elementType: typeElement, tag: "textarea")
+proc textarea*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea
+    result = HtmlElement(elementType: typeElement, tag: "textarea", attributes: attributes)
+
+# General children procs for textarea:
+proc textarea*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea
+    result = HtmlElement(elementType: typeElement, tag: "textarea", attributes: attributes, children: children)
+proc textarea*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea
+    result = HtmlElement(elementType: typeElement, tag: "textarea", attributes: attributes, children: @[child] & children.toSeq())
+
+proc textarea*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea
+    result = HtmlElement(elementType: typeElement, tag: "textarea", children: children)
+proc textarea*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea
+    result = HtmlElement(elementType: typeElement, tag: "textarea", children: @[child] & children.toSeq())
+
+proc textarea*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea
+    result = HtmlElement(elementType: typeElement, tag: "textarea", attributes: attributes, children: @[rawHtmlText(content)])
+proc textarea*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea
+    result = HtmlElement(elementType: typeElement, tag: "textarea", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for tfoot:
+proc tfoot*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tfoot
+    result = HtmlElement(elementType: typeElement, tag: "tfoot")
+proc tfoot*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tfoot
+    result = HtmlElement(elementType: typeElement, tag: "tfoot", attributes: attributes)
+
+# General children procs for tfoot:
+proc tfoot*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tfoot
+    result = HtmlElement(elementType: typeElement, tag: "tfoot", attributes: attributes, children: children)
+proc tfoot*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tfoot
+    result = HtmlElement(elementType: typeElement, tag: "tfoot", attributes: attributes, children: @[child] & children.toSeq())
+
+proc tfoot*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tfoot
+    result = HtmlElement(elementType: typeElement, tag: "tfoot", children: children)
+proc tfoot*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tfoot
+    result = HtmlElement(elementType: typeElement, tag: "tfoot", children: @[child] & children.toSeq())
+
+proc tfoot*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tfoot
+    result = HtmlElement(elementType: typeElement, tag: "tfoot", attributes: attributes, children: @[rawHtmlText(content)])
+proc tfoot*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tfoot
+    result = HtmlElement(elementType: typeElement, tag: "tfoot", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for th:
+proc th*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/th
+    result = HtmlElement(elementType: typeElement, tag: "th")
+proc th*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/th
+    result = HtmlElement(elementType: typeElement, tag: "th", attributes: attributes)
+
+# General children procs for th:
+proc th*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/th
+    result = HtmlElement(elementType: typeElement, tag: "th", attributes: attributes, children: children)
+proc th*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/th
+    result = HtmlElement(elementType: typeElement, tag: "th", attributes: attributes, children: @[child] & children.toSeq())
+
+proc th*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/th
+    result = HtmlElement(elementType: typeElement, tag: "th", children: children)
+proc th*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/th
+    result = HtmlElement(elementType: typeElement, tag: "th", children: @[child] & children.toSeq())
+
+proc th*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/th
+    result = HtmlElement(elementType: typeElement, tag: "th", attributes: attributes, children: @[rawHtmlText(content)])
+proc th*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/th
+    result = HtmlElement(elementType: typeElement, tag: "th", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for thead:
+proc thead*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/thead
+    result = HtmlElement(elementType: typeElement, tag: "thead")
+proc thead*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/thead
+    result = HtmlElement(elementType: typeElement, tag: "thead", attributes: attributes)
+
+# General children procs for thead:
+proc thead*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/thead
+    result = HtmlElement(elementType: typeElement, tag: "thead", attributes: attributes, children: children)
+proc thead*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/thead
+    result = HtmlElement(elementType: typeElement, tag: "thead", attributes: attributes, children: @[child] & children.toSeq())
+
+proc thead*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/thead
+    result = HtmlElement(elementType: typeElement, tag: "thead", children: children)
+proc thead*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/thead
+    result = HtmlElement(elementType: typeElement, tag: "thead", children: @[child] & children.toSeq())
+
+proc thead*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/thead
+    result = HtmlElement(elementType: typeElement, tag: "thead", attributes: attributes, children: @[rawHtmlText(content)])
+proc thead*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/thead
+    result = HtmlElement(elementType: typeElement, tag: "thead", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for time:
+proc time*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/time
+    result = HtmlElement(elementType: typeElement, tag: "time")
+proc time*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/time
+    result = HtmlElement(elementType: typeElement, tag: "time", attributes: attributes)
+
+# General children procs for time:
+proc time*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/time
+    result = HtmlElement(elementType: typeElement, tag: "time", attributes: attributes, children: children)
+proc time*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/time
+    result = HtmlElement(elementType: typeElement, tag: "time", attributes: attributes, children: @[child] & children.toSeq())
+
+proc time*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/time
+    result = HtmlElement(elementType: typeElement, tag: "time", children: children)
+proc time*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/time
+    result = HtmlElement(elementType: typeElement, tag: "time", children: @[child] & children.toSeq())
+
+proc time*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/time
+    result = HtmlElement(elementType: typeElement, tag: "time", attributes: attributes, children: @[rawHtmlText(content)])
+proc time*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/time
+    result = HtmlElement(elementType: typeElement, tag: "time", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for title:
+proc title*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/title
+    result = HtmlElement(elementType: typeElement, tag: "title")
+proc title*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/title
+    result = HtmlElement(elementType: typeElement, tag: "title", attributes: attributes)
+
+# General children procs for title:
+proc title*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/title
+    result = HtmlElement(elementType: typeElement, tag: "title", attributes: attributes, children: children)
+proc title*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/title
+    result = HtmlElement(elementType: typeElement, tag: "title", attributes: attributes, children: @[child] & children.toSeq())
+
+proc title*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/title
+    result = HtmlElement(elementType: typeElement, tag: "title", children: children)
+proc title*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/title
+    result = HtmlElement(elementType: typeElement, tag: "title", children: @[child] & children.toSeq())
+
+proc title*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/title
+    result = HtmlElement(elementType: typeElement, tag: "title", attributes: attributes, children: @[rawHtmlText(content)])
+proc title*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/title
+    result = HtmlElement(elementType: typeElement, tag: "title", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for tr:
+proc tr*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tr
+    result = HtmlElement(elementType: typeElement, tag: "tr")
+proc tr*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tr
+    result = HtmlElement(elementType: typeElement, tag: "tr", attributes: attributes)
+
+# General children procs for tr:
+proc tr*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tr
+    result = HtmlElement(elementType: typeElement, tag: "tr", attributes: attributes, children: children)
+proc tr*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tr
+    result = HtmlElement(elementType: typeElement, tag: "tr", attributes: attributes, children: @[child] & children.toSeq())
+
+proc tr*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tr
+    result = HtmlElement(elementType: typeElement, tag: "tr", children: children)
+proc tr*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tr
+    result = HtmlElement(elementType: typeElement, tag: "tr", children: @[child] & children.toSeq())
+
+proc tr*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tr
+    result = HtmlElement(elementType: typeElement, tag: "tr", attributes: attributes, children: @[rawHtmlText(content)])
+proc tr*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tr
+    result = HtmlElement(elementType: typeElement, tag: "tr", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for track:
+proc track*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/track
+    result = HtmlElement(elementType: typeElement, tag: "track")
+proc track*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/track
+    result = HtmlElement(elementType: typeElement, tag: "track", attributes: attributes)
+
+
+
+# General procs for tt:
+proc tt*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tt
+    result = HtmlElement(elementType: typeElement, tag: "tt")
+proc tt*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tt
+    result = HtmlElement(elementType: typeElement, tag: "tt", attributes: attributes)
+
+# General children procs for tt:
+proc tt*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tt
+    result = HtmlElement(elementType: typeElement, tag: "tt", attributes: attributes, children: children)
+proc tt*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tt
+    result = HtmlElement(elementType: typeElement, tag: "tt", attributes: attributes, children: @[child] & children.toSeq())
+
+proc tt*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tt
+    result = HtmlElement(elementType: typeElement, tag: "tt", children: children)
+proc tt*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tt
+    result = HtmlElement(elementType: typeElement, tag: "tt", children: @[child] & children.toSeq())
+
+proc tt*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tt
+    result = HtmlElement(elementType: typeElement, tag: "tt", attributes: attributes, children: @[rawHtmlText(content)])
+proc tt*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tt
+    result = HtmlElement(elementType: typeElement, tag: "tt", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for u:
+proc u*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/u
+    result = HtmlElement(elementType: typeElement, tag: "u")
+proc u*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/u
+    result = HtmlElement(elementType: typeElement, tag: "u", attributes: attributes)
+
+# General children procs for u:
+proc u*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/u
+    result = HtmlElement(elementType: typeElement, tag: "u", attributes: attributes, children: children)
+proc u*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/u
+    result = HtmlElement(elementType: typeElement, tag: "u", attributes: attributes, children: @[child] & children.toSeq())
+
+proc u*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/u
+    result = HtmlElement(elementType: typeElement, tag: "u", children: children)
+proc u*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/u
+    result = HtmlElement(elementType: typeElement, tag: "u", children: @[child] & children.toSeq())
+
+proc u*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/u
+    result = HtmlElement(elementType: typeElement, tag: "u", attributes: attributes, children: @[rawHtmlText(content)])
+proc u*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/u
+    result = HtmlElement(elementType: typeElement, tag: "u", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for ul:
+proc ul*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ul
+    result = HtmlElement(elementType: typeElement, tag: "ul")
+proc ul*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ul
+    result = HtmlElement(elementType: typeElement, tag: "ul", attributes: attributes)
+
+# General children procs for ul:
+proc ul*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ul
+    result = HtmlElement(elementType: typeElement, tag: "ul", attributes: attributes, children: children)
+proc ul*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ul
+    result = HtmlElement(elementType: typeElement, tag: "ul", attributes: attributes, children: @[child] & children.toSeq())
+
+proc ul*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ul
+    result = HtmlElement(elementType: typeElement, tag: "ul", children: children)
+proc ul*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ul
+    result = HtmlElement(elementType: typeElement, tag: "ul", children: @[child] & children.toSeq())
+
+proc ul*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ul
+    result = HtmlElement(elementType: typeElement, tag: "ul", attributes: attributes, children: @[rawHtmlText(content)])
+proc ul*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ul
+    result = HtmlElement(elementType: typeElement, tag: "ul", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for `var`:
+proc `var`*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/var
+    result = HtmlElement(elementType: typeElement, tag: "`var`")
+proc `var`*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/var
+    result = HtmlElement(elementType: typeElement, tag: "`var`", attributes: attributes)
+
+# General children procs for `var`:
+proc `var`*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/var
+    result = HtmlElement(elementType: typeElement, tag: "`var`", attributes: attributes, children: children)
+proc `var`*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/var
+    result = HtmlElement(elementType: typeElement, tag: "`var`", attributes: attributes, children: @[child] & children.toSeq())
+
+proc `var`*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/var
+    result = HtmlElement(elementType: typeElement, tag: "`var`", children: children)
+proc `var`*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/var
+    result = HtmlElement(elementType: typeElement, tag: "`var`", children: @[child] & children.toSeq())
+
+proc `var`*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/var
+    result = HtmlElement(elementType: typeElement, tag: "`var`", attributes: attributes, children: @[rawHtmlText(content)])
+proc `var`*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/var
+    result = HtmlElement(elementType: typeElement, tag: "`var`", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for video:
+proc video*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video
+    result = HtmlElement(elementType: typeElement, tag: "video")
+proc video*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video
+    result = HtmlElement(elementType: typeElement, tag: "video", attributes: attributes)
+
+# General children procs for video:
+proc video*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video
+    result = HtmlElement(elementType: typeElement, tag: "video", attributes: attributes, children: children)
+proc video*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video
+    result = HtmlElement(elementType: typeElement, tag: "video", attributes: attributes, children: @[child] & children.toSeq())
+
+proc video*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video
+    result = HtmlElement(elementType: typeElement, tag: "video", children: children)
+proc video*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video
+    result = HtmlElement(elementType: typeElement, tag: "video", children: @[child] & children.toSeq())
+
+proc video*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video
+    result = HtmlElement(elementType: typeElement, tag: "video", attributes: attributes, children: @[rawHtmlText(content)])
+proc video*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video
+    result = HtmlElement(elementType: typeElement, tag: "video", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+
+
+
+# General procs for wbr:
+proc wbr*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/wbr
+    result = HtmlElement(elementType: typeElement, tag: "wbr")
+proc wbr*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/wbr
+    result = HtmlElement(elementType: typeElement, tag: "wbr", attributes: attributes)
+
+
+
+# General procs for xmp:
+proc xmp*(): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/xmp
+    result = HtmlElement(elementType: typeElement, tag: "xmp")
+proc xmp*(attributes: seq[Attribute]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/xmp
+    result = HtmlElement(elementType: typeElement, tag: "xmp", attributes: attributes)
+
+# General children procs for xmp:
+proc xmp*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/xmp
+    result = HtmlElement(elementType: typeElement, tag: "xmp", attributes: attributes, children: children)
+proc xmp*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/xmp
+    result = HtmlElement(elementType: typeElement, tag: "xmp", attributes: attributes, children: @[child] & children.toSeq())
+
+proc xmp*(children: seq[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/xmp
+    result = HtmlElement(elementType: typeElement, tag: "xmp", children: children)
+proc xmp*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/xmp
+    result = HtmlElement(elementType: typeElement, tag: "xmp", children: @[child] & children.toSeq())
+
+proc xmp*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/xmp
+    result = HtmlElement(elementType: typeElement, tag: "xmp", attributes: attributes, children: @[rawHtmlText(content)])
+proc xmp*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/xmp
+    result = HtmlElement(elementType: typeElement, tag: "xmp", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
 
 

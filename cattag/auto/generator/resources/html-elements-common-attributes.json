@@ -1,10 +1,42 @@
 {
-    "img": [
+    "a": [
         {
             "acceptChildren": true,
+            "acceptContent": true,
+            "attributes": {
+                "href": "string"
+            }
+        }
+    ],
+    "img": [
+        {
+            "acceptChildren": false,
             "attributes": {
                 "src": "string",
                 "alt": "string"
+            }
+        }
+    ],
+    "input": [
+        {
+            "acceptChildren": false,
+            "attributes": {
+                "`type`": "string"
+            }
+        }
+    ],
+    "form": [
+        {
+            "acceptChildren": true,
+            "attributes": {
+                "action": "string"
+            }
+        },
+        {
+            "acceptChildren": true,
+            "attributes": {
+                "action": "string",
+                "`method`": "string"
             }
         }
     ]

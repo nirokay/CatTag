@@ -4,14 +4,14 @@ import parser
 
 type
     ElementCommonAttributes = object
-        acceptChildren*: Option[bool] = some(false)
+        acceptChildren*: Option[bool]
+        acceptContent*: Option[bool]
         attributes*: OrderedTable[string, string]
     ElementsCommonAttributesFile = OrderedTable[string, seq[ElementCommonAttributes]]
 
 let elementCommonAttributes: ElementsCommonAttributesFile = readFile("./resources/html-elements-common-attributes.json").parseJson().to(ElementsCommonAttributesFile)
 
-const templateVoidProcs: string = """
-# General procs for SELECTED_TAG:
+const templateVoidProcs: string = """# General procs for SELECTED_TAG:
 proc SELECTED_TAG*(): HtmlElement =
     ## Constructs new element
     ## REFERENCE
@@ -19,10 +19,8 @@ proc SELECTED_TAG*(): HtmlElement =
 proc SELECTED_TAG*(attributes: seq[Attribute]): HtmlElement =
     ## Constructs new element
     ## REFERENCE
-    result = HtmlElement(elementType: typeElement, tag: "SELECTED_TAG", attributes: attributes)
-"""
-const templateChildAcceptingProcs: string = """
-# General children procs for SELECTED_TAG:
+    result = HtmlElement(elementType: typeElement, tag: "SELECTED_TAG", attributes: attributes)"""
+const templateChildAcceptingProcs: string = """# General children procs for SELECTED_TAG:
 proc SELECTED_TAG*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## REFERENCE
@@ -48,8 +46,7 @@ proc SELECTED_TAG*(attributes: seq[Attribute], content: seq[string]): HtmlElemen
 proc SELECTED_TAG*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
     ## Constructs new element
     ## REFERENCE
-    result = HtmlElement(elementType: typeElement, tag: "SELECTED_TAG", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
-"""
+    result = HtmlElement(elementType: typeElement, tag: "SELECTED_TAG", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])"""
 #[
 proc PROC_NAME*(content: seq[string]): HtmlElement =
     ## Constructs new element
@@ -59,13 +56,12 @@ proc PROC_NAME*(content: string, moreContent: varargs[string]): HtmlElement =
     result = HtmlElement(elementType: typeElement, tag: "SELECTED_TAG", children: @[rawHtmlText(@[content] & moreContent.toSeq())])
 ]#
 
-const templateCustomAttrVoidProcs: string = """
+const templateCustomAttrVoidProcs: string = """# Custom attribute procs for void SELECTED_TAG:
 proc SELECTED_TAG*(ATTRIBUTES): HtmlElement =
     ## Constructs new element
     ## REFERENCE
-    result = SELECTED_TAG()ATTR_ADDERS
-"""
-const templateCustomAttrChildrenProcs: string = """
+    result = SELECTED_TAG(ATTR_LIST)"""
+const templateCustomAttrChildrenProcs: string = """# Custom attribute procs with children for SELECTED_TAG:
 proc SELECTED_TAG*(ATTRIBUTES, children: seq[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## REFERENCE
@@ -73,8 +69,16 @@ proc SELECTED_TAG*(ATTRIBUTES, children: seq[HtmlElement]): HtmlElement =
 proc SELECTED_TAG*(ATTRIBUTES, child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## REFERENCE
-    result = SELECTED_TAG(ATTR_LIST, @[child] & children.toSeq())
-"""
+    result = SELECTED_TAG(ATTR_LIST, @[child] & children.toSeq())"""
+const templateCustomAttrWithContentProcs: string = """# Custom attribute procs with content for SELECTED_TAG:
+proc SELECTED_TAG*(ATTRIBUTES, content: seq[string]): HtmlElement =
+    ## Constructs new element
+    ## REFERENCE
+    result = SELECTED_TAG(ATTR_LIST, rawHtmlText(content))
+proc SELECTED_TAG*(ATTRIBUTES, content: string, contents: varargs[string]): HtmlElement =
+    ## Constructs new element
+    ## REFERENCE
+    result = SELECTED_TAG(ATTR_LIST, rawHtmlText(@[content] & contents.toSeq()))"""
 
 proc newConstructorProcs(tag: string, reference: string): string =
     var lines: seq[string]
@@ -89,42 +93,46 @@ proc newConstructorProcs(tag: string, reference: string): string =
     # General procs:
     lines &= templateVoidProcs.modify()
     if rawTag notin htmlVoidElementTags:
-        lines &= "\n" & templateChildAcceptingProcs.modify()
+        lines &= templateChildAcceptingProcs.modify()
 
     # Specific attr procs:
-    if not elementCommonAttributes.hasKey(rawTag): return
-    for rule in elementCommonAttributes[rawTag]:
-        # Every instance of custom attributes:
-        let
-            acceptChildren: bool = rule.acceptChildren.get(false)
-            attributes: seq[array[2, string]] = block:
-                var r: seq[array[2, string]]
-                let attrTable: OrderedTable[string, string] = rule.attributes
-                for attrName, attrType in attrTable:
-                    r.add([attrName, attrType])
-                r
-            attributeLine: string = block:
-                var r: seq[string]
-                for attr in attributes:
-                    r.add &"{attr[0]}: {attr[1]}"
-                r.join(", ")
-            attributeList: string = block:
-                var r: seq[string]
-                for attribute in attributes:
-                    r.add(@[
-                        "attr(\"",
-                        attribute[0].replace("`", ""),
-                        "\", ",
-                        attribute[0],
-                        ")"
-                    ].join(""))
-                "@[" & r.join(", ") & "]"
+    if elementCommonAttributes.hasKey(rawTag):
+        for rule in elementCommonAttributes[rawTag]:
+            # Every instance of custom attributes:
+            let
+                acceptChildren: bool = rule.acceptChildren.get(true)
+                acceptContent: bool = rule.acceptContent.get(false)
+                attributes: seq[array[2, string]] = block:
+                    var r: seq[array[2, string]]
+                    let attrTable: OrderedTable[string, string] = rule.attributes
+                    for attrName, attrType in attrTable:
+                        r.add([attrName, attrType])
+                    r
+                attributeLine: string = block:
+                    var r: seq[string]
+                    for attr in attributes:
+                        r.add &"{attr[0]}: {attr[1]}"
+                    r.join(", ")
+                attributeList: string = block:
+                    var r: seq[string]
+                    for attribute in attributes:
+                        r.add(@[
+                            "attr(\"",
+                            attribute[0].replace("`", ""),
+                            "\", ",
+                            attribute[0],
+                            ")"
+                        ].join(""))
+                    "@[" & r.join(", ") & "]"
 
-        lines &= templateCustomAttrVoidProcs.modify(attributeLine, attributeList)
-        if rawTag notin htmlVoidElementTags:
-            lines &= templateCustomAttrChildrenProcs.modify(attributeLine, attributeList)
+            lines &= templateCustomAttrVoidProcs.modify(attributeLine, attributeList)
+            if rawTag notin htmlVoidElementTags and acceptChildren:
+                lines &= templateCustomAttrChildrenProcs.modify(attributeLine, attributeList)
+            if rawTag notin htmlVoidElementTags and acceptContent:
+                lines &= templateCustomAttrWithContentProcs.modify(attributeLine, attributeList)
 
-    result = lines.join("\n\n") & "\n"
+    # Join all lines:
+    result = lines.join("\n\n")
 
 
 let needQuoting: seq[string] = @[

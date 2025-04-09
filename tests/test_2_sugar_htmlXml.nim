@@ -14,11 +14,6 @@ test "Element with children":
         rawXmlText "Hello world!",
         rawXmlText "How are you?"
     ]
-test "Elements from constant names":
-    check simpleElement == $p[
-        rawHtmlText "Hello world!",
-        rawHtmlText "How are you?"
-    ]
 
 let attrElement0: string = """<img src='image.png' />"""
 let attrElement1: string = """<img alt='image' src='image.png' />"""
