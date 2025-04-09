@@ -119,7 +119,7 @@ proc newConstructorProcs(tag: string, reference: string): string =
                         r.add(@[
                             "attr(\"",
                             attribute[0].replace("`", ""),
-                            "\", ",
+                            "\", $",
                             attribute[0],
                             ")"
                         ].join(""))
@@ -151,8 +151,6 @@ output.lines = @[
     "",
     "import std/[sequtils]",
     "import ../htmlXml/[types, procs]",
-    "",
-    "type HtmlTag* = string",
     ""
 ]
 

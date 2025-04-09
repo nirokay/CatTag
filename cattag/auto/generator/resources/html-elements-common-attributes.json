@@ -1,10 +1,173 @@
 {
     "a": [
         {
-            "acceptChildren": true,
             "acceptContent": true,
             "attributes": {
                 "href": "string"
+            }
+        }
+    ],
+    "abbr": [
+        {
+            "acceptContent": true,
+            "attributes": {
+                "title": "string"
+            }
+        }
+    ],
+    "audio": [
+        {
+            "attributes": {
+                "src": "string",
+                "autoplay": "bool",
+                "controls": "bool = true",
+                "loop": "bool = false",
+                "muted": "bool = false"
+            }
+        }
+    ],
+    "base": [
+        {
+            "acceptChildren": false,
+            "attributes": {
+                "src": "string"
+            }
+        }
+    ],
+    "bdo": [
+        {
+            "acceptContent": true,
+            "attributes": {
+                "dir": "string"
+            }
+        }
+    ],
+    "blockquote": [
+        {
+            "acceptContent": true,
+            "attributes": {
+                "cite": "string"
+            }
+        }
+    ],
+    "button": [
+        {
+            "acceptContent": true,
+            "attributes": {
+                "`type`": "string"
+            }
+        },
+        {
+            "acceptContent": true,
+            "attributes": {
+                "`type`": "string",
+                "onclick": "string"
+            }
+        }
+    ],
+    "canvas": [
+        {
+            "acceptContent": true,
+            "attributes": {
+                "id": "string",
+                "width": "int = 300",
+                "height": "int = 150"
+            }
+        }
+    ],
+    "col": [
+        {
+            "acceptChildren": false,
+            "attributes": {
+                "span": "int"
+            }
+        }
+    ],
+    "data": [
+        {
+            "acceptContent": true,
+            "attributes": {
+                "value": "string|int"
+            }
+        }
+    ],
+    "datalist": [
+        {
+            "attributes": {
+                "id": "string"
+            }
+        }
+    ],
+    "del": [
+        {
+            "acceptContent": true,
+            "attributes": {
+                "datetime": "string"
+            }
+        },
+        {
+            "acceptContent": true,
+            "attributes": {
+                "datetime": "string",
+                "cite": "string"
+            }
+        }
+    ],
+    "details": [
+        {
+            "attributes": {
+                "open": "bool"
+            }
+        }
+    ],
+    "dfn": [
+        {
+            "acceptContent": true,
+            "attributes": {
+                "title": "string"
+            }
+        }
+    ],
+    "dialog": [
+        {
+            "acceptContent": true,
+            "attributes": {
+                "open": "bool"
+            }
+        }
+    ],
+    "embed": [
+        {
+            "acceptChildren": false,
+            "attributes": {
+                "`type`": "string",
+                "src": "string",
+                "width": "int",
+                "height": "int"
+            }
+        }
+    ],
+    "form": [
+        {
+            "attributes": {
+                "action": "string",
+                "`method`": "string = \"get\""
+            }
+        }
+    ],
+    "iframe": [
+        {
+            "acceptContent": true,
+            "attributes": {
+                "src": "string"
+            }
+        },
+        {
+            "acceptContent": true,
+            "attributes": {
+                "src": "string",
+                "width": "int",
+                "height": "int"
             }
         }
     ],
@@ -15,28 +178,365 @@
                 "src": "string",
                 "alt": "string"
             }
+        },
+        {
+            "acceptChildren": false,
+            "attributes": {
+                "src": "string",
+                "alt": "string",
+                "width": "int",
+                "height": "int"
+            }
         }
     ],
     "input": [
         {
             "acceptChildren": false,
             "attributes": {
-                "`type`": "string"
-            }
-        }
-    ],
-    "form": [
-        {
-            "acceptChildren": true,
-            "attributes": {
-                "action": "string"
+                "`type`": "string",
+                "id": "string"
             }
         },
         {
-            "acceptChildren": true,
+            "acceptChildren": false,
             "attributes": {
-                "action": "string",
-                "`method`": "string"
+                "`type`": "string",
+                "id": "string",
+                "form": "string"
+            }
+        }
+    ],
+    "ins": [
+        {
+            "acceptContent": true,
+            "attributes": {
+                "datetime": "string"
+            }
+        },
+        {
+            "acceptContent": true,
+            "attributes": {
+                "datetime": "string",
+                "cite": "string"
+            }
+        }
+    ],
+    "label": [
+        {
+            "acceptChildren": false,
+            "attributes": {
+                "`type`": "string",
+                "`for`": "string"
+            }
+        },
+        {
+            "acceptChildren": false,
+            "attributes": {
+                "`type`": "string",
+                "`for`": "string",
+                "form": "string"
+            }
+        }
+    ],
+    "li": [
+        {
+            "acceptContent": true,
+            "attributes": {
+                "value": "SomeNumber"
+            }
+        }
+    ],
+    "link": [
+        {
+            "acceptChildren": false,
+            "attributes": {
+                "rel": "string",
+                "href": "string"
+            }
+        }
+    ],
+    "map": [
+        {
+            "attributes": {
+                "name": "string"
+            }
+        }
+    ],
+    "meta": [
+        {
+            "acceptChildren": false,
+            "attributes": {
+                "charset": "string"
+            }
+        },
+        {
+            "acceptChildren": false,
+            "attributes": {
+                "name": "string",
+                "content": "string"
+            }
+        }
+    ],
+    "meter": [
+        {
+            "acceptContent": true,
+            "attributes": {
+                "value": "SomeNumber",
+                "min": "SomeNumber",
+                "max": "SomeNumber"
+            }
+        },
+        {
+            "acceptContent": true,
+            "attributes": {
+                "value": "SomeNumber",
+                "min": "SomeNumber",
+                "max": "SomeNumber",
+                "low": "SomeNumber",
+                "optimum": "SomeNumber",
+                "high": "SomeNumber"
+            }
+        },
+        {
+            "acceptContent": true,
+            "attributes": {
+                "id": "string",
+                "value": "SomeNumber",
+                "min": "SomeNumber",
+                "max": "SomeNumber"
+            }
+        },
+        {
+            "acceptContent": true,
+            "attributes": {
+                "id": "string",
+                "value": "SomeNumber",
+                "min": "SomeNumber",
+                "max": "SomeNumber",
+                "low": "SomeNumber",
+                "optimum": "SomeNumber",
+                "high": "SomeNumber"
+            }
+        }
+    ],
+    "object": [
+        {
+            "attributes": {
+                "data": "string"
+            }
+        },
+        {
+            "attributes": {
+                "data": "string",
+                "width": "int",
+                "height": "int"
+            }
+        }
+    ],
+    "ol": [
+        {
+            "attributes": {
+                "`type`": "string|int",
+                "start": "string|int"
+            }
+        },
+        {
+            "attributes": {
+                "`type`": "string|int",
+                "start": "string|int",
+                "reversed": "bool"
+            }
+        }
+    ],
+    "optgroup": [
+        {
+            "attributes": {
+                "label": "string"
+            }
+        }
+    ],
+    "option": [
+        {
+            "acceptContent": true,
+            "attributes": {
+                "value": "string"
+            }
+        },
+        {
+            "acceptContent": true,
+            "attributes": {
+                "value": "string",
+                "selected": "bool"
+            }
+        }
+    ],
+    "output": [
+        {
+            "acceptContent": true,
+            "attributes": {
+                "`for`": "string"
+            }
+        }
+    ],
+    "param": [
+        {
+            "acceptChildren": false,
+            "attributes": {
+                "name": "string",
+                "value": "string|SomeNumber"
+            }
+        }
+    ],
+    "progress": [
+        {
+            "acceptContent": true,
+            "attributes": {
+                "value": "SomeNumber",
+                "max": "SomeNumber"
+            }
+        }
+    ],
+    "q": [
+        {
+            "acceptContent": true,
+            "attributes": {
+                "cite": "string"
+            }
+        }
+    ],
+    "script": [
+        {
+            "acceptContent": true,
+            "attributes": {
+                "`defer`": "bool = false"
+            }
+        },
+        {
+            "acceptContent": true,
+            "attributes": {
+                "src": "string",
+                "`defer`": "bool = false"
+            }
+        }
+    ],
+    "select": [
+        {
+            "attributes": {
+                "id": "string"
+            }
+        },
+        {
+            "attributes": {
+                "id": "string",
+                "multiple": "bool"
+            }
+        },
+        {
+            "attributes": {
+                "id": "string",
+                "multiple": "bool",
+                "required": "bool"
+            }
+        }
+    ],
+    "source": [
+        {
+            "acceptChildren": false,
+            "attributes": {
+                "`type`": "string",
+                "src": "string"
+            }
+        }
+    ],
+    "svg": [
+        {
+            "attributes": {
+                "width": "int",
+                "height": "int"
+            }
+        }
+    ],
+    "td": [
+        {
+            "acceptContent": true,
+            "attributes": {
+                "rowspan": "int",
+                "colspan": "int"
+            }
+        }
+    ],
+    "textarea": [
+        {
+            "acceptContent": true,
+            "attributes": {
+                "id": "string",
+                "rows": "int",
+                "cols": "int"
+            }
+        },
+        {
+            "acceptContent": true,
+            "attributes": {
+                "id": "string",
+                "placeholder": "string",
+                "rows": "int",
+                "cols": "int"
+            }
+        },
+        {
+            "acceptContent": true,
+            "attributes": {
+                "id": "string",
+                "placeholder": "string",
+                "rows": "int",
+                "cols": "int",
+                "required": "bool"
+            }
+        }
+    ],
+    "th": [
+        {
+            "acceptContent": true,
+            "attributes": {
+                "rowspan": "int",
+                "colspan": "int"
+            }
+        }
+    ],
+    "time": [
+        {
+            "acceptContent": true,
+            "attributes": {
+                "datetime": "string"
+            }
+        }
+    ],
+    "track": [
+        {
+            "acceptChildren": false,
+            "attributes": {
+                "kind": "string",
+                "src": "string"
+            }
+        },
+        {
+            "acceptChildren": false,
+            "attributes": {
+                "kind": "string",
+                "src": "string",
+                "srclang": "string",
+                "label": "string"
+            }
+        }
+    ],
+    "video": [
+        {
+            "attributes": {
+                "src": "string",
+                "autoplay": "bool",
+                "controls": "bool = true",
+                "loop": "bool = false",
+                "muted": "bool = false"
             }
         }
     ]
