@@ -1,7 +1,7 @@
 {
     "img": [
         {
-            "accept-children": true,
+            "acceptChildren": true,
             "attributes": {
                 "src": "string",
                 "alt": "string"
