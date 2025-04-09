@@ -1,0 +1,11 @@
+{
+    "img": [
+        {
+            "accept-children": true,
+            "attributes": {
+                "src": "string",
+                "alt": "string"
+            }
+        }
+    ]
+}
