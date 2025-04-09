@@ -7,6 +7,7 @@ const
     cattagHtmlXmlIndent* {.intdefine.} = 4 ## Sets indent for children (if set to zero, output will be inline)
     cattagHtmlTrailingSlash* {.booldefine.} = true ## Toggles if `br` should generate `<br />` instead of `<br>`
     cattagXmlSelfCloseOnEmptyChildren* {.booldefine.} = true ## Toggles if no children will generate `<some-text />` instead of `<some-text></some-text>` (good practice for XML)
+    cattagHtmlGenerateEmptyAttributeValue* {.booldefine.} = false ## Toggles if `<script defer="">...</script>` should be generated instead of `<script defer>...</script>` for HTML
 
     htmlVoidElementSlash: string = if cattagHtmlTrailingSlash: " /" else: ""
     xmlVoidElementSlash: string = if cattagXmlSelfCloseOnEmptyChildren: " /" else: ""
@@ -33,13 +34,13 @@ proc getElementWithMergedSortedAttributes[T: HtmlElement|XmlElement](element: T)
     result.attributes = attributes.sortedAttributes()
 
 
-proc `$`*(attribute: Attribute): string =
+proc `$`*(attribute: Attribute, generateEmptyValue: bool = false): string =
     ## Stringifies `Attribute` for HTML and XML
     let value: string = attribute.values.join(" ")
     result = block:
-        if value == "": &" {attribute.attribute}"
+        if value == "" and not generateEmptyValue: &" {attribute.attribute}"
         else: &" {attribute.attribute}={cattagHtmlXmlAttributeQuote}{value}{cattagHtmlXmlAttributeQuote}"
-proc `$`*(attributes: seq[Attribute]): string =
+proc `$`*(attributes: seq[Attribute], generateEmptyValue: bool = false): string =
     ## Stringifies `Attribute`s for HTML and XML
     for attribute in attributes:
         result.add $attribute
@@ -63,7 +64,7 @@ proc stringifyComment(element: HtmlElement|XmlElement): string =
         "--->"
     ].join(if htmlXmlIndentNewLine != "": htmlXmlIndentNewLine else: " ")
 
-proc stringifyElement[T: HtmlElement|XmlElement](element: T, isVoid: bool): string =
+proc stringifyElement[T: HtmlElement|XmlElement](element: T, isVoid: bool, generateEmptyValue: bool): string =
     if unlikely(isVoid and element.children.len() != 0): logWarning(&"Element with tag '{element.tag}' has children but is void. Children will not be generated!")
     let
         trailingSlash: string = block:
@@ -72,7 +73,7 @@ proc stringifyElement[T: HtmlElement|XmlElement](element: T, isVoid: bool): stri
             else:
                 logFatal("Unsupported type.")
                 ""
-        attributes: seq[Attribute] = element.getElementWithMergedSortedAttributes().attributes
+        attributes: string = element.getElementWithMergedSortedAttributes().attributes $ generateEmptyValue
     if isVoid:
         result = &"<{element.tag}{attributes}{trailingSlash}>"
     else:
@@ -84,11 +85,11 @@ proc stringifyElement[T: HtmlElement|XmlElement](element: T, isVoid: bool): stri
 proc stringifyHtmlElement(element: HtmlElement): string =
     let isVoid: bool = element.tag in htmlVoidElementTags
     var modifiedElement: HtmlElement = element # TODO: implement `style` field converting to attribute
-    result = modifiedElement.stringifyElement(isVoid)
+    result = modifiedElement.stringifyElement(isVoid, cattagHtmlGenerateEmptyAttributeValue)
 
 proc stringifyXmlElement(element: XmlElement): string =
     let isVoid: bool = element.children.len() == 0 and cattagXmlSelfCloseOnEmptyChildren
-    result = element.stringifyElement(isVoid)
+    result = element.stringifyElement(isVoid, true)
 
 proc dollarImpl(element: HtmlElement): string =
     case element.elementType:
