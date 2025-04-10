@@ -1,7 +1,7 @@
 import std/[strutils, strformat]
 import parser
 
-var output: OutputFile = newOutputFile("cssProperties.nim")
+var output: OutputFile = newOutputFile("cssValues.nim")
 output.lines = @[
     "## CSS Values",
     "## ==========",
