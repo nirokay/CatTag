@@ -3,14 +3,24 @@ import types
 
 
 # Attributes: -----------------------------------------------------------------
+proc stringifyContents[T](items: seq[T]): seq[string] =
+    if T is bool: return
+    for item in items:
+        result.add $item
 
 template newAttr(PROC_NAME: untyped): untyped =
-    proc PROC_NAME*(attribute: string, values: seq[string]): Attribute =
+    proc PROC_NAME*(attribute: string): Attribute =
         ## Constructs new `Attribute`
-        result = Attribute(attribute: attribute, values: values)
-    proc PROC_NAME*(attribute: string, values: varargs[string]): Attribute =
+        result = Attribute(attribute: attribute)
+    proc PROC_NAME*(attribute: string, value: bool): Attribute =
         ## Constructs new `Attribute`
-        result = Attribute(attribute: attribute, values: values.toSeq())
+        if value: result = Attribute(attribute: attribute)
+    proc PROC_NAME*[T: not bool](attribute: string, values: seq[T]): Attribute =
+        ## Constructs new `Attribute`
+        result = Attribute(attribute: attribute, values: values.stringifyContents())
+    proc PROC_NAME*[T: not bool](attribute: string, value: T, values: varargs[T]): Attribute =
+        ## Constructs new `Attribute`
+        result = Attribute(attribute: attribute, values: stringifyContents(@[value] & values.toSeq()))
 
 newAttr(newAttribute)
 newAttr(attr)
@@ -30,8 +40,9 @@ template newRawText(PROC_NAME: untyped, OBJECT_TYPE: typedesc): untyped =
         result = OBJECT_TYPE(elementType: typeRawText, content: content.toSeq())
 
 newRawText(rawHtmlText, HtmlElement)
+newRawText(html, HtmlElement)
 newRawText(rawXmlText, XmlElement)
-
+newRawText(xml, XmlElement)
 
 # Elements: -------------------------------------------------------------------
 

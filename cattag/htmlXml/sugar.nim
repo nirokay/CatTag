@@ -10,6 +10,26 @@ proc `<=>`*(attribute: string, values: varargs[string]): Attribute =
     result = attribute <=> values.toSeq()
 
 
+template newAddAttr(OBJECT_TYPE: typedesc): untyped =
+    proc addattr*[T](element: var OBJECT_TYPE, attribute: string, values: seq[T]) =
+        ## Adds a single attribute to element
+        element.add(attr(attribute, values))
+    proc addattr*[T](element: OBJECT_TYPE, attribute: string, values: seq[T]): OBJECT_TYPE =
+        ## Adds a single attribute to element
+        result = element
+        result.add(attr(attribute, values))
+    proc addattr*[T](element: var OBJECT_TYPE, attribute: string, values: varargs[T]) =
+        ## Adds a single attribute to element
+        element.add(attr(attribute, values.toSeq()))
+    proc addattr*[T](element: OBJECT_TYPE, attribute: string, values: varargs[T]): OBJECT_TYPE =
+        ## Adds a single attribute to element
+        result = element
+        result.add(attr(attribute, values.toSeq()))
+
+newAddAttr(HtmlElement)
+newAddAttr(XmlElement)
+
+
 template newBrackets(OBJECT_TYPE: typedesc): untyped =
     proc `[]`*(tag: string, child: OBJECT_TYPE, children: varargs[OBJECT_TYPE]): OBJECT_TYPE =
         ## Constructs new element

@@ -3,6 +3,7 @@ import cattag
 
 test "Attributes":
     check $attr("href", "https://www.nirokay.com/") == " href='https://www.nirokay.com/'"
+    check $attr("defer", true) == " defer"
     check $attr("defer") == " defer"
     check $attr("class", "centered", "dark-mode", "urmom") == " class='centered dark-mode urmom'"
 

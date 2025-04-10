@@ -119,7 +119,7 @@ proc newConstructorProcs(tag: string, reference: string): string =
                         r.add(@[
                             "attr(\"",
                             attribute[0].replace("`", ""),
-                            "\", $",
+                            "\", ",
                             attribute[0],
                             ")"
                         ].join(""))
