@@ -49,27 +49,27 @@ proc a*(attributes: seq[Attribute], content: string, moreContent: varargs[string
 proc a*(href: string): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a
-    result = a(@[attr("href", $href)])
+    result = a(@[attr("href", href)])
 
 # Custom attribute procs with children for a:
 proc a*(href: string, children: seq[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a
-    result = a(@[attr("href", $href)], children)
+    result = a(@[attr("href", href)], children)
 proc a*(href: string, child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a
-    result = a(@[attr("href", $href)], @[child] & children.toSeq())
+    result = a(@[attr("href", href)], @[child] & children.toSeq())
 
 # Custom attribute procs with content for a:
 proc a*(href: string, content: seq[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a
-    result = a(@[attr("href", $href)], rawHtmlText(content))
+    result = a(@[attr("href", href)], rawHtmlText(content))
 proc a*(href: string, content: string, contents: varargs[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a
-    result = a(@[attr("href", $href)], rawHtmlText(@[content] & contents.toSeq()))
+    result = a(@[attr("href", href)], rawHtmlText(@[content] & contents.toSeq()))
 
 
 
@@ -115,27 +115,27 @@ proc abbr*(attributes: seq[Attribute], content: string, moreContent: varargs[str
 proc abbr*(title: string): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/abbr
-    result = abbr(@[attr("title", $title)])
+    result = abbr(@[attr("title", title)])
 
 # Custom attribute procs with children for abbr:
 proc abbr*(title: string, children: seq[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/abbr
-    result = abbr(@[attr("title", $title)], children)
+    result = abbr(@[attr("title", title)], children)
 proc abbr*(title: string, child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/abbr
-    result = abbr(@[attr("title", $title)], @[child] & children.toSeq())
+    result = abbr(@[attr("title", title)], @[child] & children.toSeq())
 
 # Custom attribute procs with content for abbr:
 proc abbr*(title: string, content: seq[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/abbr
-    result = abbr(@[attr("title", $title)], rawHtmlText(content))
+    result = abbr(@[attr("title", title)], rawHtmlText(content))
 proc abbr*(title: string, content: string, contents: varargs[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/abbr
-    result = abbr(@[attr("title", $title)], rawHtmlText(@[content] & contents.toSeq()))
+    result = abbr(@[attr("title", title)], rawHtmlText(@[content] & contents.toSeq()))
 
 
 
@@ -353,17 +353,17 @@ proc audio*(attributes: seq[Attribute], content: string, moreContent: varargs[st
 proc audio*(src: string, autoplay: bool, controls: bool = true, loop: bool = false, muted: bool = false): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio
-    result = audio(@[attr("src", $src), attr("autoplay", $autoplay), attr("controls", $controls), attr("loop", $loop), attr("muted", $muted)])
+    result = audio(@[attr("src", src), attr("autoplay", autoplay), attr("controls", controls), attr("loop", loop), attr("muted", muted)])
 
 # Custom attribute procs with children for audio:
 proc audio*(src: string, autoplay: bool, controls: bool = true, loop: bool = false, muted: bool = false, children: seq[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio
-    result = audio(@[attr("src", $src), attr("autoplay", $autoplay), attr("controls", $controls), attr("loop", $loop), attr("muted", $muted)], children)
+    result = audio(@[attr("src", src), attr("autoplay", autoplay), attr("controls", controls), attr("loop", loop), attr("muted", muted)], children)
 proc audio*(src: string, autoplay: bool, controls: bool = true, loop: bool = false, muted: bool = false, child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio
-    result = audio(@[attr("src", $src), attr("autoplay", $autoplay), attr("controls", $controls), attr("loop", $loop), attr("muted", $muted)], @[child] & children.toSeq())
+    result = audio(@[attr("src", src), attr("autoplay", autoplay), attr("controls", controls), attr("loop", loop), attr("muted", muted)], @[child] & children.toSeq())
 
 
 
@@ -421,7 +421,7 @@ proc base*(attributes: seq[Attribute]): HtmlElement =
 proc base*(src: string): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
-    result = base(@[attr("src", $src)])
+    result = base(@[attr("src", src)])
 
 
 
@@ -507,27 +507,27 @@ proc bdo*(attributes: seq[Attribute], content: string, moreContent: varargs[stri
 proc bdo*(dir: string): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/bdo
-    result = bdo(@[attr("dir", $dir)])
+    result = bdo(@[attr("dir", dir)])
 
 # Custom attribute procs with children for bdo:
 proc bdo*(dir: string, children: seq[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/bdo
-    result = bdo(@[attr("dir", $dir)], children)
+    result = bdo(@[attr("dir", dir)], children)
 proc bdo*(dir: string, child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/bdo
-    result = bdo(@[attr("dir", $dir)], @[child] & children.toSeq())
+    result = bdo(@[attr("dir", dir)], @[child] & children.toSeq())
 
 # Custom attribute procs with content for bdo:
 proc bdo*(dir: string, content: seq[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/bdo
-    result = bdo(@[attr("dir", $dir)], rawHtmlText(content))
+    result = bdo(@[attr("dir", dir)], rawHtmlText(content))
 proc bdo*(dir: string, content: string, contents: varargs[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/bdo
-    result = bdo(@[attr("dir", $dir)], rawHtmlText(@[content] & contents.toSeq()))
+    result = bdo(@[attr("dir", dir)], rawHtmlText(@[content] & contents.toSeq()))
 
 
 
@@ -613,27 +613,27 @@ proc blockquote*(attributes: seq[Attribute], content: string, moreContent: varar
 proc blockquote*(cite: string): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote
-    result = blockquote(@[attr("cite", $cite)])
+    result = blockquote(@[attr("cite", cite)])
 
 # Custom attribute procs with children for blockquote:
 proc blockquote*(cite: string, children: seq[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote
-    result = blockquote(@[attr("cite", $cite)], children)
+    result = blockquote(@[attr("cite", cite)], children)
 proc blockquote*(cite: string, child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote
-    result = blockquote(@[attr("cite", $cite)], @[child] & children.toSeq())
+    result = blockquote(@[attr("cite", cite)], @[child] & children.toSeq())
 
 # Custom attribute procs with content for blockquote:
 proc blockquote*(cite: string, content: seq[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote
-    result = blockquote(@[attr("cite", $cite)], rawHtmlText(content))
+    result = blockquote(@[attr("cite", cite)], rawHtmlText(content))
 proc blockquote*(cite: string, content: string, contents: varargs[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote
-    result = blockquote(@[attr("cite", $cite)], rawHtmlText(@[content] & contents.toSeq()))
+    result = blockquote(@[attr("cite", cite)], rawHtmlText(@[content] & contents.toSeq()))
 
 
 
@@ -731,53 +731,53 @@ proc button*(attributes: seq[Attribute], content: string, moreContent: varargs[s
 proc button*(`type`: string): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button
-    result = button(@[attr("type", $`type`)])
+    result = button(@[attr("type", `type`)])
 
 # Custom attribute procs with children for button:
 proc button*(`type`: string, children: seq[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button
-    result = button(@[attr("type", $`type`)], children)
+    result = button(@[attr("type", `type`)], children)
 proc button*(`type`: string, child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button
-    result = button(@[attr("type", $`type`)], @[child] & children.toSeq())
+    result = button(@[attr("type", `type`)], @[child] & children.toSeq())
 
 # Custom attribute procs with content for button:
 proc button*(`type`: string, content: seq[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button
-    result = button(@[attr("type", $`type`)], rawHtmlText(content))
+    result = button(@[attr("type", `type`)], rawHtmlText(content))
 proc button*(`type`: string, content: string, contents: varargs[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button
-    result = button(@[attr("type", $`type`)], rawHtmlText(@[content] & contents.toSeq()))
+    result = button(@[attr("type", `type`)], rawHtmlText(@[content] & contents.toSeq()))
 
 # Custom attribute procs for void button:
 proc button*(`type`: string, onclick: string): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button
-    result = button(@[attr("type", $`type`), attr("onclick", $onclick)])
+    result = button(@[attr("type", `type`), attr("onclick", onclick)])
 
 # Custom attribute procs with children for button:
 proc button*(`type`: string, onclick: string, children: seq[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button
-    result = button(@[attr("type", $`type`), attr("onclick", $onclick)], children)
+    result = button(@[attr("type", `type`), attr("onclick", onclick)], children)
 proc button*(`type`: string, onclick: string, child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button
-    result = button(@[attr("type", $`type`), attr("onclick", $onclick)], @[child] & children.toSeq())
+    result = button(@[attr("type", `type`), attr("onclick", onclick)], @[child] & children.toSeq())
 
 # Custom attribute procs with content for button:
 proc button*(`type`: string, onclick: string, content: seq[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button
-    result = button(@[attr("type", $`type`), attr("onclick", $onclick)], rawHtmlText(content))
+    result = button(@[attr("type", `type`), attr("onclick", onclick)], rawHtmlText(content))
 proc button*(`type`: string, onclick: string, content: string, contents: varargs[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button
-    result = button(@[attr("type", $`type`), attr("onclick", $onclick)], rawHtmlText(@[content] & contents.toSeq()))
+    result = button(@[attr("type", `type`), attr("onclick", onclick)], rawHtmlText(@[content] & contents.toSeq()))
 
 
 
@@ -823,27 +823,27 @@ proc canvas*(attributes: seq[Attribute], content: string, moreContent: varargs[s
 proc canvas*(id: string, width: int = 300, height: int = 150): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas
-    result = canvas(@[attr("id", $id), attr("width", $width), attr("height", $height)])
+    result = canvas(@[attr("id", id), attr("width", width), attr("height", height)])
 
 # Custom attribute procs with children for canvas:
 proc canvas*(id: string, width: int = 300, height: int = 150, children: seq[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas
-    result = canvas(@[attr("id", $id), attr("width", $width), attr("height", $height)], children)
+    result = canvas(@[attr("id", id), attr("width", width), attr("height", height)], children)
 proc canvas*(id: string, width: int = 300, height: int = 150, child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas
-    result = canvas(@[attr("id", $id), attr("width", $width), attr("height", $height)], @[child] & children.toSeq())
+    result = canvas(@[attr("id", id), attr("width", width), attr("height", height)], @[child] & children.toSeq())
 
 # Custom attribute procs with content for canvas:
 proc canvas*(id: string, width: int = 300, height: int = 150, content: seq[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas
-    result = canvas(@[attr("id", $id), attr("width", $width), attr("height", $height)], rawHtmlText(content))
+    result = canvas(@[attr("id", id), attr("width", width), attr("height", height)], rawHtmlText(content))
 proc canvas*(id: string, width: int = 300, height: int = 150, content: string, contents: varargs[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas
-    result = canvas(@[attr("id", $id), attr("width", $width), attr("height", $height)], rawHtmlText(@[content] & contents.toSeq()))
+    result = canvas(@[attr("id", id), attr("width", width), attr("height", height)], rawHtmlText(@[content] & contents.toSeq()))
 
 
 
@@ -1021,7 +1021,7 @@ proc col*(attributes: seq[Attribute]): HtmlElement =
 proc col*(span: int): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/col
-    result = col(@[attr("span", $span)])
+    result = col(@[attr("span", span)])
 
 
 
@@ -1107,27 +1107,27 @@ proc data*(attributes: seq[Attribute], content: string, moreContent: varargs[str
 proc data*(value: string|int): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/data
-    result = data(@[attr("value", $value)])
+    result = data(@[attr("value", value)])
 
 # Custom attribute procs with children for data:
 proc data*(value: string|int, children: seq[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/data
-    result = data(@[attr("value", $value)], children)
+    result = data(@[attr("value", value)], children)
 proc data*(value: string|int, child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/data
-    result = data(@[attr("value", $value)], @[child] & children.toSeq())
+    result = data(@[attr("value", value)], @[child] & children.toSeq())
 
 # Custom attribute procs with content for data:
 proc data*(value: string|int, content: seq[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/data
-    result = data(@[attr("value", $value)], rawHtmlText(content))
+    result = data(@[attr("value", value)], rawHtmlText(content))
 proc data*(value: string|int, content: string, contents: varargs[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/data
-    result = data(@[attr("value", $value)], rawHtmlText(@[content] & contents.toSeq()))
+    result = data(@[attr("value", value)], rawHtmlText(@[content] & contents.toSeq()))
 
 
 
@@ -1173,17 +1173,17 @@ proc datalist*(attributes: seq[Attribute], content: string, moreContent: varargs
 proc datalist*(id: string): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/datalist
-    result = datalist(@[attr("id", $id)])
+    result = datalist(@[attr("id", id)])
 
 # Custom attribute procs with children for datalist:
 proc datalist*(id: string, children: seq[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/datalist
-    result = datalist(@[attr("id", $id)], children)
+    result = datalist(@[attr("id", id)], children)
 proc datalist*(id: string, child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/datalist
-    result = datalist(@[attr("id", $id)], @[child] & children.toSeq())
+    result = datalist(@[attr("id", id)], @[child] & children.toSeq())
 
 
 
@@ -1269,53 +1269,53 @@ proc del*(attributes: seq[Attribute], content: string, moreContent: varargs[stri
 proc del*(datetime: string): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/del
-    result = del(@[attr("datetime", $datetime)])
+    result = del(@[attr("datetime", datetime)])
 
 # Custom attribute procs with children for del:
 proc del*(datetime: string, children: seq[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/del
-    result = del(@[attr("datetime", $datetime)], children)
+    result = del(@[attr("datetime", datetime)], children)
 proc del*(datetime: string, child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/del
-    result = del(@[attr("datetime", $datetime)], @[child] & children.toSeq())
+    result = del(@[attr("datetime", datetime)], @[child] & children.toSeq())
 
 # Custom attribute procs with content for del:
 proc del*(datetime: string, content: seq[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/del
-    result = del(@[attr("datetime", $datetime)], rawHtmlText(content))
+    result = del(@[attr("datetime", datetime)], rawHtmlText(content))
 proc del*(datetime: string, content: string, contents: varargs[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/del
-    result = del(@[attr("datetime", $datetime)], rawHtmlText(@[content] & contents.toSeq()))
+    result = del(@[attr("datetime", datetime)], rawHtmlText(@[content] & contents.toSeq()))
 
 # Custom attribute procs for void del:
 proc del*(datetime: string, cite: string): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/del
-    result = del(@[attr("datetime", $datetime), attr("cite", $cite)])
+    result = del(@[attr("datetime", datetime), attr("cite", cite)])
 
 # Custom attribute procs with children for del:
 proc del*(datetime: string, cite: string, children: seq[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/del
-    result = del(@[attr("datetime", $datetime), attr("cite", $cite)], children)
+    result = del(@[attr("datetime", datetime), attr("cite", cite)], children)
 proc del*(datetime: string, cite: string, child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/del
-    result = del(@[attr("datetime", $datetime), attr("cite", $cite)], @[child] & children.toSeq())
+    result = del(@[attr("datetime", datetime), attr("cite", cite)], @[child] & children.toSeq())
 
 # Custom attribute procs with content for del:
 proc del*(datetime: string, cite: string, content: seq[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/del
-    result = del(@[attr("datetime", $datetime), attr("cite", $cite)], rawHtmlText(content))
+    result = del(@[attr("datetime", datetime), attr("cite", cite)], rawHtmlText(content))
 proc del*(datetime: string, cite: string, content: string, contents: varargs[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/del
-    result = del(@[attr("datetime", $datetime), attr("cite", $cite)], rawHtmlText(@[content] & contents.toSeq()))
+    result = del(@[attr("datetime", datetime), attr("cite", cite)], rawHtmlText(@[content] & contents.toSeq()))
 
 
 
@@ -1361,17 +1361,17 @@ proc details*(attributes: seq[Attribute], content: string, moreContent: varargs[
 proc details*(open: bool): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details
-    result = details(@[attr("open", $open)])
+    result = details(@[attr("open", open)])
 
 # Custom attribute procs with children for details:
 proc details*(open: bool, children: seq[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details
-    result = details(@[attr("open", $open)], children)
+    result = details(@[attr("open", open)], children)
 proc details*(open: bool, child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details
-    result = details(@[attr("open", $open)], @[child] & children.toSeq())
+    result = details(@[attr("open", open)], @[child] & children.toSeq())
 
 
 
@@ -1417,27 +1417,27 @@ proc dfn*(attributes: seq[Attribute], content: string, moreContent: varargs[stri
 proc dfn*(title: string): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dfn
-    result = dfn(@[attr("title", $title)])
+    result = dfn(@[attr("title", title)])
 
 # Custom attribute procs with children for dfn:
 proc dfn*(title: string, children: seq[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dfn
-    result = dfn(@[attr("title", $title)], children)
+    result = dfn(@[attr("title", title)], children)
 proc dfn*(title: string, child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dfn
-    result = dfn(@[attr("title", $title)], @[child] & children.toSeq())
+    result = dfn(@[attr("title", title)], @[child] & children.toSeq())
 
 # Custom attribute procs with content for dfn:
 proc dfn*(title: string, content: seq[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dfn
-    result = dfn(@[attr("title", $title)], rawHtmlText(content))
+    result = dfn(@[attr("title", title)], rawHtmlText(content))
 proc dfn*(title: string, content: string, contents: varargs[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dfn
-    result = dfn(@[attr("title", $title)], rawHtmlText(@[content] & contents.toSeq()))
+    result = dfn(@[attr("title", title)], rawHtmlText(@[content] & contents.toSeq()))
 
 
 
@@ -1483,27 +1483,27 @@ proc dialog*(attributes: seq[Attribute], content: string, moreContent: varargs[s
 proc dialog*(open: bool): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog
-    result = dialog(@[attr("open", $open)])
+    result = dialog(@[attr("open", open)])
 
 # Custom attribute procs with children for dialog:
 proc dialog*(open: bool, children: seq[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog
-    result = dialog(@[attr("open", $open)], children)
+    result = dialog(@[attr("open", open)], children)
 proc dialog*(open: bool, child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog
-    result = dialog(@[attr("open", $open)], @[child] & children.toSeq())
+    result = dialog(@[attr("open", open)], @[child] & children.toSeq())
 
 # Custom attribute procs with content for dialog:
 proc dialog*(open: bool, content: seq[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog
-    result = dialog(@[attr("open", $open)], rawHtmlText(content))
+    result = dialog(@[attr("open", open)], rawHtmlText(content))
 proc dialog*(open: bool, content: string, contents: varargs[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog
-    result = dialog(@[attr("open", $open)], rawHtmlText(@[content] & contents.toSeq()))
+    result = dialog(@[attr("open", open)], rawHtmlText(@[content] & contents.toSeq()))
 
 
 
@@ -1721,7 +1721,7 @@ proc embed*(attributes: seq[Attribute]): HtmlElement =
 proc embed*(`type`: string, src: string, width: int, height: int): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/embed
-    result = embed(@[attr("type", $`type`), attr("src", $src), attr("width", $width), attr("height", $height)])
+    result = embed(@[attr("type", `type`), attr("src", src), attr("width", width), attr("height", height)])
 
 
 
@@ -2007,17 +2007,17 @@ proc form*(attributes: seq[Attribute], content: string, moreContent: varargs[str
 proc form*(action: string, `method`: string = "get"): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form
-    result = form(@[attr("action", $action), attr("method", $`method`)])
+    result = form(@[attr("action", action), attr("method", `method`)])
 
 # Custom attribute procs with children for form:
 proc form*(action: string, `method`: string = "get", children: seq[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form
-    result = form(@[attr("action", $action), attr("method", $`method`)], children)
+    result = form(@[attr("action", action), attr("method", `method`)], children)
 proc form*(action: string, `method`: string = "get", child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form
-    result = form(@[attr("action", $action), attr("method", $`method`)], @[child] & children.toSeq())
+    result = form(@[attr("action", action), attr("method", `method`)], @[child] & children.toSeq())
 
 
 
@@ -2367,53 +2367,53 @@ proc iframe*(attributes: seq[Attribute], content: string, moreContent: varargs[s
 proc iframe*(src: string): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe
-    result = iframe(@[attr("src", $src)])
+    result = iframe(@[attr("src", src)])
 
 # Custom attribute procs with children for iframe:
 proc iframe*(src: string, children: seq[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe
-    result = iframe(@[attr("src", $src)], children)
+    result = iframe(@[attr("src", src)], children)
 proc iframe*(src: string, child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe
-    result = iframe(@[attr("src", $src)], @[child] & children.toSeq())
+    result = iframe(@[attr("src", src)], @[child] & children.toSeq())
 
 # Custom attribute procs with content for iframe:
 proc iframe*(src: string, content: seq[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe
-    result = iframe(@[attr("src", $src)], rawHtmlText(content))
+    result = iframe(@[attr("src", src)], rawHtmlText(content))
 proc iframe*(src: string, content: string, contents: varargs[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe
-    result = iframe(@[attr("src", $src)], rawHtmlText(@[content] & contents.toSeq()))
+    result = iframe(@[attr("src", src)], rawHtmlText(@[content] & contents.toSeq()))
 
 # Custom attribute procs for void iframe:
 proc iframe*(src: string, width: int, height: int): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe
-    result = iframe(@[attr("src", $src), attr("width", $width), attr("height", $height)])
+    result = iframe(@[attr("src", src), attr("width", width), attr("height", height)])
 
 # Custom attribute procs with children for iframe:
 proc iframe*(src: string, width: int, height: int, children: seq[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe
-    result = iframe(@[attr("src", $src), attr("width", $width), attr("height", $height)], children)
+    result = iframe(@[attr("src", src), attr("width", width), attr("height", height)], children)
 proc iframe*(src: string, width: int, height: int, child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe
-    result = iframe(@[attr("src", $src), attr("width", $width), attr("height", $height)], @[child] & children.toSeq())
+    result = iframe(@[attr("src", src), attr("width", width), attr("height", height)], @[child] & children.toSeq())
 
 # Custom attribute procs with content for iframe:
 proc iframe*(src: string, width: int, height: int, content: seq[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe
-    result = iframe(@[attr("src", $src), attr("width", $width), attr("height", $height)], rawHtmlText(content))
+    result = iframe(@[attr("src", src), attr("width", width), attr("height", height)], rawHtmlText(content))
 proc iframe*(src: string, width: int, height: int, content: string, contents: varargs[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe
-    result = iframe(@[attr("src", $src), attr("width", $width), attr("height", $height)], rawHtmlText(@[content] & contents.toSeq()))
+    result = iframe(@[attr("src", src), attr("width", width), attr("height", height)], rawHtmlText(@[content] & contents.toSeq()))
 
 
 
@@ -2431,13 +2431,13 @@ proc img*(attributes: seq[Attribute]): HtmlElement =
 proc img*(src: string, alt: string): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img
-    result = img(@[attr("src", $src), attr("alt", $alt)])
+    result = img(@[attr("src", src), attr("alt", alt)])
 
 # Custom attribute procs for void img:
 proc img*(src: string, alt: string, width: int, height: int): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img
-    result = img(@[attr("src", $src), attr("alt", $alt), attr("width", $width), attr("height", $height)])
+    result = img(@[attr("src", src), attr("alt", alt), attr("width", width), attr("height", height)])
 
 
 
@@ -2455,13 +2455,13 @@ proc input*(attributes: seq[Attribute]): HtmlElement =
 proc input*(`type`: string, id: string): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input
-    result = input(@[attr("type", $`type`), attr("id", $id)])
+    result = input(@[attr("type", `type`), attr("id", id)])
 
 # Custom attribute procs for void input:
 proc input*(`type`: string, id: string, form: string): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input
-    result = input(@[attr("type", $`type`), attr("id", $id), attr("form", $form)])
+    result = input(@[attr("type", `type`), attr("id", id), attr("form", form)])
 
 
 
@@ -2507,53 +2507,53 @@ proc ins*(attributes: seq[Attribute], content: string, moreContent: varargs[stri
 proc ins*(datetime: string): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ins
-    result = ins(@[attr("datetime", $datetime)])
+    result = ins(@[attr("datetime", datetime)])
 
 # Custom attribute procs with children for ins:
 proc ins*(datetime: string, children: seq[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ins
-    result = ins(@[attr("datetime", $datetime)], children)
+    result = ins(@[attr("datetime", datetime)], children)
 proc ins*(datetime: string, child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ins
-    result = ins(@[attr("datetime", $datetime)], @[child] & children.toSeq())
+    result = ins(@[attr("datetime", datetime)], @[child] & children.toSeq())
 
 # Custom attribute procs with content for ins:
 proc ins*(datetime: string, content: seq[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ins
-    result = ins(@[attr("datetime", $datetime)], rawHtmlText(content))
+    result = ins(@[attr("datetime", datetime)], rawHtmlText(content))
 proc ins*(datetime: string, content: string, contents: varargs[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ins
-    result = ins(@[attr("datetime", $datetime)], rawHtmlText(@[content] & contents.toSeq()))
+    result = ins(@[attr("datetime", datetime)], rawHtmlText(@[content] & contents.toSeq()))
 
 # Custom attribute procs for void ins:
 proc ins*(datetime: string, cite: string): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ins
-    result = ins(@[attr("datetime", $datetime), attr("cite", $cite)])
+    result = ins(@[attr("datetime", datetime), attr("cite", cite)])
 
 # Custom attribute procs with children for ins:
 proc ins*(datetime: string, cite: string, children: seq[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ins
-    result = ins(@[attr("datetime", $datetime), attr("cite", $cite)], children)
+    result = ins(@[attr("datetime", datetime), attr("cite", cite)], children)
 proc ins*(datetime: string, cite: string, child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ins
-    result = ins(@[attr("datetime", $datetime), attr("cite", $cite)], @[child] & children.toSeq())
+    result = ins(@[attr("datetime", datetime), attr("cite", cite)], @[child] & children.toSeq())
 
 # Custom attribute procs with content for ins:
 proc ins*(datetime: string, cite: string, content: seq[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ins
-    result = ins(@[attr("datetime", $datetime), attr("cite", $cite)], rawHtmlText(content))
+    result = ins(@[attr("datetime", datetime), attr("cite", cite)], rawHtmlText(content))
 proc ins*(datetime: string, cite: string, content: string, contents: varargs[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ins
-    result = ins(@[attr("datetime", $datetime), attr("cite", $cite)], rawHtmlText(@[content] & contents.toSeq()))
+    result = ins(@[attr("datetime", datetime), attr("cite", cite)], rawHtmlText(@[content] & contents.toSeq()))
 
 
 
@@ -2639,13 +2639,13 @@ proc label*(attributes: seq[Attribute], content: string, moreContent: varargs[st
 proc label*(`type`: string, `for`: string): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label
-    result = label(@[attr("type", $`type`), attr("for", $`for`)])
+    result = label(@[attr("type", `type`), attr("for", `for`)])
 
 # Custom attribute procs for void label:
 proc label*(`type`: string, `for`: string, form: string): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label
-    result = label(@[attr("type", $`type`), attr("for", $`for`), attr("form", $form)])
+    result = label(@[attr("type", `type`), attr("for", `for`), attr("form", form)])
 
 
 
@@ -2731,27 +2731,27 @@ proc li*(attributes: seq[Attribute], content: string, moreContent: varargs[strin
 proc li*(value: SomeNumber): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/li
-    result = li(@[attr("value", $value)])
+    result = li(@[attr("value", value)])
 
 # Custom attribute procs with children for li:
 proc li*(value: SomeNumber, children: seq[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/li
-    result = li(@[attr("value", $value)], children)
+    result = li(@[attr("value", value)], children)
 proc li*(value: SomeNumber, child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/li
-    result = li(@[attr("value", $value)], @[child] & children.toSeq())
+    result = li(@[attr("value", value)], @[child] & children.toSeq())
 
 # Custom attribute procs with content for li:
 proc li*(value: SomeNumber, content: seq[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/li
-    result = li(@[attr("value", $value)], rawHtmlText(content))
+    result = li(@[attr("value", value)], rawHtmlText(content))
 proc li*(value: SomeNumber, content: string, contents: varargs[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/li
-    result = li(@[attr("value", $value)], rawHtmlText(@[content] & contents.toSeq()))
+    result = li(@[attr("value", value)], rawHtmlText(@[content] & contents.toSeq()))
 
 
 
@@ -2769,7 +2769,7 @@ proc link*(attributes: seq[Attribute]): HtmlElement =
 proc link*(rel: string, href: string): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link
-    result = link(@[attr("rel", $rel), attr("href", $href)])
+    result = link(@[attr("rel", rel), attr("href", href)])
 
 
 
@@ -2855,17 +2855,17 @@ proc map*(attributes: seq[Attribute], content: string, moreContent: varargs[stri
 proc map*(name: string): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/map
-    result = map(@[attr("name", $name)])
+    result = map(@[attr("name", name)])
 
 # Custom attribute procs with children for map:
 proc map*(name: string, children: seq[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/map
-    result = map(@[attr("name", $name)], children)
+    result = map(@[attr("name", name)], children)
 proc map*(name: string, child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/map
-    result = map(@[attr("name", $name)], @[child] & children.toSeq())
+    result = map(@[attr("name", name)], @[child] & children.toSeq())
 
 
 
@@ -3003,13 +3003,13 @@ proc meta*(attributes: seq[Attribute]): HtmlElement =
 proc meta*(charset: string): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta
-    result = meta(@[attr("charset", $charset)])
+    result = meta(@[attr("charset", charset)])
 
 # Custom attribute procs for void meta:
 proc meta*(name: string, content: string): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta
-    result = meta(@[attr("name", $name), attr("content", $content)])
+    result = meta(@[attr("name", name), attr("content", content)])
 
 
 
@@ -3055,105 +3055,105 @@ proc meter*(attributes: seq[Attribute], content: string, moreContent: varargs[st
 proc meter*(value: SomeNumber, min: SomeNumber, max: SomeNumber): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meter
-    result = meter(@[attr("value", $value), attr("min", $min), attr("max", $max)])
+    result = meter(@[attr("value", value), attr("min", min), attr("max", max)])
 
 # Custom attribute procs with children for meter:
 proc meter*(value: SomeNumber, min: SomeNumber, max: SomeNumber, children: seq[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meter
-    result = meter(@[attr("value", $value), attr("min", $min), attr("max", $max)], children)
+    result = meter(@[attr("value", value), attr("min", min), attr("max", max)], children)
 proc meter*(value: SomeNumber, min: SomeNumber, max: SomeNumber, child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meter
-    result = meter(@[attr("value", $value), attr("min", $min), attr("max", $max)], @[child] & children.toSeq())
+    result = meter(@[attr("value", value), attr("min", min), attr("max", max)], @[child] & children.toSeq())
 
 # Custom attribute procs with content for meter:
 proc meter*(value: SomeNumber, min: SomeNumber, max: SomeNumber, content: seq[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meter
-    result = meter(@[attr("value", $value), attr("min", $min), attr("max", $max)], rawHtmlText(content))
+    result = meter(@[attr("value", value), attr("min", min), attr("max", max)], rawHtmlText(content))
 proc meter*(value: SomeNumber, min: SomeNumber, max: SomeNumber, content: string, contents: varargs[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meter
-    result = meter(@[attr("value", $value), attr("min", $min), attr("max", $max)], rawHtmlText(@[content] & contents.toSeq()))
+    result = meter(@[attr("value", value), attr("min", min), attr("max", max)], rawHtmlText(@[content] & contents.toSeq()))
 
 # Custom attribute procs for void meter:
 proc meter*(value: SomeNumber, min: SomeNumber, max: SomeNumber, low: SomeNumber, optimum: SomeNumber, high: SomeNumber): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meter
-    result = meter(@[attr("value", $value), attr("min", $min), attr("max", $max), attr("low", $low), attr("optimum", $optimum), attr("high", $high)])
+    result = meter(@[attr("value", value), attr("min", min), attr("max", max), attr("low", low), attr("optimum", optimum), attr("high", high)])
 
 # Custom attribute procs with children for meter:
 proc meter*(value: SomeNumber, min: SomeNumber, max: SomeNumber, low: SomeNumber, optimum: SomeNumber, high: SomeNumber, children: seq[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meter
-    result = meter(@[attr("value", $value), attr("min", $min), attr("max", $max), attr("low", $low), attr("optimum", $optimum), attr("high", $high)], children)
+    result = meter(@[attr("value", value), attr("min", min), attr("max", max), attr("low", low), attr("optimum", optimum), attr("high", high)], children)
 proc meter*(value: SomeNumber, min: SomeNumber, max: SomeNumber, low: SomeNumber, optimum: SomeNumber, high: SomeNumber, child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meter
-    result = meter(@[attr("value", $value), attr("min", $min), attr("max", $max), attr("low", $low), attr("optimum", $optimum), attr("high", $high)], @[child] & children.toSeq())
+    result = meter(@[attr("value", value), attr("min", min), attr("max", max), attr("low", low), attr("optimum", optimum), attr("high", high)], @[child] & children.toSeq())
 
 # Custom attribute procs with content for meter:
 proc meter*(value: SomeNumber, min: SomeNumber, max: SomeNumber, low: SomeNumber, optimum: SomeNumber, high: SomeNumber, content: seq[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meter
-    result = meter(@[attr("value", $value), attr("min", $min), attr("max", $max), attr("low", $low), attr("optimum", $optimum), attr("high", $high)], rawHtmlText(content))
+    result = meter(@[attr("value", value), attr("min", min), attr("max", max), attr("low", low), attr("optimum", optimum), attr("high", high)], rawHtmlText(content))
 proc meter*(value: SomeNumber, min: SomeNumber, max: SomeNumber, low: SomeNumber, optimum: SomeNumber, high: SomeNumber, content: string, contents: varargs[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meter
-    result = meter(@[attr("value", $value), attr("min", $min), attr("max", $max), attr("low", $low), attr("optimum", $optimum), attr("high", $high)], rawHtmlText(@[content] & contents.toSeq()))
+    result = meter(@[attr("value", value), attr("min", min), attr("max", max), attr("low", low), attr("optimum", optimum), attr("high", high)], rawHtmlText(@[content] & contents.toSeq()))
 
 # Custom attribute procs for void meter:
 proc meter*(id: string, value: SomeNumber, min: SomeNumber, max: SomeNumber): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meter
-    result = meter(@[attr("id", $id), attr("value", $value), attr("min", $min), attr("max", $max)])
+    result = meter(@[attr("id", id), attr("value", value), attr("min", min), attr("max", max)])
 
 # Custom attribute procs with children for meter:
 proc meter*(id: string, value: SomeNumber, min: SomeNumber, max: SomeNumber, children: seq[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meter
-    result = meter(@[attr("id", $id), attr("value", $value), attr("min", $min), attr("max", $max)], children)
+    result = meter(@[attr("id", id), attr("value", value), attr("min", min), attr("max", max)], children)
 proc meter*(id: string, value: SomeNumber, min: SomeNumber, max: SomeNumber, child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meter
-    result = meter(@[attr("id", $id), attr("value", $value), attr("min", $min), attr("max", $max)], @[child] & children.toSeq())
+    result = meter(@[attr("id", id), attr("value", value), attr("min", min), attr("max", max)], @[child] & children.toSeq())
 
 # Custom attribute procs with content for meter:
 proc meter*(id: string, value: SomeNumber, min: SomeNumber, max: SomeNumber, content: seq[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meter
-    result = meter(@[attr("id", $id), attr("value", $value), attr("min", $min), attr("max", $max)], rawHtmlText(content))
+    result = meter(@[attr("id", id), attr("value", value), attr("min", min), attr("max", max)], rawHtmlText(content))
 proc meter*(id: string, value: SomeNumber, min: SomeNumber, max: SomeNumber, content: string, contents: varargs[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meter
-    result = meter(@[attr("id", $id), attr("value", $value), attr("min", $min), attr("max", $max)], rawHtmlText(@[content] & contents.toSeq()))
+    result = meter(@[attr("id", id), attr("value", value), attr("min", min), attr("max", max)], rawHtmlText(@[content] & contents.toSeq()))
 
 # Custom attribute procs for void meter:
 proc meter*(id: string, value: SomeNumber, min: SomeNumber, max: SomeNumber, low: SomeNumber, optimum: SomeNumber, high: SomeNumber): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meter
-    result = meter(@[attr("id", $id), attr("value", $value), attr("min", $min), attr("max", $max), attr("low", $low), attr("optimum", $optimum), attr("high", $high)])
+    result = meter(@[attr("id", id), attr("value", value), attr("min", min), attr("max", max), attr("low", low), attr("optimum", optimum), attr("high", high)])
 
 # Custom attribute procs with children for meter:
 proc meter*(id: string, value: SomeNumber, min: SomeNumber, max: SomeNumber, low: SomeNumber, optimum: SomeNumber, high: SomeNumber, children: seq[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meter
-    result = meter(@[attr("id", $id), attr("value", $value), attr("min", $min), attr("max", $max), attr("low", $low), attr("optimum", $optimum), attr("high", $high)], children)
+    result = meter(@[attr("id", id), attr("value", value), attr("min", min), attr("max", max), attr("low", low), attr("optimum", optimum), attr("high", high)], children)
 proc meter*(id: string, value: SomeNumber, min: SomeNumber, max: SomeNumber, low: SomeNumber, optimum: SomeNumber, high: SomeNumber, child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meter
-    result = meter(@[attr("id", $id), attr("value", $value), attr("min", $min), attr("max", $max), attr("low", $low), attr("optimum", $optimum), attr("high", $high)], @[child] & children.toSeq())
+    result = meter(@[attr("id", id), attr("value", value), attr("min", min), attr("max", max), attr("low", low), attr("optimum", optimum), attr("high", high)], @[child] & children.toSeq())
 
 # Custom attribute procs with content for meter:
 proc meter*(id: string, value: SomeNumber, min: SomeNumber, max: SomeNumber, low: SomeNumber, optimum: SomeNumber, high: SomeNumber, content: seq[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meter
-    result = meter(@[attr("id", $id), attr("value", $value), attr("min", $min), attr("max", $max), attr("low", $low), attr("optimum", $optimum), attr("high", $high)], rawHtmlText(content))
+    result = meter(@[attr("id", id), attr("value", value), attr("min", min), attr("max", max), attr("low", low), attr("optimum", optimum), attr("high", high)], rawHtmlText(content))
 proc meter*(id: string, value: SomeNumber, min: SomeNumber, max: SomeNumber, low: SomeNumber, optimum: SomeNumber, high: SomeNumber, content: string, contents: varargs[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meter
-    result = meter(@[attr("id", $id), attr("value", $value), attr("min", $min), attr("max", $max), attr("low", $low), attr("optimum", $optimum), attr("high", $high)], rawHtmlText(@[content] & contents.toSeq()))
+    result = meter(@[attr("id", id), attr("value", value), attr("min", min), attr("max", max), attr("low", low), attr("optimum", optimum), attr("high", high)], rawHtmlText(@[content] & contents.toSeq()))
 
 
 
@@ -3399,33 +3399,33 @@ proc `object`*(attributes: seq[Attribute], content: string, moreContent: varargs
 proc `object`*(data: string): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object
-    result = `object`(@[attr("data", $data)])
+    result = `object`(@[attr("data", data)])
 
 # Custom attribute procs with children for `object`:
 proc `object`*(data: string, children: seq[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object
-    result = `object`(@[attr("data", $data)], children)
+    result = `object`(@[attr("data", data)], children)
 proc `object`*(data: string, child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object
-    result = `object`(@[attr("data", $data)], @[child] & children.toSeq())
+    result = `object`(@[attr("data", data)], @[child] & children.toSeq())
 
 # Custom attribute procs for void `object`:
 proc `object`*(data: string, width: int, height: int): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object
-    result = `object`(@[attr("data", $data), attr("width", $width), attr("height", $height)])
+    result = `object`(@[attr("data", data), attr("width", width), attr("height", height)])
 
 # Custom attribute procs with children for `object`:
 proc `object`*(data: string, width: int, height: int, children: seq[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object
-    result = `object`(@[attr("data", $data), attr("width", $width), attr("height", $height)], children)
+    result = `object`(@[attr("data", data), attr("width", width), attr("height", height)], children)
 proc `object`*(data: string, width: int, height: int, child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object
-    result = `object`(@[attr("data", $data), attr("width", $width), attr("height", $height)], @[child] & children.toSeq())
+    result = `object`(@[attr("data", data), attr("width", width), attr("height", height)], @[child] & children.toSeq())
 
 
 
@@ -3471,33 +3471,33 @@ proc ol*(attributes: seq[Attribute], content: string, moreContent: varargs[strin
 proc ol*(`type`: string|int, start: string|int): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ol
-    result = ol(@[attr("type", $`type`), attr("start", $start)])
+    result = ol(@[attr("type", `type`), attr("start", start)])
 
 # Custom attribute procs with children for ol:
 proc ol*(`type`: string|int, start: string|int, children: seq[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ol
-    result = ol(@[attr("type", $`type`), attr("start", $start)], children)
+    result = ol(@[attr("type", `type`), attr("start", start)], children)
 proc ol*(`type`: string|int, start: string|int, child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ol
-    result = ol(@[attr("type", $`type`), attr("start", $start)], @[child] & children.toSeq())
+    result = ol(@[attr("type", `type`), attr("start", start)], @[child] & children.toSeq())
 
 # Custom attribute procs for void ol:
 proc ol*(`type`: string|int, start: string|int, reversed: bool): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ol
-    result = ol(@[attr("type", $`type`), attr("start", $start), attr("reversed", $reversed)])
+    result = ol(@[attr("type", `type`), attr("start", start), attr("reversed", reversed)])
 
 # Custom attribute procs with children for ol:
 proc ol*(`type`: string|int, start: string|int, reversed: bool, children: seq[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ol
-    result = ol(@[attr("type", $`type`), attr("start", $start), attr("reversed", $reversed)], children)
+    result = ol(@[attr("type", `type`), attr("start", start), attr("reversed", reversed)], children)
 proc ol*(`type`: string|int, start: string|int, reversed: bool, child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ol
-    result = ol(@[attr("type", $`type`), attr("start", $start), attr("reversed", $reversed)], @[child] & children.toSeq())
+    result = ol(@[attr("type", `type`), attr("start", start), attr("reversed", reversed)], @[child] & children.toSeq())
 
 
 
@@ -3543,17 +3543,17 @@ proc optgroup*(attributes: seq[Attribute], content: string, moreContent: varargs
 proc optgroup*(label: string): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/optgroup
-    result = optgroup(@[attr("label", $label)])
+    result = optgroup(@[attr("label", label)])
 
 # Custom attribute procs with children for optgroup:
 proc optgroup*(label: string, children: seq[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/optgroup
-    result = optgroup(@[attr("label", $label)], children)
+    result = optgroup(@[attr("label", label)], children)
 proc optgroup*(label: string, child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/optgroup
-    result = optgroup(@[attr("label", $label)], @[child] & children.toSeq())
+    result = optgroup(@[attr("label", label)], @[child] & children.toSeq())
 
 
 
@@ -3599,53 +3599,53 @@ proc option*(attributes: seq[Attribute], content: string, moreContent: varargs[s
 proc option*(value: string): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option
-    result = option(@[attr("value", $value)])
+    result = option(@[attr("value", value)])
 
 # Custom attribute procs with children for option:
 proc option*(value: string, children: seq[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option
-    result = option(@[attr("value", $value)], children)
+    result = option(@[attr("value", value)], children)
 proc option*(value: string, child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option
-    result = option(@[attr("value", $value)], @[child] & children.toSeq())
+    result = option(@[attr("value", value)], @[child] & children.toSeq())
 
 # Custom attribute procs with content for option:
 proc option*(value: string, content: seq[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option
-    result = option(@[attr("value", $value)], rawHtmlText(content))
+    result = option(@[attr("value", value)], rawHtmlText(content))
 proc option*(value: string, content: string, contents: varargs[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option
-    result = option(@[attr("value", $value)], rawHtmlText(@[content] & contents.toSeq()))
+    result = option(@[attr("value", value)], rawHtmlText(@[content] & contents.toSeq()))
 
 # Custom attribute procs for void option:
 proc option*(value: string, selected: bool): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option
-    result = option(@[attr("value", $value), attr("selected", $selected)])
+    result = option(@[attr("value", value), attr("selected", selected)])
 
 # Custom attribute procs with children for option:
 proc option*(value: string, selected: bool, children: seq[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option
-    result = option(@[attr("value", $value), attr("selected", $selected)], children)
+    result = option(@[attr("value", value), attr("selected", selected)], children)
 proc option*(value: string, selected: bool, child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option
-    result = option(@[attr("value", $value), attr("selected", $selected)], @[child] & children.toSeq())
+    result = option(@[attr("value", value), attr("selected", selected)], @[child] & children.toSeq())
 
 # Custom attribute procs with content for option:
 proc option*(value: string, selected: bool, content: seq[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option
-    result = option(@[attr("value", $value), attr("selected", $selected)], rawHtmlText(content))
+    result = option(@[attr("value", value), attr("selected", selected)], rawHtmlText(content))
 proc option*(value: string, selected: bool, content: string, contents: varargs[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option
-    result = option(@[attr("value", $value), attr("selected", $selected)], rawHtmlText(@[content] & contents.toSeq()))
+    result = option(@[attr("value", value), attr("selected", selected)], rawHtmlText(@[content] & contents.toSeq()))
 
 
 
@@ -3691,27 +3691,27 @@ proc output*(attributes: seq[Attribute], content: string, moreContent: varargs[s
 proc output*(`for`: string): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/output
-    result = output(@[attr("for", $`for`)])
+    result = output(@[attr("for", `for`)])
 
 # Custom attribute procs with children for output:
 proc output*(`for`: string, children: seq[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/output
-    result = output(@[attr("for", $`for`)], children)
+    result = output(@[attr("for", `for`)], children)
 proc output*(`for`: string, child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/output
-    result = output(@[attr("for", $`for`)], @[child] & children.toSeq())
+    result = output(@[attr("for", `for`)], @[child] & children.toSeq())
 
 # Custom attribute procs with content for output:
 proc output*(`for`: string, content: seq[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/output
-    result = output(@[attr("for", $`for`)], rawHtmlText(content))
+    result = output(@[attr("for", `for`)], rawHtmlText(content))
 proc output*(`for`: string, content: string, contents: varargs[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/output
-    result = output(@[attr("for", $`for`)], rawHtmlText(@[content] & contents.toSeq()))
+    result = output(@[attr("for", `for`)], rawHtmlText(@[content] & contents.toSeq()))
 
 
 
@@ -3769,7 +3769,7 @@ proc param*(attributes: seq[Attribute]): HtmlElement =
 proc param*(name: string, value: string|SomeNumber): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/param
-    result = param(@[attr("name", $name), attr("value", $value)])
+    result = param(@[attr("name", name), attr("value", value)])
 
 
 
@@ -3935,27 +3935,27 @@ proc progress*(attributes: seq[Attribute], content: string, moreContent: varargs
 proc progress*(value: SomeNumber, max: SomeNumber): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress
-    result = progress(@[attr("value", $value), attr("max", $max)])
+    result = progress(@[attr("value", value), attr("max", max)])
 
 # Custom attribute procs with children for progress:
 proc progress*(value: SomeNumber, max: SomeNumber, children: seq[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress
-    result = progress(@[attr("value", $value), attr("max", $max)], children)
+    result = progress(@[attr("value", value), attr("max", max)], children)
 proc progress*(value: SomeNumber, max: SomeNumber, child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress
-    result = progress(@[attr("value", $value), attr("max", $max)], @[child] & children.toSeq())
+    result = progress(@[attr("value", value), attr("max", max)], @[child] & children.toSeq())
 
 # Custom attribute procs with content for progress:
 proc progress*(value: SomeNumber, max: SomeNumber, content: seq[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress
-    result = progress(@[attr("value", $value), attr("max", $max)], rawHtmlText(content))
+    result = progress(@[attr("value", value), attr("max", max)], rawHtmlText(content))
 proc progress*(value: SomeNumber, max: SomeNumber, content: string, contents: varargs[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress
-    result = progress(@[attr("value", $value), attr("max", $max)], rawHtmlText(@[content] & contents.toSeq()))
+    result = progress(@[attr("value", value), attr("max", max)], rawHtmlText(@[content] & contents.toSeq()))
 
 
 
@@ -4001,27 +4001,27 @@ proc q*(attributes: seq[Attribute], content: string, moreContent: varargs[string
 proc q*(cite: string): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q
-    result = q(@[attr("cite", $cite)])
+    result = q(@[attr("cite", cite)])
 
 # Custom attribute procs with children for q:
 proc q*(cite: string, children: seq[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q
-    result = q(@[attr("cite", $cite)], children)
+    result = q(@[attr("cite", cite)], children)
 proc q*(cite: string, child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q
-    result = q(@[attr("cite", $cite)], @[child] & children.toSeq())
+    result = q(@[attr("cite", cite)], @[child] & children.toSeq())
 
 # Custom attribute procs with content for q:
 proc q*(cite: string, content: seq[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q
-    result = q(@[attr("cite", $cite)], rawHtmlText(content))
+    result = q(@[attr("cite", cite)], rawHtmlText(content))
 proc q*(cite: string, content: string, contents: varargs[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q
-    result = q(@[attr("cite", $cite)], rawHtmlText(@[content] & contents.toSeq()))
+    result = q(@[attr("cite", cite)], rawHtmlText(@[content] & contents.toSeq()))
 
 
 
@@ -4347,53 +4347,53 @@ proc script*(attributes: seq[Attribute], content: string, moreContent: varargs[s
 proc script*(`defer`: bool = false): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script
-    result = script(@[attr("defer", $`defer`)])
+    result = script(@[attr("defer", `defer`)])
 
 # Custom attribute procs with children for script:
 proc script*(`defer`: bool = false, children: seq[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script
-    result = script(@[attr("defer", $`defer`)], children)
+    result = script(@[attr("defer", `defer`)], children)
 proc script*(`defer`: bool = false, child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script
-    result = script(@[attr("defer", $`defer`)], @[child] & children.toSeq())
+    result = script(@[attr("defer", `defer`)], @[child] & children.toSeq())
 
 # Custom attribute procs with content for script:
 proc script*(`defer`: bool = false, content: seq[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script
-    result = script(@[attr("defer", $`defer`)], rawHtmlText(content))
+    result = script(@[attr("defer", `defer`)], rawHtmlText(content))
 proc script*(`defer`: bool = false, content: string, contents: varargs[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script
-    result = script(@[attr("defer", $`defer`)], rawHtmlText(@[content] & contents.toSeq()))
+    result = script(@[attr("defer", `defer`)], rawHtmlText(@[content] & contents.toSeq()))
 
 # Custom attribute procs for void script:
 proc script*(src: string, `defer`: bool = false): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script
-    result = script(@[attr("src", $src), attr("defer", $`defer`)])
+    result = script(@[attr("src", src), attr("defer", `defer`)])
 
 # Custom attribute procs with children for script:
 proc script*(src: string, `defer`: bool = false, children: seq[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script
-    result = script(@[attr("src", $src), attr("defer", $`defer`)], children)
+    result = script(@[attr("src", src), attr("defer", `defer`)], children)
 proc script*(src: string, `defer`: bool = false, child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script
-    result = script(@[attr("src", $src), attr("defer", $`defer`)], @[child] & children.toSeq())
+    result = script(@[attr("src", src), attr("defer", `defer`)], @[child] & children.toSeq())
 
 # Custom attribute procs with content for script:
 proc script*(src: string, `defer`: bool = false, content: seq[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script
-    result = script(@[attr("src", $src), attr("defer", $`defer`)], rawHtmlText(content))
+    result = script(@[attr("src", src), attr("defer", `defer`)], rawHtmlText(content))
 proc script*(src: string, `defer`: bool = false, content: string, contents: varargs[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script
-    result = script(@[attr("src", $src), attr("defer", $`defer`)], rawHtmlText(@[content] & contents.toSeq()))
+    result = script(@[attr("src", src), attr("defer", `defer`)], rawHtmlText(@[content] & contents.toSeq()))
 
 
 
@@ -4519,49 +4519,49 @@ proc select*(attributes: seq[Attribute], content: string, moreContent: varargs[s
 proc select*(id: string): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select
-    result = select(@[attr("id", $id)])
+    result = select(@[attr("id", id)])
 
 # Custom attribute procs with children for select:
 proc select*(id: string, children: seq[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select
-    result = select(@[attr("id", $id)], children)
+    result = select(@[attr("id", id)], children)
 proc select*(id: string, child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select
-    result = select(@[attr("id", $id)], @[child] & children.toSeq())
+    result = select(@[attr("id", id)], @[child] & children.toSeq())
 
 # Custom attribute procs for void select:
 proc select*(id: string, multiple: bool): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select
-    result = select(@[attr("id", $id), attr("multiple", $multiple)])
+    result = select(@[attr("id", id), attr("multiple", multiple)])
 
 # Custom attribute procs with children for select:
 proc select*(id: string, multiple: bool, children: seq[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select
-    result = select(@[attr("id", $id), attr("multiple", $multiple)], children)
+    result = select(@[attr("id", id), attr("multiple", multiple)], children)
 proc select*(id: string, multiple: bool, child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select
-    result = select(@[attr("id", $id), attr("multiple", $multiple)], @[child] & children.toSeq())
+    result = select(@[attr("id", id), attr("multiple", multiple)], @[child] & children.toSeq())
 
 # Custom attribute procs for void select:
 proc select*(id: string, multiple: bool, required: bool): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select
-    result = select(@[attr("id", $id), attr("multiple", $multiple), attr("required", $required)])
+    result = select(@[attr("id", id), attr("multiple", multiple), attr("required", required)])
 
 # Custom attribute procs with children for select:
 proc select*(id: string, multiple: bool, required: bool, children: seq[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select
-    result = select(@[attr("id", $id), attr("multiple", $multiple), attr("required", $required)], children)
+    result = select(@[attr("id", id), attr("multiple", multiple), attr("required", required)], children)
 proc select*(id: string, multiple: bool, required: bool, child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select
-    result = select(@[attr("id", $id), attr("multiple", $multiple), attr("required", $required)], @[child] & children.toSeq())
+    result = select(@[attr("id", id), attr("multiple", multiple), attr("required", required)], @[child] & children.toSeq())
 
 
 
@@ -4659,7 +4659,7 @@ proc source*(attributes: seq[Attribute]): HtmlElement =
 proc source*(`type`: string, src: string): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source
-    result = source(@[attr("type", $`type`), attr("src", $src)])
+    result = source(@[attr("type", `type`), attr("src", src)])
 
 
 
@@ -5065,27 +5065,27 @@ proc td*(attributes: seq[Attribute], content: string, moreContent: varargs[strin
 proc td*(rowspan: int, colspan: int): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/td
-    result = td(@[attr("rowspan", $rowspan), attr("colspan", $colspan)])
+    result = td(@[attr("rowspan", rowspan), attr("colspan", colspan)])
 
 # Custom attribute procs with children for td:
 proc td*(rowspan: int, colspan: int, children: seq[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/td
-    result = td(@[attr("rowspan", $rowspan), attr("colspan", $colspan)], children)
+    result = td(@[attr("rowspan", rowspan), attr("colspan", colspan)], children)
 proc td*(rowspan: int, colspan: int, child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/td
-    result = td(@[attr("rowspan", $rowspan), attr("colspan", $colspan)], @[child] & children.toSeq())
+    result = td(@[attr("rowspan", rowspan), attr("colspan", colspan)], @[child] & children.toSeq())
 
 # Custom attribute procs with content for td:
 proc td*(rowspan: int, colspan: int, content: seq[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/td
-    result = td(@[attr("rowspan", $rowspan), attr("colspan", $colspan)], rawHtmlText(content))
+    result = td(@[attr("rowspan", rowspan), attr("colspan", colspan)], rawHtmlText(content))
 proc td*(rowspan: int, colspan: int, content: string, contents: varargs[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/td
-    result = td(@[attr("rowspan", $rowspan), attr("colspan", $colspan)], rawHtmlText(@[content] & contents.toSeq()))
+    result = td(@[attr("rowspan", rowspan), attr("colspan", colspan)], rawHtmlText(@[content] & contents.toSeq()))
 
 
 
@@ -5171,79 +5171,79 @@ proc textarea*(attributes: seq[Attribute], content: string, moreContent: varargs
 proc textarea*(id: string, rows: int, cols: int): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea
-    result = textarea(@[attr("id", $id), attr("rows", $rows), attr("cols", $cols)])
+    result = textarea(@[attr("id", id), attr("rows", rows), attr("cols", cols)])
 
 # Custom attribute procs with children for textarea:
 proc textarea*(id: string, rows: int, cols: int, children: seq[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea
-    result = textarea(@[attr("id", $id), attr("rows", $rows), attr("cols", $cols)], children)
+    result = textarea(@[attr("id", id), attr("rows", rows), attr("cols", cols)], children)
 proc textarea*(id: string, rows: int, cols: int, child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea
-    result = textarea(@[attr("id", $id), attr("rows", $rows), attr("cols", $cols)], @[child] & children.toSeq())
+    result = textarea(@[attr("id", id), attr("rows", rows), attr("cols", cols)], @[child] & children.toSeq())
 
 # Custom attribute procs with content for textarea:
 proc textarea*(id: string, rows: int, cols: int, content: seq[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea
-    result = textarea(@[attr("id", $id), attr("rows", $rows), attr("cols", $cols)], rawHtmlText(content))
+    result = textarea(@[attr("id", id), attr("rows", rows), attr("cols", cols)], rawHtmlText(content))
 proc textarea*(id: string, rows: int, cols: int, content: string, contents: varargs[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea
-    result = textarea(@[attr("id", $id), attr("rows", $rows), attr("cols", $cols)], rawHtmlText(@[content] & contents.toSeq()))
+    result = textarea(@[attr("id", id), attr("rows", rows), attr("cols", cols)], rawHtmlText(@[content] & contents.toSeq()))
 
 # Custom attribute procs for void textarea:
 proc textarea*(id: string, placeholder: string, rows: int, cols: int): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea
-    result = textarea(@[attr("id", $id), attr("placeholder", $placeholder), attr("rows", $rows), attr("cols", $cols)])
+    result = textarea(@[attr("id", id), attr("placeholder", placeholder), attr("rows", rows), attr("cols", cols)])
 
 # Custom attribute procs with children for textarea:
 proc textarea*(id: string, placeholder: string, rows: int, cols: int, children: seq[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea
-    result = textarea(@[attr("id", $id), attr("placeholder", $placeholder), attr("rows", $rows), attr("cols", $cols)], children)
+    result = textarea(@[attr("id", id), attr("placeholder", placeholder), attr("rows", rows), attr("cols", cols)], children)
 proc textarea*(id: string, placeholder: string, rows: int, cols: int, child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea
-    result = textarea(@[attr("id", $id), attr("placeholder", $placeholder), attr("rows", $rows), attr("cols", $cols)], @[child] & children.toSeq())
+    result = textarea(@[attr("id", id), attr("placeholder", placeholder), attr("rows", rows), attr("cols", cols)], @[child] & children.toSeq())
 
 # Custom attribute procs with content for textarea:
 proc textarea*(id: string, placeholder: string, rows: int, cols: int, content: seq[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea
-    result = textarea(@[attr("id", $id), attr("placeholder", $placeholder), attr("rows", $rows), attr("cols", $cols)], rawHtmlText(content))
+    result = textarea(@[attr("id", id), attr("placeholder", placeholder), attr("rows", rows), attr("cols", cols)], rawHtmlText(content))
 proc textarea*(id: string, placeholder: string, rows: int, cols: int, content: string, contents: varargs[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea
-    result = textarea(@[attr("id", $id), attr("placeholder", $placeholder), attr("rows", $rows), attr("cols", $cols)], rawHtmlText(@[content] & contents.toSeq()))
+    result = textarea(@[attr("id", id), attr("placeholder", placeholder), attr("rows", rows), attr("cols", cols)], rawHtmlText(@[content] & contents.toSeq()))
 
 # Custom attribute procs for void textarea:
 proc textarea*(id: string, placeholder: string, rows: int, cols: int, required: bool): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea
-    result = textarea(@[attr("id", $id), attr("placeholder", $placeholder), attr("rows", $rows), attr("cols", $cols), attr("required", $required)])
+    result = textarea(@[attr("id", id), attr("placeholder", placeholder), attr("rows", rows), attr("cols", cols), attr("required", required)])
 
 # Custom attribute procs with children for textarea:
 proc textarea*(id: string, placeholder: string, rows: int, cols: int, required: bool, children: seq[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea
-    result = textarea(@[attr("id", $id), attr("placeholder", $placeholder), attr("rows", $rows), attr("cols", $cols), attr("required", $required)], children)
+    result = textarea(@[attr("id", id), attr("placeholder", placeholder), attr("rows", rows), attr("cols", cols), attr("required", required)], children)
 proc textarea*(id: string, placeholder: string, rows: int, cols: int, required: bool, child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea
-    result = textarea(@[attr("id", $id), attr("placeholder", $placeholder), attr("rows", $rows), attr("cols", $cols), attr("required", $required)], @[child] & children.toSeq())
+    result = textarea(@[attr("id", id), attr("placeholder", placeholder), attr("rows", rows), attr("cols", cols), attr("required", required)], @[child] & children.toSeq())
 
 # Custom attribute procs with content for textarea:
 proc textarea*(id: string, placeholder: string, rows: int, cols: int, required: bool, content: seq[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea
-    result = textarea(@[attr("id", $id), attr("placeholder", $placeholder), attr("rows", $rows), attr("cols", $cols), attr("required", $required)], rawHtmlText(content))
+    result = textarea(@[attr("id", id), attr("placeholder", placeholder), attr("rows", rows), attr("cols", cols), attr("required", required)], rawHtmlText(content))
 proc textarea*(id: string, placeholder: string, rows: int, cols: int, required: bool, content: string, contents: varargs[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea
-    result = textarea(@[attr("id", $id), attr("placeholder", $placeholder), attr("rows", $rows), attr("cols", $cols), attr("required", $required)], rawHtmlText(@[content] & contents.toSeq()))
+    result = textarea(@[attr("id", id), attr("placeholder", placeholder), attr("rows", rows), attr("cols", cols), attr("required", required)], rawHtmlText(@[content] & contents.toSeq()))
 
 
 
@@ -5329,27 +5329,27 @@ proc th*(attributes: seq[Attribute], content: string, moreContent: varargs[strin
 proc th*(rowspan: int, colspan: int): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/th
-    result = th(@[attr("rowspan", $rowspan), attr("colspan", $colspan)])
+    result = th(@[attr("rowspan", rowspan), attr("colspan", colspan)])
 
 # Custom attribute procs with children for th:
 proc th*(rowspan: int, colspan: int, children: seq[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/th
-    result = th(@[attr("rowspan", $rowspan), attr("colspan", $colspan)], children)
+    result = th(@[attr("rowspan", rowspan), attr("colspan", colspan)], children)
 proc th*(rowspan: int, colspan: int, child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/th
-    result = th(@[attr("rowspan", $rowspan), attr("colspan", $colspan)], @[child] & children.toSeq())
+    result = th(@[attr("rowspan", rowspan), attr("colspan", colspan)], @[child] & children.toSeq())
 
 # Custom attribute procs with content for th:
 proc th*(rowspan: int, colspan: int, content: seq[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/th
-    result = th(@[attr("rowspan", $rowspan), attr("colspan", $colspan)], rawHtmlText(content))
+    result = th(@[attr("rowspan", rowspan), attr("colspan", colspan)], rawHtmlText(content))
 proc th*(rowspan: int, colspan: int, content: string, contents: varargs[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/th
-    result = th(@[attr("rowspan", $rowspan), attr("colspan", $colspan)], rawHtmlText(@[content] & contents.toSeq()))
+    result = th(@[attr("rowspan", rowspan), attr("colspan", colspan)], rawHtmlText(@[content] & contents.toSeq()))
 
 
 
@@ -5435,27 +5435,27 @@ proc time*(attributes: seq[Attribute], content: string, moreContent: varargs[str
 proc time*(datetime: string): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/time
-    result = time(@[attr("datetime", $datetime)])
+    result = time(@[attr("datetime", datetime)])
 
 # Custom attribute procs with children for time:
 proc time*(datetime: string, children: seq[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/time
-    result = time(@[attr("datetime", $datetime)], children)
+    result = time(@[attr("datetime", datetime)], children)
 proc time*(datetime: string, child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/time
-    result = time(@[attr("datetime", $datetime)], @[child] & children.toSeq())
+    result = time(@[attr("datetime", datetime)], @[child] & children.toSeq())
 
 # Custom attribute procs with content for time:
 proc time*(datetime: string, content: seq[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/time
-    result = time(@[attr("datetime", $datetime)], rawHtmlText(content))
+    result = time(@[attr("datetime", datetime)], rawHtmlText(content))
 proc time*(datetime: string, content: string, contents: varargs[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/time
-    result = time(@[attr("datetime", $datetime)], rawHtmlText(@[content] & contents.toSeq()))
+    result = time(@[attr("datetime", datetime)], rawHtmlText(@[content] & contents.toSeq()))
 
 
 
@@ -5553,13 +5553,13 @@ proc track*(attributes: seq[Attribute]): HtmlElement =
 proc track*(kind: string, src: string): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/track
-    result = track(@[attr("kind", $kind), attr("src", $src)])
+    result = track(@[attr("kind", kind), attr("src", src)])
 
 # Custom attribute procs for void track:
 proc track*(kind: string, src: string, srclang: string, label: string): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/track
-    result = track(@[attr("kind", $kind), attr("src", $src), attr("srclang", $srclang), attr("label", $label)])
+    result = track(@[attr("kind", kind), attr("src", src), attr("srclang", srclang), attr("label", label)])
 
 
 
@@ -5765,17 +5765,17 @@ proc video*(attributes: seq[Attribute], content: string, moreContent: varargs[st
 proc video*(src: string, autoplay: bool, controls: bool = true, loop: bool = false, muted: bool = false): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video
-    result = video(@[attr("src", $src), attr("autoplay", $autoplay), attr("controls", $controls), attr("loop", $loop), attr("muted", $muted)])
+    result = video(@[attr("src", src), attr("autoplay", autoplay), attr("controls", controls), attr("loop", loop), attr("muted", muted)])
 
 # Custom attribute procs with children for video:
 proc video*(src: string, autoplay: bool, controls: bool = true, loop: bool = false, muted: bool = false, children: seq[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video
-    result = video(@[attr("src", $src), attr("autoplay", $autoplay), attr("controls", $controls), attr("loop", $loop), attr("muted", $muted)], children)
+    result = video(@[attr("src", src), attr("autoplay", autoplay), attr("controls", controls), attr("loop", loop), attr("muted", muted)], children)
 proc video*(src: string, autoplay: bool, controls: bool = true, loop: bool = false, muted: bool = false, child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video
-    result = video(@[attr("src", $src), attr("autoplay", $autoplay), attr("controls", $controls), attr("loop", $loop), attr("muted", $muted)], @[child] & children.toSeq())
+    result = video(@[attr("src", src), attr("autoplay", autoplay), attr("controls", controls), attr("loop", loop), attr("muted", muted)], @[child] & children.toSeq())
 
 
 

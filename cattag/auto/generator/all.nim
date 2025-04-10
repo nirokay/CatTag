@@ -1,6 +1,10 @@
 import
     htmlAttributes,
-    htmlElements
+    htmlElements,
+    cssProperties,
+    cssValues
 export
     htmlAttributes,
-    htmlElements
+    htmlElements,
+    cssProperties,
+    cssValues
