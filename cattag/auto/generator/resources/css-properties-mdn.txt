@@ -1,3 +1,4 @@
+# Stolen from https://developer.mozilla.org/en-US/docs/Web/CSS with love <3
 -moz-*
     -moz-float-edge Non-standard Deprecated
     -moz-force-broken-image-icon Non-standard Deprecated
