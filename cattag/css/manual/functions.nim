@@ -219,21 +219,24 @@ proc cssSymbols*(symbolsType: string, args: varargs[string]): CssPropertyValue =
         list.add &"\"{item}\""
     &"symbols({symbolsType}, {list.join(sepSpace)})"
 
-proc cssTan*(args: varargs[string]): CssPropertyValue = &"tan({args.toSeq().join(sepSpace)})"
+proc cssTan*(angle: string|SomeNumber): CssPropertyValue = &"tan({angle})"
 
-proc cssTranslate*(args: varargs[string]): CssPropertyValue = &"translate({args.toSeq().join(sepSpace)})"
+proc cssTranslate*(value: string|SomeNumber): CssPropertyValue = &"translate({value})"
 
-proc cssTranslate3d*(args: varargs[string]): CssPropertyValue = &"translate3d({args.toSeq().join(sepSpace)})"
+proc cssTranslate3d*(x: string|SomeNumber, y: string|SomeNumber, z: string|SomeNumber): CssPropertyValue = &"translate3d({x}, {y}, {z})"
 
-proc cssTranslateX*(args: varargs[string]): CssPropertyValue = &"translateX({args.toSeq().join(sepSpace)})"
+proc cssTranslateX*(value: string|SomeNumber): CssPropertyValue = &"translateX({value})"
 
-proc cssTranslateY*(args: varargs[string]): CssPropertyValue = &"translateY({args.toSeq().join(sepSpace)})"
+proc cssTranslateY*(value: string|SomeNumber): CssPropertyValue = &"translateY({value})"
 
-proc cssTranslateZ*(args: varargs[string]): CssPropertyValue = &"translateZ({args.toSeq().join(sepSpace)})"
+proc cssTranslateZ*(value: string|SomeNumber): CssPropertyValue = &"translateZ({value})"
 
-proc cssUrl*(args: varargs[string]): CssPropertyValue = &"url({args.toSeq().join(sepSpace)})"
+proc cssUrl*(path: string): CssPropertyValue = &"url({path})"
 
-proc cssVar*(args: varargs[string]): CssPropertyValue = &"var({args.toSeq().join(sepSpace)})"
+proc cssVar*(variable: string): CssPropertyValue =
+    result =
+        if variable.startsWith("--"): &"var({variable})"
+        else: &"var(--{variable})"
 
 proc cssView*(args: varargs[string]): CssPropertyValue = &"view({args.toSeq().join(sepSpace)})"
 
