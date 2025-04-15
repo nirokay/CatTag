@@ -3,7 +3,8 @@ import cattag
 
 test "Properties":
     check $CssElementProperty(
-        property : "border", values: @["solid", "4px", "Red"]
+        property : "border",
+        values: @["solid", "4px", "Red"]
     ) == "border: solid 4px Red;"
 
 const pElement: string = """p {
@@ -106,4 +107,3 @@ test "Documents":
     )
 
     check stylesheet == $css
-

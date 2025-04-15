@@ -2,9 +2,15 @@ import
     types,
     dollars,
     procs,
-    sugar
+    sugar,
+    # Manual:
+    manual/[
+        functions
+    ]
 export
     types,
     dollars,
     procs,
-    sugar
+    sugar,
+    # Manual:
+    functions
