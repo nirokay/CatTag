@@ -51,9 +51,9 @@ for line in parseFileLines("css-properties-mdn.txt"):
     if "*" in parts[0]: continue
 
     let
-        rawValue: string = parts[0]
-        codeValue: string = block:
-            var r: string = rawValue.toCodeRepr()
+        rawProperty: string = parts[0]
+        codeProperty: string = block:
+            var r: string = rawProperty.toCodeRepr()
             if r in needsQuotes: r = "`" & r & "`"
             r
         components: seq[string] = block:
@@ -64,14 +64,14 @@ for line in parseFileLines("css-properties-mdn.txt"):
     let
         deprecationNotice: string = block:
             if "Deprecated" in components:
-                " {.deprecated: \"This CSS value is deprecated.\".}"
+                " {.deprecated: \"This CSS property is deprecated.\".}"
             else: ""
-        reference: string = "Reference: https://developer.mozilla.org/en-US/docs/Web/CSS/" & rawValue
+        reference: string = "Reference: https://developer.mozilla.org/en-US/docs/Web/CSS/" & rawProperty
         notes: string = block:
             if components.len() == 0: ""
             else: "Notes: [" & components.join(", ") & "] "
 
-    output.lines.add(&"    {codeValue}*{deprecationNotice}: CssProperty = \"{rawValue}\" ## CssValue `{rawValue}` {notes}{reference}")
+    output.lines.add(&"    {codeProperty}*{deprecationNotice}: CssProperty = \"{rawProperty}\" ## CssProperty `{rawProperty}` {notes}{reference}")
 
 output.lines.add("")
 output.writeFile()
