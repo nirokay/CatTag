@@ -1,3 +1,4 @@
+import cssTypes
 type
     CssElementType* = enum
         typeCssElement, typeCssComment

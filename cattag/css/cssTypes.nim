@@ -1,3 +1,4 @@
+import std/[strutils]
 # Types from https://developer.mozilla.org/en-US/docs/Web/CSS
 type
     CssAbsoluteSize* = enum
@@ -72,12 +73,14 @@ type
         xyz
         xyzD50 = "xyz-d50"
         xyzD65 = "xyz-d65"
+    CssRectangularColourSpace* = CssRectangularColorSpace
 
     CssPolarColorSpace* = enum
         hsl
         hwb
         lch
         oklch
+    CssPolarColourSpace* = CssPolarColorSpace
 
     CssHueInterpolationMethod* = enum
         shorter
@@ -87,6 +90,7 @@ type
 
     CssColor* = object
         repr*: string
+    CssColour* = CssColor
 
     CssContentDistribution* = enum
         spaceBetween = "space-between"
@@ -209,15 +213,17 @@ template newNumber(IDENT: untyped, REPR: typedesc, SUFFIX: untyped): untyped =
         result = $number.REPR & "SUFFIX"
 
 newNumber(fr, float)
-newNumber(percentage, float, %)
+newNumber(percentage, float, `%`)
 
 type
     CssAlphaValue* = SomeNumber|percentage
     CssAnglePercentage* = CssAngle|percentage
-    CssDimension* = CssLength|CssTime|CssFrequency|CssResolution
+    CssColorSpace* = CssPolarColorSpace|CssPolarColorSpace
+    CssColourSpace* = CssPolarColourSpace|CssPolarColourSpace
+    #CssDimension* = CssLength|CssTime|CssFrequency|CssResolution
     CssEasingFunction* = CssLinearEasingFunction|CssCubicBezierEasingFunction|CssStepEasingFunction
     CssFlex* = fr
-    CssFrequencyPercentage* = CssFrequency|percentage
+    #CssFrequencyPercentage* = CssFrequency|percentage
 
 proc `$`*(angle: CssAngle): string =
     result = $angle.value & $angle.angleType
@@ -228,4 +234,4 @@ proc `$`*(color: CssColor): string =
 dollarRepr(CssLinearEasingFunction)
 dollarRepr(CssCubicBezierEasingFunction)
 dollarRepr(CssStepEasingFunction)
-dollarRepr(CssFilterFunction)
+#dollarRepr(CssFilterFunction)
