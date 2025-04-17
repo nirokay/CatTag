@@ -19,4 +19,4 @@ task assemble, "Assembles all auto-generating modules":
 
 # Dependencies
 
-requires "nim >= 2.2.0"
+requires "nim >= 2.2.2"
