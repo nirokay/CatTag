@@ -42,7 +42,7 @@ proc cssColorMix*(args: varargs[string]): CssPropertyValue = &"color-mix({args.t
 proc cssColor*(colorSpace: CssColorSpace, a: float|percentage, b: float|percentage, c: float|percentage): CssColor = newCol &"color({colorSpace} {a} {b} {c})"
 proc cssColor*(colorSpace: CssColorSpace, a: float|percentage, b: float|percentage, c: float|percentage, A: float|percentage): CssColor = newCol &"color({colorSpace} {a} {b} {c} / {A})"
 
-proc cssConicGradient*(args: varargs[string]): CssPropertyValue = &"conic-gradient({args.toSeq().join(sepSpace)})"
+proc cssConicGradient*(args: varargs[string]): CssGradient = &"conic-gradient({args.toSeq().join(sepSpace)})"
 
 # proc cssContrast*(args: varargs[string]): CssPropertyValue = &"contrast({args.toSeq().join(sepSpace)})"
 proc cssContrast*(amount: float|percentage): CssPropertyValue = &"contrast({amount})"
@@ -108,7 +108,7 @@ proc cssLch*(l: float|percentage|string, c: float|percentage|string, h: float|pe
 
 proc cssLightDark*(light, dark: string): CssPropertyValue = &"light-dark({light}, {dark})"
 
-proc cssLinearGradient*(angle: CssAngle, colors: varargs[CssColor]): CssPropertyValue = &"linear-gradient({colors.toSeq().join(sepComma)})"
+proc cssLinearGradient*(angle: CssAngle, colors: varargs[CssColor]): CssGradient = &"linear-gradient({colors.toSeq().join(sepComma)})"
 
 proc cssLinear*[T: SomeNumber](args: varargs[T]): CssLinearEasingFunction = CssLinearEasingFunction(repr: &"linear({args.toSeq().join(sepComma)})")
 
@@ -151,7 +151,7 @@ proc cssPolygon*[T: SomeNumber](args: varargs[array[2, string|T]]): CssPropertyV
 
 proc cssPow*(base: string|SomeNumber, exponent: string|SomeNumber): CssPropertyValue = &"pow({base}, {exponent})"
 
-proc cssRadialGradient*(args: varargs[string]): CssPropertyValue = &"radial-gradient({args.toSeq().join(sepComma)})"
+proc cssRadialGradient*(args: varargs[string]): CssGradient = &"radial-gradient({args.toSeq().join(sepComma)})"
 
 proc cssRay*(args: varargs[string]): CssPropertyValue = &"ray({args.toSeq().join(sepSpace)})"
 
@@ -161,11 +161,11 @@ proc cssRem*(dividend: string|SomeNumber, divisor: string|SomeNumber): CssProper
 
 proc cssRepeat*(amount: int, args: varargs[string]): CssPropertyValue = &"repeat({amount}, {args.toSeq().join(sepComma)})"
 
-proc cssRepeatingConicGradient*(args: varargs[string]): CssPropertyValue = &"repeating-conic-gradient({args.toSeq().join(sepComma)})"
+proc cssRepeatingConicGradient*(args: varargs[string]): CssGradient = &"repeating-conic-gradient({args.toSeq().join(sepComma)})"
 
-proc cssRepeatingLinearGradient*(args: varargs[string]): CssPropertyValue = &"repeating-linear-gradient({args.toSeq().join(sepComma)})"
+proc cssRepeatingLinearGradient*(args: varargs[string]): CssGradient = &"repeating-linear-gradient({args.toSeq().join(sepComma)})"
 
-proc cssRepeatingRadialGradient*(args: varargs[string]): CssPropertyValue = &"repeating-radial-gradient({args.toSeq().join(sepSpace)})"
+proc cssRepeatingRadialGradient*(args: varargs[string]): CssGradient = &"repeating-radial-gradient({args.toSeq().join(sepSpace)})"
 
 proc cssRgb*(r: int|float|string|percentage, g: int|float|string|percentage, b: int|float|string|percentage): CssColor = newCol &"rgb({r} {g} {b})"
 proc cssRgb*(r: int|float|string|percentage, g: int|float|string|percentage, b: int|float|string|percentage, a: float|string|percentage): CssColor = newCol &"rgb({r} {g} {b} {a})"
@@ -244,3 +244,7 @@ proc cssVar*(variable: string): CssPropertyValue =
 proc cssView*(args: varargs[string]): CssPropertyValue = &"view({args.toSeq().join(sepSpace)})"
 
 proc cssXywh*(args: varargs[string]): CssPropertyValue = &"xywh({args.toSeq().join(sepSpace)})"
+
+
+proc cssSrc*(src: string): CssSrc = CssSrc(repr: src)
+proc cssUrl*(url: string): Cssurl = Cssurl(repr: url)

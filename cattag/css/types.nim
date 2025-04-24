@@ -1,4 +1,5 @@
 import cssTypes
+export cssTypes
 type
     CssElementType* = enum
         typeCssElement, typeCssComment
@@ -8,7 +9,6 @@ type
     CssElementProperty* = object
         property*: string
         values*: seq[string]
-    CssPropertyValue* = string
 
     CssElement* = object
         case elementType*: CssElementType:

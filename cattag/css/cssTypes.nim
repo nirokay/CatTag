@@ -1,5 +1,169 @@
 import std/[strutils]
 # Types from https://developer.mozilla.org/en-US/docs/Web/CSS
+
+
+template dollarRepr(IDENT: typedesc): untyped =
+    proc `$`*(obj: IDENT): string =
+        ## Stringifies IDENT
+        result = obj.repr
+template dollarReprWithType(IDENT, TYPE: typedesc, SUFFIX: untyped): untyped =
+    proc `$`*(obj: IDENT): string =
+        ## Stringifies IDENT
+        result = obj.repr & $TYPE
+template dollarReprWithType(IDENT, TYPE: typedesc): untyped =
+    dollarReprWithType(IDENT, TYPE, IDENT)
+
+template dollarReprWithPreAndSuffix(IDENT: typedesc, PREFIX, SUFFIX: string): untyped =
+    proc `$`*(obj: IDENT): string =
+        result = PREFIX & obj.repr & SUFFIX
+
+template newSelfSufficientNumber(IDENT: untyped, VALUE_TYPE: typedesc, SUFFIX: untyped): untyped =
+    type IDENT* {.borrow.} = distinct VALUE_TYPE
+    proc `'IDENT`*(value: string): IDENT =
+        ## New IDENT number
+        result = block:
+            when VALUE_TYPE is float:
+                parseFloat(value).IDENT
+            elif VALUE_TYPE is int:
+                parseInt(value).IDENT
+            else:
+                {.fatal: "repr for IDENT (VALUE_TYPE) is not known type".}
+                0
+    proc `$`*(number: IDENT): string =
+        ## Stringifies IDENT number
+        result = $number.repr & "SUFFIX"
+template newSelfSufficientNumber(IDENT: untyped, VALUE_TYPE: typedesc): untyped =
+    newSelfSufficientNumber(IDENT, VALUE_TYPE, IDENT)
+
+
+template newNumberParent(IDENT: untyped, VALUE_TYPE, CHILD_TYPE: typedesc): untyped =
+    type IDENT* = object
+        value*: VALUE_TYPE
+        `type`*: CHILD_TYPE
+    proc `$`*(unit: IDENT): string =
+        result = $unit.value & $unit.`type`
+
+template newNumberChild(IDENT: untyped, VALUE_TYPE, PARENT_TYPE: typedesc) =
+    proc `'IDENT`*(value: string): PARENT_TYPE = PARENT_TYPE(
+        value: value.parseFloat(),
+        `type`: IDENT
+    )
+
+template newRepr(IDENT: untyped, VALUE_TYPE: typedesc): untyped =
+    type IDENT* = object
+        repr*: VALUE_TYPE
+    dollarRepr(IDENT)
+template newRepr(IDENT: untyped): untyped =
+    newRepr(IDENT, string)
+
+
+#[
+    template newNumber(IDENT: untyped, REPR: typedesc): untyped =
+        type IDENT* {.borrow.} = distinct REPR
+        proc `'IDENT`*(value: string): IDENT =
+            ## New IDENT number
+            result = block:
+                when REPR is float:
+                    parseFloat(value).IDENT
+                elif REPR is int:
+                    parseInt(value).IDENT
+                else:
+                    {.warning: "".}
+                    0
+        proc `$`*(number: IDENT): string =
+            ## Stringifies IDENT number
+            result = $number.REPR & $IDENT
+    template newNumber(IDENT: untyped, REPR: typedesc, SUFFIX: untyped): untyped =
+        type IDENT* {.borrow.} = distinct REPR
+        proc `'IDENT`*(value: string): IDENT =
+            ## New IDENT number
+            result = block:
+                when REPR is float:
+                    parseFloat(value).IDENT
+                elif REPR is int:
+                    parseInt(value).IDENT
+                else:
+                    {.fatal: "repr for IDENT (REPR) is not known type".}
+                    0
+        proc `$`*(number: IDENT): string =
+            ## Stringifies IDENT number
+            result = $number.REPR & "SUFFIX"
+    template newNumberRepr(IDENT: untyped, REPR: typedesc, OBJECT_TYPE: typedesc): untyped =
+        type IDENT* {.borrow.} = distinct REPR
+        proc `'IDENT`*(value: string): OBJECT_TYPE =
+            ## New IDENT number
+            result = block:
+                let val =
+                    when REPR is float:
+                        parseFloat(value).
+                    elif REPR is int:
+                        parseInt(value).IDENT
+                    else:
+                        {.fatal: "repr for IDENT (REPR) is not known type".}
+                        0
+                OBJECT_TYPE(
+                    value: val,
+                    `type`: untyped
+                )
+        proc `$`*(number: IDENT): string =
+            ## Stringifies IDENT number
+            result = $number.REPR & "SUFFIX"
+    template newNumberRepr(IDENT: untyped, REPR: typedesc, OBJECT_TYPE: typedesc, SUFFIX: untyped): untyped =
+        type IDENT* {.borrow.} = distinct REPR
+        proc `'IDENT`*(value: string): OBJECT_TYPE =
+            ## New IDENT number
+            result = block:
+                let val =
+                    when REPR is float:
+                        parseFloat(value).
+                    elif REPR is int:
+                        parseInt(value).IDENT
+                    else:
+                        {.fatal: "repr for IDENT (REPR) is not known type".}
+                        0
+                OBJECT_TYPE(
+                    value: val,
+                    `type`: untyped
+                )
+        proc `$`*(number: IDENT): string =
+            ## Stringifies IDENT number
+            result = $number.REPR & "SUFFIX"
+    template newNumberRepr(IDENT: untyped, REPR: typedesc, OBJECT_TYPE: typedesc, SUFFIX: untyped): untyped =
+        type IDENT* {.borrow.} = distinct REPR
+        proc `'IDENT`*(value: string): OBJECT_TYPE =
+            ## New IDENT number
+            result = block:
+                let val =
+                    when REPR is float:
+                        parseFloat(value).
+                    elif REPR is int:
+                        parseInt(value).IDENT
+                    else:
+                        {.fatal: "repr for IDENT (REPR) is not known type".}
+                        0
+                OBJECT_TYPE(
+                    value: val,
+                    `type`: untyped
+                )
+        proc `$`*(number: IDENT): string =
+            ## Stringifies IDENT number
+            result = $number.REPR & "SUFFIX"
+]#
+
+type
+    CssPropertyValue* = string # Generic type
+
+type
+    CssUrl* = object
+        repr*: string
+dollarReprWithPreAndSuffix(CssUrl, "url(", ")")
+
+type
+    CssSrc* = object
+        repr*: string
+dollarReprWithPreAndSuffix(CssSrc, "src(", ")")
+
+
 type
     CssAbsoluteSize* = enum
         xxSmall = "xx-small"
@@ -12,15 +176,17 @@ type
         xxxLarge = "xxx-large"
 
     CssAngleType* = enum
-        angleDeg = "deg"
-        angleGrad = "grad"
-        angleRad = "rad"
-        angleTurn = "turn"
+        deg
+        grad
+        rad
+        turn
+newNumberParent(CssAngle, float, CssAngleType)
+newNumberChild(deg, float, CssAngle)
+newNumberChild(grad, float, CssAngle)
+newNumberChild(rad, float, CssAngle)
+newNumberChild(turn, float, CssAngle)
 
-    CssAngle* = object
-        angleType*: CssAngleType
-        value*: float
-
+type
     CssBaselinePosition* = enum
         firstBaseline = "first baseline"
         lastBaseline = "last baseline"
@@ -83,13 +249,13 @@ type
     CssPolarColourSpace* = CssPolarColorSpace
 
     CssHueInterpolationMethod* = enum
-        shorter
-        longer
-        increasing
-        decreasing
+        shorterHue = "shorter hue"
+        longerHue = "longer hue"
+        increasingHue = "increasing hue"
+        decreasingHue = "decreasing hue"
 
-    CssColor* = object
-        repr*: string
+newRepr(CssColor)
+type
     CssColour* = CssColor
 
     CssContentDistribution* = enum
@@ -146,25 +312,9 @@ type
         `block` = "block"
         inline
 
-    CssLinearEasingFunction* = object
-        repr*: string
-
-    CssCubicBezierEasingFunction* = object
-        repr*: string
-
-    CssStepEasingFunction* = object
-        repr*: string
-
-    CssStepPosition* = enum
-        jumpStart = "jump-start"
-        jumpEnd = "jump-end"
-        jumpNone = "jump-none"
-        jumpBoth = "jump-both"
-        start
-        `end` = "end"
-
-
-
+newRepr(CssLinearEasingFunction)
+newRepr(CssCubicBezierEasingFunction)
+newRepr(CssStepEasingFunction)
 const
     linear*: CssLinearEasingFunction = CssLinearEasingFunction(repr: "linear")
 
@@ -175,63 +325,212 @@ const
 
     stepStart*: CssStepEasingFunction = CssStepEasingFunction(repr: "step-start")
     stepEnd*: CssStepEasingFunction = CssStepEasingFunction(repr: "step-end")
-
-template dollarRepr(IDENT: typedesc): untyped =
-    proc `$`*(function: IDENT): string =
-        ## Stringifies IDENT
-        result = function.repr
-
-template newNumber(IDENT: untyped, REPR: typedesc): untyped =
-    type IDENT* {.borrow.} = distinct REPR
-    proc `'IDENT`*(value: string): IDENT =
-        ## New IDENT number
-        result = block:
-            when REPR is float:
-                parseFloat(value).IDENT
-            elif REPR is int:
-                parseInt(value).IDENT
-            else:
-                {.warning: "".}
-                0
-    proc `$`*(number: IDENT): string =
-        ## Stringifies IDENT number
-        result = $number.REPR & $IDENT
-template newNumber(IDENT: untyped, REPR: typedesc, SUFFIX: untyped): untyped =
-    type IDENT* {.borrow.} = distinct REPR
-    proc `'IDENT`*(value: string): IDENT =
-        ## New IDENT number
-        result = block:
-            when REPR is float:
-                parseFloat(value).IDENT
-            elif REPR is int:
-                parseInt(value).IDENT
-            else:
-                {.fatal: "repr for IDENT (REPR) is not known type".}
-                0
-    proc `$`*(number: IDENT): string =
-        ## Stringifies IDENT number
-        result = $number.REPR & "SUFFIX"
-
-newNumber(fr, float)
-newNumber(percentage, float, `%`)
-
-type
-    CssAlphaValue* = SomeNumber|percentage
-    CssAnglePercentage* = CssAngle|percentage
-    CssColorSpace* = CssPolarColorSpace|CssPolarColorSpace
-    CssColourSpace* = CssPolarColourSpace|CssPolarColourSpace
-    #CssDimension* = CssLength|CssTime|CssFrequency|CssResolution
-    CssEasingFunction* = CssLinearEasingFunction|CssCubicBezierEasingFunction|CssStepEasingFunction
-    CssFlex* = fr
-    #CssFrequencyPercentage* = CssFrequency|percentage
-
-proc `$`*(angle: CssAngle): string =
-    result = $angle.value & $angle.angleType
-
-proc `$`*(color: CssColor): string =
-    result = color.repr
-
 dollarRepr(CssLinearEasingFunction)
 dollarRepr(CssCubicBezierEasingFunction)
 dollarRepr(CssStepEasingFunction)
-#dollarRepr(CssFilterFunction)
+
+type
+    CssStepPosition* = enum
+        jumpStart = "jump-start"
+        jumpEnd = "jump-end"
+        jumpNone = "jump-none"
+        jumpBoth = "jump-both"
+        start
+        `end` = "end"
+
+newSelfSufficientNumber(fr, float)
+type
+    CssFlex* = fr
+
+    CssFrequencyType* = enum
+        Hz
+        kHz
+newNumberParent(CssFrequency, float, CssFrequencyType)
+newNumberChild(Hz, float, CssFrequency)
+newNumberChild(kHz, float, CssFrequency)
+
+type
+    CssGenericFontFamily* = enum
+        serif
+        sansSerif = "sans-serif"
+        monospace
+        cursive
+        fantasy
+        systemUi = "system-ui"
+        uiSerif = "ui-serif"
+        uiSansSerif = "ui-sans-serif"
+        uiMonospace = "ui-monospace"
+        uiRounded = "ui-rounded"
+        math
+        emoji
+        fangsong
+
+    CssGradient* = CssPropertyValue
+
+    # CssHexColor
+
+    CssImage* = string|CssUrl|CssSrc|CssGradient
+
+    CssLengthType* = enum
+        # Relative length units:
+        # - Based on font:
+        cap
+        ch
+        em
+        ex
+        ic
+        lh
+        # - Not based on font:
+        rcap
+        rch
+        rem
+        rex
+        ric
+        rlh
+        # - Based on viewport:
+        vh
+        vw
+        vmax
+        vmin
+        vb
+        vi
+        # - Container query length units:
+        cqw
+        cqh
+        cqi
+        cqb
+        cqmin
+        cqmax
+
+        # Absolute length units:
+        px
+        cm
+        mm
+        Q
+        pc
+        pt
+newNumberParent(CssLength, float, CssLengthType)
+newNumberChild(cap, float, Csslength)
+newNumberChild(ch, float, Csslength)
+newNumberChild(em, float, Csslength)
+newNumberChild(ex, float, Csslength)
+newNumberChild(ic, float, Csslength)
+newNumberChild(lh, float, Csslength)
+newNumberChild(rcap, float, Csslength)
+newNumberChild(rch, float, Csslength)
+newNumberChild(rem, float, Csslength)
+newNumberChild(rex, float, Csslength)
+newNumberChild(ric, float, Csslength)
+newNumberChild(rlh, float, Csslength)
+newNumberChild(vh, float, Csslength)
+newNumberChild(vw, float, Csslength)
+newNumberChild(vmax, float, Csslength)
+newNumberChild(vmin, float, Csslength)
+newNumberChild(vb, float, Csslength)
+newNumberChild(vi, float, Csslength)
+newNumberChild(cqw, float, Csslength)
+newNumberChild(cqh, float, Csslength)
+newNumberChild(cqi, float, Csslength)
+newNumberChild(cqb, float, Csslength)
+newNumberChild(cqmin, float, Csslength)
+newNumberChild(cqmax, float, Csslength)
+newNumberChild(px, float, Csslength)
+newNumberChild(cm, float, Csslength)
+newNumberChild(mm, float, Csslength)
+newNumberChild(Q, float, Csslength)
+newNumberChild(pc, float, Csslength)
+newNumberChild(pt, float, Csslength)
+
+type
+    CssLineStyle* = enum
+        none
+        hidden
+        dotted
+        dashed
+        solid
+        double
+        groove
+        ridge
+        inset
+        outset
+
+    CssOverflowPostion* = enum
+        unsafe
+        safe
+
+    CssOverflow* = enum
+        visible
+        hidden
+        clip
+        scroll
+        `auto`
+
+newSelfSufficientNumber(percentage, float, `%`)
+type
+    CssPercentage* = percentage
+
+    # Experimental: CssPositionArea
+
+    CssPosition* = enum
+        left
+        center
+        right
+        top
+        bottom
+
+    # CssRatio
+
+    CssRelativeSize* = enum
+        smaller
+        larger
+
+    CssResolutionType* = enum
+        dpi
+        dpcm
+        dppx
+        x # Alias for dppx
+newNumberParent(CssResolution, float, CssResolutionType)
+newNumberChild(dpi, float, CssResolution)
+newNumberChild(dpcm, float, CssResolution)
+newNumberChild(dppx, float, CssResolution)
+newNumberChild(x, float, CssResolution)
+
+type
+    CssSelfPosition* = enum
+        center
+        start
+        `end`
+        selfStart = "self-start"
+        selfEnd = "self-end"
+        flexStart = "flex-start"
+        flexEnd = "flex-end"
+
+    CssTextEdge* = enum
+        alphabetic
+        cap
+        ex
+        text
+
+    CssTimeType* = enum
+        s
+        ms
+newNumberParent(CssTime, float, CssTimeType)
+newNumberChild(s, float, CssTime)
+newNumberChild(ms, float, CssTime)
+
+newRepr(CssTransformFunction)
+
+
+
+# Combined types:
+type
+    CssAlphaValue* = SomeNumber|CssPercentage
+    CssAnglePercentage* = CssAngle|CssPercentage
+    CssColorSpace* = CssPolarColorSpace|CssPolarColorSpace
+    CssColourSpace* = CssPolarColourSpace|CssPolarColourSpace
+    CssDimension* = CssLength|CssTime|CssFrequency|CssResolution
+    CssEasingFunction* = CssLinearEasingFunction|CssCubicBezierEasingFunction|CssStepEasingFunction
+    CssFrequencyPercentage* = CssFrequency|CssPercentage
+    CssHue* = CssAngle
+    CssLenghtPercentage* = CssLength|CssPercentage
+    CssTimePercentage* = CssTime|CssPercentage
