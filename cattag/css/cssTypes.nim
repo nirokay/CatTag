@@ -329,6 +329,8 @@ dollarRepr(CssLinearEasingFunction)
 dollarRepr(CssCubicBezierEasingFunction)
 dollarRepr(CssStepEasingFunction)
 
+newRepr(CssFilterFunction)
+
 type
     CssStepPosition* = enum
         jumpStart = "jump-start"
