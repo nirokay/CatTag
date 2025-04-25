@@ -17,7 +17,7 @@ template dollarReprWithPreAndSuffix(IDENT: typedesc, PREFIX, SUFFIX: string): un
     proc `$`*(obj: IDENT): string =
         result = PREFIX & obj.repr & SUFFIX
 
-template newSelfSufficientNumber(IDENT: untyped, VALUE_TYPE: typedesc, SUFFIX: untyped): untyped =
+template newSelfSufficientNumber(IDENT: untyped, VALUE_TYPE: typedesc, SUFFIX: string): untyped =
     type IDENT* {.borrow.} = distinct VALUE_TYPE
     proc `'IDENT`*(value: string): IDENT =
         ## New IDENT number
@@ -31,9 +31,9 @@ template newSelfSufficientNumber(IDENT: untyped, VALUE_TYPE: typedesc, SUFFIX: u
                 0
     proc `$`*(number: IDENT): string =
         ## Stringifies IDENT number
-        result = $number.repr & "SUFFIX"
+        result = $number.repr & SUFFIX
 template newSelfSufficientNumber(IDENT: untyped, VALUE_TYPE: typedesc): untyped =
-    newSelfSufficientNumber(IDENT, VALUE_TYPE, IDENT)
+    newSelfSufficientNumber(IDENT, VALUE_TYPE, $IDENT)
 
 
 template newNumberParent(IDENT: untyped, VALUE_TYPE, CHILD_TYPE: typedesc): untyped =
@@ -57,98 +57,6 @@ template newRepr(IDENT: untyped): untyped =
     newRepr(IDENT, string)
 
 
-#[
-    template newNumber(IDENT: untyped, REPR: typedesc): untyped =
-        type IDENT* {.borrow.} = distinct REPR
-        proc `'IDENT`*(value: string): IDENT =
-            ## New IDENT number
-            result = block:
-                when REPR is float:
-                    parseFloat(value).IDENT
-                elif REPR is int:
-                    parseInt(value).IDENT
-                else:
-                    {.warning: "".}
-                    0
-        proc `$`*(number: IDENT): string =
-            ## Stringifies IDENT number
-            result = $number.REPR & $IDENT
-    template newNumber(IDENT: untyped, REPR: typedesc, SUFFIX: untyped): untyped =
-        type IDENT* {.borrow.} = distinct REPR
-        proc `'IDENT`*(value: string): IDENT =
-            ## New IDENT number
-            result = block:
-                when REPR is float:
-                    parseFloat(value).IDENT
-                elif REPR is int:
-                    parseInt(value).IDENT
-                else:
-                    {.fatal: "repr for IDENT (REPR) is not known type".}
-                    0
-        proc `$`*(number: IDENT): string =
-            ## Stringifies IDENT number
-            result = $number.REPR & "SUFFIX"
-    template newNumberRepr(IDENT: untyped, REPR: typedesc, OBJECT_TYPE: typedesc): untyped =
-        type IDENT* {.borrow.} = distinct REPR
-        proc `'IDENT`*(value: string): OBJECT_TYPE =
-            ## New IDENT number
-            result = block:
-                let val =
-                    when REPR is float:
-                        parseFloat(value).
-                    elif REPR is int:
-                        parseInt(value).IDENT
-                    else:
-                        {.fatal: "repr for IDENT (REPR) is not known type".}
-                        0
-                OBJECT_TYPE(
-                    value: val,
-                    `type`: untyped
-                )
-        proc `$`*(number: IDENT): string =
-            ## Stringifies IDENT number
-            result = $number.REPR & "SUFFIX"
-    template newNumberRepr(IDENT: untyped, REPR: typedesc, OBJECT_TYPE: typedesc, SUFFIX: untyped): untyped =
-        type IDENT* {.borrow.} = distinct REPR
-        proc `'IDENT`*(value: string): OBJECT_TYPE =
-            ## New IDENT number
-            result = block:
-                let val =
-                    when REPR is float:
-                        parseFloat(value).
-                    elif REPR is int:
-                        parseInt(value).IDENT
-                    else:
-                        {.fatal: "repr for IDENT (REPR) is not known type".}
-                        0
-                OBJECT_TYPE(
-                    value: val,
-                    `type`: untyped
-                )
-        proc `$`*(number: IDENT): string =
-            ## Stringifies IDENT number
-            result = $number.REPR & "SUFFIX"
-    template newNumberRepr(IDENT: untyped, REPR: typedesc, OBJECT_TYPE: typedesc, SUFFIX: untyped): untyped =
-        type IDENT* {.borrow.} = distinct REPR
-        proc `'IDENT`*(value: string): OBJECT_TYPE =
-            ## New IDENT number
-            result = block:
-                let val =
-                    when REPR is float:
-                        parseFloat(value).
-                    elif REPR is int:
-                        parseInt(value).IDENT
-                    else:
-                        {.fatal: "repr for IDENT (REPR) is not known type".}
-                        0
-                OBJECT_TYPE(
-                    value: val,
-                    `type`: untyped
-                )
-        proc `$`*(number: IDENT): string =
-            ## Stringifies IDENT number
-            result = $number.REPR & "SUFFIX"
-]#
 
 type
     CssPropertyValue* = string # Generic type
@@ -340,7 +248,7 @@ type
         start
         `end` = "end"
 
-newSelfSufficientNumber(fr, float)
+newSelfSufficientNumber(fr, float, "fr")
 type
     CssFlex* = fr
 
@@ -467,7 +375,7 @@ type
         scroll
         `auto`
 
-newSelfSufficientNumber(percentage, float, `%`)
+newSelfSufficientNumber(percentage, float, "%")
 type
     CssPercentage* = percentage
 

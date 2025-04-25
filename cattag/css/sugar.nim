@@ -1,13 +1,32 @@
 import std/[strutils, sequtils]
+export replace
 import types, procs
+from ../auto/cssProperties import CssProperty
 
+iterator stringPairs[T](a: seq[T]): tuple[key: int, val: string] =
+    for i, v in a:
+        yield (key: i, val: $v)
 
-proc `:=`*(property: string, values: seq[string]): CssElementProperty =
+proc `:=`*(property: string|CssProperty, values: seq[string]): CssElementProperty =
     ## Sugar constructor for `CssElementProperty`
     result = newCssProperty(property, values)
-proc `:=`*(property: string, values: varargs[string]): CssElementProperty =
+proc `:=`*(property: string|CssProperty, values: varargs[string]): CssElementProperty =
     ## Sugar constructor for `CssElementProperty`
     result = property := values.toSeq()
+
+proc `:=`*(property: string|CssProperty, values: tuple): CssElementProperty =
+    ## Sugar constructor for `CssElementProperty` (slow and janky)
+    let
+        joinedValues: string = block:
+            let j: string = $values
+            if likely j.len() > 2: j[1 .. ^2]
+            else: ""
+        parts: seq[string] = joinedValues.split(", ")
+    result = property := parts
+
+template `:=`*(property: string|CssProperty, values: varargs[untyped, `$`]): untyped =
+    ## Sugar constructor for `CssElementProperty`
+    newCssProperty(property, $values)
 
 
 proc `{}`*(selector: string, properties: seq[CssElementProperty]): CssElement =

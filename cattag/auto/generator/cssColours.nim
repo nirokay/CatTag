@@ -10,6 +10,10 @@ output.lines = @[
     "",
     "from ../css/cssTypes import CssColor",
     "",
+    "proc `$`(colour: CssColor): string =",
+    "    ## Stringifies `CssColor`",
+    "    result = colour.repr",
+    "",
     "const"
 ]
 

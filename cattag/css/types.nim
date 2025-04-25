@@ -1,5 +1,6 @@
 import cssTypes
 export cssTypes
+
 type
     CssElementType* = enum
         typeCssElement, typeCssComment

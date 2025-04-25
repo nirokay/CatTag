@@ -24,7 +24,7 @@ proc cssAtan2*(args: varargs[string]): CssPropertyValue = &"atan2({args.toSeq().
 
 proc cssAttr*(args: varargs[string]): CssPropertyValue = &"attr({args.toSeq().join(sepSpace)})"
 
-proc cssBlur*(args: varargs[string]): CssFilterFunction = CssFilterFunction(repr: &"blur({args.toSeq().join(sepSpace)})")
+proc cssBlur*(radius: string|CssLength): CssFilterFunction = CssFilterFunction(repr: &"blur({radius})")
 
 # proc cssBrightness*(args: varargs[string]): CssPropertyValue = &"brightness({args.toSeq().join(sepSpace)})"
 proc cssBrightness*(amount: float|percentage): CssFilterFunction = CssFilterFunction(repr: &"brightness({amount})")
