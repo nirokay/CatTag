@@ -43,7 +43,7 @@ test "Numbers":
     check "10.0pc" == $10'pc
     check "10.0pt" == $10'pt
 
-    check "10.0%" == $10'percentage
+    check "10.0%" == $10'percent
 
     check "10.0dpi" == $10'dpi
     check "10.0dpcm" == $10'dpcm
@@ -64,6 +64,9 @@ test "Properties":
 
 test "Functions":
     check "rotate(20.0deg)" == $cssRotate(20'deg)
-    check "blur(4.0px)" == $cssBlur(4'px)
+    check "transform: rotate(20.0deg);" == $(transform := cssRotate(20'deg))
 
+    check "blur(4.0px)" == $cssBlur(4'px)
     check "filter: blur(4.0px);" == $(filter := cssBlur(4'px))
+
+    check "color: rgb(10 20 30 / 50.0%);" == $(color := cssRgb(10, 20, 30, 50'percent))

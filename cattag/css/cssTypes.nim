@@ -376,8 +376,10 @@ type
         `auto`
 
 newSelfSufficientNumber(percentage, float, "%")
+type percent* = percentage
+proc `'percent`*(value: string): percent = `'percentage`(value)
 type
-    CssPercentage* = percentage
+    CssPercentage* = percent
 
     # Experimental: CssPositionArea
 

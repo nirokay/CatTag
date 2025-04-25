@@ -27,7 +27,7 @@ proc cssAttr*(args: varargs[string]): CssPropertyValue = &"attr({args.toSeq().jo
 proc cssBlur*(radius: string|CssLength): CssFilterFunction = CssFilterFunction(repr: &"blur({radius})")
 
 # proc cssBrightness*(args: varargs[string]): CssPropertyValue = &"brightness({args.toSeq().join(sepSpace)})"
-proc cssBrightness*(amount: float|percentage): CssFilterFunction = CssFilterFunction(repr: &"brightness({amount})")
+proc cssBrightness*(amount: float|percent): CssFilterFunction = CssFilterFunction(repr: &"brightness({amount})")
 
 proc cssCalcSize*(args: varargs[string]): CssPropertyValue = &"calc-size({args.toSeq().join(sepSpace)})" ## Experimental
 
@@ -39,15 +39,15 @@ proc cssClamp*(args: varargs[string]): CssPropertyValue = &"clamp({args.toSeq().
 
 proc cssColorMix*(args: varargs[string]): CssPropertyValue = &"color-mix({args.toSeq().join(sepSpace)})"
 
-proc cssColor*(colorSpace: CssColorSpace, a: float|percentage, b: float|percentage, c: float|percentage): CssColor = newCol &"color({colorSpace} {a} {b} {c})"
-proc cssColor*(colorSpace: CssColorSpace, a: float|percentage, b: float|percentage, c: float|percentage, A: float|percentage): CssColor = newCol &"color({colorSpace} {a} {b} {c} / {A})"
+proc cssColor*(colorSpace: CssColorSpace, a: float|percent, b: float|percent, c: float|percent): CssColor = newCol &"color({colorSpace} {a} {b} {c})"
+proc cssColor*(colorSpace: CssColorSpace, a: float|percent, b: float|percent, c: float|percent, A: float|percent): CssColor = newCol &"color({colorSpace} {a} {b} {c} / {A})"
 
 proc cssConicGradient*(args: varargs[string]): CssGradient = &"conic-gradient({args.toSeq().join(sepSpace)})"
 
 # proc cssContrast*(args: varargs[string]): CssPropertyValue = &"contrast({args.toSeq().join(sepSpace)})"
-proc cssContrast*(amount: float|percentage): CssFilterFunction = CssFilterFunction(repr: &"contrast({amount})")
+proc cssContrast*(amount: float|percent): CssFilterFunction = CssFilterFunction(repr: &"contrast({amount})")
 
-proc cssCos*(number: float|percentage|string): CssPropertyValue = &"cos({number})"
+proc cssCos*(number: float|percent|string): CssPropertyValue = &"cos({number})"
 
 proc cssCounter*(args: varargs[string]): CssPropertyValue = &"counter({args.toSeq().join(sepSpace)})"
 
@@ -57,10 +57,10 @@ proc cssCrossFade*(args: varargs[string]): CssPropertyValue = &"cross-fade({args
 
 proc cssCubicBezier*(x1, y1, x2, y2: float): CssCubicBezierEasingFunction = CssCubicBezierEasingFunction(repr: &"cubic-bezier({x1}, {y1}, {x2}, {y2})")
 
-proc cssDeviceCmyk*(c: float|percentage|string, m: float|percentage|string, y: float|percentage|string, k: float|percentage|string): CssPropertyValue = newCol &"device-cmyk({c} {m} {y} {k})"
-proc cssDeviceCmyk*(c: float|percentage|string, m: float|percentage|string, y: float|percentage|string, k: float|percentage|string, a: float|percentage): CssPropertyValue = newCol &"device-cmyk({c} {m} {y} {k} / {a})"
-proc cssDeviceCmyk*(c: float|percentage|string, m: float|percentage|string, y: float|percentage|string, k: float|percentage|string, fallback: string): CssPropertyValue = newCol &"device-cmyk({c} {m} {y} {k}, {fallback})"
-proc cssDeviceCmyk*(c: float|percentage|string, m: float|percentage|string, y: float|percentage|string, k: float|percentage|string, a: float|percentage, fallback: string): CssPropertyValue = newCol &"device-cmyk({c} {m} {y} {k} / {a}, {fallback})"
+proc cssDeviceCmyk*(c: float|percent|string, m: float|percent|string, y: float|percent|string, k: float|percent|string): CssPropertyValue = newCol &"device-cmyk({c} {m} {y} {k})"
+proc cssDeviceCmyk*(c: float|percent|string, m: float|percent|string, y: float|percent|string, k: float|percent|string, a: float|percent): CssPropertyValue = newCol &"device-cmyk({c} {m} {y} {k} / {a})"
+proc cssDeviceCmyk*(c: float|percent|string, m: float|percent|string, y: float|percent|string, k: float|percent|string, fallback: string): CssPropertyValue = newCol &"device-cmyk({c} {m} {y} {k}, {fallback})"
+proc cssDeviceCmyk*(c: float|percent|string, m: float|percent|string, y: float|percent|string, k: float|percent|string, a: float|percent, fallback: string): CssPropertyValue = newCol &"device-cmyk({c} {m} {y} {k} / {a}, {fallback})"
 
 proc cssDropShadow*(args: varargs[string]): CssFilterFunction = CssFilterFunction(repr: &"drop-shadow({args.toSeq().join(sepSpace)})")
 
@@ -76,16 +76,16 @@ proc cssExp*(number: SomeNumber): CssPropertyValue = &"exp({number})"
 proc cssFitContent*(size: string): CssPropertyValue = &"fit-content({size})"
 
 # proc cssGrayscale*(args: varargs[string]): CssPropertyValue = &"grayscale({args.toSeq().join(sepSpace)})"
-proc cssGrayscale*(value: float|percentage): CssFilterFunction = CssFilterFunction(repr: &"grayscale({value})")
-proc cssGreyscale*(value: float|percentage): CssFilterFunction = cssGrayscale(value)
+proc cssGrayscale*(value: float|percent): CssFilterFunction = CssFilterFunction(repr: &"grayscale({value})")
+proc cssGreyscale*(value: float|percent): CssFilterFunction = cssGrayscale(value)
 
-proc cssHsl*(h: float|percentage|string, s: float|percentage|string, l: float|percentage|string): CssPropertyValue = &"hsl({h} {s} {l})"
-proc cssHsl*(h: float|percentage|string, s: float|percentage|string, l: float|percentage|string, a: float|percentage|string): CssPropertyValue = &"hsl({h} {s} {l} / {a})"
+proc cssHsl*(h: float|percent|string, s: float|percent|string, l: float|percent|string): CssPropertyValue = &"hsl({h} {s} {l})"
+proc cssHsl*(h: float|percent|string, s: float|percent|string, l: float|percent|string, a: float|percent|string): CssPropertyValue = &"hsl({h} {s} {l} / {a})"
 
 proc cssHueRotate*(angle: string|CssAnglePercentage): CssFilterFunction = CssFilterFunction(repr: &"hue-rotate({angle})")
 
-proc cssHwb*(h: float|percentage|string, w: float|percentage|string, b: float|percentage|string): CssPropertyValue = CssColor(repr: &"hwb({h} {w} {b})")
-proc cssHwb*(h: float|percentage|string, w: float|percentage|string, b: float|percentage|string, a: float|percentage|string): CssPropertyValue = CssColor(repr: &"hwb({h} {w} {b} / {a})")
+proc cssHwb*(h: float|percent|string, w: float|percent|string, b: float|percent|string): CssPropertyValue = CssColor(repr: &"hwb({h} {w} {b})")
+proc cssHwb*(h: float|percent|string, w: float|percent|string, b: float|percent|string, a: float|percent|string): CssPropertyValue = CssColor(repr: &"hwb({h} {w} {b} / {a})")
 
 proc cssHypot*(args: varargs[string]): CssPropertyValue = &"hypot({args.toSeq().join(sepComma)})" ## TODO: Accepts unit numbers
 
@@ -96,16 +96,16 @@ proc cssImage*(args: varargs[string]): CssPropertyValue = &"image({args.toSeq().
 proc cssInset*(args: varargs[string]): CssPropertyValue = &"inset({args.toSeq().join(sepSpace)})"
 
 # proc cssInvert*(args: varargs[string]): CssPropertyValue = &"invert({args.toSeq().join(sepSpace)})"
-proc cssInvert*(value: float|percentage): CssFilterFunction = CssFilterFunction(repr: &"invert({value})")
+proc cssInvert*(value: float|percent): CssFilterFunction = CssFilterFunction(repr: &"invert({value})")
 
 # proc cssLab*(args: varargs[string]): CssPropertyValue = &"lab({args.toSeq().join(sepSpace)})"
-proc cssLab*(L: float|percentage|string, a: float|percentage|string, b: float|percentage|string): CssPropertyValue = &"lab({L} {a} {b})"
-proc cssLab*(L: float|percentage|string, a: float|percentage|string, b: float|percentage|string, A: float|percentage|string): CssPropertyValue = &"lab({L} {a} {b} / {A})"
+proc cssLab*(L: float|percent|string, a: float|percent|string, b: float|percent|string): CssPropertyValue = &"lab({L} {a} {b})"
+proc cssLab*(L: float|percent|string, a: float|percent|string, b: float|percent|string, A: float|percent|string): CssPropertyValue = &"lab({L} {a} {b} / {A})"
 
 proc cssLayer*(name: string): CssPropertyValue = &"layer({name})"
 
-proc cssLch*(l: float|percentage|string, c: float|percentage|string, h: float|percentage|string): CssPropertyValue = &"lch({l} {c} {h})"
-proc cssLch*(l: float|percentage|string, c: float|percentage|string, h: float|percentage|string, a: float|percentage|string): CssPropertyValue = &"lch({l} {c} {h} / {a})"
+proc cssLch*(l: float|percent|string, c: float|percent|string, h: float|percent|string): CssPropertyValue = &"lch({l} {c} {h})"
+proc cssLch*(l: float|percent|string, c: float|percent|string, h: float|percent|string, a: float|percent|string): CssPropertyValue = &"lch({l} {c} {h} / {a})"
 
 proc cssLightDark*(light, dark: string): CssPropertyValue = &"light-dark({light}, {dark})"
 
@@ -128,13 +128,13 @@ proc cssMinmax*(x, y: string|SomeNumber): CssPropertyValue = &"minmax({x}, {y})"
 
 proc cssMod*(dividend: string|SomeNumber, divisor: string|SomeNumber): CssPropertyValue = &"mod({dividend}, {divisor})"
 
-proc cssOklab*(L: float|string|percentage, a: float|string|percentage, b: float|string|percentage): CssPropertyValue = &"oklab({L} {a} {b})"
-proc cssOklab*(L: float|string|percentage, a: float|string|percentage, b: float|string|percentage, A: float|string|percentage): CssPropertyValue = &"oklab({L} {a} {b} / {A})"
+proc cssOklab*(L: float|string|percent, a: float|string|percent, b: float|string|percent): CssPropertyValue = &"oklab({L} {a} {b})"
+proc cssOklab*(L: float|string|percent, a: float|string|percent, b: float|string|percent, A: float|string|percent): CssPropertyValue = &"oklab({L} {a} {b} / {A})"
 
-proc cssOklch*(l: float|string|percentage, c: float|string|percentage, h: float|string|percentage): CssPropertyValue = &"oklch({l} {c} {h})"
-proc cssOklch*(l: float|string|percentage, c: float|string|percentage, h: float|string|percentage, a: float|string|percentage): CssPropertyValue = &"oklch({l} {c} {h} / {a})"
+proc cssOklch*(l: float|string|percent, c: float|string|percent, h: float|string|percent): CssPropertyValue = &"oklch({l} {c} {h})"
+proc cssOklch*(l: float|string|percent, c: float|string|percent, h: float|string|percent, a: float|string|percent): CssPropertyValue = &"oklch({l} {c} {h} / {a})"
 
-proc cssOpacity*(value: float|percentage): CssFilterFunction = CssFilterFunction(repr: &"opacity({value})")
+proc cssOpacity*(value: float|percent): CssFilterFunction = CssFilterFunction(repr: &"opacity({value})")
 
 proc cssPaint*(worklet: string, args: varargs[string]): CssPropertyValue = &"paint({(@[worklet] & args.toSeq()).join(sepComma)})"
 
@@ -168,8 +168,8 @@ proc cssRepeatingLinearGradient*(args: varargs[string]): CssGradient = &"repeati
 
 proc cssRepeatingRadialGradient*(args: varargs[string]): CssGradient = &"repeating-radial-gradient({args.toSeq().join(sepSpace)})"
 
-proc cssRgb*(r: int|float|string|percentage, g: int|float|string|percentage, b: int|float|string|percentage): CssColor = newCol &"rgb({r} {g} {b})"
-proc cssRgb*(r: int|float|string|percentage, g: int|float|string|percentage, b: int|float|string|percentage, a: float|string|percentage): CssColor = newCol &"rgb({r} {g} {b} {a})"
+proc cssRgb*(r: int|float|string|percent, g: int|float|string|percent, b: int|float|string|percent): CssColor = newCol &"rgb({r} {g} {b})"
+proc cssRgb*(r: int|float|string|percent, g: int|float|string|percent, b: int|float|string|percent, a: float|string|percent): CssColor = newCol &"rgb({r} {g} {b} / {a})"
 
 proc cssRotate*(value: string|CssAngle): CssTransformFunction = CssTransformFunction(repr: &"rotate({value})")
 
@@ -183,7 +183,7 @@ proc cssRotateZ*(value: string|CssAngle): CssTransformFunction = CssTransformFun
 
 proc cssRound*(args: varargs[string]): CssPropertyValue = &"round({args.toSeq().join(sepComma)})"
 
-proc cssSaturate*(value: string|SomeNumber|percentage): CssFilterFunction = CssFilterFunction(repr: &"saturate({value})")
+proc cssSaturate*(value: string|SomeNumber|percent): CssFilterFunction = CssFilterFunction(repr: &"saturate({value})")
 
 proc cssScale*(value: SomeNumber): CssPropertyValue = &"scale({value})"
 proc cssScale*(x, y: SomeNumber): CssPropertyValue = &"scale({x}, {y})"
@@ -198,7 +198,7 @@ proc cssScaleZ*(value: SomeNumber): CssPropertyValue = &"scaleZ({value})"
 
 proc cssScroll*(args: varargs[string]): CssPropertyValue = &"scroll({args.toSeq().join(sepSpace)})" ## Experimental
 
-proc cssSepia*(value: float|percentage): CssFilterFunction = CssFilterFunction(repr: &"sepia({value})")
+proc cssSepia*(value: float|percent): CssFilterFunction = CssFilterFunction(repr: &"sepia({value})")
 
 proc cssShape*(args: varargs[string]): CssPropertyValue = &"shape({args.toSeq().join(sepComma)})"
 
@@ -212,6 +212,8 @@ proc cssSkew*(x: string|CssAngle, y: string|CssAngle): CssPropertyValue = &"skew
 proc cssSkewX*(value: string|CssAngle): CssPropertyValue = &"skewX({value})"
 
 proc cssSkewY*(value: string|CssAngle): CssPropertyValue = &"skewY({value})"
+
+proc cssSrc*(src: string): CssSrc = CssSrc(repr: src)
 
 proc cssSqrt*(value: string|SomeNumber): CssPropertyValue = &"sqrt({value})"
 
@@ -245,6 +247,3 @@ proc cssVar*(variable: string): CssPropertyValue =
 proc cssView*(args: varargs[string]): CssPropertyValue = &"view({args.toSeq().join(sepSpace)})"
 
 proc cssXywh*(args: varargs[string]): CssPropertyValue = &"xywh({args.toSeq().join(sepSpace)})"
-
-
-proc cssSrc*(src: string): CssSrc = CssSrc(repr: src)
