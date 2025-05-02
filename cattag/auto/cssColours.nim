@@ -5,6 +5,10 @@
 
 from ../css/cssTypes import CssColor
 
+proc `$`(colour: CssColor): string =
+    ## Stringifies `CssColor`
+    result = colour.repr
+
 const
     AliceBlue*: CssColor = CssColor(repr: "AliceBlue") ## #f0f8ff
     AntiqueWhite*: CssColor = CssColor(repr: "AntiqueWhite") ## #faebd7
