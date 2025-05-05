@@ -4,6 +4,9 @@ import ../logger, types
 const
     cattagCssIndent* {.intdefine.}: int = 4
 
+proc `$`*(element: CssElement, condensed: bool = false): string
+proc `$`*(elements: seq[CssElement], condensed: bool = false): string
+
 
 proc `$`*(property: CssElementProperty, condensed: bool = false): string =
     ## Stringifies `CssElementProperty`
@@ -36,10 +39,15 @@ proc dollarImpl(element: CssElement, condensed: bool): string =
 
     result = block:
         if condensed:
-            selector & "{" & element.properties $ condensed & "}"
+            selector & "{" & element.children $ condensed & element.properties $ condensed & "}"
         else:
             selector & " {\n" &
-                (element.properties $ condensed).indent(cattagCssIndent) &
+                (if element.children.len() != 0:
+                    (element.children $ condensed).indent(cattagCssIndent)
+                else: "") &
+                (if element.properties.len() != 0:
+                    (element.properties $ condensed).indent(cattagCssIndent)
+                else: "") &
             "\n}"
 
 proc dollarCommentImpl(element: CssElement, condensed: bool): string =
@@ -66,7 +74,7 @@ proc `$`*(elements: seq[CssElement], condensed: bool = false): string =
 
 proc `$`*(stylesheet: CssStylesheet): string =
     ## Stringifies `CssStylesheet`
-    result = $stylesheet.children
+    result = $stylesheet.children & "\n"
 
 
 proc writeFile*(stylesheet: CssStylesheet, filename: string) =

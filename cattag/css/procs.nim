@@ -23,6 +23,18 @@ proc newCssAll*(properties: varargs[CssElementProperty]): CssElement =
     ## Constructs new `CssElement` with `*` selector
     result = newCssAll(properties.toSeq())
 
+proc newCssAll*(children: seq[CssElement]): CssElement =
+    ## Constructs new `CssElement` with `*` selector
+    result = CssElement(
+        elementType: typeCssElement,
+        selector: "*",
+        selectorType: selectorAll,
+        children: children
+    )
+proc newCssAll*(children: varargs[CssElement]): CssElement =
+    ## Constructs new `CssElement` with `*` selector
+    result = newCssAll(children.toSeq())
+
 template newCssThing(PROC_NAME: untyped, SELECTOR_TYPE: untyped): untyped =
     proc PROC_NAME*(selector: string, properties: seq[CssElementProperty]): CssElement =
         ## Constructs new `CssElement`
@@ -35,6 +47,18 @@ template newCssThing(PROC_NAME: untyped, SELECTOR_TYPE: untyped): untyped =
     proc PROC_NAME*(selector: string, properties: varargs[CssElementProperty]): CssElement =
         ## Constructs new `CssElement`
         result = PROC_NAME(selector, properties.toSeq())
+
+    proc PROC_NAME*(selector: string, children: seq[CssElement]): CssElement =
+        ## Constructs new `CssElement`
+        result = CssElement(
+            elementType: typeCssElement,
+            selector: selector.strip(),
+            selectorType: SELECTOR_TYPE,
+            children: children
+        )
+    proc PROC_NAME*(selector: string, children: varargs[CssElement]): CssElement =
+        ## Constructs new `CssElement`
+        result = PROC_NAME(selector, children.toSeq())
 
 newCssThing(newCssElement, selectorElement)
 newCssThing(newCssClass, selectorClass)

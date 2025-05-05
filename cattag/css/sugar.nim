@@ -39,3 +39,14 @@ proc `{}`*(selector: string, properties: seq[CssElementProperty]): CssElement =
 proc `{}`*(selector: string, properties: varargs[CssElementProperty]): CssElement =
     ## Sugar constructor for `CssElement`
     result = selector{properties.toSeq()}
+
+proc `{}`*(selector: string, elements: seq[CssElement]): CssElement =
+    ## Sugar constructor for `CssElement`
+    result = case selector.strip().getSelectorType():
+        of selectorAll: newCssAll(elements)
+        of selectorClass: newCssClass(selector, elements)
+        of selectorId: newCssId(selector, elements)
+        of selectorElement: newCssElement(selector, elements)
+proc `{}`*(selector: string, elements: varargs[CssElement]): CssElement =
+    ## Sugar constructor for `CssElement`
+    result = selector{elements.toSeq()}

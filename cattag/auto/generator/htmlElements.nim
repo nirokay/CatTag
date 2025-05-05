@@ -12,38 +12,38 @@ type
 let elementCommonAttributes: ElementsCommonAttributesFile = readFile("./resources/html-elements-common-attributes.json").parseJson().to(ElementsCommonAttributesFile)
 
 const templateVoidProcs: string = """# General procs for SELECTED_TAG:
-proc SELECTED_TAG*(): HtmlElement =
+proc QUOTED_SELECTED_TAG*(): HtmlElement =
     ## Constructs new element
     ## REFERENCE
     result = HtmlElement(elementType: typeElement, tag: "SELECTED_TAG")
-proc SELECTED_TAG*(attributes: seq[Attribute]): HtmlElement =
+proc QUOTED_SELECTED_TAG*(attributes: seq[Attribute]): HtmlElement =
     ## Constructs new element
     ## REFERENCE
     result = HtmlElement(elementType: typeElement, tag: "SELECTED_TAG", attributes: attributes)"""
 const templateChildAcceptingProcs: string = """# General children procs for SELECTED_TAG:
-proc SELECTED_TAG*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
+proc QUOTED_SELECTED_TAG*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## REFERENCE
     result = HtmlElement(elementType: typeElement, tag: "SELECTED_TAG", attributes: attributes, children: children)
-proc SELECTED_TAG*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+proc QUOTED_SELECTED_TAG*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## REFERENCE
     result = HtmlElement(elementType: typeElement, tag: "SELECTED_TAG", attributes: attributes, children: @[child] & children.toSeq())
 
-proc SELECTED_TAG*(children: seq[HtmlElement]): HtmlElement =
+proc QUOTED_SELECTED_TAG*(children: seq[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## REFERENCE
     result = HtmlElement(elementType: typeElement, tag: "SELECTED_TAG", children: children)
-proc SELECTED_TAG*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+proc QUOTED_SELECTED_TAG*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## REFERENCE
     result = HtmlElement(elementType: typeElement, tag: "SELECTED_TAG", children: @[child] & children.toSeq())
 
-proc SELECTED_TAG*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
+proc QUOTED_SELECTED_TAG*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
     ## Constructs new element
     ## REFERENCE
     result = HtmlElement(elementType: typeElement, tag: "SELECTED_TAG", attributes: attributes, children: @[rawHtmlText(content)])
-proc SELECTED_TAG*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
+proc QUOTED_SELECTED_TAG*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
     ## Constructs new element
     ## REFERENCE
     result = HtmlElement(elementType: typeElement, tag: "SELECTED_TAG", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])"""
@@ -57,35 +57,36 @@ proc PROC_NAME*(content: string, moreContent: varargs[string]): HtmlElement =
 ]#
 
 const templateCustomAttrVoidProcs: string = """# Custom attribute procs for void SELECTED_TAG:
-proc SELECTED_TAG*(ATTRIBUTES): HtmlElement =
+proc QUOTED_SELECTED_TAG*(ATTRIBUTES): HtmlElement =
     ## Constructs new element
     ## REFERENCE
-    result = SELECTED_TAG(ATTR_LIST)"""
+    result = QUOTED_SELECTED_TAG(ATTR_LIST)"""
 const templateCustomAttrChildrenProcs: string = """# Custom attribute procs with children for SELECTED_TAG:
-proc SELECTED_TAG*(ATTRIBUTES, children: seq[HtmlElement]): HtmlElement =
+proc QUOTED_SELECTED_TAG*(ATTRIBUTES, children: seq[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## REFERENCE
-    result = SELECTED_TAG(ATTR_LIST, children)
-proc SELECTED_TAG*(ATTRIBUTES, child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
+    result = QUOTED_SELECTED_TAG(ATTR_LIST, children)
+proc QUOTED_SELECTED_TAG*(ATTRIBUTES, child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## REFERENCE
-    result = SELECTED_TAG(ATTR_LIST, @[child] & children.toSeq())"""
+    result = QUOTED_SELECTED_TAG(ATTR_LIST, @[child] & children.toSeq())"""
 const templateCustomAttrWithContentProcs: string = """# Custom attribute procs with content for SELECTED_TAG:
-proc SELECTED_TAG*(ATTRIBUTES, content: seq[string]): HtmlElement =
+proc QUOTED_SELECTED_TAG*(ATTRIBUTES, content: seq[string]): HtmlElement =
     ## Constructs new element
     ## REFERENCE
-    result = SELECTED_TAG(ATTR_LIST, rawHtmlText(content))
-proc SELECTED_TAG*(ATTRIBUTES, content: string, contents: varargs[string]): HtmlElement =
+    result = QUOTED_SELECTED_TAG(ATTR_LIST, rawHtmlText(content))
+proc QUOTED_SELECTED_TAG*(ATTRIBUTES, content: string, contents: varargs[string]): HtmlElement =
     ## Constructs new element
     ## REFERENCE
-    result = SELECTED_TAG(ATTR_LIST, rawHtmlText(@[content] & contents.toSeq()))"""
+    result = QUOTED_SELECTED_TAG(ATTR_LIST, rawHtmlText(@[content] & contents.toSeq()))"""
 
 proc newConstructorProcs(tag: string, reference: string): string =
     var lines: seq[string]
     let rawTag: string = tag.replace("`", "")
     proc modify(input: string, attributeLine: string = "", attributeList: string = ""): string =
         input.strip()
-            .replace("SELECTED_TAG", tag)
+            .replace("QUOTED_SELECTED_TAG", tag)
+            .replace("SELECTED_TAG", rawTag)
             .replace("REFERENCE", reference)
             .replace("ATTRIBUTES", attributeLine)
             .replace("ATTR_LIST", attributeList)
@@ -135,7 +136,7 @@ proc newConstructorProcs(tag: string, reference: string): string =
     result = lines.join("\n\n")
 
     # Special rule for headings:
-    if tag == "h1":
+    if rawTag == "h1":
         for number in 2 .. 6:
             result &= "\n\n\n" & newConstructorProcs("h" & $number, reference[0 .. ^2] & $number)
 

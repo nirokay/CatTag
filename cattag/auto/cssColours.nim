@@ -5,10 +5,6 @@
 
 from ../css/cssTypes import CssColor
 
-proc `$`*(color: CssColor): string =
-    ## Stringifies `CssColor`
-    result = color.repr
-
 proc newCssColor*[T](repr: T): CssColor =
     ## Creates new `CssColor`
     result = CssColor(repr: $repr)

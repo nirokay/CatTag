@@ -1547,43 +1547,43 @@ proc dir*(attributes: seq[Attribute], content: string, moreContent: varargs[stri
 
 
 
-# General procs for `div`:
+# General procs for div:
 proc `div`*(): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div
-    result = HtmlElement(elementType: typeElement, tag: "`div`")
+    result = HtmlElement(elementType: typeElement, tag: "div")
 proc `div`*(attributes: seq[Attribute]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div
-    result = HtmlElement(elementType: typeElement, tag: "`div`", attributes: attributes)
+    result = HtmlElement(elementType: typeElement, tag: "div", attributes: attributes)
 
-# General children procs for `div`:
+# General children procs for div:
 proc `div`*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div
-    result = HtmlElement(elementType: typeElement, tag: "`div`", attributes: attributes, children: children)
+    result = HtmlElement(elementType: typeElement, tag: "div", attributes: attributes, children: children)
 proc `div`*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div
-    result = HtmlElement(elementType: typeElement, tag: "`div`", attributes: attributes, children: @[child] & children.toSeq())
+    result = HtmlElement(elementType: typeElement, tag: "div", attributes: attributes, children: @[child] & children.toSeq())
 
 proc `div`*(children: seq[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div
-    result = HtmlElement(elementType: typeElement, tag: "`div`", children: children)
+    result = HtmlElement(elementType: typeElement, tag: "div", children: children)
 proc `div`*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div
-    result = HtmlElement(elementType: typeElement, tag: "`div`", children: @[child] & children.toSeq())
+    result = HtmlElement(elementType: typeElement, tag: "div", children: @[child] & children.toSeq())
 
 proc `div`*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div
-    result = HtmlElement(elementType: typeElement, tag: "`div`", attributes: attributes, children: @[rawHtmlText(content)])
+    result = HtmlElement(elementType: typeElement, tag: "div", attributes: attributes, children: @[rawHtmlText(content)])
 proc `div`*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div
-    result = HtmlElement(elementType: typeElement, tag: "`div`", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+    result = HtmlElement(elementType: typeElement, tag: "div", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
 
 
 
@@ -3552,51 +3552,51 @@ proc noscript*(attributes: seq[Attribute], content: string, moreContent: varargs
 
 
 
-# General procs for `object`:
+# General procs for object:
 proc `object`*(): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object
-    result = HtmlElement(elementType: typeElement, tag: "`object`")
+    result = HtmlElement(elementType: typeElement, tag: "object")
 proc `object`*(attributes: seq[Attribute]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object
-    result = HtmlElement(elementType: typeElement, tag: "`object`", attributes: attributes)
+    result = HtmlElement(elementType: typeElement, tag: "object", attributes: attributes)
 
-# General children procs for `object`:
+# General children procs for object:
 proc `object`*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object
-    result = HtmlElement(elementType: typeElement, tag: "`object`", attributes: attributes, children: children)
+    result = HtmlElement(elementType: typeElement, tag: "object", attributes: attributes, children: children)
 proc `object`*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object
-    result = HtmlElement(elementType: typeElement, tag: "`object`", attributes: attributes, children: @[child] & children.toSeq())
+    result = HtmlElement(elementType: typeElement, tag: "object", attributes: attributes, children: @[child] & children.toSeq())
 
 proc `object`*(children: seq[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object
-    result = HtmlElement(elementType: typeElement, tag: "`object`", children: children)
+    result = HtmlElement(elementType: typeElement, tag: "object", children: children)
 proc `object`*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object
-    result = HtmlElement(elementType: typeElement, tag: "`object`", children: @[child] & children.toSeq())
+    result = HtmlElement(elementType: typeElement, tag: "object", children: @[child] & children.toSeq())
 
 proc `object`*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object
-    result = HtmlElement(elementType: typeElement, tag: "`object`", attributes: attributes, children: @[rawHtmlText(content)])
+    result = HtmlElement(elementType: typeElement, tag: "object", attributes: attributes, children: @[rawHtmlText(content)])
 proc `object`*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object
-    result = HtmlElement(elementType: typeElement, tag: "`object`", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+    result = HtmlElement(elementType: typeElement, tag: "object", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
 
-# Custom attribute procs for void `object`:
+# Custom attribute procs for void object:
 proc `object`*(data: string): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object
     result = `object`(@[attr("data", data)])
 
-# Custom attribute procs with children for `object`:
+# Custom attribute procs with children for object:
 proc `object`*(data: string, children: seq[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object
@@ -3606,13 +3606,13 @@ proc `object`*(data: string, child: HtmlElement, children: varargs[HtmlElement])
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object
     result = `object`(@[attr("data", data)], @[child] & children.toSeq())
 
-# Custom attribute procs for void `object`:
+# Custom attribute procs for void object:
 proc `object`*(data: string, width: int, height: int): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object
     result = `object`(@[attr("data", data), attr("width", width), attr("height", height)])
 
-# Custom attribute procs with children for `object`:
+# Custom attribute procs with children for object:
 proc `object`*(data: string, width: int, height: int, children: seq[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object
@@ -5284,43 +5284,43 @@ proc td*(rowspan: int, colspan: int, content: string, contents: varargs[string])
 
 
 
-# General procs for `template`:
+# General procs for template:
 proc `template`*(): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template
-    result = HtmlElement(elementType: typeElement, tag: "`template`")
+    result = HtmlElement(elementType: typeElement, tag: "template")
 proc `template`*(attributes: seq[Attribute]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template
-    result = HtmlElement(elementType: typeElement, tag: "`template`", attributes: attributes)
+    result = HtmlElement(elementType: typeElement, tag: "template", attributes: attributes)
 
-# General children procs for `template`:
+# General children procs for template:
 proc `template`*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template
-    result = HtmlElement(elementType: typeElement, tag: "`template`", attributes: attributes, children: children)
+    result = HtmlElement(elementType: typeElement, tag: "template", attributes: attributes, children: children)
 proc `template`*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template
-    result = HtmlElement(elementType: typeElement, tag: "`template`", attributes: attributes, children: @[child] & children.toSeq())
+    result = HtmlElement(elementType: typeElement, tag: "template", attributes: attributes, children: @[child] & children.toSeq())
 
 proc `template`*(children: seq[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template
-    result = HtmlElement(elementType: typeElement, tag: "`template`", children: children)
+    result = HtmlElement(elementType: typeElement, tag: "template", children: children)
 proc `template`*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template
-    result = HtmlElement(elementType: typeElement, tag: "`template`", children: @[child] & children.toSeq())
+    result = HtmlElement(elementType: typeElement, tag: "template", children: @[child] & children.toSeq())
 
 proc `template`*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template
-    result = HtmlElement(elementType: typeElement, tag: "`template`", attributes: attributes, children: @[rawHtmlText(content)])
+    result = HtmlElement(elementType: typeElement, tag: "template", attributes: attributes, children: @[rawHtmlText(content)])
 proc `template`*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template
-    result = HtmlElement(elementType: typeElement, tag: "`template`", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+    result = HtmlElement(elementType: typeElement, tag: "template", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
 
 
 
@@ -5878,43 +5878,43 @@ proc ul*(attributes: seq[Attribute], content: string, moreContent: varargs[strin
 
 
 
-# General procs for `var`:
+# General procs for var:
 proc `var`*(): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/var
-    result = HtmlElement(elementType: typeElement, tag: "`var`")
+    result = HtmlElement(elementType: typeElement, tag: "var")
 proc `var`*(attributes: seq[Attribute]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/var
-    result = HtmlElement(elementType: typeElement, tag: "`var`", attributes: attributes)
+    result = HtmlElement(elementType: typeElement, tag: "var", attributes: attributes)
 
-# General children procs for `var`:
+# General children procs for var:
 proc `var`*(attributes: seq[Attribute], children: seq[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/var
-    result = HtmlElement(elementType: typeElement, tag: "`var`", attributes: attributes, children: children)
+    result = HtmlElement(elementType: typeElement, tag: "var", attributes: attributes, children: children)
 proc `var`*(attributes: seq[Attribute], child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/var
-    result = HtmlElement(elementType: typeElement, tag: "`var`", attributes: attributes, children: @[child] & children.toSeq())
+    result = HtmlElement(elementType: typeElement, tag: "var", attributes: attributes, children: @[child] & children.toSeq())
 
 proc `var`*(children: seq[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/var
-    result = HtmlElement(elementType: typeElement, tag: "`var`", children: children)
+    result = HtmlElement(elementType: typeElement, tag: "var", children: children)
 proc `var`*(child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/var
-    result = HtmlElement(elementType: typeElement, tag: "`var`", children: @[child] & children.toSeq())
+    result = HtmlElement(elementType: typeElement, tag: "var", children: @[child] & children.toSeq())
 
 proc `var`*(attributes: seq[Attribute], content: seq[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/var
-    result = HtmlElement(elementType: typeElement, tag: "`var`", attributes: attributes, children: @[rawHtmlText(content)])
+    result = HtmlElement(elementType: typeElement, tag: "var", attributes: attributes, children: @[rawHtmlText(content)])
 proc `var`*(attributes: seq[Attribute], content: string, moreContent: varargs[string]): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/var
-    result = HtmlElement(elementType: typeElement, tag: "`var`", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
+    result = HtmlElement(elementType: typeElement, tag: "var", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
 
 
 

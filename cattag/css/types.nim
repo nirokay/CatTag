@@ -17,6 +17,7 @@ type
             selector*: string
             selectorType*: CssSelectorType = selectorElement
             properties*: seq[CssElementProperty]
+            children*: seq[CssElement]
         of typeCssComment:
             comment*: seq[string]
 

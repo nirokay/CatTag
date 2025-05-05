@@ -1,0 +1,99 @@
+html {
+    background-color: #161820;
+    color: #E7E5E2;
+}
+
+header > * {
+    text-align: center;
+}
+
+section {
+    background-color: #22242B;
+    border-radius: 15.0px;
+    padding: 10.0px;
+    margin: 10.0px;
+}
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: -20.0px;
+    width: 100.0%;
+    height: 50.0px;
+    background-color: #22242B;
+    padding: 10.0px;
+}
+
+img {
+    max-width: 200.0px;
+    max-height: 200.0px;
+    display: block;
+    border-radius: 15.0px;
+}
+
+h1, h2, h3 {
+    text-decoration: underline;
+    text-decoration-style: wavy;
+}
+
+strong {
+    font-size: 1.2em;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: center;
+}
+
+.animation-shake {
+    animation-name: shake;
+    animation-duration: 2.0s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes shake {
+    0% {
+        left: -10.0px;
+        top: -10.0px;
+    }
+    
+    12% {
+        left: 0.0px;
+        top: 0.0px;
+    }
+    
+    25% {
+        left: 10.0px;
+        top: 10.0px;
+    }
+    
+    37% {
+        left: 0.0px;
+        top: 0.0px;
+    }
+    
+    50% {
+        left: 10.0px;
+        top: -10.0px;
+    }
+    
+    62% {
+        left: 0.0px;
+        top: 0.0px;
+    }
+    
+    75% {
+        left: -10.0px;
+        top: 10.0px;
+    }
+    
+    87% {
+        left: 0.0px;
+        top: 0.0px;
+    }
+    
+    100% {
+        left: -10.0px;
+        top: -10.0px;
+    }
+}
