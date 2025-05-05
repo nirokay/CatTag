@@ -10,9 +10,17 @@ output.lines = @[
     "",
     "from ../css/cssTypes import CssColor",
     "",
-    "proc `$`(colour: CssColor): string =",
+    "proc `$`*(color: CssColor): string =",
     "    ## Stringifies `CssColor`",
-    "    result = colour.repr",
+    "    result = color.repr",
+    "",
+    "proc newCssColor*[T](repr: T): CssColor =",
+    "    ## Creates new `CssColor`",
+    "    result = CssColor(repr: $repr)",
+    "",
+    "proc newCssColour*[T](repr: T): CssColor =",
+    "    ## Creates new `CssColor`",
+    "    result = newCssColor(repr)",
     "",
     "const"
 ]
@@ -22,7 +30,7 @@ proc transFormLineParts(colour: string, components: seq[string]) =
         description: string = if components.len() == 0: "" else: components[0]
         deprecation: string = if components.len() == 2: components[1] else: ""
 
-    var line: string = &"{colour}*: CssColor = CssColor(repr: \"{colour}\") ## {description}"
+    var line: string = &"{colour}*: CssColor = newCssColor(\"{colour}\") ## {description}"
     #[
     if deprecation != "":
         line.add(
