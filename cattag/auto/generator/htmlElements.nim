@@ -134,6 +134,11 @@ proc newConstructorProcs(tag: string, reference: string): string =
     # Join all lines:
     result = lines.join("\n\n")
 
+    # Special rule for headings:
+    if tag == "h1":
+        for number in 2 .. 6:
+            result &= "\n\n\n" & newConstructorProcs("h" & $number, reference[0 .. ^2] & $number)
+
 
 let needQuoting: seq[string] = @[
     "div",

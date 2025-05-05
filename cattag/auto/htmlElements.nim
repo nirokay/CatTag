@@ -2112,7 +2112,6 @@ proc h1*(attributes: seq[Attribute], content: string, moreContent: varargs[strin
     result = HtmlElement(elementType: typeElement, tag: "h1", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
 
 
-
 # General procs for h2:
 proc h2*(): HtmlElement =
     ## Constructs new element
@@ -2150,7 +2149,6 @@ proc h2*(attributes: seq[Attribute], content: string, moreContent: varargs[strin
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/h2
     result = HtmlElement(elementType: typeElement, tag: "h2", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
-
 
 
 # General procs for h3:
@@ -2192,7 +2190,6 @@ proc h3*(attributes: seq[Attribute], content: string, moreContent: varargs[strin
     result = HtmlElement(elementType: typeElement, tag: "h3", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
 
 
-
 # General procs for h4:
 proc h4*(): HtmlElement =
     ## Constructs new element
@@ -2232,7 +2229,6 @@ proc h4*(attributes: seq[Attribute], content: string, moreContent: varargs[strin
     result = HtmlElement(elementType: typeElement, tag: "h4", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
 
 
-
 # General procs for h5:
 proc h5*(): HtmlElement =
     ## Constructs new element
@@ -2270,7 +2266,6 @@ proc h5*(attributes: seq[Attribute], content: string, moreContent: varargs[strin
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/h5
     result = HtmlElement(elementType: typeElement, tag: "h5", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
-
 
 
 # General procs for h6:
