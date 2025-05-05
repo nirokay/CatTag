@@ -18,9 +18,11 @@ rewritten (more like reimplemented with major changes, so like, idk how you woul
 * [x] CSS Generation
 * [x] HTML/XML sugar syntax
 * [x] CSS sugar syntax
+* [x] HTML QoL attribute constants (`class`, `lang`, `id`, ...)
 * [x] HTML QoL procs (`p("text")` for `newHtmlElement("p", "text")`)
-* [ ] CSS QoL property and property value constants (`text-align`, `color`, ... ; `center`, `Red`, ...)
-* [ ] CSS QoL procs
+* [x] CSS QoL property constants (`text-align`, `background-color`, ...)
+* [ ] CSS QoL property and property value constants (`center`, `Red`, ...)
+* [x] CSS QoL procs
 * [ ] DOM procs
 * [ ] `HtmlElement.style` field stuff (usage similar to typescript element style manipulation)
 
