@@ -55,3 +55,17 @@ test "Documents":
     )
 
     check htmlDocument == $document
+
+test "Attribute setters":
+    var element: HtmlElement = img()
+    check $element == "<img />"
+
+    element.setId("my-image")
+    check $element == "<img id='my-image' />"
+
+    element.setAlt("My image.")
+
+    let immutableElement: HtmlElement = element.setSrc("image.png")
+
+    check $element == "<img alt='My image.' id='my-image' />"
+    check $immutableelement == "<img alt='My image.' id='my-image' src='image.png' />"

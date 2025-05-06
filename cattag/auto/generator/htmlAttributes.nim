@@ -1,6 +1,10 @@
 import std/[strutils, strformat]
 import parser
 
+const skipAttributes: seq[string] = @[
+    "style"
+]
+
 var output: OutputFile = newOutputFile("htmlAttributes.nim")
 output.lines = @[
     "## HTML Attributes",
@@ -31,6 +35,7 @@ proc writeOut(line: string, additionalNote: string = "") =
         rawAttributeName: string = parts[0]
         attrQuote: string = if rawAttributeName in needQuoting: "`" else: ""
 
+    if rawAttributeName in skipAttributes: return
     if rawAttributeName[^1] in ['*']: return
 
     let
@@ -47,15 +52,24 @@ proc writeOut(line: string, additionalNote: string = "") =
             else: "https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/"
         ) & rawAttributeName
 
+    let procName: string = "set" & rawAttributeName.capitalizeAscii()
     output.lines &= @[
+        "",
         &"const {attrQuote}{attributeName}{attrQuote}*: HtmlAttribute = \"{rawAttributeName}\" ## HtmlAttribute `{rawAttributeName}` {attributeNotes}Reference: {reference}",
-        &"proc set{rawAttributeName.capitalizeAscii()}*(element: var HtmlElement, values: varargs[string]|seq[string]) =",
+        &"proc {procName}*(element: var HtmlElement, values: seq[string]) =",
         &"    ## Sets the HtmlAttribute `{rawAttributeName}`",
-        &"    element.attributes.addattr(\"{rawAttributeName}\", values.toSeq())",
-        &"proc set{rawAttributeName.capitalizeAscii()}*(element: HtmlElement, values: varargs[string]|seq[string]): HtmlElement =",
+        &"    element.attributes.add(attr(\"{rawAttributeName}\", values))",
+        &"proc {procName}*(element: HtmlElement, values: seq[string]): HtmlElement =",
         &"    ## Sets the HtmlAttribute `{rawAttributeName}`",
         &"    result = element",
-        &"    result.attributes.addattr(\"{rawAttributeName}\", values.toSeq())",
+        &"    result.{procName}(values)",
+        "",
+        &"proc {procName}*(element: var HtmlElement, values: varargs[string]) =",
+        &"    ## Sets the HtmlAttribute `{rawAttributeName}`",
+        &"    element.{procName}(values.toSeq())",
+        &"proc {procName}*(element: HtmlElement, values: varargs[string]): HtmlElement =",
+        &"    ## Sets the HtmlAttribute `{rawAttributeName}`",
+        &"    result = element.{procName}(values.toSeq())",
         ""
     ]
 
