@@ -12,9 +12,7 @@ const elementWithChildren: string = """<cat>
         </colours>
     </fur>
     <favourite-snacks>
-        <snack favourite>
-            Tuna
-        </snack>
+        <snack favourite>Tuna</snack>
     </favourite-snacks>
     <missing-data />
 </cat>"""
@@ -38,27 +36,19 @@ test "Elements with children":
 const xmlDocument: string = """<?xml version='1.0' encoding='utf-8'?>
 <cats>
     <cat>
-        <name>
-            Lucy
-        </name>
+        <name>Lucy</name>
         <fur length='short'>
             Brown
             Black
             Beige
         </fur>
         <favourite-patting-spots>
-            <pat-spot favourite='true'>
-                Head
-            </pat-spot>
-            <pat-spot>
-                Back
-            </pat-spot>
+            <pat-spot favourite='true'>Head</pat-spot>
+            <pat-spot>Back</pat-spot>
         </favourite-patting-spots>
     </cat>
     <cat>
-        <name>
-            Findus
-        </name>
+        <name>Findus</name>
         <fur length='short'>
             White
             Brown
@@ -72,15 +62,15 @@ test "Documents":
         newXmlElement("cats",
             newXmlElement("cat",
                 newXmlElement("name", "Lucy"),
-                newXmlElement("fur", @[attr("length", "short")], "Brown", "Black", "Beige"),
+                newXmlElement("fur", @[attr("length", "short")], xml"Brown", xml"Black", xml"Beige"),
                 newXmlElement("favourite-patting-spots",
-                    newXmlElement("pat-spot", @[attr("favourite", "true")], "Head"),
-                    newXmlElement("pat-spot", "Back")
+                    newXmlElement("pat-spot", @[attr("favourite", "true")], xml"Head"),
+                    newXmlElement("pat-spot", xml"Back")
                 )
             ),
             newXmlElement("cat",
                 newXmlElement("name", "Findus"),
-                newXmlElement("fur", @[attr("length", "short")], "White", "Brown"),
+                newXmlElement("fur", @[attr("length", "short")], xml"White", xml"Brown"),
                 newXmlElement("favourite-patting-spots")
             )
         )

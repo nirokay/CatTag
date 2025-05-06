@@ -1,4 +1,4 @@
-import std/[unittest, strutils]
+import std/[unittest]
 import cattag
 
 test "Properties":
@@ -81,7 +81,8 @@ p {
 .centered {
     text-align: center;
     margin: auto;
-}"""
+}
+"""
 test "Documents":
     var css: CssStylesheet = newCssStylesheet("styles.css")
     css.add(

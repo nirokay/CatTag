@@ -1,13 +1,7 @@
 import std/[unittest]
 import cattag
 
-const elementWithChildren: string = """<div>
-    <div>
-        <p>
-            some text
-        </p>
-    </div>
-</div>"""
+const elementWithChildren: string = """<div><div><p>some text</p></div></div>"""
 test "Elements with children":
     check $newHtmlElement("div",
         newHtmlElement("div",
@@ -19,22 +13,16 @@ test "Elements with children":
 const htmlDocument: string = """<!DOCTYPE html lang='en'>
 <html lang='en'>
     <head lang='en'>
-        <title>
-            Homepage
-        </title>
+        <title>Homepage</title>
         <link href='favicon.png' rel='icon' sizes='32x32' type='image/png' />
         <script src='index.js' type='text/javascript'></script>
     </head>
     <body lang='en'>
         <main>
-            <h1>
-                My Homepage
-            </h1>
-            <p class='colourful'>
-                Welcome to my little homepage!
-                <br />
-                I have some silly stuff here.
-            </p>
+            <h1>My Homepage</h1>
+            <p class='colourful'>Welcome to my little homepage!
+            <br />
+            I have some silly stuff here.</p>
         </main>
         <footer></footer>
     </body>

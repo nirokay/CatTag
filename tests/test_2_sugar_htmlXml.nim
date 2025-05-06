@@ -24,11 +24,7 @@ test "Element with attributes":
     element["alt" <=> "image"]
     check attrElement1 == $element
 
-let complexElement: string = """<div class='centered'>
-    <p id='some-text'>
-        Hello!
-    </p>
-</div>"""
+let complexElement: string = """<div class='centered'><p id='some-text'>Hello!</p></div>"""
 test "Element with children and attributes":
     check complexElement == $(
         "div"[

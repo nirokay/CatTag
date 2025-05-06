@@ -41,9 +41,7 @@ test "Xml Comments":
     check $newXmlComment("even", "longer", "now") == longerComment
     check $newXmlComment("WOAH", "SO", "LONG", "COMMENT") == longestComment
 
-const elementWithContent: string = """<tag>
-    hello world
-</tag>"""
+const elementWithContent: string = """<tag>hello world</tag>"""
 test "Elements":
     check $newHtmlElement("tag") == "<tag></tag>"
     check $newXmlElement("tag") == "<tag />"
@@ -54,6 +52,13 @@ test "Elements":
 
     check $newXmlElement("tag", "hello world") == elementWithContent
     check $newXmlElement("img", "hello world") == elementWithContent.replace("tag", "img")
+
+const elementWithMultipleChildren: string = """<tag>
+    Hello world!
+    How are you?
+</tag>"""
+test "Elements with multiple children":
+    check $newHtmlElement("tag", rawHtmlText("Hello world!"), rawHtmlText("How are you?")) == elementWithMultipleChildren
 
 test "Elements with attributes (with sorting)":
     check $newHtmlElement("img", @[attr("src", "https://www.nirokay.com/favicon.gif"), attr("alt", "Favicon")]) ==
