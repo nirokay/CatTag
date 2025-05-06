@@ -43,12 +43,15 @@ strong {
 .flex-container {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .animation-shake {
     animation-name: shake;
-    animation-duration: 2.0s;
+    animation-duration: 0.35s;
     animation-iteration-count: infinite;
+    font-size: 2.0em;
+    position: relative;
 }
 
 @keyframes shake {

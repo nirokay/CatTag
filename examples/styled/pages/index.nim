@@ -1,3 +1,4 @@
+import std/[strutils]
 import cattag
 import ./styles
 
@@ -44,9 +45,12 @@ html.add( # html.add() and html.addToBody() are equivalent
                         html"Unico Uniuni, a.k.a. ",
                         q("https://floppapedia-revamped.fandom.com/wiki/Uni", "Uni")
                     ),
-                    p(html(
-                        "Why is he looking " & $strong(html"SO SILLY").addattr("class", "animation-shake") & "??!?!???"
-                    ))
+                    p(
+                        html"Why is he looking SO",
+                        `div`(
+                            html"SILLY"
+                        ).addattr("class", classAnimationShake.selector.replace(".", ""))
+                    )
                 )
             )
         ),

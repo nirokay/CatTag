@@ -4,8 +4,6 @@ const stylesheetName*: string = "styles.css"
 var css: CssStylesheet = newCssStylesheet(stylesheetName)
 
 const
-    classAnimationShake*: string = "animation-shake"
-
     colourBackgroundDark*: CssColor = newCssColor("#161820")
     colourBackgroundMiddle*: CssColor = newCssColor("#22242B")
     colourText*: CssColor = newCssColor("#E7E5E2")
@@ -13,6 +11,14 @@ const
     roundedCorners*: CssElementProperty = borderRadius := 15'px
     insetPadding*: CssElementProperty = padding := 10'px
     outsetMargin*: CssElementProperty = margin := 10'px
+
+    classAnimationShake*: CssElement = ".animation-shake"{
+        animationName := "shake",
+        animationDuration := 0.35's,
+        animationIterationCount := "infinite",
+        fontSize := 2'em,
+        position := "relative"
+    }
 
 css.add(
     # Elements:
@@ -59,15 +65,12 @@ css.add(
     # Classes:
     ".flex-container"{
         display := flex,
-        justifyContent := CssContentPosition.center
+        justifyContent := CssContentPosition.center,
+        flexWrap := "wrap"
     },
 
     # Animations:
-    ("." & classAnimationShake){
-        animationName := "shake",
-        animationDuration := 2's,
-        animationIterationCount := "infinite"
-    },
+    classAnimationShake,
     "@keyframes shake"{
         "0%"{
             left := -10'px,
