@@ -10,480 +10,887 @@ import ../htmlXml/all
 
 type HtmlAttribute* = string
 
+
 const accesskey*: HtmlAttribute = "accesskey" ## HtmlAttribute `accesskey` Notes: [Global] Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/accesskey
-proc setAccesskey*(element: var HtmlElement, values: varargs[string]|seq[string]) =
+proc setAccesskey*(element: var HtmlElement, values: seq[string]) =
     ## Sets the HtmlAttribute `accesskey`
-    element.attributes.addattr("accesskey", values.toSeq())
-proc setAccesskey*(element: HtmlElement, values: varargs[string]|seq[string]): HtmlElement =
+    element.attributes.add(attr("accesskey", values))
+proc setAccesskey*(element: HtmlElement, values: seq[string]): HtmlElement =
     ## Sets the HtmlAttribute `accesskey`
     result = element
-    result.attributes.addattr("accesskey", values.toSeq())
+    result.setAccesskey(values)
+
+proc setAccesskey*(element: var HtmlElement, values: varargs[string]) =
+    ## Sets the HtmlAttribute `accesskey`
+    element.setAccesskey(values.toSeq())
+proc setAccesskey*(element: HtmlElement, values: varargs[string]): HtmlElement =
+    ## Sets the HtmlAttribute `accesskey`
+    result = element.setAccesskey(values.toSeq())
+
 
 const anchor*: HtmlAttribute = "anchor" ## HtmlAttribute `anchor` Notes: [Experimental, Non-standard, Global] Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/anchor
-proc setAnchor*(element: var HtmlElement, values: varargs[string]|seq[string]) =
+proc setAnchor*(element: var HtmlElement, values: seq[string]) =
     ## Sets the HtmlAttribute `anchor`
-    element.attributes.addattr("anchor", values.toSeq())
-proc setAnchor*(element: HtmlElement, values: varargs[string]|seq[string]): HtmlElement =
+    element.attributes.add(attr("anchor", values))
+proc setAnchor*(element: HtmlElement, values: seq[string]): HtmlElement =
     ## Sets the HtmlAttribute `anchor`
     result = element
-    result.attributes.addattr("anchor", values.toSeq())
+    result.setAnchor(values)
+
+proc setAnchor*(element: var HtmlElement, values: varargs[string]) =
+    ## Sets the HtmlAttribute `anchor`
+    element.setAnchor(values.toSeq())
+proc setAnchor*(element: HtmlElement, values: varargs[string]): HtmlElement =
+    ## Sets the HtmlAttribute `anchor`
+    result = element.setAnchor(values.toSeq())
+
 
 const autocapitalize*: HtmlAttribute = "autocapitalize" ## HtmlAttribute `autocapitalize` Notes: [Global] Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/autocapitalize
-proc setAutocapitalize*(element: var HtmlElement, values: varargs[string]|seq[string]) =
+proc setAutocapitalize*(element: var HtmlElement, values: seq[string]) =
     ## Sets the HtmlAttribute `autocapitalize`
-    element.attributes.addattr("autocapitalize", values.toSeq())
-proc setAutocapitalize*(element: HtmlElement, values: varargs[string]|seq[string]): HtmlElement =
+    element.attributes.add(attr("autocapitalize", values))
+proc setAutocapitalize*(element: HtmlElement, values: seq[string]): HtmlElement =
     ## Sets the HtmlAttribute `autocapitalize`
     result = element
-    result.attributes.addattr("autocapitalize", values.toSeq())
+    result.setAutocapitalize(values)
+
+proc setAutocapitalize*(element: var HtmlElement, values: varargs[string]) =
+    ## Sets the HtmlAttribute `autocapitalize`
+    element.setAutocapitalize(values.toSeq())
+proc setAutocapitalize*(element: HtmlElement, values: varargs[string]): HtmlElement =
+    ## Sets the HtmlAttribute `autocapitalize`
+    result = element.setAutocapitalize(values.toSeq())
+
 
 const autocorrect*: HtmlAttribute = "autocorrect" ## HtmlAttribute `autocorrect` Notes: [Global] Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/autocorrect
-proc setAutocorrect*(element: var HtmlElement, values: varargs[string]|seq[string]) =
+proc setAutocorrect*(element: var HtmlElement, values: seq[string]) =
     ## Sets the HtmlAttribute `autocorrect`
-    element.attributes.addattr("autocorrect", values.toSeq())
-proc setAutocorrect*(element: HtmlElement, values: varargs[string]|seq[string]): HtmlElement =
+    element.attributes.add(attr("autocorrect", values))
+proc setAutocorrect*(element: HtmlElement, values: seq[string]): HtmlElement =
     ## Sets the HtmlAttribute `autocorrect`
     result = element
-    result.attributes.addattr("autocorrect", values.toSeq())
+    result.setAutocorrect(values)
+
+proc setAutocorrect*(element: var HtmlElement, values: varargs[string]) =
+    ## Sets the HtmlAttribute `autocorrect`
+    element.setAutocorrect(values.toSeq())
+proc setAutocorrect*(element: HtmlElement, values: varargs[string]): HtmlElement =
+    ## Sets the HtmlAttribute `autocorrect`
+    result = element.setAutocorrect(values.toSeq())
+
 
 const autofocus*: HtmlAttribute = "autofocus" ## HtmlAttribute `autofocus` Notes: [Global] Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/autofocus
-proc setAutofocus*(element: var HtmlElement, values: varargs[string]|seq[string]) =
+proc setAutofocus*(element: var HtmlElement, values: seq[string]) =
     ## Sets the HtmlAttribute `autofocus`
-    element.attributes.addattr("autofocus", values.toSeq())
-proc setAutofocus*(element: HtmlElement, values: varargs[string]|seq[string]): HtmlElement =
+    element.attributes.add(attr("autofocus", values))
+proc setAutofocus*(element: HtmlElement, values: seq[string]): HtmlElement =
     ## Sets the HtmlAttribute `autofocus`
     result = element
-    result.attributes.addattr("autofocus", values.toSeq())
+    result.setAutofocus(values)
+
+proc setAutofocus*(element: var HtmlElement, values: varargs[string]) =
+    ## Sets the HtmlAttribute `autofocus`
+    element.setAutofocus(values.toSeq())
+proc setAutofocus*(element: HtmlElement, values: varargs[string]): HtmlElement =
+    ## Sets the HtmlAttribute `autofocus`
+    result = element.setAutofocus(values.toSeq())
+
 
 const class*: HtmlAttribute = "class" ## HtmlAttribute `class` Notes: [Global] Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/class
-proc setClass*(element: var HtmlElement, values: varargs[string]|seq[string]) =
+proc setClass*(element: var HtmlElement, values: seq[string]) =
     ## Sets the HtmlAttribute `class`
-    element.attributes.addattr("class", values.toSeq())
-proc setClass*(element: HtmlElement, values: varargs[string]|seq[string]): HtmlElement =
+    element.attributes.add(attr("class", values))
+proc setClass*(element: HtmlElement, values: seq[string]): HtmlElement =
     ## Sets the HtmlAttribute `class`
     result = element
-    result.attributes.addattr("class", values.toSeq())
+    result.setClass(values)
+
+proc setClass*(element: var HtmlElement, values: varargs[string]) =
+    ## Sets the HtmlAttribute `class`
+    element.setClass(values.toSeq())
+proc setClass*(element: HtmlElement, values: varargs[string]): HtmlElement =
+    ## Sets the HtmlAttribute `class`
+    result = element.setClass(values.toSeq())
+
 
 const contenteditable*: HtmlAttribute = "contenteditable" ## HtmlAttribute `contenteditable` Notes: [Global] Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/contenteditable
-proc setContenteditable*(element: var HtmlElement, values: varargs[string]|seq[string]) =
+proc setContenteditable*(element: var HtmlElement, values: seq[string]) =
     ## Sets the HtmlAttribute `contenteditable`
-    element.attributes.addattr("contenteditable", values.toSeq())
-proc setContenteditable*(element: HtmlElement, values: varargs[string]|seq[string]): HtmlElement =
+    element.attributes.add(attr("contenteditable", values))
+proc setContenteditable*(element: HtmlElement, values: seq[string]): HtmlElement =
     ## Sets the HtmlAttribute `contenteditable`
     result = element
-    result.attributes.addattr("contenteditable", values.toSeq())
+    result.setContenteditable(values)
+
+proc setContenteditable*(element: var HtmlElement, values: varargs[string]) =
+    ## Sets the HtmlAttribute `contenteditable`
+    element.setContenteditable(values.toSeq())
+proc setContenteditable*(element: HtmlElement, values: varargs[string]): HtmlElement =
+    ## Sets the HtmlAttribute `contenteditable`
+    result = element.setContenteditable(values.toSeq())
+
 
 const dir*: HtmlAttribute = "dir" ## HtmlAttribute `dir` Notes: [Global] Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/dir
-proc setDir*(element: var HtmlElement, values: varargs[string]|seq[string]) =
+proc setDir*(element: var HtmlElement, values: seq[string]) =
     ## Sets the HtmlAttribute `dir`
-    element.attributes.addattr("dir", values.toSeq())
-proc setDir*(element: HtmlElement, values: varargs[string]|seq[string]): HtmlElement =
+    element.attributes.add(attr("dir", values))
+proc setDir*(element: HtmlElement, values: seq[string]): HtmlElement =
     ## Sets the HtmlAttribute `dir`
     result = element
-    result.attributes.addattr("dir", values.toSeq())
+    result.setDir(values)
+
+proc setDir*(element: var HtmlElement, values: varargs[string]) =
+    ## Sets the HtmlAttribute `dir`
+    element.setDir(values.toSeq())
+proc setDir*(element: HtmlElement, values: varargs[string]): HtmlElement =
+    ## Sets the HtmlAttribute `dir`
+    result = element.setDir(values.toSeq())
+
 
 const draggable*: HtmlAttribute = "draggable" ## HtmlAttribute `draggable` Notes: [Global] Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/draggable
-proc setDraggable*(element: var HtmlElement, values: varargs[string]|seq[string]) =
+proc setDraggable*(element: var HtmlElement, values: seq[string]) =
     ## Sets the HtmlAttribute `draggable`
-    element.attributes.addattr("draggable", values.toSeq())
-proc setDraggable*(element: HtmlElement, values: varargs[string]|seq[string]): HtmlElement =
+    element.attributes.add(attr("draggable", values))
+proc setDraggable*(element: HtmlElement, values: seq[string]): HtmlElement =
     ## Sets the HtmlAttribute `draggable`
     result = element
-    result.attributes.addattr("draggable", values.toSeq())
+    result.setDraggable(values)
+
+proc setDraggable*(element: var HtmlElement, values: varargs[string]) =
+    ## Sets the HtmlAttribute `draggable`
+    element.setDraggable(values.toSeq())
+proc setDraggable*(element: HtmlElement, values: varargs[string]): HtmlElement =
+    ## Sets the HtmlAttribute `draggable`
+    result = element.setDraggable(values.toSeq())
+
 
 const enterkeyhint*: HtmlAttribute = "enterkeyhint" ## HtmlAttribute `enterkeyhint` Notes: [Global] Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/enterkeyhint
-proc setEnterkeyhint*(element: var HtmlElement, values: varargs[string]|seq[string]) =
+proc setEnterkeyhint*(element: var HtmlElement, values: seq[string]) =
     ## Sets the HtmlAttribute `enterkeyhint`
-    element.attributes.addattr("enterkeyhint", values.toSeq())
-proc setEnterkeyhint*(element: HtmlElement, values: varargs[string]|seq[string]): HtmlElement =
+    element.attributes.add(attr("enterkeyhint", values))
+proc setEnterkeyhint*(element: HtmlElement, values: seq[string]): HtmlElement =
     ## Sets the HtmlAttribute `enterkeyhint`
     result = element
-    result.attributes.addattr("enterkeyhint", values.toSeq())
+    result.setEnterkeyhint(values)
+
+proc setEnterkeyhint*(element: var HtmlElement, values: varargs[string]) =
+    ## Sets the HtmlAttribute `enterkeyhint`
+    element.setEnterkeyhint(values.toSeq())
+proc setEnterkeyhint*(element: HtmlElement, values: varargs[string]): HtmlElement =
+    ## Sets the HtmlAttribute `enterkeyhint`
+    result = element.setEnterkeyhint(values.toSeq())
+
 
 const exportparts*: HtmlAttribute = "exportparts" ## HtmlAttribute `exportparts` Notes: [Global] Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/exportparts
-proc setExportparts*(element: var HtmlElement, values: varargs[string]|seq[string]) =
+proc setExportparts*(element: var HtmlElement, values: seq[string]) =
     ## Sets the HtmlAttribute `exportparts`
-    element.attributes.addattr("exportparts", values.toSeq())
-proc setExportparts*(element: HtmlElement, values: varargs[string]|seq[string]): HtmlElement =
+    element.attributes.add(attr("exportparts", values))
+proc setExportparts*(element: HtmlElement, values: seq[string]): HtmlElement =
     ## Sets the HtmlAttribute `exportparts`
     result = element
-    result.attributes.addattr("exportparts", values.toSeq())
+    result.setExportparts(values)
+
+proc setExportparts*(element: var HtmlElement, values: varargs[string]) =
+    ## Sets the HtmlAttribute `exportparts`
+    element.setExportparts(values.toSeq())
+proc setExportparts*(element: HtmlElement, values: varargs[string]): HtmlElement =
+    ## Sets the HtmlAttribute `exportparts`
+    result = element.setExportparts(values.toSeq())
+
 
 const hidden*: HtmlAttribute = "hidden" ## HtmlAttribute `hidden` Notes: [Global] Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/hidden
-proc setHidden*(element: var HtmlElement, values: varargs[string]|seq[string]) =
+proc setHidden*(element: var HtmlElement, values: seq[string]) =
     ## Sets the HtmlAttribute `hidden`
-    element.attributes.addattr("hidden", values.toSeq())
-proc setHidden*(element: HtmlElement, values: varargs[string]|seq[string]): HtmlElement =
+    element.attributes.add(attr("hidden", values))
+proc setHidden*(element: HtmlElement, values: seq[string]): HtmlElement =
     ## Sets the HtmlAttribute `hidden`
     result = element
-    result.attributes.addattr("hidden", values.toSeq())
+    result.setHidden(values)
+
+proc setHidden*(element: var HtmlElement, values: varargs[string]) =
+    ## Sets the HtmlAttribute `hidden`
+    element.setHidden(values.toSeq())
+proc setHidden*(element: HtmlElement, values: varargs[string]): HtmlElement =
+    ## Sets the HtmlAttribute `hidden`
+    result = element.setHidden(values.toSeq())
+
 
 const id*: HtmlAttribute = "id" ## HtmlAttribute `id` Notes: [Global] Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/id
-proc setId*(element: var HtmlElement, values: varargs[string]|seq[string]) =
+proc setId*(element: var HtmlElement, values: seq[string]) =
     ## Sets the HtmlAttribute `id`
-    element.attributes.addattr("id", values.toSeq())
-proc setId*(element: HtmlElement, values: varargs[string]|seq[string]): HtmlElement =
+    element.attributes.add(attr("id", values))
+proc setId*(element: HtmlElement, values: seq[string]): HtmlElement =
     ## Sets the HtmlAttribute `id`
     result = element
-    result.attributes.addattr("id", values.toSeq())
+    result.setId(values)
+
+proc setId*(element: var HtmlElement, values: varargs[string]) =
+    ## Sets the HtmlAttribute `id`
+    element.setId(values.toSeq())
+proc setId*(element: HtmlElement, values: varargs[string]): HtmlElement =
+    ## Sets the HtmlAttribute `id`
+    result = element.setId(values.toSeq())
+
 
 const inert*: HtmlAttribute = "inert" ## HtmlAttribute `inert` Notes: [Global] Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/inert
-proc setInert*(element: var HtmlElement, values: varargs[string]|seq[string]) =
+proc setInert*(element: var HtmlElement, values: seq[string]) =
     ## Sets the HtmlAttribute `inert`
-    element.attributes.addattr("inert", values.toSeq())
-proc setInert*(element: HtmlElement, values: varargs[string]|seq[string]): HtmlElement =
+    element.attributes.add(attr("inert", values))
+proc setInert*(element: HtmlElement, values: seq[string]): HtmlElement =
     ## Sets the HtmlAttribute `inert`
     result = element
-    result.attributes.addattr("inert", values.toSeq())
+    result.setInert(values)
+
+proc setInert*(element: var HtmlElement, values: varargs[string]) =
+    ## Sets the HtmlAttribute `inert`
+    element.setInert(values.toSeq())
+proc setInert*(element: HtmlElement, values: varargs[string]): HtmlElement =
+    ## Sets the HtmlAttribute `inert`
+    result = element.setInert(values.toSeq())
+
 
 const inputmode*: HtmlAttribute = "inputmode" ## HtmlAttribute `inputmode` Notes: [Global] Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/inputmode
-proc setInputmode*(element: var HtmlElement, values: varargs[string]|seq[string]) =
+proc setInputmode*(element: var HtmlElement, values: seq[string]) =
     ## Sets the HtmlAttribute `inputmode`
-    element.attributes.addattr("inputmode", values.toSeq())
-proc setInputmode*(element: HtmlElement, values: varargs[string]|seq[string]): HtmlElement =
+    element.attributes.add(attr("inputmode", values))
+proc setInputmode*(element: HtmlElement, values: seq[string]): HtmlElement =
     ## Sets the HtmlAttribute `inputmode`
     result = element
-    result.attributes.addattr("inputmode", values.toSeq())
+    result.setInputmode(values)
+
+proc setInputmode*(element: var HtmlElement, values: varargs[string]) =
+    ## Sets the HtmlAttribute `inputmode`
+    element.setInputmode(values.toSeq())
+proc setInputmode*(element: HtmlElement, values: varargs[string]): HtmlElement =
+    ## Sets the HtmlAttribute `inputmode`
+    result = element.setInputmode(values.toSeq())
+
 
 const `is`*: HtmlAttribute = "is" ## HtmlAttribute `is` Notes: [Global] Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/is
-proc setIs*(element: var HtmlElement, values: varargs[string]|seq[string]) =
+proc setIs*(element: var HtmlElement, values: seq[string]) =
     ## Sets the HtmlAttribute `is`
-    element.attributes.addattr("is", values.toSeq())
-proc setIs*(element: HtmlElement, values: varargs[string]|seq[string]): HtmlElement =
+    element.attributes.add(attr("is", values))
+proc setIs*(element: HtmlElement, values: seq[string]): HtmlElement =
     ## Sets the HtmlAttribute `is`
     result = element
-    result.attributes.addattr("is", values.toSeq())
+    result.setIs(values)
+
+proc setIs*(element: var HtmlElement, values: varargs[string]) =
+    ## Sets the HtmlAttribute `is`
+    element.setIs(values.toSeq())
+proc setIs*(element: HtmlElement, values: varargs[string]): HtmlElement =
+    ## Sets the HtmlAttribute `is`
+    result = element.setIs(values.toSeq())
+
 
 const itemid*: HtmlAttribute = "itemid" ## HtmlAttribute `itemid` Notes: [Global] Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/itemid
-proc setItemid*(element: var HtmlElement, values: varargs[string]|seq[string]) =
+proc setItemid*(element: var HtmlElement, values: seq[string]) =
     ## Sets the HtmlAttribute `itemid`
-    element.attributes.addattr("itemid", values.toSeq())
-proc setItemid*(element: HtmlElement, values: varargs[string]|seq[string]): HtmlElement =
+    element.attributes.add(attr("itemid", values))
+proc setItemid*(element: HtmlElement, values: seq[string]): HtmlElement =
     ## Sets the HtmlAttribute `itemid`
     result = element
-    result.attributes.addattr("itemid", values.toSeq())
+    result.setItemid(values)
+
+proc setItemid*(element: var HtmlElement, values: varargs[string]) =
+    ## Sets the HtmlAttribute `itemid`
+    element.setItemid(values.toSeq())
+proc setItemid*(element: HtmlElement, values: varargs[string]): HtmlElement =
+    ## Sets the HtmlAttribute `itemid`
+    result = element.setItemid(values.toSeq())
+
 
 const itemprop*: HtmlAttribute = "itemprop" ## HtmlAttribute `itemprop` Notes: [Global] Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/itemprop
-proc setItemprop*(element: var HtmlElement, values: varargs[string]|seq[string]) =
+proc setItemprop*(element: var HtmlElement, values: seq[string]) =
     ## Sets the HtmlAttribute `itemprop`
-    element.attributes.addattr("itemprop", values.toSeq())
-proc setItemprop*(element: HtmlElement, values: varargs[string]|seq[string]): HtmlElement =
+    element.attributes.add(attr("itemprop", values))
+proc setItemprop*(element: HtmlElement, values: seq[string]): HtmlElement =
     ## Sets the HtmlAttribute `itemprop`
     result = element
-    result.attributes.addattr("itemprop", values.toSeq())
+    result.setItemprop(values)
+
+proc setItemprop*(element: var HtmlElement, values: varargs[string]) =
+    ## Sets the HtmlAttribute `itemprop`
+    element.setItemprop(values.toSeq())
+proc setItemprop*(element: HtmlElement, values: varargs[string]): HtmlElement =
+    ## Sets the HtmlAttribute `itemprop`
+    result = element.setItemprop(values.toSeq())
+
 
 const itemref*: HtmlAttribute = "itemref" ## HtmlAttribute `itemref` Notes: [Global] Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/itemref
-proc setItemref*(element: var HtmlElement, values: varargs[string]|seq[string]) =
+proc setItemref*(element: var HtmlElement, values: seq[string]) =
     ## Sets the HtmlAttribute `itemref`
-    element.attributes.addattr("itemref", values.toSeq())
-proc setItemref*(element: HtmlElement, values: varargs[string]|seq[string]): HtmlElement =
+    element.attributes.add(attr("itemref", values))
+proc setItemref*(element: HtmlElement, values: seq[string]): HtmlElement =
     ## Sets the HtmlAttribute `itemref`
     result = element
-    result.attributes.addattr("itemref", values.toSeq())
+    result.setItemref(values)
+
+proc setItemref*(element: var HtmlElement, values: varargs[string]) =
+    ## Sets the HtmlAttribute `itemref`
+    element.setItemref(values.toSeq())
+proc setItemref*(element: HtmlElement, values: varargs[string]): HtmlElement =
+    ## Sets the HtmlAttribute `itemref`
+    result = element.setItemref(values.toSeq())
+
 
 const itemscope*: HtmlAttribute = "itemscope" ## HtmlAttribute `itemscope` Notes: [Global] Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/itemscope
-proc setItemscope*(element: var HtmlElement, values: varargs[string]|seq[string]) =
+proc setItemscope*(element: var HtmlElement, values: seq[string]) =
     ## Sets the HtmlAttribute `itemscope`
-    element.attributes.addattr("itemscope", values.toSeq())
-proc setItemscope*(element: HtmlElement, values: varargs[string]|seq[string]): HtmlElement =
+    element.attributes.add(attr("itemscope", values))
+proc setItemscope*(element: HtmlElement, values: seq[string]): HtmlElement =
     ## Sets the HtmlAttribute `itemscope`
     result = element
-    result.attributes.addattr("itemscope", values.toSeq())
+    result.setItemscope(values)
+
+proc setItemscope*(element: var HtmlElement, values: varargs[string]) =
+    ## Sets the HtmlAttribute `itemscope`
+    element.setItemscope(values.toSeq())
+proc setItemscope*(element: HtmlElement, values: varargs[string]): HtmlElement =
+    ## Sets the HtmlAttribute `itemscope`
+    result = element.setItemscope(values.toSeq())
+
 
 const itemtype*: HtmlAttribute = "itemtype" ## HtmlAttribute `itemtype` Notes: [Global] Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/itemtype
-proc setItemtype*(element: var HtmlElement, values: varargs[string]|seq[string]) =
+proc setItemtype*(element: var HtmlElement, values: seq[string]) =
     ## Sets the HtmlAttribute `itemtype`
-    element.attributes.addattr("itemtype", values.toSeq())
-proc setItemtype*(element: HtmlElement, values: varargs[string]|seq[string]): HtmlElement =
+    element.attributes.add(attr("itemtype", values))
+proc setItemtype*(element: HtmlElement, values: seq[string]): HtmlElement =
     ## Sets the HtmlAttribute `itemtype`
     result = element
-    result.attributes.addattr("itemtype", values.toSeq())
+    result.setItemtype(values)
+
+proc setItemtype*(element: var HtmlElement, values: varargs[string]) =
+    ## Sets the HtmlAttribute `itemtype`
+    element.setItemtype(values.toSeq())
+proc setItemtype*(element: HtmlElement, values: varargs[string]): HtmlElement =
+    ## Sets the HtmlAttribute `itemtype`
+    result = element.setItemtype(values.toSeq())
+
 
 const lang*: HtmlAttribute = "lang" ## HtmlAttribute `lang` Notes: [Global] Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/lang
-proc setLang*(element: var HtmlElement, values: varargs[string]|seq[string]) =
+proc setLang*(element: var HtmlElement, values: seq[string]) =
     ## Sets the HtmlAttribute `lang`
-    element.attributes.addattr("lang", values.toSeq())
-proc setLang*(element: HtmlElement, values: varargs[string]|seq[string]): HtmlElement =
+    element.attributes.add(attr("lang", values))
+proc setLang*(element: HtmlElement, values: seq[string]): HtmlElement =
     ## Sets the HtmlAttribute `lang`
     result = element
-    result.attributes.addattr("lang", values.toSeq())
+    result.setLang(values)
+
+proc setLang*(element: var HtmlElement, values: varargs[string]) =
+    ## Sets the HtmlAttribute `lang`
+    element.setLang(values.toSeq())
+proc setLang*(element: HtmlElement, values: varargs[string]): HtmlElement =
+    ## Sets the HtmlAttribute `lang`
+    result = element.setLang(values.toSeq())
+
 
 const nonce*: HtmlAttribute = "nonce" ## HtmlAttribute `nonce` Notes: [Global] Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/nonce
-proc setNonce*(element: var HtmlElement, values: varargs[string]|seq[string]) =
+proc setNonce*(element: var HtmlElement, values: seq[string]) =
     ## Sets the HtmlAttribute `nonce`
-    element.attributes.addattr("nonce", values.toSeq())
-proc setNonce*(element: HtmlElement, values: varargs[string]|seq[string]): HtmlElement =
+    element.attributes.add(attr("nonce", values))
+proc setNonce*(element: HtmlElement, values: seq[string]): HtmlElement =
     ## Sets the HtmlAttribute `nonce`
     result = element
-    result.attributes.addattr("nonce", values.toSeq())
+    result.setNonce(values)
+
+proc setNonce*(element: var HtmlElement, values: varargs[string]) =
+    ## Sets the HtmlAttribute `nonce`
+    element.setNonce(values.toSeq())
+proc setNonce*(element: HtmlElement, values: varargs[string]): HtmlElement =
+    ## Sets the HtmlAttribute `nonce`
+    result = element.setNonce(values.toSeq())
+
 
 const part*: HtmlAttribute = "part" ## HtmlAttribute `part` Notes: [Global] Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/part
-proc setPart*(element: var HtmlElement, values: varargs[string]|seq[string]) =
+proc setPart*(element: var HtmlElement, values: seq[string]) =
     ## Sets the HtmlAttribute `part`
-    element.attributes.addattr("part", values.toSeq())
-proc setPart*(element: HtmlElement, values: varargs[string]|seq[string]): HtmlElement =
+    element.attributes.add(attr("part", values))
+proc setPart*(element: HtmlElement, values: seq[string]): HtmlElement =
     ## Sets the HtmlAttribute `part`
     result = element
-    result.attributes.addattr("part", values.toSeq())
+    result.setPart(values)
+
+proc setPart*(element: var HtmlElement, values: varargs[string]) =
+    ## Sets the HtmlAttribute `part`
+    element.setPart(values.toSeq())
+proc setPart*(element: HtmlElement, values: varargs[string]): HtmlElement =
+    ## Sets the HtmlAttribute `part`
+    result = element.setPart(values.toSeq())
+
 
 const popover*: HtmlAttribute = "popover" ## HtmlAttribute `popover` Notes: [Global] Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/popover
-proc setPopover*(element: var HtmlElement, values: varargs[string]|seq[string]) =
+proc setPopover*(element: var HtmlElement, values: seq[string]) =
     ## Sets the HtmlAttribute `popover`
-    element.attributes.addattr("popover", values.toSeq())
-proc setPopover*(element: HtmlElement, values: varargs[string]|seq[string]): HtmlElement =
+    element.attributes.add(attr("popover", values))
+proc setPopover*(element: HtmlElement, values: seq[string]): HtmlElement =
     ## Sets the HtmlAttribute `popover`
     result = element
-    result.attributes.addattr("popover", values.toSeq())
+    result.setPopover(values)
+
+proc setPopover*(element: var HtmlElement, values: varargs[string]) =
+    ## Sets the HtmlAttribute `popover`
+    element.setPopover(values.toSeq())
+proc setPopover*(element: HtmlElement, values: varargs[string]): HtmlElement =
+    ## Sets the HtmlAttribute `popover`
+    result = element.setPopover(values.toSeq())
+
 
 const slot*: HtmlAttribute = "slot" ## HtmlAttribute `slot` Notes: [Global] Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/slot
-proc setSlot*(element: var HtmlElement, values: varargs[string]|seq[string]) =
+proc setSlot*(element: var HtmlElement, values: seq[string]) =
     ## Sets the HtmlAttribute `slot`
-    element.attributes.addattr("slot", values.toSeq())
-proc setSlot*(element: HtmlElement, values: varargs[string]|seq[string]): HtmlElement =
+    element.attributes.add(attr("slot", values))
+proc setSlot*(element: HtmlElement, values: seq[string]): HtmlElement =
     ## Sets the HtmlAttribute `slot`
     result = element
-    result.attributes.addattr("slot", values.toSeq())
+    result.setSlot(values)
+
+proc setSlot*(element: var HtmlElement, values: varargs[string]) =
+    ## Sets the HtmlAttribute `slot`
+    element.setSlot(values.toSeq())
+proc setSlot*(element: HtmlElement, values: varargs[string]): HtmlElement =
+    ## Sets the HtmlAttribute `slot`
+    result = element.setSlot(values.toSeq())
+
 
 const spellcheck*: HtmlAttribute = "spellcheck" ## HtmlAttribute `spellcheck` Notes: [Global] Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/spellcheck
-proc setSpellcheck*(element: var HtmlElement, values: varargs[string]|seq[string]) =
+proc setSpellcheck*(element: var HtmlElement, values: seq[string]) =
     ## Sets the HtmlAttribute `spellcheck`
-    element.attributes.addattr("spellcheck", values.toSeq())
-proc setSpellcheck*(element: HtmlElement, values: varargs[string]|seq[string]): HtmlElement =
+    element.attributes.add(attr("spellcheck", values))
+proc setSpellcheck*(element: HtmlElement, values: seq[string]): HtmlElement =
     ## Sets the HtmlAttribute `spellcheck`
     result = element
-    result.attributes.addattr("spellcheck", values.toSeq())
+    result.setSpellcheck(values)
 
-const style*: HtmlAttribute = "style" ## HtmlAttribute `style` Notes: [Global] Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/style
-proc setStyle*(element: var HtmlElement, values: varargs[string]|seq[string]) =
-    ## Sets the HtmlAttribute `style`
-    element.attributes.addattr("style", values.toSeq())
-proc setStyle*(element: HtmlElement, values: varargs[string]|seq[string]): HtmlElement =
-    ## Sets the HtmlAttribute `style`
-    result = element
-    result.attributes.addattr("style", values.toSeq())
+proc setSpellcheck*(element: var HtmlElement, values: varargs[string]) =
+    ## Sets the HtmlAttribute `spellcheck`
+    element.setSpellcheck(values.toSeq())
+proc setSpellcheck*(element: HtmlElement, values: varargs[string]): HtmlElement =
+    ## Sets the HtmlAttribute `spellcheck`
+    result = element.setSpellcheck(values.toSeq())
+
 
 const tabindex*: HtmlAttribute = "tabindex" ## HtmlAttribute `tabindex` Notes: [Global] Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex
-proc setTabindex*(element: var HtmlElement, values: varargs[string]|seq[string]) =
+proc setTabindex*(element: var HtmlElement, values: seq[string]) =
     ## Sets the HtmlAttribute `tabindex`
-    element.attributes.addattr("tabindex", values.toSeq())
-proc setTabindex*(element: HtmlElement, values: varargs[string]|seq[string]): HtmlElement =
+    element.attributes.add(attr("tabindex", values))
+proc setTabindex*(element: HtmlElement, values: seq[string]): HtmlElement =
     ## Sets the HtmlAttribute `tabindex`
     result = element
-    result.attributes.addattr("tabindex", values.toSeq())
+    result.setTabindex(values)
+
+proc setTabindex*(element: var HtmlElement, values: varargs[string]) =
+    ## Sets the HtmlAttribute `tabindex`
+    element.setTabindex(values.toSeq())
+proc setTabindex*(element: HtmlElement, values: varargs[string]): HtmlElement =
+    ## Sets the HtmlAttribute `tabindex`
+    result = element.setTabindex(values.toSeq())
+
 
 const title*: HtmlAttribute = "title" ## HtmlAttribute `title` Notes: [Global] Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/title
-proc setTitle*(element: var HtmlElement, values: varargs[string]|seq[string]) =
+proc setTitle*(element: var HtmlElement, values: seq[string]) =
     ## Sets the HtmlAttribute `title`
-    element.attributes.addattr("title", values.toSeq())
-proc setTitle*(element: HtmlElement, values: varargs[string]|seq[string]): HtmlElement =
+    element.attributes.add(attr("title", values))
+proc setTitle*(element: HtmlElement, values: seq[string]): HtmlElement =
     ## Sets the HtmlAttribute `title`
     result = element
-    result.attributes.addattr("title", values.toSeq())
+    result.setTitle(values)
+
+proc setTitle*(element: var HtmlElement, values: varargs[string]) =
+    ## Sets the HtmlAttribute `title`
+    element.setTitle(values.toSeq())
+proc setTitle*(element: HtmlElement, values: varargs[string]): HtmlElement =
+    ## Sets the HtmlAttribute `title`
+    result = element.setTitle(values.toSeq())
+
 
 const translate*: HtmlAttribute = "translate" ## HtmlAttribute `translate` Notes: [Global] Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/translate
-proc setTranslate*(element: var HtmlElement, values: varargs[string]|seq[string]) =
+proc setTranslate*(element: var HtmlElement, values: seq[string]) =
     ## Sets the HtmlAttribute `translate`
-    element.attributes.addattr("translate", values.toSeq())
-proc setTranslate*(element: HtmlElement, values: varargs[string]|seq[string]): HtmlElement =
+    element.attributes.add(attr("translate", values))
+proc setTranslate*(element: HtmlElement, values: seq[string]): HtmlElement =
     ## Sets the HtmlAttribute `translate`
     result = element
-    result.attributes.addattr("translate", values.toSeq())
+    result.setTranslate(values)
+
+proc setTranslate*(element: var HtmlElement, values: varargs[string]) =
+    ## Sets the HtmlAttribute `translate`
+    element.setTranslate(values.toSeq())
+proc setTranslate*(element: HtmlElement, values: varargs[string]): HtmlElement =
+    ## Sets the HtmlAttribute `translate`
+    result = element.setTranslate(values.toSeq())
+
 
 const virtualkeyboardpolicy*: HtmlAttribute = "virtualkeyboardpolicy" ## HtmlAttribute `virtualkeyboardpolicy` Notes: [Experimental, Global] Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/virtualkeyboardpolicy
-proc setVirtualkeyboardpolicy*(element: var HtmlElement, values: varargs[string]|seq[string]) =
+proc setVirtualkeyboardpolicy*(element: var HtmlElement, values: seq[string]) =
     ## Sets the HtmlAttribute `virtualkeyboardpolicy`
-    element.attributes.addattr("virtualkeyboardpolicy", values.toSeq())
-proc setVirtualkeyboardpolicy*(element: HtmlElement, values: varargs[string]|seq[string]): HtmlElement =
+    element.attributes.add(attr("virtualkeyboardpolicy", values))
+proc setVirtualkeyboardpolicy*(element: HtmlElement, values: seq[string]): HtmlElement =
     ## Sets the HtmlAttribute `virtualkeyboardpolicy`
     result = element
-    result.attributes.addattr("virtualkeyboardpolicy", values.toSeq())
+    result.setVirtualkeyboardpolicy(values)
+
+proc setVirtualkeyboardpolicy*(element: var HtmlElement, values: varargs[string]) =
+    ## Sets the HtmlAttribute `virtualkeyboardpolicy`
+    element.setVirtualkeyboardpolicy(values.toSeq())
+proc setVirtualkeyboardpolicy*(element: HtmlElement, values: varargs[string]): HtmlElement =
+    ## Sets the HtmlAttribute `virtualkeyboardpolicy`
+    result = element.setVirtualkeyboardpolicy(values.toSeq())
+
 
 const writingsuggestions*: HtmlAttribute = "writingsuggestions" ## HtmlAttribute `writingsuggestions` Notes: [Global] Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/writingsuggestions
-proc setWritingsuggestions*(element: var HtmlElement, values: varargs[string]|seq[string]) =
+proc setWritingsuggestions*(element: var HtmlElement, values: seq[string]) =
     ## Sets the HtmlAttribute `writingsuggestions`
-    element.attributes.addattr("writingsuggestions", values.toSeq())
-proc setWritingsuggestions*(element: HtmlElement, values: varargs[string]|seq[string]): HtmlElement =
+    element.attributes.add(attr("writingsuggestions", values))
+proc setWritingsuggestions*(element: HtmlElement, values: seq[string]): HtmlElement =
     ## Sets the HtmlAttribute `writingsuggestions`
     result = element
-    result.attributes.addattr("writingsuggestions", values.toSeq())
+    result.setWritingsuggestions(values)
+
+proc setWritingsuggestions*(element: var HtmlElement, values: varargs[string]) =
+    ## Sets the HtmlAttribute `writingsuggestions`
+    element.setWritingsuggestions(values.toSeq())
+proc setWritingsuggestions*(element: HtmlElement, values: varargs[string]): HtmlElement =
+    ## Sets the HtmlAttribute `writingsuggestions`
+    result = element.setWritingsuggestions(values.toSeq())
+
 
 const accept*: HtmlAttribute = "accept" ## HtmlAttribute `accept` Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/accept
-proc setAccept*(element: var HtmlElement, values: varargs[string]|seq[string]) =
+proc setAccept*(element: var HtmlElement, values: seq[string]) =
     ## Sets the HtmlAttribute `accept`
-    element.attributes.addattr("accept", values.toSeq())
-proc setAccept*(element: HtmlElement, values: varargs[string]|seq[string]): HtmlElement =
+    element.attributes.add(attr("accept", values))
+proc setAccept*(element: HtmlElement, values: seq[string]): HtmlElement =
     ## Sets the HtmlAttribute `accept`
     result = element
-    result.attributes.addattr("accept", values.toSeq())
+    result.setAccept(values)
+
+proc setAccept*(element: var HtmlElement, values: varargs[string]) =
+    ## Sets the HtmlAttribute `accept`
+    element.setAccept(values.toSeq())
+proc setAccept*(element: HtmlElement, values: varargs[string]): HtmlElement =
+    ## Sets the HtmlAttribute `accept`
+    result = element.setAccept(values.toSeq())
+
 
 const autocomplete*: HtmlAttribute = "autocomplete" ## HtmlAttribute `autocomplete` Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete
-proc setAutocomplete*(element: var HtmlElement, values: varargs[string]|seq[string]) =
+proc setAutocomplete*(element: var HtmlElement, values: seq[string]) =
     ## Sets the HtmlAttribute `autocomplete`
-    element.attributes.addattr("autocomplete", values.toSeq())
-proc setAutocomplete*(element: HtmlElement, values: varargs[string]|seq[string]): HtmlElement =
+    element.attributes.add(attr("autocomplete", values))
+proc setAutocomplete*(element: HtmlElement, values: seq[string]): HtmlElement =
     ## Sets the HtmlAttribute `autocomplete`
     result = element
-    result.attributes.addattr("autocomplete", values.toSeq())
+    result.setAutocomplete(values)
+
+proc setAutocomplete*(element: var HtmlElement, values: varargs[string]) =
+    ## Sets the HtmlAttribute `autocomplete`
+    element.setAutocomplete(values.toSeq())
+proc setAutocomplete*(element: HtmlElement, values: varargs[string]): HtmlElement =
+    ## Sets the HtmlAttribute `autocomplete`
+    result = element.setAutocomplete(values.toSeq())
+
 
 const capture*: HtmlAttribute = "capture" ## HtmlAttribute `capture` Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/capture
-proc setCapture*(element: var HtmlElement, values: varargs[string]|seq[string]) =
+proc setCapture*(element: var HtmlElement, values: seq[string]) =
     ## Sets the HtmlAttribute `capture`
-    element.attributes.addattr("capture", values.toSeq())
-proc setCapture*(element: HtmlElement, values: varargs[string]|seq[string]): HtmlElement =
+    element.attributes.add(attr("capture", values))
+proc setCapture*(element: HtmlElement, values: seq[string]): HtmlElement =
     ## Sets the HtmlAttribute `capture`
     result = element
-    result.attributes.addattr("capture", values.toSeq())
+    result.setCapture(values)
+
+proc setCapture*(element: var HtmlElement, values: varargs[string]) =
+    ## Sets the HtmlAttribute `capture`
+    element.setCapture(values.toSeq())
+proc setCapture*(element: HtmlElement, values: varargs[string]): HtmlElement =
+    ## Sets the HtmlAttribute `capture`
+    result = element.setCapture(values.toSeq())
+
 
 const crossorigin*: HtmlAttribute = "crossorigin" ## HtmlAttribute `crossorigin` Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin
-proc setCrossorigin*(element: var HtmlElement, values: varargs[string]|seq[string]) =
+proc setCrossorigin*(element: var HtmlElement, values: seq[string]) =
     ## Sets the HtmlAttribute `crossorigin`
-    element.attributes.addattr("crossorigin", values.toSeq())
-proc setCrossorigin*(element: HtmlElement, values: varargs[string]|seq[string]): HtmlElement =
+    element.attributes.add(attr("crossorigin", values))
+proc setCrossorigin*(element: HtmlElement, values: seq[string]): HtmlElement =
     ## Sets the HtmlAttribute `crossorigin`
     result = element
-    result.attributes.addattr("crossorigin", values.toSeq())
+    result.setCrossorigin(values)
+
+proc setCrossorigin*(element: var HtmlElement, values: varargs[string]) =
+    ## Sets the HtmlAttribute `crossorigin`
+    element.setCrossorigin(values.toSeq())
+proc setCrossorigin*(element: HtmlElement, values: varargs[string]): HtmlElement =
+    ## Sets the HtmlAttribute `crossorigin`
+    result = element.setCrossorigin(values.toSeq())
+
 
 const dirname*: HtmlAttribute = "dirname" ## HtmlAttribute `dirname` Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/dirname
-proc setDirname*(element: var HtmlElement, values: varargs[string]|seq[string]) =
+proc setDirname*(element: var HtmlElement, values: seq[string]) =
     ## Sets the HtmlAttribute `dirname`
-    element.attributes.addattr("dirname", values.toSeq())
-proc setDirname*(element: HtmlElement, values: varargs[string]|seq[string]): HtmlElement =
+    element.attributes.add(attr("dirname", values))
+proc setDirname*(element: HtmlElement, values: seq[string]): HtmlElement =
     ## Sets the HtmlAttribute `dirname`
     result = element
-    result.attributes.addattr("dirname", values.toSeq())
+    result.setDirname(values)
+
+proc setDirname*(element: var HtmlElement, values: varargs[string]) =
+    ## Sets the HtmlAttribute `dirname`
+    element.setDirname(values.toSeq())
+proc setDirname*(element: HtmlElement, values: varargs[string]): HtmlElement =
+    ## Sets the HtmlAttribute `dirname`
+    result = element.setDirname(values.toSeq())
+
 
 const disabled*: HtmlAttribute = "disabled" ## HtmlAttribute `disabled` Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled
-proc setDisabled*(element: var HtmlElement, values: varargs[string]|seq[string]) =
+proc setDisabled*(element: var HtmlElement, values: seq[string]) =
     ## Sets the HtmlAttribute `disabled`
-    element.attributes.addattr("disabled", values.toSeq())
-proc setDisabled*(element: HtmlElement, values: varargs[string]|seq[string]): HtmlElement =
+    element.attributes.add(attr("disabled", values))
+proc setDisabled*(element: HtmlElement, values: seq[string]): HtmlElement =
     ## Sets the HtmlAttribute `disabled`
     result = element
-    result.attributes.addattr("disabled", values.toSeq())
+    result.setDisabled(values)
+
+proc setDisabled*(element: var HtmlElement, values: varargs[string]) =
+    ## Sets the HtmlAttribute `disabled`
+    element.setDisabled(values.toSeq())
+proc setDisabled*(element: HtmlElement, values: varargs[string]): HtmlElement =
+    ## Sets the HtmlAttribute `disabled`
+    result = element.setDisabled(values.toSeq())
+
 
 const elementtiming*: HtmlAttribute = "elementtiming" ## HtmlAttribute `elementtiming` Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/elementtiming
-proc setElementtiming*(element: var HtmlElement, values: varargs[string]|seq[string]) =
+proc setElementtiming*(element: var HtmlElement, values: seq[string]) =
     ## Sets the HtmlAttribute `elementtiming`
-    element.attributes.addattr("elementtiming", values.toSeq())
-proc setElementtiming*(element: HtmlElement, values: varargs[string]|seq[string]): HtmlElement =
+    element.attributes.add(attr("elementtiming", values))
+proc setElementtiming*(element: HtmlElement, values: seq[string]): HtmlElement =
     ## Sets the HtmlAttribute `elementtiming`
     result = element
-    result.attributes.addattr("elementtiming", values.toSeq())
+    result.setElementtiming(values)
+
+proc setElementtiming*(element: var HtmlElement, values: varargs[string]) =
+    ## Sets the HtmlAttribute `elementtiming`
+    element.setElementtiming(values.toSeq())
+proc setElementtiming*(element: HtmlElement, values: varargs[string]): HtmlElement =
+    ## Sets the HtmlAttribute `elementtiming`
+    result = element.setElementtiming(values.toSeq())
+
 
 const `for`*: HtmlAttribute = "for" ## HtmlAttribute `for` Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/for
-proc setFor*(element: var HtmlElement, values: varargs[string]|seq[string]) =
+proc setFor*(element: var HtmlElement, values: seq[string]) =
     ## Sets the HtmlAttribute `for`
-    element.attributes.addattr("for", values.toSeq())
-proc setFor*(element: HtmlElement, values: varargs[string]|seq[string]): HtmlElement =
+    element.attributes.add(attr("for", values))
+proc setFor*(element: HtmlElement, values: seq[string]): HtmlElement =
     ## Sets the HtmlAttribute `for`
     result = element
-    result.attributes.addattr("for", values.toSeq())
+    result.setFor(values)
+
+proc setFor*(element: var HtmlElement, values: varargs[string]) =
+    ## Sets the HtmlAttribute `for`
+    element.setFor(values.toSeq())
+proc setFor*(element: HtmlElement, values: varargs[string]): HtmlElement =
+    ## Sets the HtmlAttribute `for`
+    result = element.setFor(values.toSeq())
+
 
 const max*: HtmlAttribute = "max" ## HtmlAttribute `max` Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/max
-proc setMax*(element: var HtmlElement, values: varargs[string]|seq[string]) =
+proc setMax*(element: var HtmlElement, values: seq[string]) =
     ## Sets the HtmlAttribute `max`
-    element.attributes.addattr("max", values.toSeq())
-proc setMax*(element: HtmlElement, values: varargs[string]|seq[string]): HtmlElement =
+    element.attributes.add(attr("max", values))
+proc setMax*(element: HtmlElement, values: seq[string]): HtmlElement =
     ## Sets the HtmlAttribute `max`
     result = element
-    result.attributes.addattr("max", values.toSeq())
+    result.setMax(values)
+
+proc setMax*(element: var HtmlElement, values: varargs[string]) =
+    ## Sets the HtmlAttribute `max`
+    element.setMax(values.toSeq())
+proc setMax*(element: HtmlElement, values: varargs[string]): HtmlElement =
+    ## Sets the HtmlAttribute `max`
+    result = element.setMax(values.toSeq())
+
 
 const maxlength*: HtmlAttribute = "maxlength" ## HtmlAttribute `maxlength` Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/maxlength
-proc setMaxlength*(element: var HtmlElement, values: varargs[string]|seq[string]) =
+proc setMaxlength*(element: var HtmlElement, values: seq[string]) =
     ## Sets the HtmlAttribute `maxlength`
-    element.attributes.addattr("maxlength", values.toSeq())
-proc setMaxlength*(element: HtmlElement, values: varargs[string]|seq[string]): HtmlElement =
+    element.attributes.add(attr("maxlength", values))
+proc setMaxlength*(element: HtmlElement, values: seq[string]): HtmlElement =
     ## Sets the HtmlAttribute `maxlength`
     result = element
-    result.attributes.addattr("maxlength", values.toSeq())
+    result.setMaxlength(values)
+
+proc setMaxlength*(element: var HtmlElement, values: varargs[string]) =
+    ## Sets the HtmlAttribute `maxlength`
+    element.setMaxlength(values.toSeq())
+proc setMaxlength*(element: HtmlElement, values: varargs[string]): HtmlElement =
+    ## Sets the HtmlAttribute `maxlength`
+    result = element.setMaxlength(values.toSeq())
+
 
 const min*: HtmlAttribute = "min" ## HtmlAttribute `min` Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/min
-proc setMin*(element: var HtmlElement, values: varargs[string]|seq[string]) =
+proc setMin*(element: var HtmlElement, values: seq[string]) =
     ## Sets the HtmlAttribute `min`
-    element.attributes.addattr("min", values.toSeq())
-proc setMin*(element: HtmlElement, values: varargs[string]|seq[string]): HtmlElement =
+    element.attributes.add(attr("min", values))
+proc setMin*(element: HtmlElement, values: seq[string]): HtmlElement =
     ## Sets the HtmlAttribute `min`
     result = element
-    result.attributes.addattr("min", values.toSeq())
+    result.setMin(values)
+
+proc setMin*(element: var HtmlElement, values: varargs[string]) =
+    ## Sets the HtmlAttribute `min`
+    element.setMin(values.toSeq())
+proc setMin*(element: HtmlElement, values: varargs[string]): HtmlElement =
+    ## Sets the HtmlAttribute `min`
+    result = element.setMin(values.toSeq())
+
 
 const minlength*: HtmlAttribute = "minlength" ## HtmlAttribute `minlength` Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/minlength
-proc setMinlength*(element: var HtmlElement, values: varargs[string]|seq[string]) =
+proc setMinlength*(element: var HtmlElement, values: seq[string]) =
     ## Sets the HtmlAttribute `minlength`
-    element.attributes.addattr("minlength", values.toSeq())
-proc setMinlength*(element: HtmlElement, values: varargs[string]|seq[string]): HtmlElement =
+    element.attributes.add(attr("minlength", values))
+proc setMinlength*(element: HtmlElement, values: seq[string]): HtmlElement =
     ## Sets the HtmlAttribute `minlength`
     result = element
-    result.attributes.addattr("minlength", values.toSeq())
+    result.setMinlength(values)
+
+proc setMinlength*(element: var HtmlElement, values: varargs[string]) =
+    ## Sets the HtmlAttribute `minlength`
+    element.setMinlength(values.toSeq())
+proc setMinlength*(element: HtmlElement, values: varargs[string]): HtmlElement =
+    ## Sets the HtmlAttribute `minlength`
+    result = element.setMinlength(values.toSeq())
+
 
 const multiple*: HtmlAttribute = "multiple" ## HtmlAttribute `multiple` Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/multiple
-proc setMultiple*(element: var HtmlElement, values: varargs[string]|seq[string]) =
+proc setMultiple*(element: var HtmlElement, values: seq[string]) =
     ## Sets the HtmlAttribute `multiple`
-    element.attributes.addattr("multiple", values.toSeq())
-proc setMultiple*(element: HtmlElement, values: varargs[string]|seq[string]): HtmlElement =
+    element.attributes.add(attr("multiple", values))
+proc setMultiple*(element: HtmlElement, values: seq[string]): HtmlElement =
     ## Sets the HtmlAttribute `multiple`
     result = element
-    result.attributes.addattr("multiple", values.toSeq())
+    result.setMultiple(values)
+
+proc setMultiple*(element: var HtmlElement, values: varargs[string]) =
+    ## Sets the HtmlAttribute `multiple`
+    element.setMultiple(values.toSeq())
+proc setMultiple*(element: HtmlElement, values: varargs[string]): HtmlElement =
+    ## Sets the HtmlAttribute `multiple`
+    result = element.setMultiple(values.toSeq())
+
 
 const pattern*: HtmlAttribute = "pattern" ## HtmlAttribute `pattern` Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/pattern
-proc setPattern*(element: var HtmlElement, values: varargs[string]|seq[string]) =
+proc setPattern*(element: var HtmlElement, values: seq[string]) =
     ## Sets the HtmlAttribute `pattern`
-    element.attributes.addattr("pattern", values.toSeq())
-proc setPattern*(element: HtmlElement, values: varargs[string]|seq[string]): HtmlElement =
+    element.attributes.add(attr("pattern", values))
+proc setPattern*(element: HtmlElement, values: seq[string]): HtmlElement =
     ## Sets the HtmlAttribute `pattern`
     result = element
-    result.attributes.addattr("pattern", values.toSeq())
+    result.setPattern(values)
+
+proc setPattern*(element: var HtmlElement, values: varargs[string]) =
+    ## Sets the HtmlAttribute `pattern`
+    element.setPattern(values.toSeq())
+proc setPattern*(element: HtmlElement, values: varargs[string]): HtmlElement =
+    ## Sets the HtmlAttribute `pattern`
+    result = element.setPattern(values.toSeq())
+
 
 const placeholder*: HtmlAttribute = "placeholder" ## HtmlAttribute `placeholder` Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/placeholder
-proc setPlaceholder*(element: var HtmlElement, values: varargs[string]|seq[string]) =
+proc setPlaceholder*(element: var HtmlElement, values: seq[string]) =
     ## Sets the HtmlAttribute `placeholder`
-    element.attributes.addattr("placeholder", values.toSeq())
-proc setPlaceholder*(element: HtmlElement, values: varargs[string]|seq[string]): HtmlElement =
+    element.attributes.add(attr("placeholder", values))
+proc setPlaceholder*(element: HtmlElement, values: seq[string]): HtmlElement =
     ## Sets the HtmlAttribute `placeholder`
     result = element
-    result.attributes.addattr("placeholder", values.toSeq())
+    result.setPlaceholder(values)
+
+proc setPlaceholder*(element: var HtmlElement, values: varargs[string]) =
+    ## Sets the HtmlAttribute `placeholder`
+    element.setPlaceholder(values.toSeq())
+proc setPlaceholder*(element: HtmlElement, values: varargs[string]): HtmlElement =
+    ## Sets the HtmlAttribute `placeholder`
+    result = element.setPlaceholder(values.toSeq())
+
 
 const readonly*: HtmlAttribute = "readonly" ## HtmlAttribute `readonly` Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/readonly
-proc setReadonly*(element: var HtmlElement, values: varargs[string]|seq[string]) =
+proc setReadonly*(element: var HtmlElement, values: seq[string]) =
     ## Sets the HtmlAttribute `readonly`
-    element.attributes.addattr("readonly", values.toSeq())
-proc setReadonly*(element: HtmlElement, values: varargs[string]|seq[string]): HtmlElement =
+    element.attributes.add(attr("readonly", values))
+proc setReadonly*(element: HtmlElement, values: seq[string]): HtmlElement =
     ## Sets the HtmlAttribute `readonly`
     result = element
-    result.attributes.addattr("readonly", values.toSeq())
+    result.setReadonly(values)
+
+proc setReadonly*(element: var HtmlElement, values: varargs[string]) =
+    ## Sets the HtmlAttribute `readonly`
+    element.setReadonly(values.toSeq())
+proc setReadonly*(element: HtmlElement, values: varargs[string]): HtmlElement =
+    ## Sets the HtmlAttribute `readonly`
+    result = element.setReadonly(values.toSeq())
+
 
 const rel*: HtmlAttribute = "rel" ## HtmlAttribute `rel` Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel
-proc setRel*(element: var HtmlElement, values: varargs[string]|seq[string]) =
+proc setRel*(element: var HtmlElement, values: seq[string]) =
     ## Sets the HtmlAttribute `rel`
-    element.attributes.addattr("rel", values.toSeq())
-proc setRel*(element: HtmlElement, values: varargs[string]|seq[string]): HtmlElement =
+    element.attributes.add(attr("rel", values))
+proc setRel*(element: HtmlElement, values: seq[string]): HtmlElement =
     ## Sets the HtmlAttribute `rel`
     result = element
-    result.attributes.addattr("rel", values.toSeq())
+    result.setRel(values)
+
+proc setRel*(element: var HtmlElement, values: varargs[string]) =
+    ## Sets the HtmlAttribute `rel`
+    element.setRel(values.toSeq())
+proc setRel*(element: HtmlElement, values: varargs[string]): HtmlElement =
+    ## Sets the HtmlAttribute `rel`
+    result = element.setRel(values.toSeq())
+
 
 const required*: HtmlAttribute = "required" ## HtmlAttribute `required` Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/required
-proc setRequired*(element: var HtmlElement, values: varargs[string]|seq[string]) =
+proc setRequired*(element: var HtmlElement, values: seq[string]) =
     ## Sets the HtmlAttribute `required`
-    element.attributes.addattr("required", values.toSeq())
-proc setRequired*(element: HtmlElement, values: varargs[string]|seq[string]): HtmlElement =
+    element.attributes.add(attr("required", values))
+proc setRequired*(element: HtmlElement, values: seq[string]): HtmlElement =
     ## Sets the HtmlAttribute `required`
     result = element
-    result.attributes.addattr("required", values.toSeq())
+    result.setRequired(values)
+
+proc setRequired*(element: var HtmlElement, values: varargs[string]) =
+    ## Sets the HtmlAttribute `required`
+    element.setRequired(values.toSeq())
+proc setRequired*(element: HtmlElement, values: varargs[string]): HtmlElement =
+    ## Sets the HtmlAttribute `required`
+    result = element.setRequired(values.toSeq())
+
 
 const size*: HtmlAttribute = "size" ## HtmlAttribute `size` Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/size
-proc setSize*(element: var HtmlElement, values: varargs[string]|seq[string]) =
+proc setSize*(element: var HtmlElement, values: seq[string]) =
     ## Sets the HtmlAttribute `size`
-    element.attributes.addattr("size", values.toSeq())
-proc setSize*(element: HtmlElement, values: varargs[string]|seq[string]): HtmlElement =
+    element.attributes.add(attr("size", values))
+proc setSize*(element: HtmlElement, values: seq[string]): HtmlElement =
     ## Sets the HtmlAttribute `size`
     result = element
-    result.attributes.addattr("size", values.toSeq())
+    result.setSize(values)
+
+proc setSize*(element: var HtmlElement, values: varargs[string]) =
+    ## Sets the HtmlAttribute `size`
+    element.setSize(values.toSeq())
+proc setSize*(element: HtmlElement, values: varargs[string]): HtmlElement =
+    ## Sets the HtmlAttribute `size`
+    result = element.setSize(values.toSeq())
+
 
 const step*: HtmlAttribute = "step" ## HtmlAttribute `step` Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/step
-proc setStep*(element: var HtmlElement, values: varargs[string]|seq[string]) =
+proc setStep*(element: var HtmlElement, values: seq[string]) =
     ## Sets the HtmlAttribute `step`
-    element.attributes.addattr("step", values.toSeq())
-proc setStep*(element: HtmlElement, values: varargs[string]|seq[string]): HtmlElement =
+    element.attributes.add(attr("step", values))
+proc setStep*(element: HtmlElement, values: seq[string]): HtmlElement =
     ## Sets the HtmlAttribute `step`
     result = element
-    result.attributes.addattr("step", values.toSeq())
+    result.setStep(values)
+
+proc setStep*(element: var HtmlElement, values: varargs[string]) =
+    ## Sets the HtmlAttribute `step`
+    element.setStep(values.toSeq())
+proc setStep*(element: HtmlElement, values: varargs[string]): HtmlElement =
+    ## Sets the HtmlAttribute `step`
+    result = element.setStep(values.toSeq())
 
