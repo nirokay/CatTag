@@ -79,6 +79,8 @@ proc stringifyElement[T: HtmlElement|XmlElement](element: T, isVoid: bool, gener
     else:
         if element.children.len() == 0:
             result = &"<{element.tag}{attributes}></{element.tag}>"
+        elif element.children.len() == 1:
+            result = &"<{element.tag}{attributes}>" & dollarImpl(element.children) & &"</{element.tag}>"
         else:
             result = &"<{element.tag}{attributes}>{htmlXmlIndentNewLine}" & dollarImpl(element.children).indent(cattagHtmlXmlIndent) & &"{htmlXmlIndentNewLine}</{element.tag}>"
 
