@@ -14,6 +14,13 @@ task assemble, "Assembles all auto-generating modules":
     let
         path: string = "./cattag/auto/generator/"
         srcFile: string = "all.nim"
+        gitRepo: string = "https://github.com/mdn/data"
+        resources: string = "resources/"
+        gitRepoPath: string = path & resources & "data"
+    if not dirExists(gitRepoPath):
+        exec &"echo \"Cloning git repo\" && cd {path & resources} && git clone \"{gitRepo}\""
+    exec &"echo \"Pulling git repo\" && cd {gitRepoPath} && git pull"
+
     exec &"cd {path} && nim r {srcFile}"
 
 task examples, "Builds all examples":
