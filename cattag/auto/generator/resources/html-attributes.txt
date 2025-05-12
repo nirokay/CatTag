@@ -7,6 +7,7 @@ dirname
 disabled
 elementtiming
 for
+href
 max
 maxlength
 min

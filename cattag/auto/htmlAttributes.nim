@@ -691,6 +691,23 @@ proc setFor*(element: HtmlElement, values: varargs[string]): HtmlElement =
     result = element.setFor(values.toSeq())
 
 
+const href*: HtmlAttribute = "href" ## HtmlAttribute `href` Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/href
+proc setHref*(element: var HtmlElement, values: seq[string]) =
+    ## Sets the HtmlAttribute `href`
+    element.attributes.add(attr("href", values))
+proc setHref*(element: HtmlElement, values: seq[string]): HtmlElement =
+    ## Sets the HtmlAttribute `href`
+    result = element
+    result.setHref(values)
+
+proc setHref*(element: var HtmlElement, values: varargs[string]) =
+    ## Sets the HtmlAttribute `href`
+    element.setHref(values.toSeq())
+proc setHref*(element: HtmlElement, values: varargs[string]): HtmlElement =
+    ## Sets the HtmlAttribute `href`
+    result = element.setHref(values.toSeq())
+
+
 const max*: HtmlAttribute = "max" ## HtmlAttribute `max` Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/max
 proc setMax*(element: var HtmlElement, values: seq[string]) =
     ## Sets the HtmlAttribute `max`
