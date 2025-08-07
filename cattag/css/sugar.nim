@@ -9,7 +9,7 @@ iterator stringPairs[T](a: seq[T]): tuple[key: int, val: string] =
 
 proc `:=`*(property: string|CssProperty, values: seq[string]): CssElementProperty =
     ## Sugar constructor for `CssElementProperty`
-    result = newCssProperty(property, values)
+    result = newCssProperty(string property, values)
 proc `:=`*(property: string|CssProperty, values: varargs[string]): CssElementProperty =
     ## Sugar constructor for `CssElementProperty`
     result = property := values.toSeq()
@@ -26,7 +26,7 @@ proc `:=`*(property: string|CssProperty, values: tuple): CssElementProperty =
 
 template `:=`*(property: string|CssProperty, values: varargs[untyped, `$`]): untyped =
     ## Sugar constructor for `CssElementProperty`
-    newCssProperty(property, $values)
+    newCssProperty(string property, $values)
 
 
 proc `{}`*(selector: string, properties: seq[CssElementProperty]): CssElement =

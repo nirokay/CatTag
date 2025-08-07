@@ -16,7 +16,7 @@ export
     cssProperties
 
 
-const style*: HtmlAttribute = "style" ## HtmlAttribute `style` Notes: [Global] Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/style
+const style*: HtmlAttribute = HtmlAttribute "style" ## HtmlAttribute `style` Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes
 proc setStyle*(element: var HtmlElement, values: seq[CssElementProperty]|varargs[CssElement]) =
     ## Sets the HtmlAttribute `style`
     var stringValues: seq[string]

@@ -64,8 +64,9 @@ test "Attribute setters":
     check $element == "<img id='my-image' />"
 
     element.setAlt("My image.")
+    element.setSrc("image.png")
 
-    let immutableElement: HtmlElement = element.setSrc("image.png")
+    let immutableElement: HtmlElement = img().setAlt("Immunatable image.").setSrc("image.png")
 
-    check $element == "<img alt='My image.' id='my-image' />"
-    check $immutableelement == "<img alt='My image.' id='my-image' src='image.png' />"
+    check $element == "<img alt='My image.' id='my-image' src='image.png' />"
+    check $immutableElement == "<img alt='Immunatable image.' src='image.png' />"

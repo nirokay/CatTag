@@ -1,4 +1,4 @@
-import std/[strutils, strformat]
+import std/[strutils, strformat, parsecsv]
 import parser
 
 const skipAttributes: seq[string] = @[
@@ -17,66 +17,78 @@ output.lines = @[
     "",
     "import ../htmlXml/all",
     "",
-    "type HtmlAttribute* = string",
+    "type HtmlAttribute* {.borrow.} = distinct string",
     ""
 ]
 
 let needQuoting: seq[string] = @[
+    "as",
+    "defer",
     "for",
-    "is"
+    "is",
+    "method",
+    "type"
 ]
 
-proc writeOut(line: string, additionalNote: string = "") =
+proc writeOut(rawAttributeString, elements, description: string) =
     let
-        parts: seq[string] = block:
-            var r: seq[string] = line.strip().split(" ")
-            if additionalNote != "": r.add(additionalNote)
-            r
-        rawAttributeName: string = parts[0]
-        attrQuote: string = if rawAttributeName in needQuoting: "`" else: ""
-
-    if rawAttributeName in skipAttributes: return
-    if rawAttributeName[^1] in ['*']: return
-
+        rawAttribute: string = rawAttributeString.split(" ")[0]
+        notes: seq[string] = block:
+            let parts: seq[string] = rawAttributeString.split(" ")
+            if parts.len() == 1: @[]
+            else: parts[1 .. ^1]
+    if rawAttribute.endsWith("*"): return
+    if rawAttribute in skipAttributes: return
     let
-        attributeName: string = parts[0]
-        noteParts: seq[string] = block:
-            if parts.len() > 1: parts[1 .. ^1]
-            else: @[]
-        attributeNotes: string = block:
-            if noteParts.len() == 0: ""
-            else:
-                "Notes: [" & noteParts.join(", ") & "] "
-        reference: string = (
-            if "Global" in attributeNotes: "https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/"
-            else: "https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/"
-        ) & rawAttributeName
+        attribute: string = block:
+            var r: seq[string] = rawAttribute.split("-")
+            for i, part in r:
+                if i == 0: continue
+                r[i] = part.capitalizeAscii()
+            r.join("")
+        attrQuote: string = if rawAttribute in needQuoting: "`" else: ""
+        reference: string = "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes"
+        procName: string = "set" & attribute.capitalizeAscii()
+        deprecationNotice: string = if "Deprecated" notin notes: "" else: " {.deprecated: \"This tag is deprecated\".}"
 
-    let procName: string = "set" & rawAttributeName.capitalizeAscii()
     output.lines &= @[
         "",
-        &"const {attrQuote}{attributeName}{attrQuote}*: HtmlAttribute = \"{rawAttributeName}\" ## HtmlAttribute `{rawAttributeName}` {attributeNotes}Reference: {reference}",
+        &"const {attrQuote}{attribute}{attrQuote}*{deprecationNotice}: HtmlAttribute = HtmlAttribute \"{rawAttribute}\" ## HtmlAttribute `{rawAttribute}` Reference: {reference}",
         &"proc {procName}*(element: var HtmlElement, values: seq[string]) =",
-        &"    ## Sets the HtmlAttribute `{rawAttributeName}`",
-        &"    element.attributes.add(attr(\"{rawAttributeName}\", values))",
+        &"    ## Sets the HtmlAttribute `{rawAttribute}`",
+        &"    element.attributes.add(attr(\"{rawAttribute}\", values))",
         &"proc {procName}*(element: HtmlElement, values: seq[string]): HtmlElement =",
-        &"    ## Sets the HtmlAttribute `{rawAttributeName}`",
+        &"    ## Sets the HtmlAttribute `{rawAttribute}`",
         &"    result = element",
         &"    result.{procName}(values)",
         "",
         &"proc {procName}*(element: var HtmlElement, values: varargs[string]) =",
-        &"    ## Sets the HtmlAttribute `{rawAttributeName}`",
+        &"    ## Sets the HtmlAttribute `{attribute}`",
         &"    element.{procName}(values.toSeq())",
         &"proc {procName}*(element: HtmlElement, values: varargs[string]): HtmlElement =",
-        &"    ## Sets the HtmlAttribute `{rawAttributeName}`",
+        &"    ## Sets the HtmlAttribute `{attribute}`",
         &"    result = element.{procName}(values.toSeq())",
         ""
     ]
 
-for fileLine in parseFileLines("html-attributes-global.txt"):
-    writeOut(fileLine, "Global")
-for fileLine in parseFileLines("html-attributes.txt"):
-    writeOut(fileLine)
+
+var p: CsvParser
+p.open("./resources/html-attributes.csv")
+p.readHeaderRow()
+while p.readRow():
+    var
+        attribute: string
+        elements: string
+        description: string
+    for column in items(p.headers):
+        let entry: string = p.rowEntry(column)
+        case column:
+        of "Attribute Name": attribute = entry
+        of "Elements": elements = entry
+        of "Description": description = elements
+        else:
+            raise ValueError.newException("Unknown column '" & column & "'.")
+    writeOut(attribute, elements, description)
 
 output.lines.add("")
 output.writeFile()
