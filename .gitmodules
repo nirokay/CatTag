@@ -1,0 +1,4 @@
+[submodule "cattag/auto/generator/resources/data"]
+	path = cattag/auto/generator/resources/data
+	url = https://github.com/mdn/data
+	branch = main
