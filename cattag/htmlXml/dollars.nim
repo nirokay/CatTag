@@ -34,37 +34,37 @@ proc getElementWithMergedSortedAttributes[T: HtmlElement|XmlElement](element: T)
     result.attributes = attributes.sortedAttributes()
 
 
-proc `$`*(attribute: Attribute, generateEmptyValue: bool = false): string =
+proc `$`*(attribute: Attribute, generateEmptyValue: bool = false): string {.gcsafe.} =
     ## Stringifies `Attribute` for HTML and XML
     let value: string = attribute.values.join(" ")
     result = block:
         if value == "" and not generateEmptyValue: &" {attribute.attribute}"
         else: &" {attribute.attribute}={cattagHtmlXmlAttributeQuote}{value}{cattagHtmlXmlAttributeQuote}"
-proc `$`*(attributes: seq[Attribute], generateEmptyValue: bool = false): string =
+proc `$`*(attributes: seq[Attribute], generateEmptyValue: bool = false): string {.gcsafe.} =
     ## Stringifies `Attribute`s for HTML and XML
     for attribute in attributes:
         result.add $attribute
 
 
-proc dollarImpl(element: HtmlElement): string
-proc dollarImpl(element: XmlElement): string
+proc dollarImpl(element: HtmlElement): string {.gcsafe.}
+proc dollarImpl(element: XmlElement): string {.gcsafe.}
 
-proc dollarImpl(elements: seq[HtmlElement]): string
-proc dollarImpl(elements: seq[XmlElement]): string
+proc dollarImpl(elements: seq[HtmlElement]): string {.gcsafe.}
+proc dollarImpl(elements: seq[XmlElement]): string {.gcsafe.}
 
 
-proc stringifyRawText(element: HtmlElement): string =
+proc stringifyRawText(element: HtmlElement): string {.gcsafe.} =
     element.content.join("\n" & newHtmlElement("br").dollarImpl() & "\n")
-proc stringifyRawText(element: XmlElement): string =
+proc stringifyRawText(element: XmlElement): string {.gcsafe.} =
     element.content.join("\n")
-proc stringifyComment(element: HtmlElement|XmlElement): string =
+proc stringifyComment(element: HtmlElement|XmlElement): string {.gcsafe.} =
     result = @[
         "<!--",
         element.comment.join("\n").indent(cattagHtmlXmlIndent),
         "--->"
     ].join(if htmlXmlIndentNewLine != "": htmlXmlIndentNewLine else: " ")
 
-proc stringifyElement[T: HtmlElement|XmlElement](element: T, isVoid: bool, generateEmptyValue: bool): string =
+proc stringifyElement[T: HtmlElement|XmlElement](element: T, isVoid: bool, generateEmptyValue: bool): string {.gcsafe.} =
     if unlikely(isVoid and element.children.len() != 0): logWarning(&"Element with tag '{element.tag}' has children but is void. Children will not be generated!")
     let
         trailingSlash: string = block:
@@ -84,54 +84,54 @@ proc stringifyElement[T: HtmlElement|XmlElement](element: T, isVoid: bool, gener
         else:
             result = &"<{element.tag}{attributes}>{htmlXmlIndentNewLine}" & dollarImpl(element.children).indent(cattagHtmlXmlIndent) & &"{htmlXmlIndentNewLine}</{element.tag}>"
 
-proc stringifyHtmlElement(element: HtmlElement): string =
+proc stringifyHtmlElement(element: HtmlElement): string {.gcsafe.} =
     let isVoid: bool = element.tag in htmlVoidElementTags
     var modifiedElement: HtmlElement = element # TODO: implement `style` field converting to attribute
     result = modifiedElement.stringifyElement(isVoid, cattagHtmlGenerateEmptyAttributeValue)
 
-proc stringifyXmlElement(element: XmlElement): string =
+proc stringifyXmlElement(element: XmlElement): string {.gcsafe.} =
     let isVoid: bool = element.children.len() == 0 and cattagXmlSelfCloseOnEmptyChildren
     result = element.stringifyElement(isVoid, true)
 
-proc dollarImpl(element: HtmlElement): string =
+proc dollarImpl(element: HtmlElement): string {.gcsafe.} =
     case element.elementType:
     of typeComment: element.stringifyComment()
     of typeElement: element.stringifyHtmlElement()
     of typeRawText: element.stringifyRawText()
-proc dollarImpl(element: XmlElement): string =
+proc dollarImpl(element: XmlElement): string {.gcsafe.} =
     case element.elementType:
     of typeComment: element.stringifyComment()
     of typeElement: element.stringifyXmlElement()
     of typeRawText: element.stringifyRawText()
 
-proc dollarImpl(elements: seq[HtmlElement]): string =
+proc dollarImpl(elements: seq[HtmlElement]): string {.gcsafe.} =
     var strings: seq[string]
     for element in elements:
         strings.add element.dollarImpl()
     result = strings.join(htmlXmlIndentNewLine)
-proc dollarImpl(elements: seq[XmlElement]): string =
+proc dollarImpl(elements: seq[XmlElement]): string {.gcsafe.} =
     var strings: seq[string]
     for element in elements:
         strings.add element.dollarImpl()
     result = strings.join(htmlXmlIndentNewLine)
 
 
-proc `$`*(element: HtmlElement): string =
+proc `$`*(element: HtmlElement): string {.gcsafe.} =
     ## Stringifies `HtmlElement`
     result = element.dollarImpl()
-proc `$`*(element: XmlElement): string =
+proc `$`*(element: XmlElement): string {.gcsafe.} =
     ## Stringifies `XmlElement`
     result = element.dollarImpl()
 
-proc `$`*(elements: seq[HtmlElement]): string =
+proc `$`*(elements: seq[HtmlElement]): string {.gcsafe.} =
     ## Stringifies `HtmlElement`s
     result = elements.dollarImpl()
-proc `$`*(elements: seq[XmlElement]): string =
+proc `$`*(elements: seq[XmlElement]): string {.gcsafe.} =
     ## Stringifies `XmlElement`s
     result = elements.dollarImpl()
 
 
-proc `$`*(document: HtmlDocument): string =
+proc `$`*(document: HtmlDocument): string {.gcsafe.} =
     ## Stringifies `HtmlDocument`
     let
         doctype: string = "<!DOCTYPE html" & $document.doctypeAttributes & ">"
@@ -147,7 +147,7 @@ proc `$`*(document: HtmlDocument): string =
             )
         ]
     result = $elements
-proc `$`*(document: XmlDocument): string =
+proc `$`*(document: XmlDocument): string {.gcsafe.} =
     ## Stringifies `XmlDocument`
     let
         prologAttributes: XmlProlog = block:

@@ -4,11 +4,11 @@ import ../logger, types
 const
     cattagCssIndent* {.intdefine.}: int = 4
 
-proc `$`*(element: CssElement, condensed: bool = false): string
-proc `$`*(elements: seq[CssElement], condensed: bool = false): string
+proc `$`*(element: CssElement, condensed: bool = false): string {.gcsafe.}
+proc `$`*(elements: seq[CssElement], condensed: bool = false): string {.gcsafe.}
 
 
-proc `$`*(property: CssElementProperty, condensed: bool = false): string =
+proc `$`*(property: CssElementProperty, condensed: bool = false): string {.gcsafe.} =
     ## Stringifies `CssElementProperty`
     if unlikely property.property == "":
         logWarning("Property has no name, will generate invalid CSS.")
@@ -17,7 +17,7 @@ proc `$`*(property: CssElementProperty, condensed: bool = false): string =
     let sep: string = if condensed: ":" else: ": "
     result = property.property & sep & property.values.join(" ") & ";"
 
-proc `$`*(properties: seq[CssElementProperty], condensed: bool = false): string =
+proc `$`*(properties: seq[CssElementProperty], condensed: bool = false): string {.gcsafe.} =
     ## Stringifies `CssElementProperty`s
     var resultList: seq[string]
     for property in properties:
@@ -25,7 +25,7 @@ proc `$`*(properties: seq[CssElementProperty], condensed: bool = false): string 
     result = resultList.join(if condensed: "" else: "\n")
 
 
-proc dollarImpl(element: CssElement, condensed: bool): string =
+proc dollarImpl(element: CssElement, condensed: bool): string {.gcsafe.} =
     let selector: string = block:
         var s: string = element.selector
         case element.selectorType:
@@ -50,7 +50,7 @@ proc dollarImpl(element: CssElement, condensed: bool): string =
                 else: "") &
             "\n}"
 
-proc dollarCommentImpl(element: CssElement, condensed: bool): string =
+proc dollarCommentImpl(element: CssElement, condensed: bool): string {.gcsafe.} =
     if element.comment.len() > 1 and not condensed:
         result = "/**\n" &
             element.comment.join("\n").indent(1, " * ") &
@@ -59,20 +59,20 @@ proc dollarCommentImpl(element: CssElement, condensed: bool): string =
         result = "/* " & element.comment.join(" ") & " */"
 
 
-proc `$`*(element: CssElement, condensed: bool = false): string =
+proc `$`*(element: CssElement, condensed: bool = false): string {.gcsafe.} =
     ## Stringifies `CssElement`
     result = case element.elementType:
         of typeCssElement: element.dollarImpl(condensed)
         of typeCssComment: element.dollarCommentImpl(condensed)
 
-proc `$`*(elements: seq[CssElement], condensed: bool = false): string =
+proc `$`*(elements: seq[CssElement], condensed: bool = false): string {.gcsafe.} =
     ## Stringifies `CssElement`s
     var resultList: seq[string]
     for element in elements:
         resultList &= element $ condensed
     result = resultList.join(if condensed: "" else: "\n\n")
 
-proc `$`*(stylesheet: CssStylesheet): string =
+proc `$`*(stylesheet: CssStylesheet): string {.gcsafe.} =
     ## Stringifies `CssStylesheet`
     result = $stylesheet.children & "\n"
 
