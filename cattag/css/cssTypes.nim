@@ -364,7 +364,7 @@ type
         inset
         outset
 
-    CssOverflowPostion* = enum
+    CssOverflowPosition* = enum
         unsafe
         safe
 
@@ -444,5 +444,5 @@ type
     CssEasingFunction* = CssLinearEasingFunction|CssCubicBezierEasingFunction|CssStepEasingFunction
     CssFrequencyPercentage* = CssFrequency|CssPercentage
     CssHue* = CssAngle
-    CssLenghtPercentage* = CssLength|CssPercentage
+    CssLengthPercentage* = CssLength|CssPercentage
     CssTimePercentage* = CssTime|CssPercentage
