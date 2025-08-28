@@ -21,8 +21,8 @@ rewritten (more like reimplemented with major changes, so like, idk how you woul
 * [x] HTML QoL attribute constants (`class`, `lang`, `id`, ...)
 * [x] HTML QoL procs (`p("text")` for `newHtmlElement("p", "text")`)
 * [x] CSS QoL property constants (`text-align`, `background-color`, ...)
-* [x] CSS QoL property and property value constants (`center`, `Red`, ...)
-* [ ] CSS QoL procs
+* [ ] CSS QoL property and property value constants (`center`, `Red`, ...)
+* [x] CSS QoL procs
 * [ ] DOM procs
 * [ ] `HtmlElement.style` field stuff (usage similar to typescript element style manipulation)
 

@@ -2,9 +2,11 @@ import
     types,
     dollars,
     procs,
-    sugar
+    sugar,
+    domprocs
 export
     types,
     dollars,
     procs,
-    sugar
+    sugar,
+    domprocs
