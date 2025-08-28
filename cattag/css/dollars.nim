@@ -2,8 +2,6 @@ import std/[strutils, strformat]
 from os import `/`
 import ../logger, ../settings, types
 
-const
-    cattagCssIndent* {.intdefine.}: int = 4
 
 proc `$`*(element: CssElement, condensed: bool = false): string {.gcsafe.}
 proc `$`*(elements: seq[CssElement], condensed: bool = false): string {.gcsafe.}

@@ -3,13 +3,6 @@ from os import `/`
 import ../logger, ../settings, types, rules, procs
 
 const
-    cattagHtmlXmlAttributeQuote* {.strdefine.} = "'" ## Quote used for attribute values (`"` or `'`)
-    cattagHtmlXmlSortAttributes* {.booldefine.} = true ## Toggles alphabetical sorting of attributes
-    cattagHtmlXmlIndent* {.intdefine.} = 4 ## Sets indent for children (if set to zero, output will be inline)
-    cattagHtmlTrailingSlash* {.booldefine.} = true ## Toggles if `br` should generate `<br />` instead of `<br>`
-    cattagXmlSelfCloseOnEmptyChildren* {.booldefine.} = true ## Toggles if no children will generate `<some-text />` instead of `<some-text></some-text>` (good practice for XML)
-    cattagHtmlGenerateEmptyAttributeValue* {.booldefine.} = false ## Toggles if `<script defer="">...</script>` should be generated instead of `<script defer>...</script>` for HTML
-
     htmlVoidElementSlash: string = if cattagHtmlTrailingSlash: " /" else: ""
     xmlVoidElementSlash: string = if cattagXmlSelfCloseOnEmptyChildren: " /" else: ""
 
