@@ -41,3 +41,29 @@ proc setStyle*(element: var HtmlElement, values: varargs[CssElement]) =
 proc setStyle*(element: HtmlElement, values: varargs[CssElement]): HtmlElement =
     ## Sets the HtmlAttribute `style`
     result = element.setStyle(values.toSeq())
+
+
+proc setClass*(element: var HtmlElement, class: CssElement) =
+    ## Sets the HtmlAttribute `class`
+    element.setClass(class.selector)
+proc setClass*(element: HtmlElement, class: CssElement): HtmlElement =
+    ## Sets the HtmlAttribute `class`
+    result = element
+    result.setClass(class)
+
+proc setClass*(element: var HtmlElement, classes: seq[CssElement]) =
+    ## Sets the HtmlAttribute `class`
+    for class in classes:
+        element.setClass(class)
+proc setClass*(element: HtmlElement, classes: seq[CssElement]): HtmlElement =
+    ## Sets the HtmlAttribute `class`
+    result = element
+    result.setClass(classes)
+
+proc setClass*(element: var HtmlElement, classes: varargs[CssElement]) =
+    ## Sets the HtmlAttribute `class`
+    element.setClass(classes.toSeq())
+proc setClass*(element: HtmlElement, classes: varargs[CssElement]): HtmlElement =
+    ## Sets the HtmlAttribute `class`
+    result = element
+    result.setClass(classes.toSeq())
