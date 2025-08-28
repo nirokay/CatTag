@@ -1,5 +1,6 @@
 import std/[sequtils, strutils, strformat, tables, algorithm]
-import ../logger, types, rules, procs
+from os import `/`
+import ../logger, ../settings, types, rules, procs
 
 const
     cattagHtmlXmlAttributeQuote* {.strdefine.} = "'" ## Quote used for attribute values (`"` or `'`)
@@ -163,13 +164,13 @@ template writeDocument(OBJECT_TYPE: typedesc): untyped =
         ## Writes document to disk
         ##
         ## Raises `IOError` when not able to write to disk.
-        filename.writeFile($document)
+        writeFile(cattagOutputDirectory / filename, $document)
     proc writeFile*(document: OBJECT_TYPE) =
         ## Writes document to disk
         ##
         ## Raises `IOError` when `file` field is empty or could not write to disk.
         if unlikely document.file == "": raise IOError.newException("Document 'file' field is empty.")
-        document.file.writeFile($document)
+        writeFile(cattagOutputDirectory / document.file, $document)
 
 writeDocument(HtmlDocument)
 writeDocument(XmlDocument)

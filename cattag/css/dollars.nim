@@ -1,5 +1,6 @@
 import std/[strutils, strformat]
-import ../logger, types
+from os import `/`
+import ../logger, ../settings, types
 
 const
     cattagCssIndent* {.intdefine.}: int = 4
@@ -81,10 +82,10 @@ proc writeFile*(stylesheet: CssStylesheet, filename: string) =
     ## Writes stylesheet to disk
     ##
     ## Raises `IOError` when not able to write to disk.
-    filename.writeFile($stylesheet)
+    writeFile(cattagOutputDirectory / filename, $stylesheet)
 proc writeFile*(stylesheet: CssStylesheet) =
     ## Writes stylesheet to disk
     ##
     ## Raises `IOError` when `file` field is empty or could not write to disk.
     if unlikely stylesheet.file == "": raise IOError.newException("Stylesheet 'file' field is empty.")
-    stylesheet.file.writeFile($stylesheet)
+    writeFile(cattagOutputDirectory / stylesheet.file, $stylesheet)
