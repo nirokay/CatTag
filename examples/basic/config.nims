@@ -1,2 +1,2 @@
-switch("path", "$projectDir/../../cattag")
+switch("path", "$projectDir/../../")
 switch("hints", "off")
