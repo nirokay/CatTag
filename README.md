@@ -14,6 +14,10 @@ rewritten (more like reimplemented with major changes, so like, idk how you woul
 
 Include the following line in your `.nimble` file: `requires "https://github.com/nirokay/CatTag"`
 
+or
+
+`git clone https://github.com/nirokay/CatTag && cd CatTag && nimble install` and include `required "cattag"` in your `.nimble` file.
+
 ## Examples
 
 Feel free to explore [the examples subdirectory](./examples/)!
