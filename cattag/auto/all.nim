@@ -16,6 +16,14 @@ export
     cssProperties
 
 
+proc `<=>`*(attribute: HtmlAttribute, values: seq[string]): Attribute =
+    ## Sugar constructor for `Attribute`
+    result = string(attribute) <=> values
+proc `<=>`*(attribute: HtmlAttribute, values: varargs[string]): Attribute =
+    ## Sugar constructor for `Attribute`
+    result = string(attribute) <=> values
+
+
 const style*: HtmlAttribute = HtmlAttribute "style" ## HtmlAttribute `style` Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes
 proc setStyle*(element: var HtmlElement, values: seq[CssElementProperty|CssElement]) =
     ## Sets the HtmlAttribute `style`
