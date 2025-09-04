@@ -2,7 +2,8 @@ import std/[strutils, strformat, parsecsv]
 import parser
 
 const skipAttributes: seq[string] = @[
-    "style"
+    "style",
+    "language"
 ]
 
 var output: OutputFile = newOutputFile("htmlAttributes.nim")

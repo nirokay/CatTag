@@ -1099,23 +1099,6 @@ proc setLang*(element: HtmlElement, values: varargs[string]): HtmlElement =
     result = element.setLang(values.toSeq())
 
 
-const language* {.deprecated: "This tag is deprecated".}: HtmlAttribute = HtmlAttribute "language" ## HtmlAttribute `language` Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes
-proc setLanguage*(element: var HtmlElement, values: seq[string]) =
-    ## Sets the HtmlAttribute `language`
-    element.attributes.add(attr("language", values))
-proc setLanguage*(element: HtmlElement, values: seq[string]): HtmlElement =
-    ## Sets the HtmlAttribute `language`
-    result = element
-    result.setLanguage(values)
-
-proc setLanguage*(element: var HtmlElement, values: varargs[string]) =
-    ## Sets the HtmlAttribute `language`
-    element.setLanguage(values.toSeq())
-proc setLanguage*(element: HtmlElement, values: varargs[string]): HtmlElement =
-    ## Sets the HtmlAttribute `language`
-    result = element.setLanguage(values.toSeq())
-
-
 const loading*: HtmlAttribute = HtmlAttribute "loading" ## HtmlAttribute `loading` Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes
 proc setLoading*(element: var HtmlElement, values: seq[string]) =
     ## Sets the HtmlAttribute `loading`
