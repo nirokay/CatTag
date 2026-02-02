@@ -65,3 +65,13 @@ test "Elements with attributes (with sorting)":
         "<img alt='Favicon' src='https://www.nirokay.com/favicon.gif' />"
     check $newXmlElement("img", @[attr("src", "https://www.nirokay.com/favicon.gif"), attr("alt", "Favicon")]) ==
         "<img alt='Favicon' src='https://www.nirokay.com/favicon.gif' />"
+
+test "Attribute quote collisions":
+    let quote: HtmlElement = q(@[attr("cite","The quote'")], html "I don't not like cats!")
+    check $quote == "<q cite='The quote\\''>I don't not like cats!</q>"
+
+    let horrible: Attribute = attr("amogus", $attr("sussy", "'baka'"))
+    check $horrible == " amogus=' sussy=\\'\\'baka\\'\\''"
+
+    let falsePositive: Attribute = attr("sus", "cat\\\\'")
+    check $falsePositive == " sus='cat\\\\\\'"
