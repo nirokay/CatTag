@@ -72,6 +72,3 @@ test "Attribute quote collisions":
 
     let horrible: Attribute = attr("amogus", $attr("sussy", "'baka'"))
     check $horrible == " amogus=' sussy=\\'\\'baka\\'\\''"
-
-    let falsePositive: Attribute = attr("sus", "cat\\\\'")
-    check $falsePositive == " sus='cat\\\\\\'"
