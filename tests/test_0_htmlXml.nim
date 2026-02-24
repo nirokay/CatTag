@@ -67,8 +67,11 @@ test "Elements with attributes (with sorting)":
         "<img alt='Favicon' src='https://www.nirokay.com/favicon.gif' />"
 
 test "Attribute quote collisions":
-    let quote: HtmlElement = q(@[attr("cite","The quote'")], html "I don't not like cats!")
-    check $quote == "<q cite='The quote\\''>I don't not like cats!</q>"
+    let quote: HtmlElement = q(@[attr("cite", "The quote'")], html "I don't not like cats!")
+    check $quote == "<q cite='The quote&apos'>I don't not like cats!</q>"
 
     let horrible: Attribute = attr("amogus", $attr("sussy", "'baka'"))
-    check $horrible == " amogus=' sussy=\\'\\'baka\\'\\''"
+    check $horrible == " amogus=' sussy=&apos&aposbaka&apos&apos'"
+
+    let otherQuote: HtmlElement = q(@[attr("cite", "\"The quote\"")], html "\"Hello world\"")
+    check $otherQuote == "<q cite='&quotThe quote&quot'>\"Hello world\"</q>"

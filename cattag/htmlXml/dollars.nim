@@ -30,7 +30,9 @@ proc getElementWithMergedSortedAttributes[T: HtmlElement|XmlElement](element: T)
 
 proc `$`*(attribute: Attribute, generateEmptyValue: bool = false): string {.gcsafe.} =
     ## Stringifies `Attribute` for HTML and XML
-    let value: string = attribute.values.join(" ").replace("\\'", "'").replace("'", "\\'")
+    let value: string = attribute.values.join(" ")
+        .replace("'", "&apos")
+        .replace("\"", "&quot")
     result = block:
         if value == "" and not generateEmptyValue: &" {attribute.attribute}"
         else: &" {attribute.attribute}={cattagHtmlXmlAttributeQuote}{value}{cattagHtmlXmlAttributeQuote}"
