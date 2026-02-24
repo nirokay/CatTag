@@ -1,4 +1,4 @@
-import std/[sequtils]
+import std/[strutils, sequtils]
 # proc toSeq[T](a: seq[T]): seq[T] = a ## Override for `toSeq[T](a: varargs[T]): seq[T]`
 
 import ../htmlXml/all
@@ -53,7 +53,9 @@ proc setStyle*(element: HtmlElement, values: varargs[CssElement]): HtmlElement =
 
 proc setClass*(element: var HtmlElement, class: CssElement) =
     ## Sets the HtmlAttribute `class`
-    element.setClass(class.selector)
+    var className: string = class.selector
+    className.removePrefix('.')
+    element.setClass(className)
 proc setClass*(element: HtmlElement, class: CssElement): HtmlElement =
     ## Sets the HtmlAttribute `class`
     result = element
