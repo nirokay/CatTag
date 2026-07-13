@@ -1,7 +1,7 @@
 import std/[strutils]
 import types
 
-# ======================== Standardised general procs =========================
+# ======================== Standardized general procs =========================
 
 # Search by attribute: --------------------------------------------------------
 

@@ -1,4 +1,4 @@
-import std/[sequtils]
+import std/[sequtils, sequtils]
 import types, procs
 
 
@@ -51,3 +51,30 @@ template newBrackets(OBJECT_TYPE: typedesc): untyped =
 
 newBrackets(HtmlElement)
 newBrackets(XmlElement)
+
+
+proc join*(a: openArray[HtmlElement]): HtmlElement =
+    ## Joins elements
+    result = newHtmlElement("", a.toSeq())
+proc join*(a: openArray[HtmlElement], sep: HtmlElement): HtmlElement =
+    ## Joins elements with element
+    result = newHtmlElement("")
+    for i, element in a:
+        result.children.add element
+        if i != a.len() - 1: result.children.add sep
+proc join*(a: openArray[HtmlElement], sep: string): HtmlElement =
+    ## Joins element with string
+    result = join(a, html sep)
+
+proc join*(a: openArray[XmlElement]): XmlElement =
+    ## Joins elements
+    result = newXmlElement("", a.toSeq())
+proc join*(a: openArray[XmlElement], sep: XmlElement): XmlElement =
+    ## Joins elements with element
+    result = newXmlElement("")
+    for i, element in a:
+        result.children.add element
+        if i != a.len() - 1: result.children.add sep
+proc join*(a: openArray[XmlElement], sep: string): XmlElement =
+    ## Joins element with string
+    result = join(a, xml sep)

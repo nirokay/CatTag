@@ -11,4 +11,4 @@ const
     cattagHtmlGenerateEmptyAttributeValue* {.booldefine.} = false ## Toggles if `<script defer="">...</script>` should be generated instead of `<script defer>...</script>` for HTML
 
     # Css generation:
-    cattagCssIndent* {.intdefine.}: int = 4
+    cattagCssIndent* {.intdefine.}: int = 4 ## Sets indent for children

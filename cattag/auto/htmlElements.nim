@@ -728,32 +728,6 @@ proc button*(attributes: seq[Attribute], content: string, moreContent: varargs[s
     result = HtmlElement(elementType: typeElement, tag: "button", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
 
 # Custom attribute procs for void button:
-proc button*(`type`: string): HtmlElement =
-    ## Constructs new element
-    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button
-    result = button(@[attr("type", `type`)])
-
-# Custom attribute procs with children for button:
-proc button*(`type`: string, children: seq[HtmlElement]): HtmlElement =
-    ## Constructs new element
-    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button
-    result = button(@[attr("type", `type`)], children)
-proc button*(`type`: string, child: HtmlElement, children: varargs[HtmlElement]): HtmlElement =
-    ## Constructs new element
-    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button
-    result = button(@[attr("type", `type`)], @[child] & children.toSeq())
-
-# Custom attribute procs with content for button:
-proc button*(`type`: string, content: seq[string]): HtmlElement =
-    ## Constructs new element
-    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button
-    result = button(@[attr("type", `type`)], rawHtmlText(content))
-proc button*(`type`: string, content: string, contents: varargs[string]): HtmlElement =
-    ## Constructs new element
-    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button
-    result = button(@[attr("type", `type`)], rawHtmlText(@[content] & contents.toSeq()))
-
-# Custom attribute procs for void button:
 proc button*(`type`: string, onclick: string): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button
@@ -2831,16 +2805,10 @@ proc label*(attributes: seq[Attribute], content: string, moreContent: varargs[st
     result = HtmlElement(elementType: typeElement, tag: "label", attributes: attributes, children: @[rawHtmlText(@[content] & moreContent.toSeq())])
 
 # Custom attribute procs for void label:
-proc label*(`type`: string, `for`: string): HtmlElement =
+proc label*(`for`: string): HtmlElement =
     ## Constructs new element
     ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label
-    result = label(@[attr("type", `type`), attr("for", `for`)])
-
-# Custom attribute procs for void label:
-proc label*(`type`: string, `for`: string, form: string): HtmlElement =
-    ## Constructs new element
-    ## Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label
-    result = label(@[attr("type", `type`), attr("for", `for`), attr("form", form)])
+    result = label(@[attr("for", `for`)])
 
 
 

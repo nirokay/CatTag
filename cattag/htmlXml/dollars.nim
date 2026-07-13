@@ -31,8 +31,8 @@ proc getElementWithMergedSortedAttributes[T: HtmlElement|XmlElement](element: T)
 proc `$`*(attribute: Attribute, generateEmptyValue: bool = false): string {.gcsafe.} =
     ## Stringifies `Attribute` for HTML and XML
     let value: string = attribute.values.join(" ")
-        .replace("'", "&apos")
-        .replace("\"", "&quot")
+        .replace("'", "&apos;")
+        .replace("\"", "&quot;")
     result = block:
         if value == "" and not generateEmptyValue: &" {attribute.attribute}"
         else: &" {attribute.attribute}={cattagHtmlXmlAttributeQuote}{value}{cattagHtmlXmlAttributeQuote}"
@@ -70,9 +70,16 @@ proc stringifyElement[T: HtmlElement|XmlElement](element: T, isVoid: bool, gener
                 logFatal("Unsupported type.")
                 ""
         attributes: string = element.getElementWithMergedSortedAttributes().attributes $ generateEmptyValue
-    if isVoid:
+    if element.tag == "":
+        # Join elements without tag:
+        if element.children.len() <= 0: result = ""
+        elif element.children.len() == 1: result = dollarImpl(element.children)
+        else: result = htmlXmlIndentNewLine & dollarImpl(element.children).indent(cattagHtmlXmlIndent) & htmlXmlIndentNewLine
+    elif isVoid:
+        # Void tag:
         result = &"<{element.tag}{attributes}{trailingSlash}>"
     else:
+        # Regular tag:
         if element.children.len() == 0:
             result = &"<{element.tag}{attributes}></{element.tag}>"
         elif element.children.len() == 1:

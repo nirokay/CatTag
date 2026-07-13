@@ -3,10 +3,13 @@ import
     dollars,
     procs,
     sugar,
-    domprocs
+    domprocs,
+    manual/metaTags
 export
     types,
     dollars,
     procs,
     sugar,
-    domprocs
+    domprocs,
+    # Manual:
+    metaTags

@@ -54,12 +54,6 @@
         {
             "acceptContent": true,
             "attributes": {
-                "`type`": "string"
-            }
-        },
-        {
-            "acceptContent": true,
-            "attributes": {
                 "`type`": "string",
                 "onclick": "string"
             }
@@ -225,16 +219,7 @@
         {
             "acceptChildren": false,
             "attributes": {
-                "`type`": "string",
                 "`for`": "string"
-            }
-        },
-        {
-            "acceptChildren": false,
-            "attributes": {
-                "`type`": "string",
-                "`for`": "string",
-                "form": "string"
             }
         }
     ],

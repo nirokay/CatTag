@@ -66,12 +66,47 @@ test "Elements with attributes (with sorting)":
     check $newXmlElement("img", @[attr("src", "https://www.nirokay.com/favicon.gif"), attr("alt", "Favicon")]) ==
         "<img alt='Favicon' src='https://www.nirokay.com/favicon.gif' />"
 
+const joinedElements: string = """<div>
+    <p>hello world</p>
+    <br />
+    <p>bye world</p>
+</div>"""
+test "Joined elements":
+    check $newHtmlElement("div",
+        newHtmlElement("",
+            newHtmlElement("p", "hello world"),
+            newHtmlElement("br"),
+            newHtmlElement("p", "bye world")
+        )
+    ) == joinedElements
+
+    check $newHtmlElement("div",
+        join(@[
+            newHtmlElement("p", "hello world"),
+            newHtmlElement("br"),
+            newHtmlElement("p", "bye world")
+        ])
+    ) == joinedElements
+
+    check $newHtmlElement("div",
+        join(@[
+            newHtmlElement("p", "hello world"),
+            newHtmlElement("p", "bye world")
+        ], newHtmlElement("br"))
+    ) == joinedElements
+    check $newHtmlElement("div",
+        join(@[
+            newHtmlElement("p", "hello world"),
+            newHtmlElement("p", "bye world")
+        ], "<br />")
+    ) == joinedElements
+
 test "Attribute quote collisions":
     let quote: HtmlElement = q(@[attr("cite", "The quote'")], html "I don't not like cats!")
-    check $quote == "<q cite='The quote&apos'>I don't not like cats!</q>"
+    check $quote == "<q cite='The quote&apos;'>I don't not like cats!</q>"
 
     let horrible: Attribute = attr("amogus", $attr("sussy", "'baka'"))
-    check $horrible == " amogus=' sussy=&apos&aposbaka&apos&apos'"
+    check $horrible == " amogus=' sussy=&apos;&apos;baka&apos;&apos;'"
 
     let otherQuote: HtmlElement = q(@[attr("cite", "\"The quote\"")], html "\"Hello world\"")
-    check $otherQuote == "<q cite='&quotThe quote&quot'>\"Hello world\"</q>"
+    check $otherQuote == "<q cite='&quot;The quote&quot;'>\"Hello world\"</q>"
