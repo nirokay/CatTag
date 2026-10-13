@@ -70,3 +70,9 @@ test "Functions":
     check "filter: blur(4.0px);" == $(filter := cssBlur(4'px))
 
     check "color: rgb(10 20 30 / 50.0%);" == $(color := cssRgb(10, 20, 30, 50'percent))
+
+test "Issue #1":
+    check "oklch(47.194% 0.13793 254.154deg)" == $cssOklch(47.194'percent, 0.13793, 254.154'deg)
+    check "oklch(47.194% 0.13793 254.154deg / 40.0%)" == $cssOklch(47.194'percent, 0.13793, 254.154'deg, 40'percent)
+    check "lch(47.194% 0.13793 254.154deg)" == $cssLch(47.194'percent, 0.13793, 254.154'deg)
+    check "lch(47.194% 0.13793 254.154deg / 0.4)" == $cssLch(47.194'percent, 0.13793, 254.154'deg, 0.4)

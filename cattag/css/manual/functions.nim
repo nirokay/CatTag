@@ -104,8 +104,8 @@ proc cssLab*(L: float|percent|string, a: float|percent|string, b: float|percent|
 
 proc cssLayer*(name: string): CssPropertyValue = &"layer({name})"
 
-proc cssLch*(l: float|percent|string, c: float|percent|string, h: float|percent|string): CssPropertyValue = &"lch({l} {c} {h})"
-proc cssLch*(l: float|percent|string, c: float|percent|string, h: float|percent|string, a: float|percent|string): CssPropertyValue = &"lch({l} {c} {h} / {a})"
+proc cssLch*(l: float|percent|string, c: float|percent|string, h: float|percent|string|CssAngle): CssPropertyValue = &"lch({l} {c} {h})"
+proc cssLch*(l: float|percent|string, c: float|percent|string, h: float|percent|string|CssAngle, a: float|percent|string): CssPropertyValue = &"lch({l} {c} {h} / {a})"
 
 proc cssLightDark*(light, dark: string): CssPropertyValue = &"light-dark({light}, {dark})"
 
@@ -131,8 +131,8 @@ proc cssMod*(dividend: string|SomeNumber, divisor: string|SomeNumber): CssProper
 proc cssOklab*(L: float|string|percent, a: float|string|percent, b: float|string|percent): CssPropertyValue = &"oklab({L} {a} {b})"
 proc cssOklab*(L: float|string|percent, a: float|string|percent, b: float|string|percent, A: float|string|percent): CssPropertyValue = &"oklab({L} {a} {b} / {A})"
 
-proc cssOklch*(l: float|string|percent, c: float|string|percent, h: float|string|percent): CssPropertyValue = &"oklch({l} {c} {h})"
-proc cssOklch*(l: float|string|percent, c: float|string|percent, h: float|string|percent, a: float|string|percent): CssPropertyValue = &"oklch({l} {c} {h} / {a})"
+proc cssOklch*(l: float|string|percent, c: float|string|percent, h: float|string|percent|CssAngle): CssPropertyValue = &"oklch({l} {c} {h})"
+proc cssOklch*(l: float|string|percent, c: float|string|percent, h: float|string|percent|CssAngle, a: float|string|percent): CssPropertyValue = &"oklch({l} {c} {h} / {a})"
 
 proc cssOpacity*(value: float|percent): CssFilterFunction = CssFilterFunction(repr: &"opacity({value})")
 
